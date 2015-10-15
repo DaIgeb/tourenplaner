@@ -43,11 +43,15 @@ gulp.task('less', function () {
 });
 
 gulp.task('client-content', ['less'], function () {
-    return gulp.src([client + '/**/*.{css,html}',
+    return gulp.src([client + '/**/*.{css,html,js}',
         'node_modules/eonasdan-bootstrap-datetimepicker/node_modules/jquery/dist/jquery.min.js',
         'node_modules/eonasdan-bootstrap-datetimepicker/node_modules/moment/min/moment-with-locales.js',
         'node_modules/eonasdan-bootstrap-datetimepicker/node_modules/bootstrap/dist/**',
-        'node_modules/eonasdan-bootstrap-datetimepicker/build/**']
+        'node_modules/eonasdan-bootstrap-datetimepicker/build/**',
+        'node_modules/react/dist/react-with-addons.js',
+        'node_modules/react-dom/dist/react-dom.js',
+        'node_modules/babel-core/browser.js'
+    ]
     )
         .pipe(gulp.dest(dist + '/client'))
 });
