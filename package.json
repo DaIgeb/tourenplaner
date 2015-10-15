@@ -20,6 +20,7 @@
     "del": "^2.0.2",
     "eonasdan-bootstrap-datetimepicker": "^4.15.35",
     "gulp": "^3.9.0",
+    "gulp-less": "^3.0.3",
     "gulp-typescript": "^2.9.2",
     "gulp-watch": "^4.3.5",
     "tsd": "^0.6.4",
