@@ -1,3 +1,4 @@
+export = App;
 class App extends React.Component<IAppProps, any> {
     constructor(props : IAppProps) {
         super(props);
@@ -14,9 +15,7 @@ class App extends React.Component<IAppProps, any> {
             </div>
         );*/
         return (
-            <div>
-                {this.props.children}
-            </div>
+            <div>{this.props.children}</div>
         );
     }
 }

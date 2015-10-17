@@ -1,3 +1,7 @@
+import React = require('react');
+import rDom = require('react-dom');
+import App = require('App');
+
 var HelloWorld = React.createClass({
     render() {
         return (<div>Hello World</div>);
@@ -5,7 +9,7 @@ var HelloWorld = React.createClass({
 });
 var child = (<div>Hello Planet<HelloWorld /></div>);
 
-React.render(
+rDom.render(
     <App>{child}</App>,
     document.getElementById('content')
 );
