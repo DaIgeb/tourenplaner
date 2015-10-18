@@ -8,7 +8,7 @@ module.exports = {
     devtool: 'source-map',
     resolve: {
         modulesDirectories: ['web_modules', 'node_modules', 'src/client/components'],
-        extensions: ['', '.webpack.js', '.web.js', '.ts', '.js', '.tsx']
+        extensions: ['', '.webpack.js', '.web.js', '.js', '.ts', '.tsx']
     },
     // Add minification
     plugins: [
@@ -16,8 +16,11 @@ module.exports = {
     ],
     module: {
         loaders: [
-            { test: /\.ts$/, loader: 'ts-loader' },
-            { test: /\.tsx$/, loader: 'ts-loader' }
+            {
+                test: /\.ts(x?)$/,
+                exclude: /(node_modules|bower_components)/,
+                loader: 'ts-loader'
+            }
         ]
     },
     /*ts: {
