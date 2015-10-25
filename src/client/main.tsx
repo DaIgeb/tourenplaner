@@ -1,15 +1,19 @@
-import React = require('react');
-import rDom = require('react-dom');
-import App = require('App');
+'use strict';
 
-var HelloWorld = React.createClass({
-    render() {
-        return (<div>Hello World</div>);
-    }
-});
-var child = (<div>Hello Planet<HelloWorld /></div>);
+import './seasons.less';
+import * as React from 'react';
+import * as rDom from 'react-dom';
+import {App} from 'App/App';
+
+var appState = {
+    applicationName: "Tourenplaner",
+    fluid: true,
+    currentTabId: "Foobar"
+};
+
+console.log("Error");
 
 rDom.render(
-    <App>{child}</App>,
+    (<App state={appState}/>),
     document.getElementById('content')
 );
