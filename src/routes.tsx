@@ -27,8 +27,9 @@ import Main from 'components/Main';
 import Example from 'components/Example';
 
 const routes = (
-    <Route handler={Main}>
-        <Route name='example' handler={Example}/>
+    <Route path="/" component={Main}>
+        <Route path='example' component={Example}/>
+        <Route path='example2' component={Example}/>
     </Route>
 );
 

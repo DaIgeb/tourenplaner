@@ -4,11 +4,11 @@ import DummyStore from 'stores/dummyStore';
 import DummyActions from 'actions/dummyActions';
 import EventHandler = __React.EventHandler;
 
-class Example extends React.Component<IExampleProps, any> {
+class Example extends React.Component<IExampleProps, IExampleState> {
     constructor(props: IExampleProps) {
         super(props);
         this.state = {
-            name: props.name
+            name: 'Daniel' //props.name
         }
     }
 
@@ -36,6 +36,10 @@ class Example extends React.Component<IExampleProps, any> {
 }
 
 export interface IExampleProps extends React.Props<Example>{
+    name: string;
+}
+
+export interface IExampleState {
     name: string;
 }
 
