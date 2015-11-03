@@ -27,7 +27,7 @@ export class App extends React.Component<IAppProps, IAppState> {
 
     private appState = {
         applicationName: "Tourenplaner",
-        fluid: true,
+        fluid: false,
         currentTabId: "Foobar"
     };
 

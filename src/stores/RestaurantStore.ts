@@ -3,6 +3,7 @@ import {actions} from 'actions/RestaurantActions';
 import {AbstractStoreModel} from './AbstractStoreModel'
 import {restaurantSource} from 'sources/RestaurantSource';
 import {IRestaurant} from 'models/Restaurant'
+import IRestaurantActions from "../actions/RestaurantActions";
 
 interface IState {
     restaurants: Array<IRestaurant>;
@@ -17,6 +18,7 @@ interface IState {
 interface ExtendedStore extends AltJS.AltStore<IState> {
     fetchRestaurants() :void;
     isLoading(): boolean;
+    getRestaurant(id:number) : IRestaurant;
 }
 
 class RestaurantStore extends AbstractStoreModel<IState> implements IState {
@@ -36,10 +38,10 @@ class RestaurantStore extends AbstractStoreModel<IState> implements IState {
             handleFetch: actions.fetchRestaurants,
             handleFailed: actions.restaurantsFailed
         });
-        /*
-         this.exportPublicMethods({
-         getLocation: this.getLocation
-         });*/
+
+        this.exportPublicMethods({
+            getRestaurant: this.getRestaurant
+        });
 
         this.exportAsync(restaurantSource);
     }
@@ -61,6 +63,8 @@ class RestaurantStore extends AbstractStoreModel<IState> implements IState {
     }
 
     handleAdd(name:IRestaurant):void {
+        let maxIdItem = this.restaurants.slice(0).sort((r:IRestaurant, r2:IRestaurant) => r2.id - r.id)[0];
+        name.id = maxIdItem.id + 1;
         this.restaurants.push(name);
         this.updateState();
     }
@@ -76,6 +80,18 @@ class RestaurantStore extends AbstractStoreModel<IState> implements IState {
     handleSave(name:IRestaurant):void {
         this.restaurants.push(name);
         this.updateState();
+    }
+
+    getRestaurant(id:number)  {
+        var state = this.getState();
+        if (state.restaurants) {
+            var index = state.restaurants.findIndex((r:IRestaurant) => r.id === id);
+            if (index > -1) {
+                return state.restaurants[index];
+            }
+        }
+
+        return null;
     }
 
     private updateState = () => {
