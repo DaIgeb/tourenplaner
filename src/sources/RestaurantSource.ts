@@ -24,6 +24,28 @@ const rest1:IRestaurant = {
                         hour: 20,
                         minute: 0
                     }
+                },
+                {
+                    weekday: "Tuesday",
+                    from: {
+                        hour: 8,
+                        minute: 0
+                    },
+                    until: {
+                        hour: 20,
+                        minute: 0
+                    }
+                },
+                {
+                    weekday: "Friday",
+                    from: {
+                        hour: 8,
+                        minute: 0
+                    },
+                    until: {
+                        hour: 23,
+                        minute: 0
+                    }
                 }
             ],
             phone: "052 722 12 34",
@@ -40,6 +62,28 @@ const rest1:IRestaurant = {
                     },
                     until: {
                         hour: 20,
+                        minute: 0
+                    }
+                },
+                {
+                    weekday: "Tuesday",
+                    from: {
+                        hour: 8,
+                        minute: 0
+                    },
+                    until: {
+                        hour: 20,
+                        minute: 0
+                    }
+                },
+                {
+                    weekday: "Friday",
+                    from: {
+                        hour: 8,
+                        minute: 0
+                    },
+                    until: {
+                        hour: 23,
                         minute: 0
                     }
                 }

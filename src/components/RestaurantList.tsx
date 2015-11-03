@@ -5,8 +5,9 @@ import flux from 'control';
 import {restaurantStore} from 'stores/RestaurantStore';
 import connectToStores from 'alt/utils/connectToStores';
 import {actions as RestaurantActions} from "actions/RestaurantActions";
-import {IRestaurant} from "models/Restaurant";
+import {IRestaurant, IRestaurantTimeline, IDateRange} from "models/Restaurant";
 import Button from 'Button/Button';
+import {IBusinessHour} from "../models/Restaurant";
 
 class Restaurant extends React.Component<IRestaurantProps, IRestaurantState> {
     constructor(props:IRestaurantProps) {
@@ -14,68 +15,61 @@ class Restaurant extends React.Component<IRestaurantProps, IRestaurantState> {
     }
 
     public render() {
-        if (this.props.restaurant.id) {
+
+        var detailData = this
+            .props
+            .restaurant
+            .data
+            .find((detail:IRestaurantTimeline) => this.dateRangeMatches(detail));
+        var businessHours = detailData.businessHours.map((hrs:IBusinessHour, index:number) => {
+            var content = `${hrs.weekday} ${this.pad(hrs.from.hour, 2)}:${this.pad(hrs.from.minute, 2)}-${this.pad(hrs.until.hour, 2)}:${this.pad(hrs.until.minute, 2)}`;
             return (
-                <div className="row">
-                    <fieldset className="col-md-2">
-                        <input className="form-control" type="text" id="city" value={this.props.restaurant.zipCode + " " +this.props.restaurant.city} readOnly/>
-                    </fieldset>
-                    <fieldset className="col-md-2">
-                        <input className="form-control" type="text" id="name" value={this.props.restaurant.name} readOnly/>
-                    </fieldset>
-                    <fieldset className="col-md-2">
-                        <input className="form-control" type="text" id="address" value={this.props.restaurant.address} readOnly/>
-                    </fieldset>
-                    <fieldset className="col-md-2">
-                        <input className="form-control" type="text" id="location" value={this.props.restaurant.location.lat + "/" +this.props.restaurant.location.long} readOnly/>
-                    </fieldset>
-                    <fieldset className="col-md-2">
-                        <Link className="btn btn-primary btn-sm" to={`restaurants/${this.props.restaurant.id}`} aria-label="Left Align">
-                            <span className="glyphicon glyphicon-pencil" aria-hidden="true"></span>
-                        </Link>
-                        <button type="abort" className="btn btn-danger btn-sm" aria-label="Left Align"
-                                onClick={this.removeRestaurant}>
-                            <span className="glyphicon glyphicon-trash" aria-hidden="true"></span>
-                        </button>
-                    </fieldset>
-                </div>
+                [<span key={index}>{content}</span>,
+                <br/>]
             );
-        } else {
-            return (
-                <form className="row" onSubmit={this.createNewRestaurant}>
-                    <fieldset className="col-md-2">
-                        <label htmlFor="city">Ortschaft</label>
-                        <input className="form-control" type="text" ref="city" value={this.props.restaurant.zipCode + " " +this.props.restaurant.city} readOnly/>
-                    </fieldset>
-                    <fieldset className="col-md-2">
-                        <label htmlFor="name">Name</label>
-                        <input className="form-control" type="text" ref="name" value={this.props.restaurant.name} readOnly/>
-                    </fieldset>
-                    <fieldset className="col-md-2">
-                        <label htmlFor="address">Adresse</label>
-                        <input className="form-control" type="text" ref="address" value={this.props.restaurant.address} readOnly/>
-                    </fieldset>
-                    <fieldset className="col-md-2">
-                        <label htmlFor="location">Koordinaten</label>
-                        <input className="form-control" type="text" ref="location" value="" readOnly/>
-                    </fieldset>
-                    <fieldset className="col-md-2">
-                        <button type="submit" >Save</button>
-                        <Link className="btn btn-primary btn-sm" to={`restaurants/${this.props.restaurant.id}`} aria-label="Left Align" >
-                            <span className="glyphicon glyphicon-pencil" aria-hidden="true"></span>
-                        </Link>
-                        <button type="abort" className="btn btn-danger btn-sm" aria-label="Left Align"
-                                onClick={this.removeRestaurant}>
-                            <span className="glyphicon glyphicon-trash" aria-hidden="true"></span>
-                        </button>
-                    </fieldset>
-                </form>
-            );
-        }
+        });
+        return (
+            <div className="row">
+                <span className="col-md-1">
+                    {this.props.restaurant.name}
+                </span>
+                <span className="col-md-2">
+                    {this.props.restaurant.address}
+                    <br/>
+                    {this.props.restaurant.zipCode} {this.props.restaurant.city}
+                    <br/>
+                    {this.props.restaurant.location.lat}/{this.props.restaurant.location.long}
+                </span>
+                <span className="col-md-5">
+                    {detailData.phone}
+                    <br/>
+                    {detailData.notes}
+                </span>
+                <span className="col-md-2">
+                    {businessHours}
+                </span>
+                <span className="col-md-2">
+                    <Link className="btn btn-primary btn-sm" to={`restaurants/${this.props.restaurant.id}`}
+                          aria-label="Right Align">
+                        <span className="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+                    </Link>
+                    <button type="abort" className="btn btn-danger btn-sm" aria-label="Right Align"
+                            onClick={this.removeRestaurant}>
+                        <span className="glyphicon glyphicon-trash" aria-hidden="true"></span>
+                    </button>
+                </span>
+            </div>
+        );
+    }
+
+    private pad = (num: number, size: number) : string => {
+        var s = num + "";
+        while (s.length < size) s = "0" + s;
+        return s;
     }
 
     createNewRestaurant = (evt:any)=> {
-alert("new");
+        alert("new");
         var restaurant:IRestaurant = evt.target.value;
         restaurant = {
             name: "Hirschen",
@@ -105,12 +99,22 @@ alert("new");
         RestaurantActions.add(restaurant);
         evt.preventDefault();
 
-        window.history.pushState(undefined, 'Restaurant', `restaurants/${restaurant.id}`);
+        window.location.hash = `restaurants/${restaurant.id}`;
     };
 
     removeRestaurant = (evt:any)=> {
         this.props.onRemove(this.props.restaurant);
     };
+
+    private dateRangeMatches = (range:IDateRange):boolean => {
+        if (!range.from || range.from <= this.props.detailsDate) {
+            if (!range.until || range.until >= this.props.detailsDate) {
+                return true;
+            }
+        }
+
+        return false;
+    }
 }
 
 interface IRestaurantState {
@@ -119,6 +123,7 @@ interface IRestaurantProps extends React.Props<Restaurant> {
     // children: React.ReactNode; //cannot be required currently see https://github.com/Microsoft/TypeScript/issues/4833
     onRemove: (restaurant:IRestaurant) => void;
     restaurant: IRestaurant;
+    detailsDate: Date;
     key: number | string;
 }
 
@@ -162,20 +167,20 @@ class RestaurantList extends React.Component<any, any> {
         }
 
         let restaurants = this.props.restaurants.map((restaurant:IRestaurant, i:number) =>
-            (<Restaurant key={i} restaurant={restaurant} onRemove={this.removeRestaurant}/>)
+            (<Restaurant key={i} restaurant={restaurant} onRemove={this.removeRestaurant}
+                         detailsDate={new Date(2012,1,1)}/>)
         );
 
+        //var newRestaurant = (<Restaurant key="new" restaurant={emptyRestaurant} onRemove={undefined} detailsDate={new Date(2012,1,1)}/>);
         return (
             <div className="table table-striped table-hover">
                 <div className="row">
-                    <h3 className="col-md-2">Ortschaft</h3>
-                    <h3 className="col-md-2">Telefonnummer</h3>
-                    <h3 className="col-md-2">Name</h3>
-                    <h3 className="col-md-4">Bemerkungen</h3>
-                    <h3 className="col-md-1"></h3>
+                    <h4 className="col-md-1">Name</h4>
+                    <h4 className="col-md-2">Anschrift<br/>Koordinaten</h4>
+                    <h4 className="col-md-5">Telefon<br/>Notizen</h4>
+                    <h4 className="col-md-2">Öffnungszeiten</h4>
                 </div>
                 {restaurants}
-                <Restaurant key="new" restaurant={emptyRestaurant} onRemove={undefined}/>
             </div>);
     }
 
