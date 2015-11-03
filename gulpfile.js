@@ -28,7 +28,7 @@ gulp.task('compile', ['swagger-content', 'api-docs', 'client-content'], function
 });
 
 gulp.task('watch', ['compile'], function () {
-    gulp.watch([tsFiles, apiDefs, swaggerUi + '/**', client + '/**/*.{css,html,less}'], ['compile']);
+    gulp.watch([tsFiles, apiDefs, swaggerUi + '/**', client + '/**/*.{css,html,less,js}'], ['compile']);
 });
 
 gulp.task('swagger-content', function () {
