@@ -30,39 +30,7 @@ class Restaurants extends React.Component<IRestaurantsProps, IRestaurantsState> 
     };
 
     render() {
-        let restaurants : JSX.Element[];
-        if (this.props && !restaurantStore.isLoading()) {
-            restaurants = this.props.restaurants.map((restaurant:IRestaurant, i:number) =>
-                (<Restaurant key={i} restaurant={restaurant} onRemove={this.removeRestaurant}/>)
-            );
-        }
-
-        return (
-            <table className="table table-striped table-hover">
-                <thead>
-                    <tr>
-                        <th className="col-md-2">Ortschaft</th>
-                        <th className="col-md-2">Name</th>
-                        <th className="col-md-2">Telefonnummer</th>
-                        <th className="col-md-4">Bemerkungen</th>
-                        <th className="col-md-1"></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {this.props.children}
-                    {restaurants}
-                    <tr>
-                        <td colSpan={4}></td>
-                        <td>
-                            <Button className="btn btn-success btn-sm" attributes='{aria-label="Left Align"}'
-                                    onClick={this.saveRestaurant}>
-                                <span className="glyphicon glyphicon-plus" aria-hidden="true"></span>
-                            </Button>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        );
+        return (<div>{this.props.children}</div>);
     }
 
     saveRestaurant = (evt:any)=> {
@@ -93,4 +61,4 @@ export interface IRestaurantsState {
     //restaurants: Array<IRestaurant>;
 }
 
-export default connectToStores(Restaurants);
+export default Restaurants;

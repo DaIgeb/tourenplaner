@@ -9,7 +9,7 @@ class Restaurant extends React.Component<any, any> {
     render(): JSX.Element {
         if (this.props) {
             return (
-                <div>{this.props}</div>
+                <div>{this.props.params.id}</div>
             )
         }
 

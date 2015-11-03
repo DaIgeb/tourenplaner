@@ -35,7 +35,7 @@ const routes = (
         <Route path='contact' component={Restaurants}/>
         <Route path='restaurants' component={Restaurants}>
             <IndexRoute component={RestaurantList}/>
-            <Route path="restaurants/:id" component={Restaurant} />
+            <Route path=":id" component={Restaurant} />
         </Route>
     </Route>
 );
