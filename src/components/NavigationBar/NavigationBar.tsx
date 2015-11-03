@@ -41,7 +41,7 @@ export class NavigationBar extends React.Component<INavigationBarProps, any> {
                         <Link to='about'>About</Link>
                     </li>
                     <li>
-                        <Link to='contact'>Contact</Link>
+                        <Link to='restaurants'>Restaurant</Link>
                     </li>
                 </ul>
             </div>

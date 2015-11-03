@@ -1,5 +1,6 @@
 import * as React from 'react';
-import {Link} from 'react-router';
+import {Link, History} from 'react-router';
+import * as routerDefault from 'react-router';
 import flux from 'control';
 import {restaurantStore} from 'stores/RestaurantStore';
 import connectToStores from 'alt/utils/connectToStores';
@@ -12,42 +13,23 @@ class Restaurant extends React.Component<IRestaurantProps, IRestaurantState> {
         super(props);
     }
 
-    componentWillMount() {
-        this.setState({readOnly: true});
-    }
-
     public render() {
-        var buttonIcon:string;
-        var buttonClass: string;
-        if (this.state) {
-            buttonIcon = "glyphicon glyphicon-pencil";
-            buttonClass= "btn btn-primary btn-sm";
-        }
-        else {
-            buttonClass= "btn btn-success btn-sm";
-            buttonIcon = "glyphicon glyphicon-ok";
-        }
-
-        return (
-            <tr>
-                <form onSubmit={this.submit}>
-                    <td>
-                        <input type="textarea" className="form-control" value={this.props.restaurant.zipCode + " " +this.props.restaurant.city}
-                               readOnly/>
-                    </td>
-                    <td>
-                        <input type="text" className="form-control" value={this.props.restaurant.name}
-                               readOnly/>
-                    </td>
-                    <td>
-                        <input type="text" className="form-control" value={this.props.restaurant.address}
-                               readOnly/>
-                    </td>
-                    <td>
-                        <input type="textarea" className="form-control" value={this.props.restaurant.location.lat + " " +this.props.restaurant.location.long}
-                               readOnly/>
-                    </td>
-                    <td>
+        if (this.props.restaurant.id) {
+            return (
+                <div className="row">
+                    <fieldset className="col-md-2">
+                        <input className="form-control" type="text" id="city" value={this.props.restaurant.zipCode + " " +this.props.restaurant.city} readOnly/>
+                    </fieldset>
+                    <fieldset className="col-md-2">
+                        <input className="form-control" type="text" id="name" value={this.props.restaurant.name} readOnly/>
+                    </fieldset>
+                    <fieldset className="col-md-2">
+                        <input className="form-control" type="text" id="address" value={this.props.restaurant.address} readOnly/>
+                    </fieldset>
+                    <fieldset className="col-md-2">
+                        <input className="form-control" type="text" id="location" value={this.props.restaurant.location.lat + "/" +this.props.restaurant.location.long} readOnly/>
+                    </fieldset>
+                    <fieldset className="col-md-2">
                         <Link className="btn btn-primary btn-sm" to={`restaurants/${this.props.restaurant.id}`} aria-label="Left Align">
                             <span className="glyphicon glyphicon-pencil" aria-hidden="true"></span>
                         </Link>
@@ -55,20 +37,78 @@ class Restaurant extends React.Component<IRestaurantProps, IRestaurantState> {
                                 onClick={this.removeRestaurant}>
                             <span className="glyphicon glyphicon-trash" aria-hidden="true"></span>
                         </button>
-                    </td>
+                    </fieldset>
+                </div>
+            );
+        } else {
+            return (
+                <form className="row" onSubmit={this.createNewRestaurant}>
+                    <fieldset className="col-md-2">
+                        <label htmlFor="city">Ortschaft</label>
+                        <input className="form-control" type="text" ref="city" value={this.props.restaurant.zipCode + " " +this.props.restaurant.city} readOnly/>
+                    </fieldset>
+                    <fieldset className="col-md-2">
+                        <label htmlFor="name">Name</label>
+                        <input className="form-control" type="text" ref="name" value={this.props.restaurant.name} readOnly/>
+                    </fieldset>
+                    <fieldset className="col-md-2">
+                        <label htmlFor="address">Adresse</label>
+                        <input className="form-control" type="text" ref="address" value={this.props.restaurant.address} readOnly/>
+                    </fieldset>
+                    <fieldset className="col-md-2">
+                        <label htmlFor="location">Koordinaten</label>
+                        <input className="form-control" type="text" ref="location" value="" readOnly/>
+                    </fieldset>
+                    <fieldset className="col-md-2">
+                        <button type="submit" >Save</button>
+                        <Link className="btn btn-primary btn-sm" to={`restaurants/${this.props.restaurant.id}`} aria-label="Left Align" >
+                            <span className="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+                        </Link>
+                        <button type="abort" className="btn btn-danger btn-sm" aria-label="Left Align"
+                                onClick={this.removeRestaurant}>
+                            <span className="glyphicon glyphicon-trash" aria-hidden="true"></span>
+                        </button>
+                    </fieldset>
                 </form>
-            </tr>
-        );
+            );
+        }
     }
 
-    removeRestaurant = (evt:any)=> {
-        if (confirm("Do you really want to delete the restaurant?"))
-        {
-            this.props.onRemove(this.props.restaurant);
+    createNewRestaurant = (evt:any)=> {
+alert("new");
+        var restaurant:IRestaurant = evt.target.value;
+        restaurant = {
+            name: "Hirschen",
+            address: "Foostreet",
+            zipCode: "123",
+            city: "Ossingen",
+            location: {
+                long: 1,
+                lat: 2
+            },
+            data: [
+                {
+                    businessHours: [],
+                    phone: "052 722 12 34",
+                    notes: "Dienstags Ruhetag",
+                    from: new Date(),
+                    until: new Date()
+                }
+            ]
+        };
+        if (!this.state) {
+            //this.setState({restaurants: [restaurant]});
         }
+        else {
+            //this.state.restaurants.push(restaurant);
+        }
+        RestaurantActions.add(restaurant);
+        evt.preventDefault();
+
+        window.history.pushState(undefined, 'Restaurant', `restaurants/${restaurant.id}`);
     };
 
-    submit = (evt:any)=> {
+    removeRestaurant = (evt:any)=> {
         this.props.onRemove(this.props.restaurant);
     };
 }
@@ -79,8 +119,17 @@ interface IRestaurantProps extends React.Props<Restaurant> {
     // children: React.ReactNode; //cannot be required currently see https://github.com/Microsoft/TypeScript/issues/4833
     onRemove: (restaurant:IRestaurant) => void;
     restaurant: IRestaurant;
-    key: number;
+    key: number | string;
 }
+
+const emptyRestaurant:IRestaurant = {
+    name: undefined,
+    address: undefined,
+    zipCode: undefined,
+    city: undefined,
+    location: undefined,
+    data: []
+};
 
 class RestaurantList extends React.Component<any, any> {
     constructor(props:any) {
@@ -117,32 +166,23 @@ class RestaurantList extends React.Component<any, any> {
         );
 
         return (
-            <table className="table table-striped table-hover">
-                <thead>
-                    <tr>
-                        <th className="col-md-2">Ortschaft</th>
-                        <th className="col-md-2">Name</th>
-                        <th className="col-md-2">Telefonnummer</th>
-                        <th className="col-md-4">Bemerkungen</th>
-                        <th className="col-md-1"></th>
-                    </tr>
-                </thead>
-                <tbody>{restaurants}
-                    <tr>
-                        <td colSpan={4}></td>
-                        <td>
-                            <Button className="btn btn-success btn-sm" attributes='{aria-label="Left Align"}'
-                                    onClick={this.saveRestaurant}>
-                                <span className="glyphicon glyphicon-plus" aria-hidden="true"></span>
-                            </Button>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>);
+            <div className="table table-striped table-hover">
+                <div className="row">
+                    <h3 className="col-md-2">Ortschaft</h3>
+                    <h3 className="col-md-2">Telefonnummer</h3>
+                    <h3 className="col-md-2">Name</h3>
+                    <h3 className="col-md-4">Bemerkungen</h3>
+                    <h3 className="col-md-1"></h3>
+                </div>
+                {restaurants}
+                <Restaurant key="new" restaurant={emptyRestaurant} onRemove={undefined}/>
+            </div>);
     }
 
     removeRestaurant = (restaurant:IRestaurant)=> {
-        RestaurantActions.deleteRestaurant(restaurant);
+        if (confirm("Do you really want to delete the restaurant?")) {
+            RestaurantActions.deleteRestaurant(restaurant);
+        }
     };
 
     saveRestaurant = (evt:any)=> {

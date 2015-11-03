@@ -15,8 +15,8 @@ export class Navigation extends React.Component<INavigationProps, any> {
         return (
             <nav className={classes}>
                 <Container fluid={this.props.fluid}>
-                    <NavigationHeader applicationName={this.props.applicationName}></NavigationHeader>
-                    <NavigationBar></NavigationBar>
+                    <NavigationHeader applicationName={this.props.applicationName} />
+                    <NavigationBar />
                 </Container>
             </nav>
         );
