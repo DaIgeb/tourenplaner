@@ -6,7 +6,7 @@ Tourenplaner
 * npm install
 * tsd install
 * gulp compile
-* npm run server
+* npm run start
 * http://.../swagger -> API description
 * http://.../client -> Client
 * http://.../v1 -> API data
@@ -15,5 +15,7 @@ Tourenplaner
 
 * npm install
 * tsd install
-* gulp watch
+* develop
+** tsc
+** gulp watch
 
