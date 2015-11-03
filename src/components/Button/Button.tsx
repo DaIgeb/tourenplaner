@@ -13,7 +13,7 @@ class Button extends React.Component<IButtonProps, IButtonState> {
         var children = this.props.children;
 
         return (
-            <button type="button" className={className} {...this.props.attributes}>
+            <button type="button" className={className} onClick={this.props.onClick} {...this.props.attributes}>
                 {children}
             </button>
         );
@@ -25,7 +25,8 @@ interface IButtonState {
 
 interface IButtonProps extends React.Props<Button> {
     className: string;
-    attributes: string; // needed until ES7 support
+    onClick?: React.MouseEventHandler;
+    attributes: any; // needed until ES7 support
     // children: React.ReactNode; //cannot be required currently see https://github.com/Microsoft/TypeScript/issues/4833
 }
 

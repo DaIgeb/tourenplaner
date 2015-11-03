@@ -3,12 +3,14 @@ import flux from 'control';
 import DummyStore from 'stores/dummyStore';
 import DummyActions from 'actions/dummyActions';
 import EventHandler = __React.EventHandler;
+import connectToStores from 'alt/utils/connectToStores';
 
+//@connectToStores
 class Example extends React.Component<IExampleProps, IExampleState> {
     constructor(props: IExampleProps) {
         super(props);
         this.state = {
-            name: 'Daniel' //props.name
+            name: props.name
         }
     }
 
@@ -36,11 +38,11 @@ class Example extends React.Component<IExampleProps, IExampleState> {
 }
 
 export interface IExampleProps extends React.Props<Example>{
-    name: string;
+    name?: string;
 }
 
 export interface IExampleState {
     name: string;
 }
 
-export default Example;
+export default connectToStores(Example);

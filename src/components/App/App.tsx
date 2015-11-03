@@ -13,9 +13,9 @@ export class App extends React.Component<IAppProps, IAppState> {
     }
 
     public render() {
-        var navContainer = (<Navigation applicationName={this.state.applicationName} fluid={this.state.fluid}/>);
-        var content = (<Container fluid={this.state.fluid}>
-            Hello World!
+        var navContainer = (<Navigation applicationName={this.appState.applicationName} fluid={this.appState.fluid}/>);
+        var content = (<Container fluid={this.appState.fluid}>
+            {this.props.children}
         </Container>);
 
         return (
@@ -24,6 +24,13 @@ export class App extends React.Component<IAppProps, IAppState> {
                 {content}</div>
         );
     }
+
+    private appState = {
+        applicationName: "Tourenplaner",
+        fluid: true,
+        currentTabId: "Foobar"
+    };
+
 }
 
 export interface IAppProps extends React.Props<App> {

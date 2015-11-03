@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {RouteHandler, Link} from 'react-router';
+import {Link} from 'react-router';
 
 class Main extends React.Component<any, any> {
     constructor(props: any){

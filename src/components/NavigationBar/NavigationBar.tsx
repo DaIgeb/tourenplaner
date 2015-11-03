@@ -1,6 +1,6 @@
 import './NavigationBar.less';
 import * as React from 'react';
-import {default as Button} from 'Button/Button';
+import {Link} from 'react-router';
 
 export class NavigationBar extends React.Component<INavigationBarProps, any> {
     constructor(props:INavigationBarProps) {
@@ -38,10 +38,10 @@ export class NavigationBar extends React.Component<INavigationBarProps, any> {
                         </ul>
                     </li>
                     <li>
-                        <a href="#about">About</a>
+                        <Link to='about'>About</Link>
                     </li>
                     <li>
-                        <a href="#contact">Contact</a>
+                        <Link to='contact'>Contact</Link>
                     </li>
                 </ul>
             </div>

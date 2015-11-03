@@ -43,8 +43,7 @@ module.exports = {
         new ExtractTextPlugin("styles.css"),
         new HtmlWebpackPlugin({
             inject: true,
-            template: 'src/index.html',
-            chunks: ['app', 'vendor']
+            template: 'src/index.html'
         }),
         new webpack.NoErrorsPlugin()
     ],

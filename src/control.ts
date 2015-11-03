@@ -1,4 +1,4 @@
 import {default as Alt} from 'alt';
 
-const flux = new Alt();
+export const flux:AltJS.Alt = new Alt();
 export default flux;

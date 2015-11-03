@@ -23,13 +23,14 @@
 import * as React from 'react';
 import {Route} from 'react-router';
 
-import Main from 'components/Main';
+import App from 'components/App/App';
 import Example from 'components/Example';
+import Restaurants from 'components/Restaurants';
 
 const routes = (
-    <Route path="/" component={Main}>
-        <Route path='example' component={Example}/>
-        <Route path='example2' component={Example}/>
+    <Route path="/" component={App}>
+        <Route path='about' component={Example}/>
+        <Route path='contact' component={Restaurants}/>
     </Route>
 );
 

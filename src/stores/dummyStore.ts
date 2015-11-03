@@ -1,26 +1,29 @@
-import flux from '../control';
-import * as Alt from 'alt';
-
+import flux from 'control';
 import actions from 'actions/dummyActions';
 
-interface StoreInterface {}
-
-class DummyStore implements AltJS.StoreModel<StoreInterface> {
-    name = 'awesome';
-
-    bindAction = ( action:AltJS.Action<any>, handler:AltJS.ActionHandler)=> {
-
-    };
-
-    //@bind(actions.updateName)
-    updateName(name: string) {
-        this.name = name;
-    }
+interface StoreInterface {
 }
 
-var dummyStore = new DummyStore();
+class DummyStore implements AltJS.StoreModel<StoreInterface> {
+    constructor() {
+        this.name = 'awesome';
 
-var store = flux.createStore(dummyStore, "awesome");
-dummyStore.bindAction(flux.actions['updateName'], actions.updateName);
+        (<any>this).bindListeners({
+            updateName: actions.updateName
+        })
+    }
+
+    updateName(name:string) {
+        console.log('Store');
+        this.name = name;
+        (<any>this).setState({name: name});
+        (<any>this).emitChange();
+    }
+
+    private state = {name: 'Daniel222'};
+    private name:string;
+}
+
+var store = flux.createStore(DummyStore, "DummyStore");
 
 export default store;
