@@ -25,30 +25,30 @@ class Restaurant extends React.Component<IRestaurantProps, IRestaurantState> {
             var content = `${hrs.weekday} ${this.pad(hrs.from.hour, 2)}:${this.pad(hrs.from.minute, 2)}-${this.pad(hrs.until.hour, 2)}:${this.pad(hrs.until.minute, 2)}`;
             return (
                 [<span key={index}>{content}</span>,
-                <br/>]
+                    <br/>]
             );
         });
         return (
-            <div className="row">
-                <span className="col-md-1">
+            <tr>
+                <td className="col-md-1">
                     {this.props.restaurant.name}
-                </span>
-                <span className="col-md-2">
+                </td>
+                <td className="col-md-2">
                     {this.props.restaurant.address}
                     <br/>
                     {this.props.restaurant.zipCode} {this.props.restaurant.city}
                     <br/>
                     {this.props.restaurant.location.lat}/{this.props.restaurant.location.long}
-                </span>
-                <span className="col-md-5">
+                </td>
+                <td className="col-md-5">
                     {detailData.phone}
                     <br/>
                     {detailData.notes}
-                </span>
-                <span className="col-md-2">
+                </td>
+                <td className="col-md-2">
                     {businessHours}
-                </span>
-                <span className="col-md-2">
+                </td>
+                <td className="col-md-2">
                     <Link className="btn btn-primary btn-sm" to={`restaurants/${this.props.restaurant.id}`}
                           aria-label="Right Align">
                         <span className="glyphicon glyphicon-pencil" aria-hidden="true"></span>
@@ -57,12 +57,12 @@ class Restaurant extends React.Component<IRestaurantProps, IRestaurantState> {
                             onClick={this.removeRestaurant}>
                         <span className="glyphicon glyphicon-trash" aria-hidden="true"></span>
                     </button>
-                </span>
-            </div>
+                </td>
+            </tr>
         );
     }
 
-    private pad = (num: number, size: number) : string => {
+    private pad = (num:number, size:number):string => {
         var s = num + "";
         while (s.length < size) s = "0" + s;
         return s;
@@ -173,15 +173,27 @@ class RestaurantList extends React.Component<any, any> {
 
         //var newRestaurant = (<Restaurant key="new" restaurant={emptyRestaurant} onRemove={undefined} detailsDate={new Date(2012,1,1)}/>);
         return (
-            <div className="table table-striped table-hover">
-                <div className="row">
-                    <h4 className="col-md-1">Name</h4>
-                    <h4 className="col-md-2">Anschrift<br/>Koordinaten</h4>
-                    <h4 className="col-md-5">Telefon<br/>Notizen</h4>
-                    <h4 className="col-md-2">Öffnungszeiten</h4>
-                </div>
-                {restaurants}
-            </div>);
+            <table className="table table-striped table-hover table-condensed">
+                <thead>
+                    <th className="col-md-1">Name</th>
+                    <th className="col-md-2">Anschrift<br/>Koordinaten</th>
+                    <th className="col-md-5">Telefon<br/>Notizen</th>
+                    <th className="col-md-2">Öffnungszeiten</th>
+                    <th className="col-md-2"></th>
+                </thead>
+                <tbody>
+                    {restaurants}
+                    <tr>
+                        <td colSpan={4}></td>
+                        <td>
+                            <Link className="btn btn-success btn-sm" to={`restaurants/new`}
+                                  aria-label="Right Align">
+                                <span className="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                            </Link>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>);
     }
 
     removeRestaurant = (restaurant:IRestaurant)=> {
