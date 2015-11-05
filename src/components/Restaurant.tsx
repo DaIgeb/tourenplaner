@@ -4,7 +4,9 @@ import connectToStores from 'alt/utils/connectToStores';
 import {actions as RestaurantActions} from "actions/RestaurantActions";
 import {IRestaurant} from "models/Restaurant";
 
-class Restaurant extends React.Component<any, any> {
+class Restaurant extends React.Component<any, {restaurant: IRestaurant, restaurants?: Array<IRestaurant>}> {
+    state:{restaurant: IRestaurant, restaurants?: Array<IRestaurant>} = {restaurant: null};
+
     constructor(props:any) {
         super(props);
     }
@@ -17,12 +19,12 @@ class Restaurant extends React.Component<any, any> {
         return restaurantStore.getState();
     }
 
-    componentDidMount() {
+    componentDidMount = () => {
         restaurantStore.fetchRestaurants();
-    }
+    };
 
     render():JSX.Element {
-        let restaurant:IRestaurant;
+        let restaurant:IRestaurant
         if (this.props.params.id === "new") {
             restaurant = {
                 name: undefined,
@@ -33,18 +35,32 @@ class Restaurant extends React.Component<any, any> {
                 data: []
             };
         } else if (this.props && !restaurantStore.isLoading()) {
-            restaurant = restaurantStore.getRestaurant(parseInt(this.props.params.id));
+            var id = parseInt(this.props.params.id);
+            var index = this.props.restaurants.findIndex((r:IRestaurant) => r.id === id);
+            if (index > -1) {
+                console.log("Resolving");
+                restaurant = this.props.restaurants[index];
+            }
         }
-
+        if (this.state.restaurant !== restaurant) {
+            //this.setState({restaurant: restaurant});
+        }
         if (restaurant) {
             //this.setState({restaurant: restaurant});
             return (<form className="row" onSubmit={this.saveRestaurant}>
-                <input ref="name"/>
-                {restaurant.name}</form>);
+                <input ref="name" value={restaurant.name} onChange={this.updateName}/>
+                {restaurant.name}
+            </form>);
         }
         return (<div>Not Found</div>);
     }
 
+
+    updateName = (evt:any) => {
+        var name = evt.target.value;
+        this.state.restaurant.name = name;
+        this.setState({restaurant: this.state.restaurant});
+    };
 
     saveRestaurant = (evt:any)=> {
         var restaurant:IRestaurant = evt.target.value;

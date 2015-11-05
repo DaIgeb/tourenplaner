@@ -16,9 +16,9 @@ interface IState {
  * export Async
  */
 interface ExtendedStore extends AltJS.AltStore<IState> {
-    fetchRestaurants() :void;
+    fetchRestaurants() : void;
     isLoading(): boolean;
-    getRestaurant(id:number) : IRestaurant;
+    getRestaurant(id:number) : Promise<IRestaurant>;
 }
 
 class RestaurantStore extends AbstractStoreModel<IState> implements IState {
@@ -82,16 +82,29 @@ class RestaurantStore extends AbstractStoreModel<IState> implements IState {
         this.updateState();
     }
 
-    getRestaurant(id:number)  {
-        var state = this.getState();
-        if (state.restaurants) {
-            var index = state.restaurants.findIndex((r:IRestaurant) => r.id === id);
-            if (index > -1) {
-                return state.restaurants[index];
-            }
-        }
+    getRestaurant(id:number):Promise<IRestaurant> {
+        var p = new Promise<IRestaurant>((resolve:(restaurant:IRestaurant)=> void, reject: (reason?: any) => void) => {
+            var tryResolve = function() {
+                var state = this.getState();
+                if (state.restaurants) {
+                    var index = state.restaurants.findIndex((r:IRestaurant) => r.id === id);
+                    if (index > -1) {
+                        console.log("Resolving");
+                        resolve(state.restaurants[index]);
+                    }
+                }
+                else {
+                    setTimeout(tryResolve, 100);
+                }
+            };
 
-        return null;
+            tryResolve();
+            console.log("Resolving");
+            //reject("No Found");
+        });
+
+
+        return p;
     }
 
     private updateState = () => {
