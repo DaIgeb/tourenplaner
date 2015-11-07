@@ -36,7 +36,7 @@ module.exports = {
     },
     // Add minification
     plugins: [
-        new webpack.optimize.UglifyJsPlugin(),
+        //new webpack.optimize.UglifyJsPlugin(),
         //new webpack.optimize.CommonsChunkPlugin(/* chunkName= */"app", /* filename= */"app.js"),
         //new webpack.optimize.CommonsChunkPlugin(/* chunkName= */"bundle", /* filename= */"bundle.js"),
         new webpack.optimize.CommonsChunkPlugin(/* chunkName= */"vendor", /* filename= */"vendor.bundle.js"),

@@ -24,18 +24,16 @@ import * as React from 'react';
 import {Route, IndexRoute} from 'react-router';
 
 import App from 'components/App/App';
-import Example from 'components/Example';
 import Restaurants from 'components/Restaurants';
 import RestaurantList from 'components/RestaurantList';
 import Restaurant from 'components/Restaurant';
+import {actions as RestaurantsActions} from "actions/RestaurantsActions";
 
 const routes = (
     <Route path="/" component={App}>
-        <Route path='about' component={Example}/>
-        <Route path='contact' component={Restaurants}/>
         <Route path='restaurants' component={Restaurants}>
             <IndexRoute component={RestaurantList}/>
-            <Route path=":id" component={Restaurant} />
+            <Route path=":id" component={Restaurant}/>
         </Route>
     </Route>
 );

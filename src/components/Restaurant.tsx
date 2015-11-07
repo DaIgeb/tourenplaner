@@ -1,95 +1,95 @@
 import * as React from 'react';
-import {restaurantStore} from 'stores/RestaurantStore';
+import {Link} from 'react-router';
+import {restaurantsStore } from 'stores/RestaurantsStore';
 import connectToStores from 'alt/utils/connectToStores';
-import {actions as RestaurantActions} from "actions/RestaurantActions";
+import {actions as RestaurantsActions} from "actions/RestaurantsActions";
 import {IRestaurant} from "models/Restaurant";
+import Button from 'Button/Button';
+
+function getState():{restaurant: IRestaurant} {
+    return {
+        restaurant: restaurantsStore.getState().selectedRestaurant
+    }
+}
 
 class Restaurant extends React.Component<any, {restaurant: IRestaurant, restaurants?: Array<IRestaurant>}> {
     state:{restaurant: IRestaurant, restaurants?: Array<IRestaurant>} = {restaurant: null};
+    private currentId:number = null;
 
     constructor(props:any) {
         super(props);
+
+        this.state = getState();
+
+        let id = props.params.id === "new" ? -1 : parseInt(props.params.id);
+        RestaurantsActions.restaurantSelected(id);
     }
 
     static getStores(props:any) {
-        return [restaurantStore];
+        return [restaurantsStore];
     }
 
     static getPropsFromStores(props:any) {
-        return restaurantStore.getState();
+        return restaurantsStore.getState();
     }
 
-    componentDidMount = () => {
-        restaurantStore.fetchRestaurants();
-    };
+    componentDidMount() {
+        restaurantsStore.fetchRestaurants();
+    }
 
     render():JSX.Element {
-        let restaurant:IRestaurant
-        if (this.props.params.id === "new") {
-            restaurant = {
-                name: undefined,
-                address: undefined,
-                zipCode: undefined,
-                city: undefined,
-                location: {long: undefined, lat: undefined},
-                data: []
-            };
-        } else if (this.props && !restaurantStore.isLoading()) {
-            var id = parseInt(this.props.params.id);
-            var index = this.props.restaurants.findIndex((r:IRestaurant) => r.id === id);
-            if (index > -1) {
-                console.log("Resolving");
-                restaurant = this.props.restaurants[index];
-            }
+        let id = this.props.params.id === "new" ? -1 : parseInt(this.props.params.id);
+        {
         }
-        if (this.state.restaurant !== restaurant) {
-            //this.setState({restaurant: restaurant});
+        if (this.currentId !== id) {
+            this.currentId = id;
+            RestaurantsActions.restaurantSelected(id);
         }
+
+        let restaurant = getState().restaurant;
         if (restaurant) {
-            //this.setState({restaurant: restaurant});
             return (<form className="row" onSubmit={this.saveRestaurant}>
-                <input ref="name" value={restaurant.name} onChange={this.updateName}/>
-                {restaurant.name}
+                <div className="form-group">
+                    <label htmlFor="name">Name</label>
+                    <input id="name" type="text" className="form-control" ref="name" value={restaurant.name}
+                           onChange={this.updateName}/>
+                </div>
+                <div className="form-group">
+                    <label htmlFor="address">Adresse</label>
+                    <input id="address" type="text" className="form-control" ref="address" value={restaurant.address}
+                           onChange={this.updateAddress}/>
+                </div>
+                <div className="form-group">
+                    <label htmlFor="city">Ortschaft</label>
+                    <input id="city" type="text" className="form-control" ref="city" value={restaurant.city}
+                           onChange={this.updateCity}/>
+                </div>
+                <Button type="submit" className="btn btn-default">Speichern</Button>
             </form>);
         }
         return (<div>Not Found</div>);
     }
 
-
-    updateName = (evt:any) => {
+    updateName = (evt:any):void  => {
         var name = evt.target.value;
-        this.state.restaurant.name = name;
-        this.setState({restaurant: this.state.restaurant});
+        getState().restaurant.name = name;
+        this.setState(getState());
+    };
+
+    updateAddress = (evt:any):void => {
+        var name = evt.target.value;
+        getState().restaurant.address = name;
+        this.setState(getState());
+    };
+
+    updateCity = (evt:any):void => {
+        var name = evt.target.value;
+        getState().restaurant.city = name;
+        this.setState(getState());
     };
 
     saveRestaurant = (evt:any)=> {
-        var restaurant:IRestaurant = evt.target.value;
-        restaurant = {
-            name: "Hirschen",
-            address: "Foostreet",
-            zipCode: "123",
-            city: "Ossingen",
-            location: {
-                long: 1,
-                lat: 2
-            },
-            data: [
-                {
-                    businessHours: [],
-                    phone: "052 722 12 34",
-                    notes: "Dienstags Ruhetag",
-                    from: new Date(),
-                    until: new Date()
-                }
-            ]
-        };
-        if (!this.state) {
-            //this.setState({restaurants: [restaurant]});
-        }
-        else {
-            //this.state.restaurants.push(restaurant);
-        }
-        RestaurantActions.add(restaurant);
+        RestaurantsActions.add(getState().restaurant);
         evt.preventDefault();
     };
 }

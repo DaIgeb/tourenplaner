@@ -1,18 +1,22 @@
-import flux from 'control';
+import {flux} from 'control';
 import {AbstractActions} from "./AbstractActions";
 import {IRestaurant} from 'models/Restaurant'
 
-class RestaurantActions extends AbstractActions implements IRestaurantActions {
+class RestaurantsActions extends AbstractActions implements IRestaurantsActions {
     constructor(alt:AltJS.Alt) {
         super(alt);
     }
 
-    add(name:IRestaurant):void {
-        this.dispatch(name);
+    restaurantSelected(id:number):void {
+        this.dispatch(id);
     }
 
-    deleteRestaurant(name:IRestaurant):void {
-        this.dispatch(name);
+    add(restaurant:IRestaurant):void {
+        this.dispatch(restaurant);
+    }
+
+    deleteRestaurant(restaurant:IRestaurant):void {
+        this.dispatch(restaurant);
     }
 
     saveRestaurant(restaurant:IRestaurant):void {
@@ -28,18 +32,18 @@ class RestaurantActions extends AbstractActions implements IRestaurantActions {
     }
 
     restaurantsFailed(errorMessage:any):void {
-        this.dispatch();
+        this.dispatch(errorMessage);
     }
 }
 
-interface IRestaurantActions {
+interface IRestaurantsActions {
     add(name:IRestaurant) : void;
     deleteRestaurant(name:IRestaurant) : void;
     saveRestaurant(restaurant:IRestaurant): void;
     updateRestaurants(restaurants:Array<IRestaurant>):void;
     fetchRestaurants():void;
     restaurantsFailed(errorMessage:any): void;
+    restaurantSelected(id:number): void;
 }
 
-export const actions = flux.createActions<IRestaurantActions>(RestaurantActions);
-export default actions;
+export const actions = flux.createActions<IRestaurantsActions>(RestaurantsActions);

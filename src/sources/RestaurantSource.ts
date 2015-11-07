@@ -1,4 +1,4 @@
-import {actions} from "actions/RestaurantActions";
+import {actions} from "actions/RestaurantsActions";
 import {IRestaurant} from 'models/Restaurant'
 
 const rest1:IRestaurant = {
