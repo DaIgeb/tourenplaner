@@ -121,10 +121,15 @@ export class DateRangeEdit extends React.Component<IDateRangeEditProps, IDateRan
         var fromDate = moment(state.from, this.inputFormats);
         var untilDate = moment(state.until, this.inputFormats);
         if (this.isDateValid(fromDate, state.from) && this.isDateValid(untilDate, state.until)) {
-            this.props.onChange({
-                until: untilDate.toDate(),
-                from: fromDate.toDate()
-            });
+            if (fromDate >= untilDate) {
+                state.untilValidation = EditState.Error;
+            }
+            else {
+                this.props.onChange({
+                    until: untilDate.toDate(),
+                    from: fromDate.toDate()
+                });
+            }
         }
     };
 
