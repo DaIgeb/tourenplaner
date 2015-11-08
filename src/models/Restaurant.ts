@@ -10,7 +10,7 @@ export interface IRestaurant {
 
 export interface IRestaurantTimeline extends IDateRange {
     id?: number;
-    businessHours: IBusinessHour[];
+    businessHours: Array<IBusinessHour>;
     phone: string;
     notes: string;
 }

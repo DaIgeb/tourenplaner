@@ -4,9 +4,8 @@ import * as routerDefault from 'react-router';
 import {restaurantsStore} from 'stores/RestaurantsStore';
 import connectToStores from 'alt/utils/connectToStores';
 import {actions as RestaurantActions} from "actions/RestaurantsActions";
-import {IRestaurant, IRestaurantTimeline, IDateRange} from "models/Restaurant";
+import {IRestaurant,IBusinessHour, IRestaurantTimeline, IDateRange} from "models/Restaurant";
 import Button from 'Button/Button';
-import {IBusinessHour} from "../models/Restaurant";
 
 class Restaurant extends React.Component<IRestaurantProps, IRestaurantState> {
     constructor(props:IRestaurantProps) {
@@ -136,15 +135,18 @@ class RestaurantList extends React.Component<any, any> {
                          detailsDate={new Date(2012,1,1)}/>)
         );
 
-        //var newRestaurant = (<Restaurant key="new" restaurant={emptyRestaurant} onRemove={undefined} detailsDate={new Date(2012,1,1)}/>);
         return (
             <table className="table table-striped table-hover table-condensed">
                 <thead>
-                    <th className="col-md-1">Name</th>
-                    <th className="col-md-2">Anschrift<br/>Koordinaten</th>
-                    <th className="col-md-5">Telefon<br/>Notizen</th>
-                    <th className="col-md-2">Öffnungszeiten</th>
-                    <th className="col-md-2" />
+                    <tr>
+                        <th className="col-md-1">Name</th>
+                        <th className="col-md-2">Anschrift<br/>Koordinaten
+                        </th>
+                        <th className="col-md-5">Telefon<br/>Notizen
+                        </th>
+                        <th className="col-md-2">Öffnungszeiten</th>
+                        <th className="col-md-2"/>
+                    </tr>
                 </thead>
                 <tbody>
                     {restaurants}

@@ -8,13 +8,6 @@
     "jsx": "react"
   },
   "files": [
-    "src/client/main.tsx",
-    "typings/tsd.d.ts",
-    "src/components/App/App.tsx",
-    "src/components/Button/Button.tsx",
-    "src/components/Container/Container.tsx",
-    "src/components/Navigation/Navigation.tsx",
-    "src/components/NavigationBar/NavigationBar.tsx",
-    "src/components/NavigationHeader/NavigationHeader.tsx"
+    "typings/tsd.d.ts"
   ]
 }

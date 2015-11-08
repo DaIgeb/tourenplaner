@@ -24,9 +24,9 @@ import * as React from 'react';
 import {Route, IndexRoute} from 'react-router';
 
 import App from 'components/App/App';
-import Restaurants from 'components/Restaurants';
-import RestaurantList from 'components/RestaurantList';
-import Restaurant from 'components/Restaurant';
+import Restaurants from 'components/Restaurant/Restaurants';
+import RestaurantList from 'components/Restaurant/RestaurantList';
+import Restaurant from 'components/Restaurant/Restaurant';
 import {actions as RestaurantsActions} from "actions/RestaurantsActions";
 
 const routes = (

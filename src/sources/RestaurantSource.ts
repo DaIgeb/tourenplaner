@@ -8,8 +8,8 @@ const rest1:IRestaurant = {
     zipCode: "1",
     city: "Hagenbuch",
     location: {
-        long: 12345.123,
-        lat: 123541.123
+        long: 47.523741,
+        lat:   8.837266
     },
     data: [
         {
