@@ -1,8 +1,8 @@
 import './Navigation.less';
 import * as React from 'react';
-import {default as NavigationHeader} from 'NavigationHeader/NavigationHeader';
-import {default as NavigationBar} from 'NavigationBar/NavigationBar';
-import {default as Container} from 'Container/Container';
+import {NavigationHeader} from './NavigationHeader';
+import {NavigationBar} from 'NavigationBar/NavigationBar';
+import {Container} from './Container';
 
 export class Navigation extends React.Component<INavigationProps, any> {
     constructor(props:INavigationProps) {

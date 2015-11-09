@@ -5,7 +5,7 @@ import {restaurantsStore} from 'stores/RestaurantsStore';
 import connectToStores from 'alt/utils/connectToStores';
 import {actions as RestaurantActions} from "actions/RestaurantsActions";
 import {IRestaurant,IBusinessHour, IRestaurantTimeline, IDateRange} from "models/Restaurant";
-import Button from 'Button/Button';
+import {Button} from 'Bootstrap/Bootstrap';
 
 class Restaurant extends React.Component<IRestaurantProps, IRestaurantState> {
     constructor(props:IRestaurantProps) {

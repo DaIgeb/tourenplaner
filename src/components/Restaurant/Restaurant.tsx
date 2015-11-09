@@ -4,7 +4,7 @@ import {restaurantsStore } from 'stores/RestaurantsStore';
 import connectToStores from 'alt/utils/connectToStores';
 import {actions as RestaurantsActions} from "actions/RestaurantsActions";
 import {IRestaurant, IRestaurantTimeline, IBusinessHour} from "models/Restaurant";
-import Button from 'Button/Button';
+import {Button, Row, Column} from 'Bootstrap/Bootstrap';
 import {RestaurantTimeline} from './RestaurantTimeline'
 
 interface IState {
@@ -51,7 +51,7 @@ class Restaurant extends React.Component<any, IState> {
             let location = restaurant.location;
             let longStr = location.long ? location.long.toFixed(6) : "0.000000";
             let latStr = location.lat ? location.lat.toFixed(6) : "0.000000";
-            return (<div className="row">
+            return (<Row>
                 <div className="form-group">
                     <label htmlFor="name">Name</label>
                     <input id="name" type="text" className="form-control" ref="name" value={restaurant.name}
@@ -63,54 +63,54 @@ class Restaurant extends React.Component<any, IState> {
                            onChange={this.updateAddress}/>
                 </div>
                 <div className="form-group">
-                    <div className="row">
-                        <div className="col-md-2">
+                    <Row>
+                        <Column size={2}>
                             <label htmlFor="zipCode">Postleitzahl</label>
                             <input id="zipCode" type="text" className="form-control" ref="zipCode"
                                    value={restaurant.zipCode}
                                    onChange={this.updateZipCode}/>
-                        </div>
-                        <div className="col-md-10">
+                        </Column>
+                        <Column size={10}>
                             <label htmlFor="city">Ortschaft</label>
                             <input id="city" type="text" className="form-control" ref="city" value={restaurant.city}
                                    onChange={this.updateCity}/>
-                        </div>
-                    </div>
+                        </Column>
+                    </Row>
                 </div>
                 <div className="form-group">
                     <label htmlFor="city">Position</label>
-                    <div className="row">
-                        <div className="col-md-6">
+                    <Row>
+                        <Column size={6}>
                             <div className="input-group">
                                 <span className="input-group-addon">Breite</span>
                                 <input id="city" type="number" className="form-control" ref="city" step="0.000001"
                                        value={latStr}
                                        onChange={this.updateLocationLat}/>
                             </div>
-                        </div>
-                        <div className="col-md-6">
+                        </Column>
+                        <Column size={6}>
                             <div className="input-group">
                                 <span className="input-group-addon">Länge</span>
                                 <input id="city" type="number" className="form-control" ref="city" step="0.000001"
                                        value={longStr}
                                        onChange={this.updateLocationLong}/>
                             </div>
-                        </div>
-                    </div>
+                        </Column>
+                    </Row>
                 </div>
                 <RestaurantTimeline timelines={restaurant.data} addTimeline={this.addTimeline}/>
 
                 <Button type="submit" className="btn btn-default" onClick={this.saveRestaurant}>Speichern</Button>
-            </div>);
+            </Row>);
         }
         return (<div>Not Found</div>);
     }
 
     addTimeline = (evt:any):void  => {
         let restaurant = getState().restaurant;
-        let timelines: Array<IRestaurantTimeline> = restaurant.data;
-        let timeline: IRestaurantTimeline = timelines[timelines.length - 1];
-        let businessHours : Array<IBusinessHour>= timeline.businessHours.slice(0);
+        let timelines:Array<IRestaurantTimeline> = restaurant.data;
+        let timeline:IRestaurantTimeline = timelines[timelines.length - 1];
+        let businessHours:Array<IBusinessHour> = timeline.businessHours.slice(0);
 
         timelines.push({
             phone: timeline.phone,

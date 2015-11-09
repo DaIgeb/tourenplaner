@@ -1,7 +1,7 @@
 import './Button.less';
 import * as React from 'react';
 
-class Button extends React.Component<IButtonProps, IButtonState> {
+export class Button extends React.Component<IButtonProps, IButtonState> {
     constructor(props:IButtonProps) {
         super(props);
     }
@@ -31,5 +31,3 @@ interface IButtonProps extends React.Props<Button> {
     attributes?: any; // needed until ES7 support
     // children: React.ReactNode; //cannot be required currently see https://github.com/Microsoft/TypeScript/issues/4833
 }
-
-export default Button;

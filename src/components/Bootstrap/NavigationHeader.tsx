@@ -1,6 +1,6 @@
 import './NavigationHeader.less';
 import * as React from 'react';
-import {default as Button} from 'Button/Button';
+import {Button} from './Button';
 
 export class NavigationHeader extends React.Component<INavigationHeaderProps, any> {
     constructor(props:INavigationHeaderProps) {

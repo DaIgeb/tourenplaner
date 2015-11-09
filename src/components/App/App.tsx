@@ -2,8 +2,7 @@
 
 import './App.less';
 import * as React from 'react';
-import {default as Navigation} from 'Navigation/Navigation';
-import {default as Container} from 'Container/Container';
+import {Navigation, Container} from 'Bootstrap/Bootstrap';
 
 export class App extends React.Component<IAppProps, IAppState> {
     constructor(props:IAppProps) {
@@ -30,7 +29,6 @@ export class App extends React.Component<IAppProps, IAppState> {
         fluid: false,
         currentTabId: "Foobar"
     };
-
 }
 
 export interface IAppProps extends React.Props<App> {
