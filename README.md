@@ -6,16 +6,18 @@ Tourenplaner
 * npm install
 * tsd install
 * npm run build
-* npm run start
-* http://.../swagger -> API description
-* http://.../client -> Client
-* http://.../v1 -> API data
+* cd dist
+* node server.js
+* http://.../api -> API data
+* http://.../public -> Client
 
 ## Developing
 
 * npm install
 * tsd install
 * npm run watch
+* cd dist
+* node server.js
 
 
 ## Notes
