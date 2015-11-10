@@ -9,3 +9,12 @@ declare module ReactRouter {
 
     var IndexRoute: DefaultRouteClass;
 }
+
+declare module "webpack-dev-server" {
+    let foo: any;
+    export default foo;
+}
+declare module "webpack-dev-middleware" {
+    let foo: any;
+    export default foo;
+}

@@ -1,7 +1,13 @@
-import {actions} from "actions/RestaurantsActions";
-import {IRestaurant} from 'models/Restaurant'
-import * as jquery from 'jquery';
-import {reviveDates} from '../utils'
+import {MyRequestObject} from '../model';
+import * as express from 'express';
+
+export var router = express.Router();
+
+router.get('/', (req:express.Request, res:express.Response, next: Function): any => {
+    res.json(mockData);
+});
+
+
 
 const rest1:IRestaurant = {
     id: 1,
@@ -97,6 +103,8 @@ const rest1:IRestaurant = {
         }
     ]
 };
+
+interface IRestaurant {}
 
 const rest2:IRestaurant = {
     id: 2,
@@ -201,40 +209,3 @@ const rest3:IRestaurant = {
 
 const mockData:IRestaurant[] = [rest1, rest2, rest3];
 
-let shouldFetch = true;
-let RestaurantSource:AltJS.Source = {
-    fetchRestaurants(): AltJS.SourceModel<Array<IRestaurant>> {
-        return {
-            remote() {
-                console.warn("Remote");
-                shouldFetch = false;
-                return new Promise<Array<IRestaurant>>((res, rej) => {
-
-                    jquery.ajax({
-                        url: '/api/restaurants',
-                        dataType: 'text'
-                    }).done((d:string) =>
-                    {
-                        let parsed = <Array<IRestaurant>>JSON.parse(d, reviveDates);
-                        res(parsed);
-                    }).fail(e =>
-                    {
-                        rej(e)
-                    });
-                })
-            },
-            local(state): IRestaurant[] {
-                console.warn("Local");
-                console.warn(state);
-                //TODO : Figure out why local doesn't work =(
-                return mockData;
-            },
-            success: actions.updateRestaurants,
-            error: actions.restaurantsFailed,
-            loading: actions.fetchRestaurants,
-            shouldFetch: () => shouldFetch
-        };
-    }
-};
-
-export const restaurantSource = RestaurantSource;
