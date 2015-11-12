@@ -11,7 +11,6 @@ let RestaurantSource:AltJS.Source = {
                 console.warn("Remote");
                 shouldFetch = false;
                 return new Promise<Array<IRestaurant>>((res, rej) => {
-
                     jquery.ajax({
                         url: '/api/restaurants',
                         dataType: 'text'

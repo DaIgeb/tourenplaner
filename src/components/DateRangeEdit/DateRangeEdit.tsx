@@ -7,6 +7,7 @@ interface IDateRangeEditProps extends React.Props<DateRangeEdit> {
     onChange: (newValues:IDateRange)=>void;
     inputFormats?: Array<string>;
     displayFormat?: string;
+    onValidate?: (range:IDateRange) => {from:EditState, until:EditState};
 }
 
 interface IDateRangeEditState {
@@ -55,12 +56,12 @@ export class DateRangeEdit extends React.Component<IDateRangeEditProps, IDateRan
                 <div className="form-group">
                     <div className={fromClassName}>
                         <div className="input-group-addon">Von</div>
-                        <input className="form-control" type="text" value={this.state.from.format(this.props.displayFormat)}
+                        <input className="form-control" type="text" value={this.state.fromEditValue}
                                onChange={this.changeFrom}/>
                     </div>
                     <div className={untilClassName}>
                         <div className="input-group-addon">Bis</div>
-                        <input className="form-control" type="text" value={this.state.until.format(this.props.displayFormat)}
+                        <input className="form-control" type="text" value={this.state.untilEditValue}
                                onChange={this.changeUntil}/>
                     </div>
                 </div>

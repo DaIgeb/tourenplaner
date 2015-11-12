@@ -128,6 +128,7 @@ class RestaurantsStore extends AbstractStoreModel<IState> implements IState {
             data: name
         }).done((d:string) =>
         {
+            console.log(d);
             actions.fetchRestaurants();
         }).fail(e =>
         {

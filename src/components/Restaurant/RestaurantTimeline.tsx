@@ -109,9 +109,9 @@ class TimelinePanel extends React.Component<TimelinePanelProps, any> {
         let until = "";
         let fromDate = t.from;
         let untilDate = t.until;
-        if (fromDate.isValid())
+        if (fromDate && fromDate.isValid())
             from = fromDate.format('L');
-        if (untilDate.isValid())
+        if (untilDate && untilDate.isValid())
             until = fromDate.format('L');
         return `${from}-${until}`;
     }

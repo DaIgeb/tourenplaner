@@ -5,22 +5,6 @@ import {IRestaurant} from 'models/Restaurant';
 
 export var router = express.Router();
 
-router.get('/', (req:express.Request, res:express.Response, next:Function):any => {
-    res.json(mockData);
-});
-
-router.put('/', (req:express.Request, res:express.Response, next:Function):any => {
-    console.log(req.body);
-    mockData.push(req.body);
-    res.json(mockData);
-});
-
-router.post('/', (req:express.Request, res:express.Response, next:Function):any => {
-    console.log(req.body);
-    mockData.push(req.body);
-    res.json(mockData);
-});
-
 const rest1:IRestaurant = {
     id: 1,
     name: "Hirschen",
@@ -219,3 +203,18 @@ const rest3:IRestaurant = {
 
 const mockData:IRestaurant[] = [rest1, rest2, rest3];
 
+router.get('/', (req:express.Request, res:express.Response, next:Function):any => {
+    res.json(mockData);
+});
+
+router.put('/', (req:express.Request, res:express.Response, next:Function):any => {
+    console.log(req.body);
+    mockData.push(req.body);
+    res.json(mockData);
+});
+
+router.post('/', (req:express.Request, res:express.Response, next:Function):any => {
+    console.log(req.body);
+    mockData.push(req.body);
+    res.json(mockData);
+});
