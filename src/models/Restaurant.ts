@@ -21,8 +21,8 @@ export interface IBusinessHour {
     until: ITime;
 }
 export interface IDateRange {
-    from: Date;
-    until: Date;
+    from: moment.Moment;
+    until: moment.Moment;
 }
 
 export interface ITime {

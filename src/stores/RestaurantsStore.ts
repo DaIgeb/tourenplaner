@@ -3,6 +3,7 @@ import {actions} from 'actions/RestaurantsActions';
 import {AbstractStoreModel} from './AbstractStoreModel'
 import {restaurantSource} from 'sources/RestaurantSource';
 import {IRestaurant} from 'models/Restaurant';
+import * as jquery from 'jquery';
 
 interface IState {
     selectedRestaurant: IRestaurant;
@@ -121,6 +122,17 @@ class RestaurantsStore extends AbstractStoreModel<IState> implements IState {
         let maxIdItem = this.restaurants.slice(0).sort((r:IRestaurant, r2:IRestaurant) => r2.id - r.id)[0];
         name.id = maxIdItem.id + 1;
         this.restaurants.push(name);
+        jquery.ajax({
+            url: '/api/restaurants',
+            type: 'post',
+            data: name
+        }).done((d:string) =>
+        {
+            actions.fetchRestaurants();
+        }).fail(e =>
+        {
+            console.log('error' + e);
+        });
         this.updateState();
     }
 

@@ -2,26 +2,27 @@
 
 import * as fs from 'fs';
 import * as path from 'path';
-import * as express from 'express';
-import * as http from 'http';
-import * as bodyParser from 'body-parser';
-import * as logger from 'morgan';
-import * as utils from './utils';
+import {Response, Request} from "express";
+//import * as express from 'express';
+import {createServer} from 'http';
+import {json, urlencoded} from 'body-parser';
+import {reviveDates} from './utils';
 import {MyRequestObject} from 'model';
 import {router as apiRouter} from './api/api';
-//import {router as restaurantsRouter} from './api/restaurants';
+var express = require('express');
+var logger = require('morgan');
 
-var app = (<any>express).default();
-var server = http.createServer(app);
+var app = express();
+var server = createServer(app);
 
 app.set('port', (process.env.PORT || 3000));
 app.set('host', (process.env.HOST || '127.0.0.1'));
 
-app.use((<any>logger).default('dev'));
-app.use(bodyParser.json({receiver: utils.reviveDates}));
-app.use(bodyParser.urlencoded({extended: true}));
+app.use(logger('dev'));
+app.use(json({receiver: reviveDates}));
+app.use(urlencoded({extended: true}));
 
-app.use(function (req:MyRequestObject, res:express.Response, next:Function) {
+app.use(function (req:MyRequestObject, res:Response, next:Function) {
     // Set global available params
     // http://cwbuecheler.com/web/tutorials/2014/restful-web-app-node-express-mongodb/
     req.db = "foobar";
@@ -35,7 +36,7 @@ app.use('/public', express.static(path.join('.', 'public')));
 // development error handler
 // will print stacktrace
 if (app.get('env') === 'development') {
-    app.use(function (err:any, req:express.Request, res:express.Response, next:Function) {
+    app.use(function (err:any, req:Request, res:Response, next:Function) {
         res.status(err.status || 500);
         res.render('error', {
             message: err.message,
@@ -46,7 +47,7 @@ if (app.get('env') === 'development') {
 
 // production error handler
 // no stacktraces leaked to user
-app.use(function (err:any, req:express.Request, res:express.Response, next:Function) {
+app.use(function (err:any, req:Request, res:Response, next:Function) {
     res.status(err.status || 500);
     res.render('error', {
         message: err.message,
@@ -55,7 +56,6 @@ app.use(function (err:any, req:express.Request, res:express.Response, next:Funct
 });
 
 server.listen(app.get('port'), app.get('host'), function () {
-    let serverAddress = server.address().address + ':' + server.address().port;
     console.log('Server started: http://' + server.address().address + ':' + server.address().port + '/');
     console.log((<any>app).mountpath);
 });

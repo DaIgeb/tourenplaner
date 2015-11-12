@@ -1,13 +1,25 @@
 import {MyRequestObject} from '../model';
 import * as express from 'express';
+import {moment} from 'utils/moment';
+import {IRestaurant} from 'models/Restaurant';
 
 export var router = express.Router();
 
-router.get('/', (req:express.Request, res:express.Response, next: Function): any => {
+router.get('/', (req:express.Request, res:express.Response, next:Function):any => {
     res.json(mockData);
 });
 
+router.put('/', (req:express.Request, res:express.Response, next:Function):any => {
+    console.log(req.body);
+    mockData.push(req.body);
+    res.json(mockData);
+});
 
+router.post('/', (req:express.Request, res:express.Response, next:Function):any => {
+    console.log(req.body);
+    mockData.push(req.body);
+    res.json(mockData);
+});
 
 const rest1:IRestaurant = {
     id: 1,
@@ -17,7 +29,7 @@ const rest1:IRestaurant = {
     city: "Hagenbuch",
     location: {
         long: 47.523741,
-        lat:   8.837266
+        lat: 8.837266
     },
     data: [
         {
@@ -58,8 +70,8 @@ const rest1:IRestaurant = {
             ],
             phone: "052 722 12 34",
             notes: "Dienstags Ruhetag",
-            from: new Date(1970, 1, 1),
-            until: new Date(2000, 12, 31)
+            from: moment(new Date(1970, 1, 1)),
+            until: moment(new Date(2000, 12, 31))
         }, {
             businessHours: [
                 {
@@ -98,13 +110,11 @@ const rest1:IRestaurant = {
             ],
             phone: "052 722 12 34",
             notes: "Dienstags Ruhetag",
-            from: new Date(2001, 1, 1),
+            from: moment(new Date(2001, 1, 1)),
             until: null
         }
     ]
 };
-
-interface IRestaurant {}
 
 const rest2:IRestaurant = {
     id: 2,
@@ -133,8 +143,8 @@ const rest2:IRestaurant = {
             ],
             phone: "052 722 12 34",
             notes: "Dienstags Ruhetag",
-            from: new Date(1970, 1, 1),
-            until: new Date(2000, 12, 31)
+            from: moment(new Date(1970, 1, 1)),
+            until: moment(new Date(2000, 12, 31))
         }, {
             businessHours: [
                 {
@@ -151,7 +161,7 @@ const rest2:IRestaurant = {
             ],
             phone: "052 722 12 34",
             notes: "Dienstags Ruhetag",
-            from: new Date(2001, 1, 1),
+            from: moment(new Date(2001, 1, 1)),
             until: null
         }
     ]
@@ -183,8 +193,8 @@ const rest3:IRestaurant = {
             ],
             phone: "052 722 12 34",
             notes: "Dienstags Ruhetag",
-            from: new Date(1970, 1, 1),
-            until: new Date(2000, 12, 31)
+            from: moment(new Date(1970, 1, 1)),
+            until: moment(new Date(2000, 12, 31))
         }, {
             businessHours: [
                 {
@@ -201,7 +211,7 @@ const rest3:IRestaurant = {
             ],
             phone: "052 722 12 34",
             notes: "Dienstags Ruhetag",
-            from: new Date(2001, 1, 1),
+            from: moment(new Date(2001, 1, 1)),
             until: null
         }
     ]

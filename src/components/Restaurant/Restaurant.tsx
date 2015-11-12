@@ -115,7 +115,7 @@ class Restaurant extends React.Component<any, IState> {
         timelines.push({
             phone: timeline.phone,
             notes: timeline.notes,
-            from: new Date(),
+            from: moment(),
             until: null,
             businessHours: businessHours
         });

@@ -18,8 +18,8 @@ export class RestaurantTimeline extends React.Component<IRestaurantTimelineProps
     private getPanelHeader(t:IRestaurantTimeline):string {
         let from = "";
         let until = "";
-        let fromDate = moment(t.from);
-        let untilDate = moment(t.until);
+        let fromDate = t.from;
+        let untilDate = t.until;
         if (fromDate.isValid())
             from = fromDate.format('L');
         if (untilDate.isValid())
@@ -107,8 +107,8 @@ class TimelinePanel extends React.Component<TimelinePanelProps, any> {
     private getPanelHeader(t:IRestaurantTimeline):string {
         let from = "";
         let until = "";
-        let fromDate = moment(t.from);
-        let untilDate = moment(t.until);
+        let fromDate = t.from;
+        let untilDate = t.until;
         if (fromDate.isValid())
             from = fromDate.format('L');
         if (untilDate.isValid())

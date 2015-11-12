@@ -6,6 +6,7 @@ import connectToStores from 'alt/utils/connectToStores';
 import {actions as RestaurantActions} from "actions/RestaurantsActions";
 import {IRestaurant,IBusinessHour, IRestaurantTimeline, IDateRange} from "models/Restaurant";
 import {Button} from 'Bootstrap/Bootstrap';
+import {moment} from 'utils/moment';
 
 class Restaurant extends React.Component<IRestaurantProps, IRestaurantState> {
     constructor(props:IRestaurantProps) {
@@ -87,7 +88,7 @@ interface IRestaurantProps extends React.Props<Restaurant> {
     // children: React.ReactNode; //cannot be required currently see https://github.com/Microsoft/TypeScript/issues/4833
     onRemove: (restaurant:IRestaurant) => void;
     restaurant: IRestaurant;
-    detailsDate: Date;
+    detailsDate: moment.Moment;
     key: number | string;
 }
 
@@ -132,7 +133,7 @@ class RestaurantList extends React.Component<any, any> {
 
         let restaurants = this.props.restaurants.map((restaurant:IRestaurant, i:number) =>
             (<Restaurant key={i} restaurant={restaurant} onRemove={this.removeRestaurant}
-                         detailsDate={new Date(2012,1,1)}/>)
+                         detailsDate={moment(new Date(2012,1,1))}/>)
         );
 
         return (
@@ -185,8 +186,8 @@ class RestaurantList extends React.Component<any, any> {
                     businessHours: [],
                     phone: "052 722 12 34",
                     notes: "Dienstags Ruhetag",
-                    from: new Date(),
-                    until: new Date()
+                    from: moment(),
+                    until: moment()
                 }
             ]
         };

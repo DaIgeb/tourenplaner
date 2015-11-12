@@ -18,3 +18,7 @@ declare module "webpack-dev-middleware" {
     let foo: any;
     export default foo;
 }
+
+declare module "webpack-hot-middleware" {
+
+}
