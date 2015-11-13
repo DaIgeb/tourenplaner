@@ -122,18 +122,32 @@ class RestaurantsStore extends AbstractStoreModel<IState> implements IState {
         let maxIdItem = this.restaurants.slice(0).sort((r:IRestaurant, r2:IRestaurant) => r2.id - r.id)[0];
         name.id = maxIdItem.id + 1;
         this.restaurants.push(name);
-        jquery.ajax({
-            url: '/api/restaurants',
-            type: 'post',
-            data: name
-        }).done((d:string) =>
-        {
-            console.log(d);
-            actions.fetchRestaurants();
-        }).fail(e =>
-        {
-            console.log('error' + e);
-        });
+        let xhr = new XMLHttpRequest();
+        xhr.open('POST', '/api/restaurants', true);
+
+        xhr.setRequestHeader('Content-type', 'application/json');
+        xhr.setRequestHeader('Accept', 'application/json');
+        xhr.onload = (ev:Event)=> {
+            if (xhr.status >= 200 && xhr.status < 300) {
+                console.log(xhr.response);
+                restaurantsStore.fetchRestaurants();
+            } else {
+                console.log('Error !' + ( <any>ev.target).responseText);
+            }
+        };
+
+        xhr.send(JSON.stringify(name));
+        /*
+         jquery.ajax({
+         url: '/api/restaurants',
+         type: 'post',
+         data: name
+         }).done((d:string) => {
+         console.log(d);
+         actions.fetchRestaurants();
+         }).fail(e => {
+         console.log('error' + e);
+         });*/
         this.updateState();
     }
 

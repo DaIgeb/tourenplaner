@@ -1,13 +1,16 @@
-var defaultMoment = require('moment');
-defaultMoment.locale("de");
+export const moment = require('moment');
 
 export const getBackendWeekdays = ():Array<string> => {
-    var currentLocale = defaultMoment.locale();
-    defaultMoment.locale('en');
-    let weekdays = defaultMoment.weekdays();
-    defaultMoment.locale(currentLocale);
+    var currentLocale = moment.locale();
+    moment.locale('en');
+    let weekdays = moment.weekdays();
+    moment.locale(currentLocale);
     return weekdays;
 };
 
-export const moment = defaultMoment;
+export function getMoment(locale: string = 'de'): moment.MomentStatic {
+    moment.locale(locale);
+
+    return moment;
+}
 
