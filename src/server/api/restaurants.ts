@@ -26,6 +26,6 @@ router.put('/:id', (req:express.Request, res:express.Response, next:Function):an
 router.post('/', (req:express.Request, res:express.Response, next:Function):any => {
     console.log(req.body);
     data.push(req.body);
-    fs.writeFile(filename, JSON.stringify(data));
+    fs.writeFile(filename, JSON.stringify(data, null, 2));
     res.json(data);
 });
