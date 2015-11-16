@@ -20,7 +20,7 @@ interface ITourTimeline extends IDateRange {
     files: IFile[];
 }
 
-interface IPoint extends ILocation {
+export interface IPoint extends ILocation {
     id?: number;
     name: string;
 }
@@ -62,12 +62,12 @@ export enum TourType {
     PublicHoliday
 }
 
-interface ITourViewModel extends ITour {
+export interface ITourViewModel extends ITour {
     id?: number;
     timelines: ITourTimelineViewModel[];
 }
 
-interface ITourTimelineViewModel extends ITourTimeline {
+export interface ITourTimelineViewModel extends ITourTimeline {
     tourTypes: TourType[];
     difficulty: Difficulty;
     distance: number;

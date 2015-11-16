@@ -48,6 +48,9 @@ export class NavigationBar extends React.Component<INavigationBarProps, any> {
                     <li>
                         <Link to='/restaurants'>Restaurant</Link>
                     </li>
+                    <li>
+                        <Link to='/tours'>Touren</Link>
+                    </li>
                 </ul>
             </div>
         );

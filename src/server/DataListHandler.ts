@@ -42,7 +42,7 @@ export class DataListHandler<T extends IIdentifyable<number>> {
             return false;
         }
 
-        this.data.splice(index);
+        this.data = this.data.splice(index);
         this.write();
 
         return true;
@@ -65,7 +65,7 @@ export class DataListHandler<T extends IIdentifyable<number>> {
     private initializeDataDirectory = () => {
         let parts = this.fileName.split(path.delimiter);
         let currentPath = '';
-        for (let i = 0; i <parts.length - 1; i++) {
+        for (let i = 0; i < parts.length - 1; i++) {
             currentPath += parts[i] + path.delimiter;
             if (!fs.existsSync(currentPath)) {
                 fs.mkdirSync(currentPath);
@@ -78,5 +78,5 @@ export class DataListHandler<T extends IIdentifyable<number>> {
     };
 
 
-    private data:Array<T> = null;
+    private data:T[] = null;
 }

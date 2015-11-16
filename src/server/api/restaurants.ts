@@ -15,11 +15,11 @@ router.get('/', (req:express.Request, res:express.Response, next:Function):any =
 });
 
 router.put('/:id', (req:express.Request, res:express.Response, next:Function):any => {
-    res.json(handler.update(req.params.id, req.body));
+    res.json(handler.update(parseInt(req.params.id), req.body));
 });
 
 router.delete('/:id', (req:express.Request, res:express.Response, next:Function):any => {
-    res.json(handler.delete(req.params.id));
+    res.json(handler.delete(parseInt(req.params.id)));
 });
 
 router.post('/', (req:express.Request, res:express.Response, next:Function):any => {
