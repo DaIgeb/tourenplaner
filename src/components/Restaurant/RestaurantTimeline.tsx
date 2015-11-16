@@ -1,5 +1,6 @@
 import * as React from 'react';
-import {IDateRange, IRestaurantTimeline} from "models/Restaurant";
+import {IRestaurantTimeline} from "models/Restaurant";
+import {IDateRange} from "models/Core";
 import {RestaurantBusinessHours} from './RestaurantBusinessHours'
 import {DateRangeEdit} from 'DateRangeEdit/DateRangeEdit';
 import {moment} from 'utils/moment';

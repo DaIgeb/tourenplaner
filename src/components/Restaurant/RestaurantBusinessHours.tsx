@@ -1,5 +1,6 @@
 import * as React from 'react';
-import {IBusinessHour, ITime} from "models/Restaurant";
+import {IBusinessHour} from "models/Restaurant";
+import {ITime} from "models/Core";
 import {getBackendWeekdays, moment} from 'utils/moment';
 import {TimeEdit} from 'TimeEdit/TimeEdit';
 import {Row, Column, Button} from 'Bootstrap/Bootstrap';

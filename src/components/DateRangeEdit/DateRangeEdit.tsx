@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {IDateRange} from "models/Restaurant";
+import {IDateRange} from "models/Core";
 import {moment} from 'utils/moment'
 
 interface IDateRangeEditProps extends React.Props<DateRangeEdit> {

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {ITime} from "models/Restaurant";
+import {ITime} from "models/Core";
 
 interface ITimeEditProps extends React.Props<TimeEdit> {
     time: ITime;

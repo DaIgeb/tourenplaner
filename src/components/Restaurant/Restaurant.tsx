@@ -3,7 +3,8 @@ import {Link} from 'react-router';
 import {restaurantsStore } from 'stores/RestaurantsStore';
 import connectToStores from 'alt/utils/connectToStores';
 import {actions as RestaurantsActions} from "actions/RestaurantsActions";
-import {IRestaurant, ILocation, IRestaurantTimeline, IBusinessHour} from "models/Restaurant";
+import {IRestaurant, IRestaurantTimeline, IBusinessHour} from "models/Restaurant";
+import {ILocation} from "models/Core";
 import {Button, Row, Column} from 'Bootstrap/Bootstrap';
 import {RestaurantTimeline} from './RestaurantTimeline'
 

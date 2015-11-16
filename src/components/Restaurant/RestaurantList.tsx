@@ -4,7 +4,8 @@ import * as routerDefault from 'react-router';
 import {restaurantsStore} from 'stores/RestaurantsStore';
 import connectToStores from 'alt/utils/connectToStores';
 import {actions as RestaurantActions} from "actions/RestaurantsActions";
-import {IRestaurant,IBusinessHour, IRestaurantTimeline, IDateRange} from "models/Restaurant";
+import {IRestaurant,IBusinessHour, IRestaurantTimeline} from "models/Restaurant";
+import {IDateRange} from "models/Core";
 import {Button} from 'Bootstrap/Bootstrap';
 import {moment} from 'utils/moment';
 

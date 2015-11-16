@@ -1,4 +1,4 @@
-import {IIdentifyable} from './Core';
+import {IIdentifyable, ILocation, IDateRange, ITime} from './Core';
 
 interface IRestaurantBase {
     name: string;
@@ -28,18 +28,4 @@ export interface IBusinessHour {
     weekday: string;
     from: ITime;
     until: ITime;
-}
-export interface IDateRange {
-    from: moment.Moment;
-    until: moment.Moment;
-}
-
-export interface ITime {
-    hour: number;
-    minute: number
-}
-
-export interface ILocation {
-    lat: number;
-    long: number;
 }
