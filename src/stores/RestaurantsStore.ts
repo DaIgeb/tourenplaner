@@ -6,7 +6,6 @@ import {IRestaurant} from 'models/Restaurant';
 import * as jquery from 'jquery';
 
 interface IState {
-    selectedRestaurant: IRestaurant;
     restaurants: Array<IRestaurant>;
     errorMessage:string;
 }
@@ -24,55 +23,20 @@ interface ExtendedStore extends AltJS.AltStore<IState> {
 }
 
 class RestaurantsStore extends AbstractStoreModel<IState> implements IState {
-    private selectedId:number;
-
     getRestaurants():Array<IRestaurant> {
         return this.restaurants;
     }
 
     getRestaurant(id:number):IRestaurant {
-        let restaurant:IRestaurant;
-        if (id === -1) {
-            restaurant = {
-                id: id,
-                name: "asd",
-                address: "",
-                zipCode: "",
-                city: "",
-                location: {lat: null, long: null},
-                data: [
-                    {
-                        id: -1,
-                        businessHours: [{
-                            weekday: "",
-                            from: {
-                                hour: null,
-                                minute: null
-                            },
-                            until: {
-                                hour: null,
-                                minute: null
-                            },
-                        }
-                        ],
-                        phone: "",
-                        notes: "",
-                        from: null,
-                        until: null
-                    }
-                ]
+        if (!isNaN(id)) {
+            if (this.restaurants) {
+                return this.restaurants.find((r:IRestaurant) => r.id === id);
             }
-            ;
-        }
-        else {
-            if (this.restaurants)
-                restaurant = this.restaurants.find((r:IRestaurant) => r.id === id);
         }
 
-        return restaurant;
+        return null;
     }
 
-    selectedRestaurant:IRestaurant;
     restaurants:Array<IRestaurant>;
     errorMessage:string;
 
@@ -87,8 +51,7 @@ class RestaurantsStore extends AbstractStoreModel<IState> implements IState {
             handleSave: actions.saveRestaurant,
             handleUpdate: actions.updateRestaurants,
             handleFetch: actions.fetchRestaurants,
-            handleFailed: actions.restaurantsFailed,
-            onSelect: actions.restaurantSelected
+            handleFailed: actions.restaurantsFailed
         });
 
         this.exportPublicMethods({
@@ -102,9 +65,6 @@ class RestaurantsStore extends AbstractStoreModel<IState> implements IState {
     handleUpdate(restaurants:Array<IRestaurant>) {
         this.restaurants = restaurants;
         this.errorMessage = null;
-        if (this.selectedId) {
-            this.selectedRestaurant = this.getRestaurant(this.selectedId);
-        }
         this.updateState();
     }
 
@@ -119,11 +79,58 @@ class RestaurantsStore extends AbstractStoreModel<IState> implements IState {
     }
 
     handleAdd(name:IRestaurant):void {
-        let maxIdItem = this.restaurants.slice(0).sort((r:IRestaurant, r2:IRestaurant) => r2.id - r.id)[0];
-        name.id = maxIdItem.id + 1;
-        this.restaurants.push(name);
         let xhr = new XMLHttpRequest();
-        xhr.open('POST', '/api/restaurants', true);
+        xhr.open('POST', '/api/restaurants', false);
+
+        xhr.setRequestHeader('Content-type', 'application/json');
+        xhr.setRequestHeader('Accept', 'application/json');
+        /*xhr.onload = (ev:Event)=> {
+            if (xhr.status >= 200 && xhr.status < 300) {
+                console.log(xhr.response);
+                restaurantsStore.fetchRestaurants();
+            } else {
+                const responseText = ( <any>ev.target).responseText;
+                console.log('Error !' + responseText);
+                this.errorMessage = responseText;
+            }
+        };*/
+
+        xhr.send(JSON.stringify(name));
+
+        name.id = xhr.response;
+        this.restaurants.push(name);
+
+        this.updateState();
+    }
+
+    handleDelete(name:IRestaurant):void {
+        var indexOf = this.restaurants.indexOf(name);
+        if (indexOf >= 0) {
+            let xhr = new XMLHttpRequest();
+            xhr.open('DELETE', `/api/restaurants/${name.id}`, true);
+            xhr.setRequestHeader('Accept', 'application/json');
+            xhr.onload = (ev:Event)=> {
+                if (xhr.status >= 200 && xhr.status < 300) {
+                    console.log(xhr.response);
+                    restaurantsStore.fetchRestaurants();
+                } else {
+                    const responseText = ( <any>ev.target).responseText;
+                    console.log('Error !' + responseText);
+                    this.errorMessage = responseText;
+                }
+            };
+            xhr.send();
+
+            this.restaurants.splice(indexOf, 1);
+            this.updateState();
+        }
+    }
+
+    handleSave(name:IRestaurant):void {
+        this.restaurants.push(name);
+
+        let xhr = new XMLHttpRequest();
+        xhr.open('PUT', `/api/restaurants/${name.id}`, true);
 
         xhr.setRequestHeader('Content-type', 'application/json');
         xhr.setRequestHeader('Accept', 'application/json');
@@ -132,48 +139,21 @@ class RestaurantsStore extends AbstractStoreModel<IState> implements IState {
                 console.log(xhr.response);
                 restaurantsStore.fetchRestaurants();
             } else {
-                console.log('Error !' + ( <any>ev.target).responseText);
+                const responseText = ( <any>ev.target).responseText;
+                console.log('Error !' + responseText);
+                this.errorMessage = responseText;
             }
         };
 
         xhr.send(JSON.stringify(name));
-        /*
-         jquery.ajax({
-         url: '/api/restaurants',
-         type: 'post',
-         data: name
-         }).done((d:string) => {
-         console.log(d);
-         actions.fetchRestaurants();
-         }).fail(e => {
-         console.log('error' + e);
-         });*/
+
         this.updateState();
-    }
-
-    handleDelete(name:IRestaurant):void {
-        var indexOf = this.restaurants.indexOf(name);
-        if (indexOf >= 0) {
-            this.restaurants.splice(indexOf, 1);
-            this.updateState();
-        }
-    }
-
-    handleSave(name:IRestaurant):void {
-        this.restaurants.push(name);
-        this.updateState();
-    }
-
-    onSelect(id:number) {
-        this.selectedId = id;
-        this.selectedRestaurant = this.getRestaurant(id);
     }
 
     private updateState = () => {
         this.setState({
             restaurants: this.restaurants,
-            errorMessage: this.errorMessage,
-            selectedRestaurant: this.selectedRestaurant
+            errorMessage: this.errorMessage
         });
     }
 }

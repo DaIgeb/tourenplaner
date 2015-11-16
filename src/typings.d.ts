@@ -7,18 +7,28 @@ declare module ReactRouter {
         component: React.ComponentClass<any>;
     }
 
-    var IndexRoute: DefaultRouteClass;
+    var IndexRoute:DefaultRouteClass;
 }
 
 declare module "webpack-dev-server" {
-    let foo: any;
+    let foo:any;
     export default foo;
 }
 declare module "webpack-dev-middleware" {
-    let foo: any;
+    let foo:any;
     export default foo;
 }
 
 declare module "webpack-hot-middleware" {
 
+}
+
+declare namespace __React {
+    interface SyntheticInputEvent extends React.SyntheticEvent {
+        target: InputEventTarget
+    }
+
+    interface InputEventTarget extends EventTarget {
+        value:string;
+    }
 }

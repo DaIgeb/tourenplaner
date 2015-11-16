@@ -3,28 +3,67 @@ import {Link} from 'react-router';
 import {restaurantsStore } from 'stores/RestaurantsStore';
 import connectToStores from 'alt/utils/connectToStores';
 import {actions as RestaurantsActions} from "actions/RestaurantsActions";
-import {IRestaurant, IRestaurantTimeline, IBusinessHour} from "models/Restaurant";
+import {IRestaurant, ILocation, IRestaurantTimeline, IBusinessHour} from "models/Restaurant";
 import {Button, Row, Column} from 'Bootstrap/Bootstrap';
 import {RestaurantTimeline} from './RestaurantTimeline'
 
-interface IState {
-    restaurant: IRestaurant;
+interface IRestaurantProps extends React.Props<Restaurant> {
+    restaurants: IRestaurant[];
+    params: {id: string}
 }
 
-function getState():IState {
-    return {
-        restaurant: restaurantsStore.getState().selectedRestaurant
+interface IInputProps<TValue> extends React.Props<any> {
+    value: TValue;
+    parse: (value:string) => TValue;
+    toString: (value:TValue) => string;
+    state: InputValueState;
+}
+enum InputValueState {
+    Unchanged,
+    Warning,
+    Error,
+    Success
+}
+
+class StringInputValue implements IInputProps<string> {
+    constructor(public value:string, public state:InputValueState) {
+    }
+
+    parse = (value:string)=> {
+        return value
+    };
+
+    toString(value:string) {
+        return value;
     }
 }
 
-class Restaurant extends React.Component<any, IState> {
+interface IState {
+    loading: boolean;
+    invalidId: boolean;
+    name: IInputProps<string>;
+    address: string;
+    zipCode: string;
+    city: string;
+    location: ILocation,
+    timelines: IRestaurantTimeline[]
+}
+
+class Restaurant extends React.Component<IRestaurantProps, IState> {
     constructor(props:any) {
         super(props);
+        this.state = {
+            loading: true,
+            invalidId: true,
+            name: null,
+            address: null,
+            zipCode: null,
+            city: null,
+            location: null,
+            timelines: []
+        };
 
-        this.state = getState();
-
-        let id = props.params.id === "new" ? -1 : parseInt(props.params.id);
-        RestaurantsActions.restaurantSelected(id);
+        this.state = this.loadRestaurant(props);
     }
 
     static getStores(props:any) {
@@ -39,27 +78,31 @@ class Restaurant extends React.Component<any, IState> {
         restaurantsStore.fetchRestaurants();
     }
 
-    render():JSX.Element {
-        let id = this.props.params.id === "new" ? -1 : parseInt(this.props.params.id);
-        if (this.currentId !== id) {
-            this.currentId = id;
-            RestaurantsActions.restaurantSelected(id);
-        }
-        let restaurant = getState().restaurant;
+    componentWillReceiveProps(nextProps:IRestaurantProps, nextContext:any) {
+        let state = this.loadRestaurant(nextProps);
+        this.setState(state);
+    }
 
-        if (restaurant) {
-            let location = restaurant.location;
+    render():JSX.Element {
+        let state = this.state;
+        if (state.loading) {
+            return (<div>Loading</div>);
+        } else if (state.invalidId) {
+            return (<div>Not Found</div>);
+        } else {
+            let location = state.location;
             let longStr = location.long ? location.long.toFixed(6) : "0.000000";
             let latStr = location.lat ? location.lat.toFixed(6) : "0.000000";
             return (<Row>
                 <div className="form-group">
                     <label htmlFor="name">Name</label>
-                    <input id="name" type="text" className="form-control" ref="name" value={restaurant.name}
+                    <input id="name" type="text" className="form-control" ref="name"
+                           value={state.name.toString(state.name.value)}
                            onChange={this.updateName}/>
                 </div>
                 <div className="form-group">
                     <label htmlFor="address">Adresse</label>
-                    <input id="address" type="text" className="form-control" ref="address" value={restaurant.address}
+                    <input id="address" type="text" className="form-control" ref="address" value={state.address}
                            onChange={this.updateAddress}/>
                 </div>
                 <div className="form-group">
@@ -67,12 +110,12 @@ class Restaurant extends React.Component<any, IState> {
                         <Column size={2}>
                             <label htmlFor="zipCode">Postleitzahl</label>
                             <input id="zipCode" type="text" className="form-control" ref="zipCode"
-                                   value={restaurant.zipCode}
+                                   value={state.zipCode}
                                    onChange={this.updateZipCode}/>
                         </Column>
                         <Column size={10}>
                             <label htmlFor="city">Ortschaft</label>
-                            <input id="city" type="text" className="form-control" ref="city" value={restaurant.city}
+                            <input id="city" type="text" className="form-control" ref="city" value={state.city}
                                    onChange={this.updateCity}/>
                         </Column>
                     </Row>
@@ -98,17 +141,57 @@ class Restaurant extends React.Component<any, IState> {
                         </Column>
                     </Row>
                 </div>
-                <RestaurantTimeline timelines={restaurant.data} addTimeline={this.addTimeline}/>
+                <RestaurantTimeline timelines={state.timelines} addTimeline={this.addTimeline}/>
 
-                <Button type="submit" className="btn btn-default" onClick={this.saveRestaurant}>Speichern</Button>
+                <Button type="submit" className="btn btn-default" onClick={this.saveRestaurant}>
+                    Speichern
+                </Button>
             </Row>);
         }
-        return (<div>Not Found</div>);
     }
 
-    addTimeline = (evt:any):void  => {
-        let restaurant = getState().restaurant;
-        let timelines:Array<IRestaurantTimeline> = restaurant.data;
+    private loadRestaurant = (newProps:IRestaurantProps):IState => {
+        let stateUpdateNeeded = false;
+
+        if (this.currentIdParam !== newProps.params.id) {
+            stateUpdateNeeded = true;
+            this.isNew = newProps.params.id === "new";
+            this.Id = this.isNew ? -1 : parseInt(newProps.params.id);
+        }
+
+        let state = this.state;
+        if (stateUpdateNeeded) {
+            state.loading = true;
+            state.invalidId = true;
+            state.name = null;
+            state.address = null;
+            state.zipCode = null;
+            state.city = null;
+            state.location = {lat: null, long: null};
+            state.timelines = [];
+
+            if (this.isNew) {
+                state.invalidId = false;
+            } else if (newProps.restaurants) {
+                state.loading = false;
+                let restaurant = newProps.restaurants.find(r => r.id === this.Id);
+                if (restaurant) {
+                    state.invalidId = false;
+                    state.name = new StringInputValue(restaurant.name, InputValueState.Unchanged);
+                    state.address = restaurant.address;
+                    state.zipCode = restaurant.zipCode;
+                    state.city = restaurant.city;
+                    state.location = restaurant.location;
+                    state.timelines = restaurant.timelines;
+                }
+            }
+        }
+
+        return state;
+    };
+
+    private addTimeline = (evt:any):void  => {
+        let timelines:Array<IRestaurantTimeline> = this.state.timelines;
         let timeline:IRestaurantTimeline = timelines[timelines.length - 1];
         let businessHours:Array<IBusinessHour> = timeline.businessHours.slice(0);
 
@@ -119,50 +202,68 @@ class Restaurant extends React.Component<any, IState> {
             until: null,
             businessHours: businessHours
         });
-        this.setState(getState());
-    };
-    updateName = (evt:any):void  => {
-        var name = evt.target.value;
-        getState().restaurant.name = name;
-        this.setState(getState());
+        this.setState(this.state);
     };
 
-    updateAddress = (evt:any):void => {
-        var name = evt.target.value;
-        getState().restaurant.address = name;
-        this.setState(getState());
+    private updateName = (evt:any):void  => {
+        this.state.name.value = this.state.name.parse(evt.target.value);
+        this.state.name.state = InputValueState.Success;
+        this.setState(this.state);
     };
 
-    updateCity = (evt:any):void => {
+    private updateAddress = (evt:any):void => {
         var name = evt.target.value;
-        getState().restaurant.city = name;
-        this.setState(getState());
+        this.state.address = name;
+        this.setState(this.state);
     };
 
-    updateZipCode = (evt:any):void => {
+    private updateCity = (evt:any):void => {
         var name = evt.target.value;
-        getState().restaurant.zipCode = name;
-        this.setState(getState());
+        this.state.city = name;
+        this.setState(this.state);
     };
 
-    updateLocationLat = (evt:any):void => {
+    private updateZipCode = (evt:any):void => {
         var name = evt.target.value;
-        getState().restaurant.location.lat = parseFloat(name);
-        this.setState(getState());
+        this.state.zipCode = name;
+        this.setState(this.state);
     };
 
-    updateLocationLong = (evt:any):void => {
+    private updateLocationLat = (evt:any):void => {
         var name = evt.target.value;
-        getState().restaurant.location.long = parseFloat(name);
-        this.setState(getState());
+        this.state.location.lat = parseFloat(name);
+        this.setState(this.state);
     };
 
-    saveRestaurant = (evt:any)=> {
-        RestaurantsActions.add(getState().restaurant);
+    private updateLocationLong = (evt:any):void => {
+        var name = evt.target.value;
+        this.state.location.long = parseFloat(name);
+        this.setState(this.state);
+    };
+
+    private saveRestaurant = (evt:any)=> {
+        // TODO apply state
+        let restaurant:IRestaurant = {
+            id: this.Id,
+            name: this.state.name.value,
+            address: this.state.address,
+            city: this.state.city,
+            zipCode: this.state.zipCode,
+            location: this.state.location,
+            timelines: this.state.timelines
+        };
+        if (restaurant.id) {
+            RestaurantsActions.saveRestaurant(restaurant);
+        }
+        else {
+            RestaurantsActions.add(restaurant);
+        }
         evt.preventDefault();
     };
 
-    private currentId:number = null;
+    private currentIdParam:string = null;
+    private Id:number;
+    private isNew:boolean;
 }
 
 export default connectToStores(Restaurant);

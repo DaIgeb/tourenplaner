@@ -2,30 +2,26 @@ import * as fs from 'fs';
 import {MyRequestObject} from '../model';
 import * as express from 'express';
 import {moment} from 'utils/moment';
-import {reviveDates} from '../../utils';
-import {IRestaurant} from 'models/Restaurant';
+
+import {IRestaurantDataModel} from 'models/Restaurant';
+import {DataListHandler} from '../DataListHandler';
 
 export var router = express.Router();
 
-
-const filename = 'data/restaurant.json';
-let restaurants = fs.readFileSync(filename, 'utf8');
-const data:IRestaurant[] = JSON.parse(restaurants, reviveDates);
+const handler = new DataListHandler<IRestaurantDataModel>('data/restaurant.json');
 
 router.get('/', (req:express.Request, res:express.Response, next:Function):any => {
-    res.json(data);
+    res.json(handler.getData());
 });
 
 router.put('/:id', (req:express.Request, res:express.Response, next:Function):any => {
-    console.log(req.body);
-    data.splice(data.findIndex(i => i.id === req.body.id));
-    data.push(req.body);
-    res.json(data);
+    res.json(handler.update(req.params.id, req.body));
+});
+
+router.delete('/:id', (req:express.Request, res:express.Response, next:Function):any => {
+    res.json(handler.delete(req.params.id));
 });
 
 router.post('/', (req:express.Request, res:express.Response, next:Function):any => {
-    console.log(req.body);
-    data.push(req.body);
-    fs.writeFile(filename, JSON.stringify(data, null, 2));
-    res.json(data);
+    res.json(handler.add(<IRestaurantDataModel>req.body));
 });

@@ -62,7 +62,7 @@ export class DateRangeEdit extends React.Component<IDateRangeEditProps, IDateRan
                     <div className={untilClassName}>
                         <div className="input-group-addon">Bis</div>
                         <input className="form-control" type="text" value={this.state.untilEditValue}
-                               onChange={this.changeUntil}/>
+                               onChange={this.changeUntil.bind(this)}/>
                     </div>
                 </div>
             </div>);
@@ -80,12 +80,12 @@ export class DateRangeEdit extends React.Component<IDateRangeEditProps, IDateRan
         }
     };
 
-    private changeFrom = (evt:any) => {
+    private changeFrom = (evt: React.SyntheticInputEvent) => {
         let from = this.normalizeDate(evt.target.value);
         let state = {
-            from: from.value,
-            fromEditValue: evt.traget.value,
-            fromValidation: from.isValid ? EditState.Valid : EditState.Error,
+            from: from,
+            fromEditValue: evt.target.value,
+            fromValidation: from.isValid() ? EditState.Valid : EditState.Error,
             until: this.state.until,
             untilEditValue: this.state.untilEditValue,
             untilValidation: this.state.untilValidation
@@ -94,27 +94,27 @@ export class DateRangeEdit extends React.Component<IDateRangeEditProps, IDateRan
         this.setState(state);
     };
 
-    private changeUntil = (evt:any) => {
+    private changeUntil(evt: React.SyntheticInputEvent) {
         let until = this.normalizeDate(evt.target.value);
         let state = {
             from: this.state.from,
             fromEditValue: this.state.fromEditValue,
             fromValidation: this.state.fromValidation,
-            until: until.value,
-            untilEditValue: evt.traget.value,
-            untilValidation: until.isValid ? EditState.Valid : EditState.Error
+            until: until,
+            untilEditValue: evt.target.value,
+            untilValidation: until.isValid() ? EditState.Valid : EditState.Error
         };
         this.sendNotification(state);
         this.setState(state);
     };
 
-    private normalizeDate = (state:string):{ isValid: boolean,value: moment.Moment }=> {
+    private normalizeDate = (state:string): moment.Moment => {
         var untilDate = moment(state, this.inputFormats, true);
         if (this.isDateValid(untilDate, state)) {
-            return {isValid: true, value: untilDate};
+            return untilDate;
         }
 
-        return {isValid: false, value: null};
+        return moment.invalid();
     };
 
     private isDateValid = (date:moment.Moment, value:string):boolean => {

@@ -7,10 +7,6 @@ class RestaurantsActions extends AbstractActions implements IRestaurantsActions 
         super(alt);
     }
 
-    restaurantSelected(id:number):void {
-        this.dispatch(id);
-    }
-
     add(restaurant:IRestaurant):void {
         this.dispatch(restaurant);
     }
@@ -43,7 +39,6 @@ interface IRestaurantsActions {
     updateRestaurants(restaurants:Array<IRestaurant>):void;
     fetchRestaurants():void;
     restaurantsFailed(errorMessage:any): void;
-    restaurantSelected(id:number): void;
 }
 
 export const actions = flux.createActions<IRestaurantsActions>(RestaurantsActions);

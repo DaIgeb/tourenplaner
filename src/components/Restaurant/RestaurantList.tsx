@@ -18,7 +18,7 @@ class Restaurant extends React.Component<IRestaurantProps, IRestaurantState> {
         var detailData = this
             .props
             .restaurant
-            .data
+            .timelines
             .find((detail:IRestaurantTimeline) => this.dateRangeMatches(detail));
         var businessHours = detailData.businessHours.map((hrs:IBusinessHour, index:number) => {
             var content = `${hrs.weekday} ${this.pad(hrs.from.hour, 2)}:${this.pad(hrs.from.minute, 2)}-${this.pad(hrs.until.hour, 2)}:${this.pad(hrs.until.minute, 2)}`;
@@ -92,15 +92,6 @@ interface IRestaurantProps extends React.Props<Restaurant> {
     key: number | string;
 }
 
-const emptyRestaurant:IRestaurant = {
-    name: undefined,
-    address: undefined,
-    zipCode: undefined,
-    city: undefined,
-    location: undefined,
-    data: []
-};
-
 class RestaurantList extends React.Component<any, any> {
     constructor(props:any) {
         super(props);
@@ -168,37 +159,6 @@ class RestaurantList extends React.Component<any, any> {
         if (confirm("Do you really want to delete the restaurant?")) {
             RestaurantActions.deleteRestaurant(restaurant);
         }
-    };
-
-    saveRestaurant = (evt:any)=> {
-        var restaurant:IRestaurant = evt.target.value;
-        restaurant = {
-            name: "Hirschen",
-            address: "Foostreet",
-            zipCode: "123",
-            city: "Ossingen",
-            location: {
-                long: 1,
-                lat: 2
-            },
-            data: [
-                {
-                    businessHours: [],
-                    phone: "052 722 12 34",
-                    notes: "Dienstags Ruhetag",
-                    from: moment(),
-                    until: moment()
-                }
-            ]
-        };
-        if (!this.state) {
-            //this.setState({restaurants: [restaurant]});
-        }
-        else {
-            //this.state.restaurants.push(restaurant);
-        }
-        RestaurantActions.add(restaurant);
-        evt.preventDefault();
     };
 }
 export default connectToStores(RestaurantList);

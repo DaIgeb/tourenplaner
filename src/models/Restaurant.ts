@@ -1,11 +1,20 @@
-export interface IRestaurant {
-    id?: number;
+import {IIdentifyable} from './Core';
+
+interface IRestaurantBase {
     name: string;
     address: string;
     zipCode: string;
     city: string;
     location: ILocation,
-    data: IRestaurantTimeline[]
+    timelines: IRestaurantTimeline[]
+}
+
+export interface IRestaurantDataModel extends IRestaurantBase, IIdentifyable<number> {
+    id: number;
+}
+
+export interface IRestaurant extends IRestaurantBase {
+    id?: number;
 }
 
 export interface IRestaurantTimeline extends IDateRange {

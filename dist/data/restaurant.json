@@ -9,7 +9,7 @@
       "long": 47.523741,
       "lat": 8.837266
     },
-    "data": [
+    "timelines": [
       {
         "businessHours": [
           {
@@ -104,7 +104,7 @@
       "long": 12345.123,
       "lat": 123541.123
     },
-    "data": [
+    "timelines": [
       {
         "businessHours": [
           {
@@ -155,7 +155,7 @@
       "long": 12345.123,
       "lat": 123541.123
     },
-    "data": [
+    "timelines": [
       {
         "businessHours": [
           {
@@ -206,7 +206,7 @@
       "long": 12345.123,
       "lat": 123541.123
     },
-    "data": [
+    "timelines": [
       {
         "businessHours": [
           {
@@ -257,7 +257,7 @@
       "long": 12345.123,
       "lat": 123541.123
     },
-    "data": [
+    "timelines": [
       {
         "businessHours": [
           {
@@ -308,7 +308,7 @@
       "long": 12345.123,
       "lat": 123541.123
     },
-    "data": [
+    "timelines": [
       {
         "businessHours": [
           {
@@ -351,15 +351,15 @@
   },
   {
     "id": 7,
-    "name": "Schäfli",
+    "name": "Sooooooooooone111",
     "address": "Foobar",
-    "zipCode": "3",
     "city": "Ossingen",
+    "zipCode": "3",
     "location": {
       "long": 12345.123,
       "lat": 123541.123
     },
-    "data": [
+    "timelines": [
       {
         "businessHours": [
           {
