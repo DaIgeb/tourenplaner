@@ -3,11 +3,9 @@
 import * as fs from 'fs';
 import * as path from 'path';
 import {Response, Request} from "express";
-//import * as express from 'express';
 import {createServer} from 'http';
 import {json, urlencoded} from 'body-parser';
-import {reviveDates} from './utils';
-import {MyRequestObject} from 'model';
+import {reviveDates} from 'utils/moment';
 import {router as apiRouter} from './api/api';
 var express = require('express');
 var logger = require('morgan');
@@ -22,14 +20,14 @@ app.use(logger('dev'));
 app.use(json({receiver: reviveDates}));
 app.use(urlencoded({extended: true}));
 
-app.use(function (req:MyRequestObject, res:Response, next:Function) {
+app.use(function (req:Request, res:Response, next:Function) {
     // Set global available params
     // http://cwbuecheler.com/web/tutorials/2014/restful-web-app-node-express-mongodb/
-    req.db = "foobar";
+    (<any>req).db = "foobar";
 
     next();
 });
-//app.use('/restaurants', restaurantsRouter);
+
 app.use('/api', apiRouter);
 app.use('/public', express.static(path.join('.', 'public')));
 

@@ -1,5 +1,4 @@
 import * as fs from 'fs';
-import {MyRequestObject} from '../model';
 import * as express from 'express';
 import {moment} from 'utils/moment';
 
@@ -15,7 +14,8 @@ router.get('/', (req:express.Request, res:express.Response, next:Function):any =
 });
 
 router.put('/:id', (req:express.Request, res:express.Response, next:Function):any => {
-    res.json(handler.update(parseInt(req.params.id), req.body));
+    var update = handler.update(parseInt(req.params.id), req.body);
+    res.json(update);
 });
 
 router.delete('/:id', (req:express.Request, res:express.Response, next:Function):any => {

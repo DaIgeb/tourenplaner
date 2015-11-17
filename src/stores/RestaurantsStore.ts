@@ -1,4 +1,4 @@
-import {flux} from 'control';
+import {flux} from 'shared/control';
 import {actions} from 'actions/RestaurantsActions';
 import {AbstractStoreModel} from './AbstractStoreModel'
 import {restaurantSource} from 'sources/RestaurantSource';
@@ -84,17 +84,6 @@ class RestaurantsStore extends AbstractStoreModel<IState> implements IState {
 
         xhr.setRequestHeader('Content-type', 'application/json');
         xhr.setRequestHeader('Accept', 'application/json');
-        /*xhr.onload = (ev:Event)=> {
-            if (xhr.status >= 200 && xhr.status < 300) {
-                console.log(xhr.response);
-                restaurantsStore.fetchRestaurants();
-            } else {
-                const responseText = ( <any>ev.target).responseText;
-                console.log('Error !' + responseText);
-                this.errorMessage = responseText;
-            }
-        };*/
-
         xhr.send(JSON.stringify(name));
 
         name.id = xhr.response;

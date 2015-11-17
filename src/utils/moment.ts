@@ -8,9 +8,14 @@ export const getBackendWeekdays = ():Array<string> => {
     return weekdays;
 };
 
-export function getMoment(locale: string = 'de'): moment.MomentStatic {
-    moment.locale(locale);
+export var reviveDates = (key:any, value:any) => {
+    var match:RegExpMatchArray;
 
-    return moment;
-}
-
+    if (typeof value === "string") {
+        let date = moment(value, moment.ISO_8601, true);
+        if (date.isValid()) {
+            return date;
+        }
+    }
+    return value;
+};

@@ -1,7 +1,7 @@
 import {actions} from "actions/RestaurantsActions";
 import {IRestaurant} from 'models/Restaurant'
 import * as jquery from 'jquery';
-import {reviveDates} from '../utils'
+import {reviveDates} from 'utils/moment'
 
 class ResourceSourceModel implements AltJS.SourceModel<Array<IRestaurant>> {
     local(state:any):any {

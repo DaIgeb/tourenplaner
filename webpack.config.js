@@ -55,7 +55,7 @@ module.exports = [{
 }, {
     target: 'web',
     entry: {
-        app: path.resolve(srcPath, 'main.tsx'),
+        app: path.resolve(srcPath, 'client/main.tsx'),
         vendor: ["react", "react-dom", 'alt']
     },
     output: {
@@ -82,7 +82,7 @@ module.exports = [{
         new ExtractTextPlugin("styles.css"),
         new HtmlWebpackPlugin({
             inject: true,
-            template: 'src/index.html'
+            template: 'src/client/index.html'
         }),
         new webpack.NoErrorsPlugin()
     ],

@@ -1,5 +1,4 @@
 import * as fs from 'fs';
-import {MyRequestObject} from '../model';
 import * as express from 'express';
 import {moment} from 'utils/moment';
 import {router as tourStartRouter} from './tourstarts';

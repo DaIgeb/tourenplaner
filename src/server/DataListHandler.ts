@@ -1,18 +1,16 @@
 import * as fs from 'fs';
 import * as path from 'path';
 import {IIdentifyable} from 'models/Core';
-import {reviveDates} from 'utils';
+import {reviveDates} from 'utils/moment';
 
 export class DataListHandler<T extends IIdentifyable<number>> {
     constructor(private fileName:string) {
         this.initializeDataDirectory();
+
+        this.data = this.read();
     }
 
     getData():Array<T> {
-        if (!this.data) {
-            this.data = this.read();
-        }
-
         return this.data;
     }
 
@@ -25,6 +23,7 @@ export class DataListHandler<T extends IIdentifyable<number>> {
     }
 
     update(id:number, obj:T):boolean {
+        try {
         let index = this.data.findIndex(i => i.id === id);
         if (index < 0) {
             return false;
@@ -34,6 +33,9 @@ export class DataListHandler<T extends IIdentifyable<number>> {
         this.write();
 
         return true;
+        } catch (err) {
+            console.error(err);
+        }
     }
 
     delete(id:number):boolean {

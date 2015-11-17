@@ -1,4 +1,4 @@
-import {flux} from 'control';
+import {flux} from 'shared/control';
 import {AbstractActions} from "./AbstractActions";
 import {IRestaurant} from 'models/Restaurant'
 
