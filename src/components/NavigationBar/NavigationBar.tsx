@@ -13,7 +13,7 @@ export class NavigationBar extends React.Component<INavigationBarProps, any> {
 
         /*var isActive = this.context.router.isActive("about", undefined, undefined);
         var aboutClassName = isActive ? "active": "";
-        isActive = this.context.router.isActive("restaurants", undefined, undefined);
+        isActive = this.context.router.isActive("tours", undefined, undefined);
         var restClassName = isActive ? "active": "";*/
 
         return (

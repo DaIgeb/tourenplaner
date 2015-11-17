@@ -1,12 +1,12 @@
 import {flux} from 'shared/control';
 import {actions} from 'actions/RestaurantsActions';
 import {AbstractStoreModel} from './AbstractStoreModel'
-import {restaurantSource} from 'sources/RestaurantSource';
-import {IRestaurant} from 'models/Restaurant';
+import {tourSource} from 'sources/TourSource';
+import {ITourViewModel} from 'models/Tour';
 import * as jquery from 'jquery';
 
 interface IState {
-    restaurants: Array<IRestaurant>;
+    tours: Array<ITourViewModel>;
     errorMessage:string;
 }
 
@@ -16,33 +16,33 @@ interface IState {
  * export Async
  */
 interface ExtendedStore extends AltJS.AltStore<IState> {
-    fetchRestaurants() : void;
+    fetchTours() : void;
     isLoading(): boolean;
-    getRestaurants(): Array<IRestaurant>;
-    getRestaurant(id:number) : IRestaurant;
+    getTours(): Array<ITourViewModel>;
+    getTour(id:number) : ITourViewModel;
 }
 
-class RestaurantsStore extends AbstractStoreModel<IState> implements IState {
-    getRestaurants():Array<IRestaurant> {
-        return this.restaurants;
+class TourStore extends AbstractStoreModel<IState> implements IState {
+    getTours():Array<ITourViewModel> {
+        return this.tours;
     }
 
-    getRestaurant(id:number):IRestaurant {
+    getTour(id:number):ITourViewModel {
         if (!isNaN(id)) {
-            if (this.restaurants) {
-                return this.restaurants.find((r:IRestaurant) => r.id === id);
+            if (this.tours) {
+                return this.tours.find((r:ITourViewModel) => r.id === id);
             }
         }
 
         return null;
     }
 
-    restaurants:Array<IRestaurant>;
+    tours:Array<ITourViewModel>;
     errorMessage:string;
 
     constructor() {
         super();
-        this.restaurants = [];
+        this.tours = [];
         this.errorMessage = null;
 
         this.bindListeners({
@@ -55,21 +55,21 @@ class RestaurantsStore extends AbstractStoreModel<IState> implements IState {
         });
 
         this.exportPublicMethods({
-            getRestaurants: this.getRestaurants,
-            getRestaurant: this.getRestaurant
+            getTours: this.getTours,
+            getTour: this.getTour
         });
 
-        this.exportAsync(restaurantSource);
+        this.exportAsync(tourSource);
     }
 
-    handleUpdate(restaurants:Array<IRestaurant>) {
-        this.restaurants = restaurants;
+    handleUpdate(restaurants:Array<ITourViewModel>) {
+        this.tours = restaurants;
         this.errorMessage = null;
         this.updateState();
     }
 
     handleFetch() {
-        this.restaurants = [];
+        this.tours = [];
         this.updateState();
     }
 
@@ -78,7 +78,7 @@ class RestaurantsStore extends AbstractStoreModel<IState> implements IState {
         this.updateState();
     }
 
-    handleAdd(name:IRestaurant):void {
+    handleAdd(name:ITourViewModel):void {
         let xhr = new XMLHttpRequest();
         xhr.open('POST', '/api/tours', false);
 
@@ -87,13 +87,13 @@ class RestaurantsStore extends AbstractStoreModel<IState> implements IState {
         xhr.send(JSON.stringify(name));
 
         name.id = xhr.response;
-        this.restaurants.push(name);
+        this.tours.push(name);
 
         this.updateState();
     }
 
-    handleDelete(name:IRestaurant):void {
-        var indexOf = this.restaurants.indexOf(name);
+    handleDelete(name:ITourViewModel):void {
+        var indexOf = this.tours.indexOf(name);
         if (indexOf >= 0) {
             let xhr = new XMLHttpRequest();
             xhr.open('DELETE', `/api/restaurants/${name.id}`, true);
@@ -101,7 +101,7 @@ class RestaurantsStore extends AbstractStoreModel<IState> implements IState {
             xhr.onload = (ev:Event)=> {
                 if (xhr.status >= 200 && xhr.status < 300) {
                     console.log(xhr.response);
-                    restaurantsStore.fetchRestaurants();
+                    tourStore.fetchTours();
                 } else {
                     const responseText = ( <any>ev.target).responseText;
                     console.log('Error !' + responseText);
@@ -110,13 +110,13 @@ class RestaurantsStore extends AbstractStoreModel<IState> implements IState {
             };
             xhr.send();
 
-            this.restaurants.splice(indexOf, 1);
+            this.tours.splice(indexOf, 1);
             this.updateState();
         }
     }
 
-    handleSave(name:IRestaurant):void {
-        this.restaurants.push(name);
+    handleSave(name:ITourViewModel):void {
+        this.tours.push(name);
 
         let xhr = new XMLHttpRequest();
         xhr.open('PUT', `/api/restaurants/${name.id}`, true);
@@ -126,7 +126,7 @@ class RestaurantsStore extends AbstractStoreModel<IState> implements IState {
         xhr.onload = (ev:Event)=> {
             if (xhr.status >= 200 && xhr.status < 300) {
                 console.log(xhr.response);
-                restaurantsStore.fetchRestaurants();
+                tourStore.fetchTours();
             } else {
                 const responseText = ( <any>ev.target).responseText;
                 console.log('Error !' + responseText);
@@ -141,10 +141,10 @@ class RestaurantsStore extends AbstractStoreModel<IState> implements IState {
 
     private updateState = () => {
         this.setState({
-            restaurants: this.restaurants,
+            tours: this.tours,
             errorMessage: this.errorMessage
         });
     }
 }
 
-export const restaurantsStore = <ExtendedStore>flux.createStore<IState>(RestaurantsStore, "TourStore");
+export const tourStore = <ExtendedStore>flux.createStore<IState>(TourStore, "TourStore");

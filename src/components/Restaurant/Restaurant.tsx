@@ -7,6 +7,7 @@ import {IRestaurant, IRestaurantTimeline, IBusinessHour} from "models/Restaurant
 import {ILocation} from "models/Core";
 import {Button, Row, Column} from 'Bootstrap/Bootstrap';
 import {RestaurantTimeline} from './RestaurantTimeline'
+import {moment} from 'utils/moment';
 
 interface IRestaurantProps extends React.Props<Restaurant> {
     restaurants: IRestaurant[];

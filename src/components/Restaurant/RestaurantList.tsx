@@ -123,7 +123,7 @@ class RestaurantList extends React.Component<any, any> {
             </div>);
         }
 
-        let restaurants = this.props.restaurants.map((restaurant:IRestaurant, i:number) =>
+        let restaurants = this.props.tours.map((restaurant:IRestaurant, i:number) =>
             (<Restaurant key={i} restaurant={restaurant} onRemove={this.removeRestaurant}
                          detailsDate={moment(new Date(2012,1,1))}/>)
         );

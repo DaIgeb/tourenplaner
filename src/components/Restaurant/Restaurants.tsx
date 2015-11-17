@@ -16,7 +16,7 @@ export interface IRestaurantsProps extends React.Props<Restaurants> {
 }
 
 export interface IRestaurantsState {
-    //restaurants: Array<IRestaurant>;
+    //tours: Array<IRestaurant>;
 }
 
 export default Restaurants;
