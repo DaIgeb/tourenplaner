@@ -80,7 +80,7 @@ export class DateRangeEdit extends React.Component<IDateRangeEditProps, IDateRan
         }
     };
 
-    private changeFrom = (evt: React.SyntheticInputEvent) => {
+    private changeFrom = (evt:React.SyntheticInputEvent) => {
         let from = this.normalizeDate(evt.target.value);
         let state = {
             from: from,
@@ -94,7 +94,7 @@ export class DateRangeEdit extends React.Component<IDateRangeEditProps, IDateRan
         this.setState(state);
     };
 
-    private changeUntil(evt: React.SyntheticInputEvent) {
+    private changeUntil(evt:React.SyntheticInputEvent) {
         let until = this.normalizeDate(evt.target.value);
         let state = {
             from: this.state.from,
@@ -108,7 +108,7 @@ export class DateRangeEdit extends React.Component<IDateRangeEditProps, IDateRan
         this.setState(state);
     };
 
-    private normalizeDate = (state:string): moment.Moment => {
+    private normalizeDate = (state:string):moment.Moment => {
         var untilDate = moment(state, this.inputFormats, true);
         if (this.isDateValid(untilDate, state)) {
             return untilDate;
@@ -118,10 +118,12 @@ export class DateRangeEdit extends React.Component<IDateRangeEditProps, IDateRan
     };
 
     private isDateValid = (date:moment.Moment, value:string):boolean => {
-        if (date.isValid())
+        if (date.isValid()) {
             return this.inputFormats.findIndex(f => date.format(f) === value) >= 0;
-
-        return false;
+        }
+        else {
+            return value === null || value === '';
+        }
     };
 
     private sendNotification = (state:IDateRangeEditState):void => {
@@ -130,11 +132,10 @@ export class DateRangeEdit extends React.Component<IDateRangeEditProps, IDateRan
         if (this.isDateValid(fromDate, state.fromEditValue) && this.isDateValid(untilDate, state.untilEditValue)) {
             if (fromDate >= untilDate) {
                 state.untilValidation = EditState.Error;
-            }
-            else {
+            } else {
                 this.props.onChange({
-                    until: untilDate,
-                    from: fromDate
+                    until: untilDate.isValid() ? untilDate : null,
+                    from: fromDate.isValid() ? fromDate : null
                 });
             }
         }

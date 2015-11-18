@@ -56,11 +56,11 @@ export class RestaurantTimeline extends React.Component<IRestaurantTimelineProps
     };
 }
 
-interface TimelinePanelProps extends React.Props<TimelinePanel> {
+interface ITimelinePanelProps extends React.Props<TimelinePanel> {
     timeline:IRestaurantTimeline;
 }
 
-class TimelinePanel extends React.Component<TimelinePanelProps, any> {
+class TimelinePanel extends React.Component<ITimelinePanelProps, any> {
     constructor(props:any) {
         super(props);
     }
@@ -72,8 +72,7 @@ class TimelinePanel extends React.Component<TimelinePanelProps, any> {
             <Panel title={this.getPanelHeader(this.props.timeline)} initialIsCollapsed={isPanelCollapsed}>
                 <Row>
                     <Column size={6}>
-                        <DateRangeEdit dateRange={this.props.timeline}
-                                       onChange={this.changeRange.bind(this, this.props.timeline)}/>
+                        <DateRangeEdit dateRange={this.props.timeline} onChange={this.changeRange.bind(this, this.props.timeline)}/>
                     </Column>
                     <Column size={6} classNames="input-group">
                         <div className="input-group-addon">Telefon</div>
