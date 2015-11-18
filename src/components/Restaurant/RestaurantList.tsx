@@ -14,20 +14,32 @@ class Restaurant extends React.Component<IRestaurantProps, IRestaurantState> {
         super(props);
     }
 
+    private mapBusinessHours = (hrs: IBusinessHour, index: number) : JSX.Element => {
+        var content = `${hrs.weekday} ${this.pad(hrs.from.hour, 2)}:${this.pad(hrs.from.minute, 2)}-${this.pad(hrs.until.hour, 2)}:${this.pad(hrs.until.minute, 2)}`;
+        let result:any = (
+            [<span key={index}>{content}</span>,
+                <br/>]
+        );
+        return result;
+    };
+
     public render() {
 
-        var detailData = this
+        let phone:string = null;
+        let notes:string = null;
+        let businessHours: Array<JSX.Element> = [];
+        let detailData = this
             .props
             .restaurant
             .timelines
             .find((detail:IRestaurantTimeline) => this.dateRangeMatches(detail));
-        var businessHours = detailData.businessHours.map((hrs:IBusinessHour, index:number) => {
-            var content = `${hrs.weekday} ${this.pad(hrs.from.hour, 2)}:${this.pad(hrs.from.minute, 2)}-${this.pad(hrs.until.hour, 2)}:${this.pad(hrs.until.minute, 2)}`;
-            return (
-                [<span key={index}>{content}</span>,
-                    <br/>]
-            );
-        });
+
+
+        if (detailData) {
+            phone = detailData.phone;
+            notes = detailData.notes;
+            businessHours = detailData.businessHours.map(this.mapBusinessHours);
+        }
         return (
             <tr>
                 <td className="col-md-1">
@@ -41,9 +53,9 @@ class Restaurant extends React.Component<IRestaurantProps, IRestaurantState> {
                     {this.props.restaurant.location.lat}/{this.props.restaurant.location.long}
                 </td>
                 <td className="col-md-5">
-                    {detailData.phone}
+                    {phone}
                     <br/>
-                    {detailData.notes}
+                    {notes}
                 </td>
                 <td className="col-md-2">
                     {businessHours}
@@ -123,7 +135,7 @@ class RestaurantList extends React.Component<any, any> {
             </div>);
         }
 
-        let restaurants = this.props.tours.map((restaurant:IRestaurant, i:number) =>
+        let restaurants = this.props.restaurants.map((restaurant:IRestaurant, i:number) =>
             (<Restaurant key={i} restaurant={restaurant} onRemove={this.removeRestaurant}
                          detailsDate={moment(new Date(2012,1,1))}/>)
         );

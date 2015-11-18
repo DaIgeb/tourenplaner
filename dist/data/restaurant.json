@@ -246,5 +246,25 @@
         "until": null
       }
     ]
+  },
+  {
+    "id": 8,
+    "name": "Frohe Aussicht",
+    "address": null,
+    "city": "Alten",
+    "zipCode": null,
+    "location": {
+      "lat": null,
+      "long": null
+    },
+    "timelines": [
+      {
+        "phone": "+41523171009",
+        "notes": null,
+        "from": "2015-11-18T18:50:01.380Z",
+        "until": null,
+        "businessHours": []
+      }
+    ]
   }
 ]

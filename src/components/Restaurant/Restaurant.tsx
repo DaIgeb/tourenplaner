@@ -165,7 +165,7 @@ class Restaurant extends React.Component<IRestaurantProps, IState> {
         if (stateUpdateNeeded) {
             state.loading = true;
             state.invalidId = true;
-            state.name = null;
+            state.name = new StringInputValue(null, InputValueState.Unchanged);
             state.address = null;
             state.zipCode = null;
             state.city = null;
@@ -173,13 +173,14 @@ class Restaurant extends React.Component<IRestaurantProps, IState> {
             state.timelines = [];
 
             if (this.isNew) {
+                state.loading = false;
                 state.invalidId = false;
             } else if (newProps.restaurants) {
                 state.loading = false;
                 let restaurant = newProps.restaurants.find(r => r.id === this.Id);
                 if (restaurant) {
                     state.invalidId = false;
-                    state.name = new StringInputValue(restaurant.name, InputValueState.Unchanged);
+                    state.name.value = state.name.parse(restaurant.name);
                     state.address = restaurant.address;
                     state.zipCode = restaurant.zipCode;
                     state.city = restaurant.city;
@@ -194,16 +195,27 @@ class Restaurant extends React.Component<IRestaurantProps, IState> {
 
     private addTimeline = (evt:any):void  => {
         let timelines:Array<IRestaurantTimeline> = this.state.timelines;
-        let timeline:IRestaurantTimeline = timelines[timelines.length - 1];
-        let businessHours:Array<IBusinessHour> = timeline.businessHours.slice(0);
-
-        timelines.push({
-            phone: timeline.phone,
-            notes: timeline.notes,
-            from: moment(),
-            until: null,
-            businessHours: businessHours
-        });
+        if (timelines.length > 0) {
+            let timeline:IRestaurantTimeline = timelines[timelines.length - 1];
+            let businessHours:Array<IBusinessHour> = timeline.businessHours.slice(0);
+            timelines.push({
+                phone: timeline.phone,
+                notes: timeline.notes,
+                from: moment(),
+                until: null,
+                businessHours: businessHours
+            });
+            timeline.until = moment();
+        }
+        else {
+            timelines.push({
+                phone: null,
+                notes: null,
+                from: moment(),
+                until: null,
+                businessHours: []
+            });
+        }
         this.setState(this.state);
     };
 
@@ -254,11 +266,10 @@ class Restaurant extends React.Component<IRestaurantProps, IState> {
             location: this.state.location,
             timelines: this.state.timelines
         };
-        if (restaurant.id) {
-            RestaurantsActions.saveRestaurant(restaurant);
-        }
-        else {
+        if (this.isNew) {
             RestaurantsActions.add(restaurant);
+        } else {
+            RestaurantsActions.saveRestaurant(restaurant);
         }
         evt.preventDefault();
     };

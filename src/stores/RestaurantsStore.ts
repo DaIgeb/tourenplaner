@@ -80,7 +80,7 @@ class RestaurantsStore extends AbstractStoreModel<IState> implements IState {
 
     handleAdd(name:IRestaurant):void {
         let xhr = new XMLHttpRequest();
-        xhr.open('POST', '/api/tours', false);
+        xhr.open('POST', '/api/restaurants', false);
 
         xhr.setRequestHeader('Content-type', 'application/json');
         xhr.setRequestHeader('Accept', 'application/json');
@@ -147,4 +147,4 @@ class RestaurantsStore extends AbstractStoreModel<IState> implements IState {
     }
 }
 
-export const restaurantsStore = <ExtendedStore>flux.createStore<IState>(RestaurantsStore, "TourStore");
+export const restaurantsStore = <ExtendedStore>flux.createStore<IState>(RestaurantsStore, "RestaurantsStore");
