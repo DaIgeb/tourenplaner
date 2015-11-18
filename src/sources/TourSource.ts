@@ -1,4 +1,4 @@
-import {actions} from "actions/RestaurantsActions";
+import {actions} from "actions/ToursActions";
 import {ITourViewModel} from 'models/Tour'
 import * as jquery from 'jquery';
 import {reviveDates} from 'utils/moment'
@@ -23,14 +23,14 @@ class TourSourceModel implements AltJS.SourceModel<Array<ITourViewModel>> {
                 let parsed = <Array<ITourViewModel>>JSON.parse(d, reviveDates);
                 res(parsed);
             }).fail(e => {
-                rej(e)
+                rej(e);
             });
         });
     }
 
-    success = actions.updateRestaurants;
-    error = actions.restaurantsFailed;
-    loading = actions.fetchRestaurants;
+    success = actions.updateTours;
+    error = actions.toursFailed;
+    loading = actions.fetchTours;
     shouldFetch = () => !this.hasFetched;
 
     private hasFetched: boolean= false;

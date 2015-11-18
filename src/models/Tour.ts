@@ -1,4 +1,5 @@
 import {IIdentifyable, ILocation, IDateRange, ITime} from './Core';
+import {IRestaurant} from "./Restaurant";
 
 interface ITour {
     name: string;
@@ -16,7 +17,7 @@ interface ITourTimeline extends IDateRange {
     distance: number;
     tourStartRoute: number | ITourStart;
     points: IPoint[];
-    preferredRestaurantPoint: number | IPoint;
+    preferredRestaurant: number | IRestaurant;
     files: IFile[];
 }
 
@@ -110,7 +111,7 @@ class TimelineBase implements ITourTimeline {
         this.difficulty = timeline.difficulty;
         this.distance = timeline.distance;
         this.tourStartRoute = timeline.tourStartRoute;
-        this.preferredRestaurantPoint = timeline.preferredRestaurantPoint;
+        this.preferredRestaurant = timeline.preferredRestaurant;
         this.from = timeline.from;
         this.until = timeline.until;
     }
@@ -124,7 +125,7 @@ class TimelineBase implements ITourTimeline {
     until:moment.Moment;
 
     tourStartRoute:number | ITourStart;
-    preferredRestaurantPoint:number | IPoint;
+    preferredRestaurant:number | IRestaurant;
 }
 
 export interface ITourStart {

@@ -16,23 +16,11 @@ export class RestaurantTimeline extends React.Component<IRestaurantTimelineProps
         super(props);
     }
 
-    private getPanelHeader(t:IRestaurantTimeline):string {
-        let from = "";
-        let until = "";
-        let fromDate = t.from;
-        let untilDate = t.until;
-        if (fromDate.isValid())
-            from = fromDate.format('L');
-        if (untilDate.isValid())
-            until = fromDate.format('L');
-        return `${from}-${until}`;
-    }
-
     render():JSX.Element {
         var timelines = this.props.timelines.map((t:IRestaurantTimeline, index:number) => (
             <TimelinePanel key={index} timeline={t}/>));
         return (
-            <div>
+            <Panel title="Öffnungszeiten">
                 {timelines}
                 <Row>
                     <Column size={11}>
@@ -42,17 +30,8 @@ export class RestaurantTimeline extends React.Component<IRestaurantTimelineProps
                         </Button>
                     </Column>
                 </Row>
-            </div>
+            </Panel>
         )
-    };
-
-    private changePhone = (t:IRestaurantTimeline, evt:any) => {
-        t.phone = evt.target.value;
-    };
-
-    private changeRange = (t:IRestaurantTimeline, newRange:IDateRange) => {
-        t.from = newRange.from;
-        t.until = newRange.until;
     };
 }
 

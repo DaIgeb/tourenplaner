@@ -1,5 +1,5 @@
 import {flux} from 'shared/control';
-import {actions} from 'actions/RestaurantsActions';
+import {actions} from 'actions/ToursActions';
 import {AbstractStoreModel} from './AbstractStoreModel'
 import {tourSource} from 'sources/TourSource';
 import {ITourViewModel} from 'models/Tour';
@@ -46,12 +46,12 @@ class TourStore extends AbstractStoreModel<IState> implements IState {
         this.errorMessage = null;
 
         this.bindListeners({
-            handleAdd: actions.add,
-            handleDelete: actions.deleteRestaurant,
-            handleSave: actions.saveRestaurant,
-            handleUpdate: actions.updateRestaurants,
-            handleFetch: actions.fetchRestaurants,
-            handleFailed: actions.restaurantsFailed
+            handleAdd: actions.addTour,
+            handleDelete: actions.deleteTour,
+            handleSave: actions.saveTour,
+            handleUpdate: actions.updateTours,
+            handleFetch: actions.fetchTours,
+            handleFailed: actions.toursFailed
         });
 
         this.exportPublicMethods({

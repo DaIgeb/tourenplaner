@@ -1,1 +1,26 @@
-[]
+[
+  {
+    "id": 1,
+    "name": "Altikon",
+    "timelines": [
+      {
+        "tourTypes": [
+          "Evening"
+        ],
+        "difficulty": "Easy",
+        "distance": 50,
+        "tourStartRoute": 1,
+        "points": [
+          {
+            "id": 1,
+            "name": "Winterthur",
+            "long": 1234.7890,
+            "lat": 1234.7890
+          }
+        ],
+        "preferredRestaurant": 1,
+        "files": []
+      }
+    ]
+  }
+]
