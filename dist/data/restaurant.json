@@ -261,7 +261,94 @@
       {
         "phone": "+41523171009",
         "notes": null,
-        "from": "2015-11-18T18:50:01.380Z",
+        "from": "2010-11-17T23:00:00.000Z",
+        "until": "2012-11-17T23:00:00.000Z",
+        "businessHours": []
+      },
+      {
+        "phone": "+41523171009",
+        "notes": null,
+        "from": "2012-11-17T23:00:00.000Z",
+        "until": null,
+        "businessHours": []
+      }
+    ]
+  },
+  {
+    "id": 9,
+    "name": "Kreuzstrasse",
+    "address": null,
+    "city": "Altikon",
+    "zipCode": null,
+    "location": {
+      "lat": null,
+      "long": null
+    },
+    "timelines": [
+      {
+        "phone": "+41523362060",
+        "notes": null,
+        "from": "2010-11-17T23:00:00.000Z",
+        "until": null,
+        "businessHours": []
+      }
+    ]
+  },
+  {
+    "id": 10,
+    "name": "Krone",
+    "address": null,
+    "city": "Appenzell",
+    "zipCode": null,
+    "location": {
+      "lat": null,
+      "long": null
+    },
+    "timelines": [
+      {
+        "phone": "+41719832847",
+        "notes": null,
+        "from": "2010-11-17T23:00:00.000Z",
+        "until": null,
+        "businessHours": []
+      }
+    ]
+  },
+  {
+    "id": 11,
+    "name": "Traube",
+    "address": null,
+    "city": "Appenzell",
+    "zipCode": null,
+    "location": {
+      "lat": null,
+      "long": null
+    },
+    "timelines": [
+      {
+        "phone": "+41717871407",
+        "notes": null,
+        "from": "2015-11-18T19:26:22.484Z",
+        "until": null,
+        "businessHours": []
+      }
+    ]
+  },
+  {
+    "id": 12,
+    "name": "Sonne",
+    "address": null,
+    "city": "Appenzell",
+    "zipCode": null,
+    "location": {
+      "lat": null,
+      "long": null
+    },
+    "timelines": [
+      {
+        "phone": "+41717871122",
+        "notes": null,
+        "from": "2015-11-18T19:26:40.900Z",
         "until": null,
         "businessHours": []
       }
