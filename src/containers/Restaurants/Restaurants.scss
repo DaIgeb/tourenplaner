@@ -1,0 +1,38 @@
+.restaurants {
+  .refreshBtn {
+    margin-left: 20px;
+  }
+  .idCol {
+    width: 5%;
+  }
+  .nameCol {
+    width: 10%;
+  }
+  .addressCol {
+    width: 15%;
+    text-align: left;
+    input {
+      text-align: left;
+    }
+  }
+  .notesCol {
+    width: 25%;
+  }
+  .businessHours {
+    width: 25%;
+  }
+  .buttonCol {
+    width: 20%;
+    :global(.btn) {
+      margin: 0 5px;
+    }
+  }
+  tr.saving {
+    opacity: 0.8;
+    :global(.btn) {
+      &[disabled] {
+        opacity: 1;
+      }
+    }
+  }
+}
