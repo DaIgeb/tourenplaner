@@ -65,14 +65,6 @@ export default class Restaurants extends Component {
         </h1>
         <DocumentMeta title={config.app.title + ': Restaurants'}/>
 
-        {loading &&
-        <div className="progress">
-          <div className="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: 100%">
-            <span className="sr-only">Loading</span>
-          </div>
-        </div>
-        }
-
         {error &&
         <div className="alert alert-danger" role="alert">
           <span className="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
