@@ -34,6 +34,10 @@ module.exports = Object.assign({
         'twitter:image:width': '200',
         'twitter:image:height': '200'
       }
+    },
+    epoch: {
+      start: '2012-01-01',
+      end: '2020-12-31'
     }
   }
 }, environment);

@@ -1,3 +1,5 @@
+import moment from 'moment';
+
 const LOAD = 'tourenplaner/restaurants/LOAD';
 const LOAD_SUCCESS = 'tourenplaner/restaurants/LOAD_SUCCESS';
 const LOAD_FAIL = 'tourenplaner/restaurants/LOAD_FAIL';
@@ -14,11 +16,13 @@ const DELETE_FAIL = 'tourenplaner/restaurants/DELETE_FAIL';
 const NEW = 'tourenplaner/restaurants/NEW';
 const NEW_SUCCESS = 'tourenplaner/restaurants/NEW_SUCCESS';
 const NEW_FAIL = 'tourenplaner/restaurants/NEW_FAIL';
+const SET_TIMELINE_DATE = 'tourenplaner/restaurants/SET_TIMELINE_DATE';
 
 const initialState = {
   loaded: false,
   editing: {},
   adding: null,
+  currentDate: moment(),
   saveError: {}
 };
 
@@ -149,6 +153,12 @@ export default function reducer(state = initialState, action = {}) {
           [action.id]: action.error
         }
       } : state;
+    case SET_TIMELINE_DATE:
+      const dateString = typeof action.date === 'string' ? action.date : action.date.format();
+      return {
+        ...state,
+        currentDate: dateString
+      };
     default:
       return state;
   }
@@ -210,3 +220,9 @@ export function addStop() {
   return { type: ADD_STOP };
 }
 
+export function setTimelineDate(date) {
+  return {
+    type: SET_TIMELINE_DATE,
+    date: date
+  };
+}

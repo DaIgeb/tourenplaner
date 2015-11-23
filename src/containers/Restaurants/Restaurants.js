@@ -5,7 +5,7 @@ import connectData from 'helpers/connectData';
 import config from '../../config';
 import * as restaurantActions from 'redux/modules/restaurants';
 import {isLoaded, load as loadRestaurants} from 'redux/modules/restaurants';
-import {RestaurantForm} from 'components';
+import {RestaurantForm, Timeline} from 'components';
 
 function fetchDataDeferred(getState, dispatch) {
   if (!isLoaded(getState())) {
@@ -20,7 +20,8 @@ function fetchDataDeferred(getState, dispatch) {
     editing: state.restaurants.editing,
     error: state.restaurants.error,
     adding: state.restaurants.adding,
-    loading: state.restaurants.loading
+    loading: state.restaurants.loading,
+    timelineDate: state.restaurants.currentDate
   }),
   {...restaurantActions })
 export default class Restaurants extends Component {
@@ -33,7 +34,9 @@ export default class Restaurants extends Component {
     load: PropTypes.func.isRequired,
     del: PropTypes.func.isRequired,
     editStart: PropTypes.func.isRequired,
-    addStart: PropTypes.func.isRequired
+    addStart: PropTypes.func.isRequired,
+    setTimelineDate: PropTypes.func.isRequired,
+    timelineDate: PropTypes.string.isRequired
   };
 
   render() {
@@ -49,11 +52,16 @@ export default class Restaurants extends Component {
       const {del} = this.props; // eslint-disable-line no-shadow
       return () => del(String(restaurant.id));
     };
-    const {restaurants, error, editing, loading, load, adding} = this.props;
+    const {restaurants, error, editing, loading, load, adding, setTimelineDate} = this.props;
     let refreshClassName = 'fa fa-refresh';
     if (loading) {
       refreshClassName += ' fa-spin';
     }
+    const changeTimeline = (momentDate) => {
+      if (momentDate.isValid()) {
+        setTimelineDate(momentDate);
+      }
+    };
 
     const styles = require('./Restaurants.scss');
     return (
@@ -71,6 +79,8 @@ export default class Restaurants extends Component {
           {' '}
           {error}
         </div>}
+
+        <Timeline date={this.props.timelineDate} onTimelineChanged={changeTimeline}/>
 
         {restaurants && restaurants.length &&
         <table className="table table-striped table-hover table-condensed">
