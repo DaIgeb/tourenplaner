@@ -1,0 +1,84 @@
+[
+  {
+    "id": 1,
+    "name": "Hirschen",
+    "streetAddress": "Foobar",
+    "addressCountry": "CH",
+    "postalCode": "1234",
+    "city": "Hagenbuch",
+    "longitude": 47.523741,
+    "latitude": 8.837266
+  },
+  {
+    "id": 2,
+    "name": "Sonne",
+    "streetAddress": "Foobar",
+    "postalCode": "2",
+    "city": "Warth",
+    "longitude": 12345.123,
+    "latitude": 123541.123
+  },
+  {
+    "id": 3,
+    "name": "Schäfli",
+    "streetAddress": "Foobar",
+    "postalCode": "3",
+    "city": "Ossingen",
+    "longitude": 12345.123,
+    "latitude": 123541.123
+  },
+  {
+    "id": 7,
+    "name": "Sonne",
+    "streetAddress": "Foobar",
+    "city": "Ossingen",
+    "postalCode": "3",
+    "longitude": 12345.123,
+    "latitude": 123541.123
+  },
+  {
+    "id": 8,
+    "name": "Frohe Aussicht",
+    "streetAddress": null,
+    "city": "Alten",
+    "postalCode": null,
+    "latitude": null,
+    "longitude": null
+  },
+  {
+    "id": 9,
+    "name": "Kreuzstrasse",
+    "streetAddress": null,
+    "city": "Altikon",
+    "postalCode": null,
+    "latitude": null,
+    "longitude": null
+  },
+  {
+    "id": 10,
+    "name": "Krone",
+    "streetAddress": null,
+    "city": "Appenzell",
+    "postalCode": null,
+    "latitude": null,
+    "longitude": null
+  },
+  {
+    "id": 11,
+    "name": "Traube",
+    "streetAddress": null,
+    "city": "Appenzell",
+    "postalCode": null,
+    "latitude": null,
+    "longitude": null
+  },
+  {
+    "id": 12,
+    "name": "Sonne",
+    "streetAddress": null,
+    "city": "Appenzell",
+    "postalCode": null,
+    "latitude": null,
+    "longitude": null
+  }
+]
