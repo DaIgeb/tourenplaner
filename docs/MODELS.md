@@ -54,25 +54,9 @@
     "name": {
       "type": "string",
       "readonly": true
-   },
-    "streetAddress": {
-      "type": "string",
     },
-    "addressCountry": {
-      "description": "The country. For example, USA. You can also provide the two-letter ISO 3166-1 alpha-2 country code"
-      "type": "string",
-    },
-    "postalCode": {
-      "type": "string",
-    },
-    "city": {
-      "type": "string",
-    },
-    "latitude": {
-      "type": "number",
-    },
-    "longitude": {
-      "type": "number",
+    "locationId": {
+      "type": "integer"
     },    
     "timelines": {
       "type": "array",
@@ -84,11 +68,7 @@
   },
   "required": [
     "name",
-    "latitude",
-    "longitude",
-    "streetAddress",
-    "postalCode",
-    "city",
+    "location",
     "timelines"
   ]
 }

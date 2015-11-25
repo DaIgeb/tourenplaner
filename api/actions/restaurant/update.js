@@ -1,32 +1,27 @@
 import {getRestaurants} from './load';
+import {validator} from './validator';
 
 export default function update(req) {
   return new Promise((resolve, reject) => {
-    // write to database
+    // TODO write to database
     setTimeout(() => {
-      if (Math.random() < 0.2) {
-        reject('Oh no! Restaurant save fails 20% of the time. Try again.');
+      const restaurants = getRestaurants(req);
+      const restaurant = req.body;
+
+      let restaurantIdx = null;
+      if (restaurant.id) {
+        restaurantIdx = restaurants.findIndex(rest => rest.id === restaurant.id);
+      }
+
+      if (!restaurantIdx) {
+        reject('Restaurant does not exist');
+      } else if (!validate(restaurant)) {
+        reject(validate.errors);
       } else {
-        const restaurants = getRestaurants(req);
-        const restaurant = req.body;
-        if (restaurant.color === 'Green') {
-          reject({
-            color: 'We do not accept green restaurants' // example server-side validation error
-          });
-        }
-        let restaurantIdx = null;
-        if (restaurant.id) {
-          restaurantIdx = restaurants.findIndex(rest => rest.id === restaurant.id);
-        }
-
-        if (!restaurantIdx) {
-          reject('Restaurant does not exist');
-        }
-
         restaurants[restaurantIdx] = restaurant;
 
         resolve(restaurant);
       }
-    }, 2000); // simulate async db write
+    }, 100);
   });
 }

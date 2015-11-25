@@ -42,16 +42,18 @@
 
 ## Form
 
-
 # Season
 
-## Parameters
+## Configuration
 
 ## List
 
 ## Version compare
 
 ## Score-Building
+* Shorter Tours at the beginning/end of the season
+* Number of matching locations for previous tour
+* Number of time used within the season
 
 ## Print-layout
 * See [Season](http://rvwinterthur.ch/fileadmin/user_upload/Tourenfahren/2015/RVW_Tourenprogramm_2015.pdf) and [Tour-List](http://rvwinterthur.ch/fileadmin/user_upload/Tourenfahren/2015/RVW_Tourenbeschrieb_2015.pdf) for the final look
