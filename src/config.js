@@ -16,7 +16,7 @@ module.exports = Object.assign({
   apiPort: process.env.APIPORT,
   app: {
     title: 'Tourenplaner',
-    description: 'All the modern best practices in one example.',
+    description: 'Plan a bikeing season.',
     meta: {
       charSet: 'utf-8',
       property: {
