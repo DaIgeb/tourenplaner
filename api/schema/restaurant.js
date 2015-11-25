@@ -12,7 +12,11 @@ export default {
       readonly: true
     },
     location: {
-      type: ["integer", "#location" ]
+      oneOf: [
+        { type: "integer"},
+        { $ref: "#location"}
+      ],
+      required: true
     },
   timelines: {
       type: "array",
