@@ -59,3 +59,7 @@
 # General
 * Switch to guid-ids
 * Add backend (db, file)
+
+# Cleanup
+* Remove all examples from the original project
+
