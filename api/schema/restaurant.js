@@ -13,12 +13,12 @@ export default {
     },
     location: {
       oneOf: [
-        { type: "integer"},
-        { $ref: "#location"}
+        {type: "integer"},
+        {$ref: "#location"}
       ],
       required: true
     },
-  timelines: {
+    timelines: {
       type: "array",
       items: {
         $ref: "#timeline"

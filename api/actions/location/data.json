@@ -42,8 +42,8 @@
     "streetAddress": null,
     "city": "Alten",
     "postalCode": null,
-    "latitude": null,
-    "longitude": null
+    "latitude": 123,
+    "longitude": 123
   },
   {
     "id": 9,
@@ -52,7 +52,7 @@
     "city": "Altikon",
     "postalCode": null,
     "latitude": null,
-    "longitude": null
+    "longitude": 456
   },
   {
     "id": 10,

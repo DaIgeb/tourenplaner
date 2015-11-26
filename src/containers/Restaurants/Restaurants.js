@@ -4,13 +4,32 @@ import DocumentMeta from 'react-document-meta';
 import connectData from 'helpers/connectData';
 import config from '../../config';
 import * as restaurantActions from 'redux/modules/restaurants';
+import {isLoaded as isLocationsLoaded, load as loadLocations} from 'redux/modules/locations';
 import {isLoaded, load as loadRestaurants} from 'redux/modules/restaurants';
 import {RestaurantForm, Timeline} from 'components';
 
 function fetchDataDeferred(getState, dispatch) {
-  if (!isLoaded(getState())) {
-    return dispatch(loadRestaurants());
-  }
+  const promise = new Promise((resolve, reject) => {
+    const promises = [];
+    if (!isLocationsLoaded(getState())) {
+      promises.push(dispatch(loadLocations()));
+    }
+
+    if (!isLoaded(getState())) {
+      promises.push(dispatch(loadRestaurants()));
+    }
+
+    Promise.all(promises).then(values => resolve(values)).catch(error => reject(error));
+  });
+
+  return promise;
+}
+
+function getActions() {
+  return {
+    ...restaurantActions,
+    loadLoc: loadLocations
+  };
 }
 
 @connectData(null, fetchDataDeferred)
@@ -21,17 +40,20 @@ function fetchDataDeferred(getState, dispatch) {
     error: state.restaurants.error,
     adding: state.restaurants.adding,
     loading: state.restaurants.loading,
-    timelineDate: state.restaurants.currentDate
+    timelineDate: state.restaurants.currentDate,
+    locations: state.locations.data
   }),
-  {...restaurantActions })
+  getActions())
 export default class Restaurants extends Component {
   static propTypes = {
     restaurants: PropTypes.array,
+    locations: PropTypes.array,
     error: PropTypes.string,
     loading: PropTypes.bool,
     editing: PropTypes.object.isRequired,
     adding: PropTypes.object,
     load: PropTypes.func.isRequired,
+    loadLoc: PropTypes.func.isRequired,
     del: PropTypes.func.isRequired,
     editStart: PropTypes.func.isRequired,
     addStart: PropTypes.func.isRequired,
@@ -52,7 +74,7 @@ export default class Restaurants extends Component {
       const {del} = this.props; // eslint-disable-line no-shadow
       return () => del(String(restaurant.id));
     };
-    const {restaurants, error, editing, loading, load, adding, setTimelineDate} = this.props;
+    const {restaurants, loadLoc, locations, error, editing, loading, load, adding, setTimelineDate} = this.props;
     let refreshClassName = 'fa fa-refresh';
     if (loading) {
       refreshClassName += ' fa-spin';
@@ -63,12 +85,26 @@ export default class Restaurants extends Component {
       }
     };
 
+    const renderLocation = (restaurant) => {
+      if (locations && locations.length > 0) {
+        const location = locations.find(loc => loc.id === restaurant.location);
+        if (location) {
+          return `${location.latitude}/${location.longitude}`;
+        }
+
+        return 'Not Found';
+      }
+    };
+
     const styles = require('./Restaurants.scss');
     return (
       <div className={styles.restaurants + ' container'}>
         <h1>Restaurants
         <button className={styles.refreshBtn + ' btn btn-success'} onClick={load}>
           <i className={refreshClassName}/> {' '} Reload Restaurants
+        </button>
+        <button className={styles.refreshBtn + ' btn btn-success'} onClick={loadLoc}>
+          <i className={refreshClassName}/> {' '} Reload Locations
         </button>
         </h1>
         <DocumentMeta title={config.app.title + ': Restaurants'}/>
@@ -105,7 +141,8 @@ export default class Restaurants extends Component {
                     <br/>
                     {restaurant.zipCode} {restaurant.city}
                     <br/>
-                    {restaurant.location.lat}/{restaurant.location.long}</td>
+                    {renderLocation(restaurant)}
+                    </td>
                 <td className={styles.notesCol}>{restaurant.phone}
                     <br/>
                     {restaurant.notes}</td>
