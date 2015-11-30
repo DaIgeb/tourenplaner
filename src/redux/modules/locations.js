@@ -22,7 +22,7 @@ const initialState = {
   loaded: false,
   editing: {},
   adding: null,
-  currentDate: moment(),
+  currentDate: moment().format(),
   saveError: {}
 };
 

@@ -7,6 +7,7 @@ import * as restaurantActions from 'redux/modules/restaurants';
 import {isLoaded as isLocationsLoaded, load as loadLocations} from 'redux/modules/locations';
 import {isLoaded, load as loadRestaurants} from 'redux/modules/restaurants';
 import {RestaurantForm, Timeline} from 'components';
+import RestaurantRow from './RestaurantRow';
 
 function fetchDataDeferred(getState, dispatch) {
   const promise = new Promise((resolve, reject) => {
@@ -54,45 +55,24 @@ export default class Restaurants extends Component {
     adding: PropTypes.object,
     load: PropTypes.func.isRequired,
     loadLoc: PropTypes.func.isRequired,
-    del: PropTypes.func.isRequired,
-    editStart: PropTypes.func.isRequired,
     addStart: PropTypes.func.isRequired,
     setTimelineDate: PropTypes.func.isRequired,
     timelineDate: PropTypes.string.isRequired
   };
 
   render() {
-    const handleEdit = (restaurant) => {
-      const {editStart} = this.props; // eslint-disable-line no-shadow
-      return () => editStart(String(restaurant.id));
-    };
     const handleAdd = () => {
       const {addStart} = this.props; // eslint-disable-line no-shadow
       return () => addStart();
     };
-    const handleDelete = (restaurant) => {
-      const {del} = this.props; // eslint-disable-line no-shadow
-      return () => del(String(restaurant.id));
-    };
-    const {restaurants, loadLoc, locations, error, editing, loading, load, adding, setTimelineDate} = this.props;
+    const {restaurants, loadLoc, locations, error, editing, loading, load, adding, setTimelineDate, timelineDate} = this.props;
     let refreshClassName = 'fa fa-refresh';
     if (loading) {
       refreshClassName += ' fa-spin';
     }
     const changeTimeline = (momentDate) => {
       if (momentDate.isValid()) {
-        setTimelineDate(momentDate);
-      }
-    };
-
-    const renderLocation = (restaurant) => {
-      if (locations && locations.length > 0) {
-        const location = locations.find(loc => loc.id === restaurant.location);
-        if (location) {
-          return `${location.latitude}/${location.longitude}`;
-        }
-
-        return 'Not Found';
+        setTimelineDate(momentDate.format());
       }
     };
 
@@ -131,33 +111,7 @@ export default class Restaurants extends Component {
           </tr>
           </thead>
           <tbody>
-          {
-            restaurants.map(restaurant => editing[restaurant.id] ?
-              <RestaurantForm formKey={String(restaurant.id)} key={String(restaurant.id)} initialValues={restaurant}/> :
-              <tr key={restaurant.id}>
-                <td className={styles.idCol}>{restaurant.id}</td>
-                <td className={styles.nameCol}>{restaurant.name}</td>
-                <td className={styles.addressCol}>{restaurant.address}
-                    <br/>
-                    {restaurant.zipCode} {restaurant.city}
-                    <br/>
-                    {renderLocation(restaurant)}
-                    </td>
-                <td className={styles.notesCol}>{restaurant.phone}
-                    <br/>
-                    {restaurant.notes}</td>
-                <td className={styles.businessHours}>Öffnungszeiten</td>
-                <td className={styles.buttonCol}>
-                  <button className="btn btn-primary" onClick={handleEdit(restaurant)}>
-                    <i className="fa fa-pencil"/> Edit
-                  </button>
-                  <button className="btn btn-danger" onClick={handleDelete(restaurant)}>
-                    <i className="fa fa-trash"/> Löschen
-                  </button>
-                </td>
-              </tr>)
-          }
-
+            {restaurants.map(restaurant => (<RestaurantRow key={String(restaurant.id)} restaurant={restaurant} isEditing={editing[restaurant.id]} timeline={timelineDate} locations={locations}/>))}
             {adding ?
               <RestaurantForm formKey="new" key="new" initialValues={adding}/> :
               <tr key="new">
