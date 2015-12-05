@@ -4,6 +4,7 @@
 ~~* Show business-hours~~
 * Translate weekdays in businhess hours (see src/components/Restaurant/RestaurantBusinessHours.tsx line 58 for example)
 ~~* Filter business-hours based on the timline filter~~
+* Selecting should expand the row to show more details (e.g. business hours at a different date)
     
 ## Form
 * Add the remaining properties
