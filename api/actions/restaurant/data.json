@@ -296,7 +296,19 @@
         "notes": null,
         "from": "2015-11-18T19:26:40.900Z",
         "until": null,
-        "businessHours": []
+        "businessHours": [
+          {
+            "weekday": "Monday",
+            "from": {
+              "hour": 10,
+              "minute": 0
+            },
+            "until": {
+              "hour": 20,
+              "minute": 0
+            }
+          }
+        ]
       }
     ]
   }

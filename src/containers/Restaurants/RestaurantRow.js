@@ -72,8 +72,19 @@ export default class Restaurants extends Component {
       return true;
     };
 
+    const renderTime = (time) => {
+      const hour = ('00' + time.hour);
+      const minute = ('00' + time.minute);
+
+      return `${hour.substr(hour.length - 2)}:${minute.substr(minute.length - 2)}`;
+    };
+
     const renderBuisnessHours = (businessHour) => {
-      return [(<div>{businessHour.weekday}: {businessHour.from.hour}:{businessHour.from.minute}-{businessHour.until.hour}:{businessHour.until.minute}</div>), (<br/>)];
+      return (
+        <div className="row">
+          <div className="col-sm-4">{businessHour.weekday}</div>
+          <div className="col-sm-8">{renderTime(businessHour.from)}-{renderTime(businessHour.until)}</div>
+        </div>);
     };
 
     const renderTimeline = (restaurant) => {
