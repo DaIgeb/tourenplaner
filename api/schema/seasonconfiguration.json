@@ -1,0 +1,59 @@
+{
+  "title": "SeasonConfiguration",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "number"
+    },
+    "start": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "end": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "eveningStart": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "eveningEnd": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "vacationStart": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "vacationEnd": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "dailyStart": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "dailyEnd": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "holidays": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "date-time"
+      }
+    }
+  },
+  "required": [
+    "start",
+    "end",
+    "eveningStart",
+    "eveningEnd",
+    "vacationStart",
+    "vacationEnd",
+    "dailyStart",
+    "dailyEnd",
+    "holidays"
+  ]
+}

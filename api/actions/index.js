@@ -5,3 +5,4 @@ export logout from './logout';
 export * as widget from './widget/index';
 export * as restaurant from './restaurant/index';
 export * as location from './location/index';
+export * as season from './season/index';

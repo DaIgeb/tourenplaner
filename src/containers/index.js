@@ -7,4 +7,6 @@ export Login from './Login/Login';
 export LoginSuccess from './LoginSuccess/LoginSuccess';
 export Survey from './Survey/Survey';
 export Restaurants from './Restaurants/Restaurants';
+export Seasons from './Seasons/Seasons';
+export SeasonWizard from './SeasonWizard/SeasonWizard';
 export NotFound from './NotFound/NotFound';

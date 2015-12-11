@@ -8,6 +8,7 @@ import {reducer as form} from 'redux-form';
 import info from './info';
 import widgets from './widgets';
 import restaurants from './restaurants';
+import seasons from './seasons';
 import locations from './locations';
 
 export default combineReducers({
@@ -22,5 +23,6 @@ export default combineReducers({
   info,
   widgets,
   restaurants,
-  locations
+  locations,
+  seasons
 });

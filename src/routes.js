@@ -11,8 +11,11 @@ import {
     LoginSuccess,
     Survey,
     NotFound,
-    Restaurants
+    Restaurants,
+    Seasons,
+    SeasonWizard
   } from 'containers';
+import {SeasonWizardPage} from 'components';
 
 export default (store) => {
   const requireLogin = (nextState, replaceState, cb) => {
@@ -51,6 +54,11 @@ export default (store) => {
       <Route path="login" component={Login}/>
       <Route path="survey" component={Survey}/>
       <Route path="restaurants" component={Restaurants}/>
+      <Route path="seasons" component={Seasons}/>
+      <Route path="seasons/new" component={SeasonWizard}>
+        <Route path=":page" component={SeasonWizardPage}/>
+      </Route>
+      <Route path="seasons/:id" component={Seasons}/>
       <Route path="widgets" component={Widgets}/>
 
       { /* Catch all route */ }

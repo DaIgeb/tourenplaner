@@ -11,8 +11,8 @@ export default class Restaurants extends Component {
   static propTypes = {
     locations: PropTypes.array.isRequired,
     restaurant: PropTypes.object.isRequired,
-    timeline: PropTypes.string.isRequired,
     isEditing: PropTypes.bool.isRequired,
+    timeline: PropTypes.string.isRequired,
     del: PropTypes.func.isRequired,
     editStart: PropTypes.func.isRequired
   };
@@ -46,7 +46,7 @@ export default class Restaurants extends Component {
       }
     };
 
-    const timelineHit = (timeline, date) => {
+    const timelineMatches = (timeline, date) => {
       const fromDate = moment(timeline.from, moment.ISO_8601, true);
       const untilDate = moment(timeline.until, moment.ISO_8601, true);
 
@@ -79,9 +79,9 @@ export default class Restaurants extends Component {
       return `${hour.substr(hour.length - 2)}:${minute.substr(minute.length - 2)}`;
     };
 
-    const renderBuisnessHours = (businessHour) => {
+    const renderBuisnessHours = (businessHour, idx) => {
       return (
-        <div className="row">
+        <div className="row" key={idx}>
           <div className="col-sm-4">{businessHour.weekday}</div>
           <div className="col-sm-8">{renderTime(businessHour.from)}-{renderTime(businessHour.until)}</div>
         </div>);
@@ -91,12 +91,12 @@ export default class Restaurants extends Component {
       const {timeline} = this.props;
       const timelineDate = moment(timeline, moment.ISO_8601, true);
 
-      const openingHours = restaurant.timelines.find(time => timelineHit(time, timelineDate));
+      const openingHours = restaurant.timelines.find(time => timelineMatches(time, timelineDate));
 
       return [(<td className={styles.notesCol}>{openingHours && openingHours.phone}
         <br/>
         {openingHours && openingHours.notes}</td>),
-        (<td className={styles.businessHours}>{openingHours && openingHours.businessHours && openingHours.businessHours.map(hour => renderBuisnessHours(hour))}
+        (<td className={styles.businessHours}>{openingHours && openingHours.businessHours && openingHours.businessHours.map((hour, idx) => renderBuisnessHours(hour, idx))}
       </td>)];
     };
 

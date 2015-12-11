@@ -13,3 +13,4 @@ export SurveyForm from './SurveyForm/SurveyForm';
 export RestaurantForm from './RestaurantForm/RestaurantForm';
 export WidgetForm from './WidgetForm/WidgetForm';
 export Timeline from './Timeline/Timeline';
+export SeasonWizardPage from './SeasonWizardPage/SeasonWizardPage';
