@@ -30,7 +30,8 @@ export default class Seasons extends Component {
     load: PropTypes.func.isRequired,
     addStart: PropTypes.func.isRequired,
     del: PropTypes.func.isRequired,
-    editStart: PropTypes.func.isRequired
+    editStart: PropTypes.func.isRequired,
+    children: PropTypes.object
   };
 
   render() {
@@ -47,7 +48,7 @@ export default class Seasons extends Component {
       return () => del(String(season.id));
     };
 
-    const {seasons, error, loading, load, adding} = this.props;
+    const {seasons, error, loading, load, adding, children} = this.props;
     let refreshClassName = 'fa fa-refresh';
     if (loading) {
       refreshClassName += ' fa-spin';
@@ -105,6 +106,8 @@ export default class Seasons extends Component {
               }
           </tbody>
         </table>}
+
+        {children}
       </div>
     );
   }

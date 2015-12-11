@@ -2,6 +2,7 @@ import React, {Component, PropTypes} from 'react';
 
 export default class SeasonWizardPage extends Component {
   static propTypes = {
+    routeParams: PropTypes.object,
     page: PropTypes.number
   };
 

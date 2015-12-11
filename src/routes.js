@@ -54,9 +54,10 @@ export default (store) => {
       <Route path="login" component={Login}/>
       <Route path="survey" component={Survey}/>
       <Route path="restaurants" component={Restaurants}/>
-      <Route path="seasons" component={Seasons}/>
-      <Route path="seasons/new" component={SeasonWizard}>
-        <Route path=":page" component={SeasonWizardPage}/>
+      <Route path="seasons" component={Seasons}>
+        <Route path="new" component={SeasonWizard}>
+          <Route path=":page" component={SeasonWizardPage}/>
+        </Route>
       </Route>
       <Route path="seasons/:id" component={Seasons}/>
       <Route path="widgets" component={Widgets}/>
