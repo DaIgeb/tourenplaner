@@ -5,6 +5,7 @@ import connectData from 'helpers/connectData';
 import config from '../../config';
 import * as seasonActions from 'redux/modules/seasons';
 import {isLoaded, load as loadSeasons} from 'redux/modules/seasons';
+import {pushState} from 'redux-router';
 
 function fetchDataDeferred(getState, dispatch) {
   if (!isLoaded(getState())) {
@@ -18,9 +19,9 @@ function fetchDataDeferred(getState, dispatch) {
     seasons: state.seasons.data,
     error: state.seasons.error,
     adding: state.seasons.adding,
-    loading: state.seasons.loading,
+    loading: state.seasons.loading
   }),
-  ...seasonActions)
+  {...seasonActions, pushState})
 export default class Seasons extends Component {
   static propTypes = {
     seasons: PropTypes.array,
@@ -31,13 +32,17 @@ export default class Seasons extends Component {
     addStart: PropTypes.func.isRequired,
     del: PropTypes.func.isRequired,
     editStart: PropTypes.func.isRequired,
-    children: PropTypes.object
+    children: PropTypes.object,
+    pushState: PropTypes.func.isRequired
   };
 
   render() {
     const handleAdd = () => {
-      const {addStart} = this.props; // eslint-disable-line no-shadow
-      return () => addStart();
+      const {addStart, pushState} = this.props; // eslint-disable-line no-shadow
+      return () => {
+        addStart();
+        pushState(null, 'seasons/new');
+      };
     };
     const handleEdit = (season) => {
       const {editStart} = this.props; // eslint-disable-line no-shadow
@@ -66,7 +71,7 @@ export default class Seasons extends Component {
 
         {error && typeof(error) === 'string' &&
         <div className="alert alert-danger" role="alert">
-          <span className="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+          <span className="glyphicon glyphicon-exclamation-sign" aria-hidden="true"/>
           {' '}
           {error}
         </div>}

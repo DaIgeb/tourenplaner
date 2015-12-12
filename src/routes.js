@@ -1,5 +1,5 @@
 import React from 'react';
-import {IndexRoute, Route} from 'react-router';
+import {IndexRoute, Route, IndexRedirect} from 'react-router';
 import { isLoaded as isAuthLoaded, load as loadAuth } from 'redux/modules/auth';
 import {
     App,
@@ -15,7 +15,6 @@ import {
     Seasons,
     SeasonWizard
   } from 'containers';
-import {SeasonWizardPage} from 'components';
 
 export default (store) => {
   const requireLogin = (nextState, replaceState, cb) => {
@@ -55,8 +54,9 @@ export default (store) => {
       <Route path="survey" component={Survey}/>
       <Route path="restaurants" component={Restaurants}/>
       <Route path="seasons" component={Seasons}>
-        <Route path="new" component={SeasonWizard}>
-          <Route path=":page" component={SeasonWizardPage}/>
+        <Route path="new">
+          <IndexRedirect to="dates" />
+          <Route path=":page" component={SeasonWizard} />
         </Route>
       </Route>
       <Route path="seasons/:id" component={Seasons}/>

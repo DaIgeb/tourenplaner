@@ -3,9 +3,8 @@ import {connect} from 'react-redux';
 import DocumentMeta from 'react-document-meta';
 import config from '../../config';
 import * as seasonActions from 'redux/modules/seasons';
-import {SeasonWizardPage} from 'components';
-/* eslint no-shadow: [2, { "allow": ["pushState"]}] */
 import {pushState} from 'redux-router';
+import {SeasonWizardDatePage} from 'components';
 
 @connect(
   state => ({
@@ -24,31 +23,32 @@ export default class SeasonWizard extends Component {
     addStart: PropTypes.func.isRequired,
     del: PropTypes.func.isRequired,
     pushState: PropTypes.func.isRequired,
-    editStart: PropTypes.func.isRequired
+    editStart: PropTypes.func.isRequired,
+    routeParams: PropTypes.object.isRequired
   };
 
-  constructor(props) {
-    super(props);
-  }
-
-  routerHandler() {
-    const {pushState} = this.props;
-    // TODO read the page number from the state
-    pushState(null, `./new/2`);
-  }
-
   render() {
-    const {children, error} = this.props;
+    const {routeParams, error} = this.props;
+    const page = routeParams.page;
+    const nextPage = () => {
+      const {pushState} = this.props; // eslint-disable-line no-shadow
+      return () => pushState(null, `/seasons/new/${page}2`);
+    };
+    const close = () => {
+      const {pushState} = this.props; // eslint-disable-line no-shadow
+      return () => pushState(null, `/seasons`);
+    };
+
     const styles = require('./SeasonWizard.scss');
     return (
       <div>
-        <div className="modal-backdrop fade in"/>
+        <div className="modal-backdrop fade in" onClick={close()}></div>
         <div className={styles.seasons + ' modal fade in'} tabIndex={-1} role="dialog" style={{display: 'block'}}>
           <DocumentMeta title={config.app.title + ': Neuer Tourenplan'}/>
           <div className="modal-dialog">
             <div className="modal-content">
               <div className="modal-header">
-                <button type="button" className="close" aria-label="Close"><span aria-hidden="true">&times;</span>
+                <button type="button" className="close" aria-label="Close" onClick={close()}><span aria-hidden="true">&times;</span>
                 </button>
                 <h4 className="modal-title">Neue Saison</h4>
               </div>
@@ -56,16 +56,15 @@ export default class SeasonWizard extends Component {
 
                 {error && typeof(error) === 'string' &&
                 <div className="alert alert-danger" role="alert">
-                  <span className="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                  <span className="glyphicon glyphicon-exclamation-sign" aria-hidden="true" />
                   {' '}
                   {error}
                 </div>}
-
-                {children ? children : (<SeasonWizardPage page={0}/>)}
+                {page && page === 'dates' && (<SeasonWizardDatePage />)}
               </div>
               <div className="modal-footer">
-                <button type="button" className="btn btn-default">Close</button>
-                <button type="button" className="btn btn-primary" onClick={this.routerHandler.bind(this)}>Next</button>
+                <button type="button" className="btn btn-default" onClick={close()}>Close</button>
+                <button type="button" className="btn btn-primary" onClick={nextPage()}>Next</button>
               </div>
             </div>
           </div>
