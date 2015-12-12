@@ -45,7 +45,7 @@ export default class SeasonWizard extends Component {
         <div className="modal-backdrop fade in" onClick={close()}></div>
         <div className={styles.seasons + ' modal fade in'} tabIndex={-1} role="dialog" style={{display: 'block'}}>
           <DocumentMeta title={config.app.title + ': Neuer Tourenplan'}/>
-          <div className="modal-dialog">
+          <div className={styles.modal + ' modal-dialog'}>
             <div className="modal-content">
               <div className="modal-header">
                 <button type="button" className="close" aria-label="Close" onClick={close()}><span aria-hidden="true">&times;</span>
