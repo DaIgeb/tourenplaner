@@ -177,7 +177,8 @@ export default function reducer(state = initialState, action = {}) {
         adding: {
           ...state.adding,
           ...action.data,
-          dates: dates
+          dates: dates,
+          specialDates: []
         }
       };
     }

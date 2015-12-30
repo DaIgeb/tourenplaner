@@ -129,7 +129,7 @@ export default class SeasonConfigurationDatesForm extends Component {
         <div className={(date.type.error && date.type.touched ? ' has-error' : '')}>
           {renderOption(date.type, 'Type', tourTypeOptions, 'col-sm-1', 'col-sm-3')}
         </div>
-        <div className={(date.description.error && description.type.touched ? ' has-error' : '')}>
+        <div className={(date.description.error && date.description.type.touched ? ' has-error' : '')}>
           <label htmlFor={date.description.name} className="col-sm-2">Bezeichnung</label>
           {renderField(date.description, null, 'text', 'col-sm-3 ' + styles.inputGroup)}
         </div>
