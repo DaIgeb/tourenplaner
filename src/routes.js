@@ -1,5 +1,5 @@
 import React from 'react';
-import {IndexRoute, Route, IndexRedirect} from 'react-router';
+import {IndexRoute, Route} from 'react-router';
 import { isLoaded as isAuthLoaded, load as loadAuth } from 'redux/modules/auth';
 import {
     App,
@@ -12,8 +12,7 @@ import {
     Survey,
     NotFound,
     Restaurants,
-    Seasons,
-    SeasonWizard
+    Seasons
   } from 'containers';
 
 export default (store) => {
@@ -53,11 +52,8 @@ export default (store) => {
       <Route path="login" component={Login}/>
       <Route path="survey" component={Survey}/>
       <Route path="restaurants" component={Restaurants}/>
-      <Route path="seasons" component={Seasons}>
-        <Route path="new">
-          <IndexRedirect to="dates" />
-          <Route path=":page" component={SeasonWizard} />
-        </Route>
+      <Route path="seasons">
+        <IndexRoute component={Seasons}/>
       </Route>
       <Route path="seasons/:id" component={Seasons}/>
       <Route path="widgets" component={Widgets}/>
