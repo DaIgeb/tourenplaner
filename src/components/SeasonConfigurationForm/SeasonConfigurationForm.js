@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 import {reduxForm} from 'redux-form';
 import seasonConfigurationFormValidation from './seasonConfigurationFormValidation';
 import * as seasonActions from 'redux/modules/seasons';
+import {DateInput} from 'components';
 
 function asyncValidate(data) {
   // TODO: figure out a way to move this to the server. need an instance of ApiClient
@@ -79,28 +80,35 @@ export default class SeasonConfigurationForm extends Component {
       } = this.props;
 
     const styles = require('./SeasonConfigurationForm.scss');
-    const renderField = (field, showAsyncValidating, type, classNames, attributes = null) =>
-      <div className={classNames}>
-        {showAsyncValidating && asyncValidating && <i className={'fa fa-cog fa-spin ' + styles.cog}/>}
-        <input type={type} className="form-control" id={field.name} {...field} {...attributes}/>
-        {field.error && field.touched && <div className="text-danger">{field.error}</div>}
-      </div>;
     const renderInput = (field, label, showAsyncValidating, type = 'text', attributes = null) =>
       <div className={'form-group' + (field.error && field.touched ? ' has-error' : '')}>
         <label htmlFor={field.name} className="col-sm-2">{label}</label>
-        {renderField(field, showAsyncValidating, type, 'col-sm-9 ' + styles.inputGroup, attributes)}
+        <div className={'col-sm-9 ' + styles.inputGroup}>
+          {showAsyncValidating && asyncValidating && <i className={'fa fa-cog fa-spin ' + styles.cog}/>}
+          <input type={type} className="form-control" id={field.name} {...field} {...attributes}/>
+          {field.error && field.touched && <div className="text-danger">{field.error}</div>}
+        </div>
+      </div>;
+    const renderDate = (field, label, showAsyncValidating, type = 'text', attributes = null) =>
+      <div className={'form-group' + (field.error && field.touched ? ' has-error' : '')}>
+        <label htmlFor={field.name} className="col-sm-2">{label}</label>
+        <div className={'col-sm-9 ' + styles.inputGroup}>
+          {showAsyncValidating && asyncValidating && <i className={'fa fa-cog fa-spin ' + styles.cog}/>}
+          <DateInput className="form-control" id={field.name} {...field} {...attributes} displayFormat="L"/>
+          {field.error && field.touched && <div className="text-danger">{field.error}</div>}
+        </div>
       </div>;
 
     return (
       <div>
         <form className="form-horizontal" onSubmit={handleSubmit}>
           {renderInput(year, 'Jahr', null, 'number', {readOnly: true})}
-          {renderInput(seasonStart, 'Erste Tour')}
-          {renderInput(seasonEnd, 'Letzte Tour')}
-          {renderInput(holidayStart, 'Ferientour Start')}
-          {renderInput(holidayEnd, 'Ferientour Ende')}
-          {renderInput(eveningStart, 'Abendtour Start')}
-          {renderInput(eveningEnd, 'Abendtour Ende')}
+          {renderDate(seasonStart, 'Erste Tour')}
+          {renderDate(seasonEnd, 'Letzte Tour')}
+          {renderDate(holidayStart, 'Ferientour Start')}
+          {renderDate(holidayEnd, 'Ferientour Ende')}
+          {renderDate(eveningStart, 'Abendtour Start')}
+          {renderDate(eveningEnd, 'Abendtour Ende')}
           <div className="form-group">
             <div className="col-sm-offset-2 col-sm-10">
               <button className="btn btn-success"

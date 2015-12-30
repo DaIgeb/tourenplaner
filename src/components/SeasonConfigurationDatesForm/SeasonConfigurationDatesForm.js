@@ -4,7 +4,7 @@ import {reduxForm} from 'redux-form';
 import seasonConfigurationFormValidation from './seasonConfigurationDatesFormValidation';
 import * as seasonActions from 'redux/modules/seasons';
 import {TourType, SpecialDateAction} from 'redux/modules/seasons';
-import {ObjectSelect} from 'components';
+import {ObjectSelect, DateInput} from 'components';
 
 function asyncValidate(data) {
   // TODO: figure out a way to move this to the server. need an instance of ApiClient
@@ -112,6 +112,15 @@ export default class SeasonConfigurationDatesForm extends Component {
         <ObjectSelect {...field} options={options} />
       </div>
     </div>;
+    const renderDate = (field, label, showAsyncValidating, type = 'text', attributes = null) =>
+      <div className={'form-group' + (field.error && field.touched ? ' has-error' : '')}>
+        <label htmlFor={field.name} className="col-sm-2">{label}</label>
+        <div className={'col-sm-9 ' + styles.inputGroup}>
+          {showAsyncValidating && asyncValidating && <i className={'fa fa-cog fa-spin ' + styles.cog}/>}
+          <DateInput className="form-control" id={field.name} {...field} {...attributes} displayFormat="L"/>
+          {field.error && field.touched && <div className="text-danger">{field.error}</div>}
+        </div>
+      </div>;
     const tourTypeOptions = [
       TourType.none,
       TourType.morning,
@@ -124,7 +133,7 @@ export default class SeasonConfigurationDatesForm extends Component {
       <div>
         <div className={(field.error && field.touched ? ' has-error' : '')}>
           <label htmlFor={field.name} className="col-sm-1">{label}</label>
-          {renderField(field, showAsyncValidating, type, 'col-sm-2 ' + styles.inputGroup, attributes)}
+          {renderDate(field, showAsyncValidating, type, 'col-sm-2 ' + styles.inputGroup, attributes)}
         </div>
         <div className={(date.type.error && date.type.touched ? ' has-error' : '')}>
           {renderOption(date.type, 'Type', tourTypeOptions, 'col-sm-1', 'col-sm-3')}
@@ -134,14 +143,13 @@ export default class SeasonConfigurationDatesForm extends Component {
           {renderField(date.description, null, 'text', 'col-sm-3 ' + styles.inputGroup)}
         </div>
       </div>;
-    const renderDate = (date) => (renderDateInput(date, date.date, 'Datum'));
 
     return (
       <div>
         <form className="form-horizontal" onSubmit={handleSubmit}>
           {renderInput(year, 'Jahr', null, 'number', {readOnly: true})}
           <div style={{maxHeight: '500px', overflowY: 'scroll'}}>
-            {dates.map((date, index) => <div key={index} className="col-xs-11">{renderDate(date)}</div>)}
+            {dates.map((date, index) => <div key={index} className="col-xs-11">{renderDateInput(date, date.date, 'Datum')}</div>)}
           </div>
           <div style={{textAlign: 'center', margin: '10px'}}>
             <button className="btn btn-success" onClick={event => {
@@ -153,7 +161,7 @@ export default class SeasonConfigurationDatesForm extends Component {
           {(!specialDates || !specialDates.length) && <div className="form-group"><div className="col-xs-12">Keine Ausnahmen</div></div>}
           {specialDates && specialDates.map((child, index) => <div key={index}>
             <div className="form-group">
-              {renderField(child.date, null, 'text', 'col-xs-3', {placeholder: 'Datum'})}
+              {renderDate(child.date, null, 'text', 'col-xs-3', {placeholder: 'Datum'})}
               {renderField(child.name, null, 'text', 'col-xs-3', {placeholder: 'Bezeichnung'})}
               <div className="col-xs-2">
                 <button className="btn btn-success" onClick={event => {

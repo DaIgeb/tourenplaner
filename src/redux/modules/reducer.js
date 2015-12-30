@@ -10,15 +10,13 @@ import widgets from './widgets';
 import restaurants from './restaurants';
 import seasons from './seasons';
 import locations from './locations';
-import {formNormalizer as seasonConfigurationForm} from './seasonConfiguration';
-import seasonConfiguration from './seasonConfiguration';
+import configurations from './seasonConfigurations';
 
 export default combineReducers({
   router: routerStateReducer,
   auth,
   form,
-  seasonConfiguration,
-  seasonConfigurationForm: seasonConfigurationForm,
+  configurations,
   multireducer: multireducer({
     counter1: counter,
     counter2: counter,

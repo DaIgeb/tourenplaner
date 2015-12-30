@@ -79,6 +79,9 @@ export default class App extends Component {
               <LinkContainer to="/seasons">
                 <NavItem eventKey={8}>Tourenpläne</NavItem>
               </LinkContainer>
+              <LinkContainer to="/configurations">
+                <NavItem eventKey={9}>Saison-Konfigurationen</NavItem>
+              </LinkContainer>
               <LinkContainer to="/widgets">
                 <NavItem eventKey={2}>Widgets</NavItem>
               </LinkContainer>

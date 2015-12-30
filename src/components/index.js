@@ -19,3 +19,4 @@ export SeasonConfigurationDatesForm from './SeasonConfigurationDatesForm/SeasonC
 export SeasonDates from './SeasonDates/SeasonDates';
 export Dialog from './Dialog/Dialog';
 export ObjectSelect from './ObjectSelect/ObjectSelect';
+export DateInput from './DateInput/DateInput';

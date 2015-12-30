@@ -1,4 +1,4 @@
-import {moment, defaultTimeZone} from 'utils/moment';
+import {moment} from 'utils/moment';
 
 const LOAD = 'tourenplaner/seasons/LOAD';
 const LOAD_SUCCESS = 'tourenplaner/seasons/LOAD_SUCCESS';
@@ -9,9 +9,6 @@ const ADD_START = 'tourenplaner/seasons/ADD_START';
 const ADD_SET_PAGE = 'tourenplaner/seasons/ADD_SET_PAGE';
 const ADD_SET_YEAR = 'tourenplaner/seasons/ADD_SET_YEAR';
 const ADD_SET_DATES = 'tourenplaner/seasons/ADD_SET_DATES';
-const ADD_SUBMIT = 'tourenplaner/seasons/ADD_SUBMIT';
-const ADD_FAIL = 'tourenplaner/seasons/ADD_FAIL';
-const ADD_SUCCESS = 'tourenplaner/seasons/ADD_SUCCESS';
 const ADD_STOP = 'tourenplaner/seasons/ADD_STOP';
 const SAVE = 'tourenplaner/seasons/SAVE';
 const SAVE_SUCCESS = 'tourenplaner/seasons/SAVE_SUCCESS';
@@ -107,12 +104,12 @@ export default function reducer(state = initialState, action = {}) {
     case ADD_SET_YEAR:
       const year = action.year;
       if (year && year.length === 4) {
-        const marchFirst = moment.tz([year, 2, 1], defaultTimeZone);
+        const marchFirst = moment([year, 2, 1]);
         const firstSaturdayInMarch = marchFirst.day(marchFirst.day() === 0 ? -1 : 6);
 
-        const octoberLast = moment.tz([year, 9, 30], defaultTimeZone);
+        const octoberLast = moment([year, 9, 30]);
         const lasFridayInOctober = octoberLast.day(octoberLast.day() === 5 ? 5 : -2);
-        let dstStartDate = moment.tz([year, 4, 1], defaultTimeZone);
+        let dstStartDate = moment([year, 4, 1]);
         while (!dstStartDate.isDST()) {
           dstStartDate = dstStartDate.add(7, 'd');
         }
@@ -121,10 +118,10 @@ export default function reducer(state = initialState, action = {}) {
           adding: {
             ...state.adding,
             year: year,
-            seasonStart: firstSaturdayInMarch.format('L'),
-            seasonEnd: lasFridayInOctober.format('L'),
-            eveningStart: dstStartDate.day(dstStartDate.day() >= 2 ? -5 : 2).format('L'),
-            eveningEnd: moment.tz([year, 8, 13], defaultTimeZone).day(4).format('L')
+            seasonStart: firstSaturdayInMarch.toISOString(),
+            seasonEnd: lasFridayInOctober.toISOString(),
+            eveningStart: dstStartDate.day(dstStartDate.day() >= 2 ? -5 : 2).toISOString(),
+            eveningEnd: moment([year, 8, 13]).day(4).toISOString()
           }
         };
       }
@@ -137,13 +134,13 @@ export default function reducer(state = initialState, action = {}) {
         }
       };
     case ADD_SET_DATES: {
-      const date = moment.tz(action.data.seasonStart, 'L', defaultTimeZone);
-      const end = moment.tz(action.data.seasonEnd, 'L', defaultTimeZone);
-      const eveningStart = moment.tz(action.data.eveningStart, 'L', defaultTimeZone).subtract(1, 'd');
-      const eveningEnd = moment.tz(action.data.eveningEnd, 'L', defaultTimeZone).add(1, 'd');
+      const date = moment(action.data.seasonStart, moment.ISO_8601);
+      const end = moment(action.data.seasonEnd, moment.ISO_8601);
+      const eveningStart = moment(action.data.eveningStart, moment.ISO_8601).subtract(1, 'd');
+      const eveningEnd = moment(action.data.eveningEnd, moment.ISO_8601).add(1, 'd');
       const dates = [
         {
-          date: date.format('L'),
+          date: date.toISOString(),
           type: TourType.afternoon
         }];
       while (date.isBefore(end, 'day')) {
@@ -151,13 +148,13 @@ export default function reducer(state = initialState, action = {}) {
         switch (date.day()) {
           case 0:
             dates.push({
-              date: date.format('L'),
+              date: date.toISOString(),
               type: TourType.morning
             });
             break;
           case 6:
             dates.push({
-              date: date.format('L'),
+              date: date.toISOString(),
               type: TourType.afternoon
             });
             break;
@@ -165,7 +162,7 @@ export default function reducer(state = initialState, action = {}) {
           case 4:
             if (date.isBetween(eveningStart, eveningEnd, 'day')) {
               dates.push({
-                date: date.format('L'),
+                date: date.toISOString(),
                 type: TourType.evening
               });
               break;
@@ -185,16 +182,6 @@ export default function reducer(state = initialState, action = {}) {
         }
       };
     }
-    case ADD_SUBMIT:
-    case ADD_SUCCESS:
-    case ADD_FAIL:
-      return typeof action.error === 'string' ? {
-        ...state,
-        saveError: {
-          ...state.saveError,
-          [action.id]: action.error
-        }
-      } : state;
     case ADD_STOP:
       return {
         ...state,
@@ -258,22 +245,35 @@ export default function reducer(state = initialState, action = {}) {
       return {
         ...state,
         data: beforeAdd,
-        editing: {
-          ...state.editing,
-          [action.id]: false
-        },
-        adding: false,
-        saveError: {
-          ...state.saveError,
-          [action.id]: null
-        }
+        adding: null
       };
     case NEW_FAIL:
-      return typeof action.error === 'string' ? {
+      const errorType = typeof action.error;
+      switch (errorType) {
+        case 'string':
+          return {
+            ...state,
+            adding: {
+              ...state.adding,
+              error: action.error
+            }
+          };
+        case 'object':
+          return {
+            ...state,
+            adding: {
+              ...state.adding,
+              error: JSON.stringify(action.error.map(err => {return {field: err.field, message: err.message};}), null, 2)
+            }
+          };
+        default:
+          return state;
+      }
+      return errorType === 'string' ? {
         ...state,
-        saveError: {
-          ...state.saveError,
-          [action.id]: action.error
+        adding: {
+          ...state.adding,
+          error: action.error
         }
       } : state;
     default:
@@ -282,13 +282,13 @@ export default function reducer(state = initialState, action = {}) {
 }
 
 export function isLoaded(globalState) {
-  return globalState.seasons && globalState.seasons.loaded;
+  return globalState.configurations && globalState.configurations.loaded;
 }
 
 export function load() {
   return {
     types: [LOAD, LOAD_SUCCESS, LOAD_FAIL],
-    promise: (client) => client.get('/season/load') // params not used, just shown as demonstration
+    promise: (client) => client.get('/configuration/load') // params not used, just shown as demonstration
   };
 }
 
@@ -296,17 +296,8 @@ export function save(season) {
   return {
     types: [SAVE, SAVE_SUCCESS, SAVE_FAIL],
     id: season.id,
-    promise: (client) => client.post('/season/update', {
+    promise: (client) => client.post('/configuration/update', {
       data: season
-    })
-  };
-}
-
-export function addConfiguration(configuration) {
-  return {
-    types: [SAVE, SAVE_SUCCESS, SAVE_FAIL],
-    promise: (client) => client.post('/season/addconfiguration', {
-      data: configuration
     })
   };
 }
@@ -315,17 +306,17 @@ export function del(seasonId) {
   return {
     types: [DELETE, DELETE_SUCCESS, DELETE_FAIL],
     id: seasonId,
-    promise: (client) => client.del('/season/del', {
+    promise: (client) => client.del('/configuration/del', {
       data: seasonId
     })
   };
 }
 
-export function add(season) {
+export function add(configuration) {
   return {
     types: [NEW, NEW_SUCCESS, NEW_FAIL],
-    promise: (client) => client.put('/season/new', {
-      data: season
+    promise: (client) => client.put('/configuration/add', {
+      data: configuration
     })
   };
 }

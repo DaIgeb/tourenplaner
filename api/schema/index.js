@@ -9,5 +9,5 @@ export const schema = {
   restaurant: restaurant,
   timeline: timeline,
   season: season,
-  seasonconfiguration: seasonconfiguration
+  configuration: seasonconfiguration
 };

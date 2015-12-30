@@ -5,11 +5,11 @@
     "id": {
       "type": "number"
     },
-    "start": {
+    "seasonStart": {
       "type": "string",
       "format": "date-time"
     },
-    "end": {
+    "seasonEnd": {
       "type": "string",
       "format": "date-time"
     },
@@ -21,23 +21,41 @@
       "type": "string",
       "format": "date-time"
     },
-    "vacationStart": {
+    "holidayStart": {
       "type": "string",
       "format": "date-time"
     },
-    "vacationEnd": {
+    "holidayEnd": {
       "type": "string",
       "format": "date-time"
     },
-    "dailyStart": {
-      "type": "string",
-      "format": "date-time"
+    "dates": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "date":  {
+            "type": "string",
+            "format": "date-time"
+          },
+          "type":  {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "number"
+              },
+              "label": {
+                "type": "string"
+              }
+            }
+          },
+          "description":  {
+            "type": "string"
+          }
+        }
+      }
     },
-    "dailyEnd": {
-      "type": "string",
-      "format": "date-time"
-    },
-    "holidays": {
+    "specialDates": {
       "type": "array",
       "items": {
         "type": "string",
@@ -46,14 +64,11 @@
     }
   },
   "required": [
-    "start",
-    "end",
+    "seasonStart",
+    "seasonEnd",
     "eveningStart",
     "eveningEnd",
-    "vacationStart",
-    "vacationEnd",
-    "dailyStart",
-    "dailyEnd",
-    "holidays"
+    "dates",
+    "specialDates"
   ]
 }
