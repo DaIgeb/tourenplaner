@@ -99,7 +99,9 @@ export default class Seasons extends Component {
             return () => addSetPage(PageEnum.year);
           };
           const handleVerifyDates = (data) => {
-            window.alert(JSON.stringify(data, null, 2));
+            if (data) {
+              console.log(data);
+            }
             handleStop()();
           };
 

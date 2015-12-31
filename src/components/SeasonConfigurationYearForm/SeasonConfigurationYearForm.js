@@ -4,28 +4,6 @@ import {reduxForm} from 'redux-form';
 import seasonConfigurationFormValidation from './seasonConfigurationYearFormValidation';
 import * as seasonActions from 'redux/modules/seasons';
 
-function asyncValidate(data) {
-  // TODO: figure out a way to move this to the server. need an instance of ApiClient
-  if (!data.email) {
-    return Promise.resolve({});
-  }
-  return new Promise((resolve, reject) => {
-    setTimeout(() => {
-      const errors = {};
-      let valid = true;
-      if (~['bobby@gmail.com', 'timmy@microsoft.com'].indexOf(data.email)) {
-        errors.email = 'Email address already used';
-        valid = false;
-      }
-      if (valid) {
-        resolve();
-      } else {
-        reject(errors);
-      }
-    }, 1000);
-  });
-}
-
 @connect(
   state => ({
     saveError: state.seasons.saveError
@@ -37,13 +15,10 @@ function asyncValidate(data) {
   fields: [
     'year'
   ],
-  validate: seasonConfigurationFormValidation,
-  asyncValidate,
-  asyncBlurFields: ['email']
+  validate: seasonConfigurationFormValidation
 })
 export default class SeasonConfigurationYearForm extends Component {
   static propTypes = {
-    asyncValidating: PropTypes.bool.isRequired,
     fields: PropTypes.object.isRequired,
     handleSubmit: PropTypes.func.isRequired,
     resetForm: PropTypes.func.isRequired,
@@ -59,7 +34,6 @@ export default class SeasonConfigurationYearForm extends Component {
 
   render() {
     const {
-      asyncValidating,
       fields: {year},
       handleSubmit,
       resetForm,
@@ -69,28 +43,19 @@ export default class SeasonConfigurationYearForm extends Component {
       } = this.props;
 
     const styles = require('./SeasonConfigurationYearForm.scss');
-    const renderField = (field, showAsyncValidating, type, classNames, attributes = null) =>
-      <div className={classNames}>
-        {showAsyncValidating && asyncValidating && <i className={'fa fa-cog fa-spin ' + styles.cog}/>}
-        <input type={type} className="form-control" id={field.name} {...field} {...attributes}/>
-        {field.error && field.touched && <div className="text-danger">{field.error}</div>}
-        <div className={styles.flags}>
-          {field.dirty && <span className={styles.dirty} title="Dirty">D</span>}
-          {field.active && <span className={styles.active} title="Active">A</span>}
-          {field.visited && <span className={styles.visited} title="Visited">V</span>}
-          {field.touched && <span className={styles.touched} title="Touched">T</span>}
-        </div>
-      </div>;
-    const renderInput = (field, label, showAsyncValidating, type = 'text', attributes = null) =>
+    const renderInput = (field, label) =>
       <div className={'form-group' + (field.error && field.touched ? ' has-error' : '')}>
         <label htmlFor={field.name} className="col-sm-2">{label}</label>
-        {renderField(field, showAsyncValidating, type, 'col-sm-9 ' + styles.inputGroup, attributes)}
+        <div className={'col-sm-9 ' + styles.inputGroup}>
+          <input type="number" className="form-control" id={field.name} {...field} />
+          {field.error && field.touched && <div className="text-danger">{field.error}</div>}
+        </div>;
       </div>;
 
     return (
       <div>
         <form className="form-horizontal" onSubmit={handleSubmit}>
-          {renderInput(year, 'Jahr', null, 'number')}
+          {renderInput(year, 'Jahr')}
           <div className="form-group">
             <div className="col-sm-offset-2 col-sm-10">
               <button className="btn btn-success"

@@ -26,7 +26,7 @@ function fetchDataDeferred(getState, dispatch) {
     loading: state.configurations.loading
   }),
   seasonConfigurationActions)
-export default class SeasonConfigurations extends Component {
+export default class Configurations extends Component {
   static propTypes = {
     configurations: PropTypes.array,
     error: PropTypes.string,
@@ -68,7 +68,7 @@ export default class SeasonConfigurations extends Component {
       refreshClassName += ' fa-spin';
     }
 
-    const styles = require('./SeasonConfigurations.scss');
+    const styles = require('./Configurations.scss');
     if (adding) {
       const {error: addingError} = adding;
       let wizard = null;
@@ -101,7 +101,6 @@ export default class SeasonConfigurations extends Component {
             return () => addSetPage(PageEnum.year);
           };
           const handleVerifyDates = (data) => {
-            window.alert(JSON.stringify(data, null, 2));
             const {add} = this.props; // eslint-disable-line no-shadow
             add(data);
           };

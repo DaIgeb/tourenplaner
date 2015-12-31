@@ -16,7 +16,6 @@ export Timeline from './Timeline/Timeline';
 export SeasonConfigurationForm from './SeasonConfigurationForm/SeasonConfigurationForm';
 export SeasonConfigurationYearForm from './SeasonConfigurationYearForm/SeasonConfigurationYearForm';
 export SeasonConfigurationDatesForm from './SeasonConfigurationDatesForm/SeasonConfigurationDatesForm';
-export SeasonDates from './SeasonDates/SeasonDates';
 export Dialog from './Dialog/Dialog';
 export ObjectSelect from './ObjectSelect/ObjectSelect';
 export DateInput from './DateInput/DateInput';

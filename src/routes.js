@@ -12,7 +12,7 @@ import {
     Survey,
     NotFound,
     Restaurants,
-    SeasonConfigurations,
+    Configurations,
     Seasons
   } from 'containers';
 
@@ -57,7 +57,7 @@ export default (store) => {
         <IndexRoute component={Seasons}/>
         <Route path="seasons/:id" component={Seasons}/>
       </Route>
-      <Route path="configurations" component={SeasonConfigurations}/>
+      <Route path="configurations" component={Configurations}/>
       <Route path="widgets" component={Widgets}/>
 
       { /* Catch all route */ }

@@ -5,28 +5,6 @@ import seasonConfigurationFormValidation from './seasonConfigurationFormValidati
 import * as seasonActions from 'redux/modules/seasons';
 import {DateInput} from 'components';
 
-function asyncValidate(data) {
-  // TODO: figure out a way to move this to the server. need an instance of ApiClient
-  if (!data.email) {
-    return Promise.resolve({});
-  }
-  return new Promise((resolve, reject) => {
-    setTimeout(() => {
-      const errors = {};
-      let valid = true;
-      if (~['bobby@gmail.com', 'timmy@microsoft.com'].indexOf(data.email)) {
-        errors.email = 'Email address already used';
-        valid = false;
-      }
-      if (valid) {
-        resolve();
-      } else {
-        reject(errors);
-      }
-    }, 1000);
-  });
-}
-
 @connect(
   state => ({
     saveError: state.seasons.saveError
@@ -44,14 +22,11 @@ function asyncValidate(data) {
     'eveningStart',
     'eveningEnd'
   ],
-  validate: seasonConfigurationFormValidation,
-  asyncValidate,
-  asyncBlurFields: ['email']
+  validate: seasonConfigurationFormValidation
 })
 export default class SeasonConfigurationForm extends Component {
   static propTypes = {
     active: PropTypes.string,
-    asyncValidating: PropTypes.bool.isRequired,
     fields: PropTypes.object.isRequired,
     dirty: PropTypes.bool.isRequired,
     handleSubmit: PropTypes.func.isRequired,
@@ -69,7 +44,6 @@ export default class SeasonConfigurationForm extends Component {
 
   render() {
     const {
-      asyncValidating,
       fields: {year, seasonStart, seasonEnd, holidayStart, holidayEnd, eveningStart, eveningEnd},
       handleSubmit,
       resetForm,
@@ -84,7 +58,6 @@ export default class SeasonConfigurationForm extends Component {
       <div className={'form-group' + (field.error && field.touched ? ' has-error' : '')}>
         <label htmlFor={field.name} className="col-sm-2">{label}</label>
         <div className={'col-sm-9 ' + styles.inputGroup}>
-          {showAsyncValidating && asyncValidating && <i className={'fa fa-cog fa-spin ' + styles.cog}/>}
           <input type={type} className="form-control" id={field.name} {...field} {...attributes}/>
           {field.error && field.touched && <div className="text-danger">{field.error}</div>}
         </div>
@@ -93,7 +66,6 @@ export default class SeasonConfigurationForm extends Component {
       <div className={'form-group' + (field.error && field.touched ? ' has-error' : '')}>
         <label htmlFor={field.name} className="col-sm-2">{label}</label>
         <div className={'col-sm-9 ' + styles.inputGroup}>
-          {showAsyncValidating && asyncValidating && <i className={'fa fa-cog fa-spin ' + styles.cog}/>}
           <DateInput className="form-control" id={field.name} {...field} {...attributes} displayFormat="L"/>
           {field.error && field.touched && <div className="text-danger">{field.error}</div>}
         </div>
