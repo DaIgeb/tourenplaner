@@ -22,6 +22,8 @@ import {ObjectSelect, DateInput} from 'components';
     'holidayEnd',
     'eveningStart',
     'eveningEnd',
+    'events[].from',
+    'events[].to',
     'dates[].date',
     'dates[].type',
     'dates[].description',
@@ -85,9 +87,9 @@ export default class SeasonConfigurationDatesForm extends Component {
       </div>
     </div>;
     const renderDate = (field, label, showAsyncValidating, type = 'text', attributes = null) =>
-      <div className={'form-group' + (field.error && field.touched ? ' has-error' : '')}>
-        <label htmlFor={field.name} className="col-sm-2">{label}</label>
-        <div className={'col-sm-9 ' + styles.inputGroup}>
+      <div className={(field.error && field.touched ? ' has-error' : '')}>
+        <label htmlFor={field.name} className="col-sm-1">{label}</label>
+        <div className={'col-sm-2 ' + styles.inputGroup}>
           <DateInput className="form-control" id={field.name} {...field} {...attributes} displayFormat="L"/>
           {field.error && field.touched && <div className="text-danger">{field.error}</div>}
         </div>
@@ -102,10 +104,7 @@ export default class SeasonConfigurationDatesForm extends Component {
 
     const renderDateInput = (date, field, label, showAsyncValidating, type = 'text', attributes = null) =>
       <div>
-        <div className={(field.error && field.touched ? ' has-error' : '')}>
-          <label htmlFor={field.name} className="col-sm-1">{label}</label>
-          {renderDate(field, showAsyncValidating, type, 'col-sm-2 ' + styles.inputGroup, attributes)}
-        </div>
+        {renderDate(field, 'Datum', showAsyncValidating, type, 'col-sm-2 ' + styles.inputGroup, attributes)}
         <div className={(date.type.error && date.type.touched ? ' has-error' : '')}>
           {renderOption(date.type, 'Type', tourTypeOptions, 'col-sm-1', 'col-sm-3')}
         </div>

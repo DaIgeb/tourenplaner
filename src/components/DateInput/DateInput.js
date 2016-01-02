@@ -16,13 +16,24 @@ export default class DateInput extends Component {
 
   render() {
     const {displayFormat, onBlur, onChange, value, ...rest} = this.props;
-    const parse = event => moment(event.target.value, displayFormat).toISOString();
+    const parse = event => {
+      const date = moment(event.target.value, displayFormat, true);
+      if (date.isValid()) {
+        return date.toISOString();
+      }
+
+      return event.target.value;
+    };
     const toString = dateValue => {
       if (!dateValue) {
         return null;
       }
-      const parsedDate = moment(dateValue, moment.ISO_8601);
-      return parsedDate.format(displayFormat);
+      const parsedDate = moment(dateValue, moment.ISO_8601, true);
+      if (parsedDate.isValid()) {
+        return parsedDate.format(displayFormat);
+      }
+
+      return dateValue;
     };
     return (
       <input

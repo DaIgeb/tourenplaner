@@ -1,13 +1,10 @@
-export function getConfigurations(req) {
-  let configurations = req.session.configurations;
-  if (!configurations) {
-    import intialData from './data';
+import DataHandler from 'utils/DataHandler';
+import {validate} from './validator';
 
-    configurations = intialData;
-    req.session.configurations = configurations;
-  }
+export const dataHandler = new DataHandler('./api/actions/configuration/data.json', validate);
 
-  return configurations;
+export function getConfigurations() {
+  return dataHandler.getData();
 }
 
 export default function load(req) {

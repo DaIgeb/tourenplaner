@@ -90,7 +90,10 @@ export default function reducer(state = initialState, action = {}) {
       return {
         ...state,
         adding: {
-          page: PageEnum.year
+          page: PageEnum.year,
+          events: [],
+          specialDates: [],
+          dates: []
         }
       };
     case ADD_SET_PAGE:

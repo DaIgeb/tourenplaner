@@ -114,12 +114,8 @@ export default class Configurations extends Component {
 
       return (
         <div className={styles.seasons + ' container'}>
-          <h1>Seasons
-            <button className={styles.refreshBtn + ' btn btn-success'} onClick={load}>
-              <i className={refreshClassName}/> {' '} Reload Seasons
-            </button>
-          </h1>
-          <DocumentMeta title={config.app.title + ': Tourenpläne'}/>
+          <h1>Konfiguration</h1>
+          <DocumentMeta title={config.app.title + ': Konfiguration'}/>
 
           {error && typeof(error) === 'string' &&
           <div className="alert alert-danger" role="alert">
@@ -141,12 +137,12 @@ export default class Configurations extends Component {
 
     return (
       <div className={styles.seasons + ' container'}>
-        <h1>Seasons
+        <h1>Konfigurationen
         <button className={styles.refreshBtn + ' btn btn-success'} onClick={load}>
-          <i className={refreshClassName}/> {' '} Reload Seasons
+          <i className={refreshClassName}/> {' '} Reload Konfigurationen
         </button>
         </h1>
-        <DocumentMeta title={config.app.title + ': Tourenpläne'}/>
+        <DocumentMeta title={config.app.title + ': Konfigurationen'}/>
 
         {error && typeof(error) === 'string' &&
         <div className="alert alert-danger" role="alert">

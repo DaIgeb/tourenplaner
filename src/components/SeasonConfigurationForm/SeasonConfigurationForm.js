@@ -17,10 +17,19 @@ import {DateInput} from 'components';
     'year',
     'seasonStart',
     'seasonEnd',
-    'holidayStart',
-    'holidayEnd',
     'eveningStart',
-    'eveningEnd'
+    'eveningEnd',
+    'events[].from',
+    'events[].to',
+    'events[].name',
+    'dates[].date',
+    'dates[].type',
+    'dates[].description',
+    'specialDates[].date',
+    'specialDates[].name',
+    'specialDates[].action',
+    'specialDates[].tours[].name',
+    'specialDates[].tours[].type'
   ],
   validate: seasonConfigurationFormValidation
 })
@@ -44,7 +53,7 @@ export default class SeasonConfigurationForm extends Component {
 
   render() {
     const {
-      fields: {year, seasonStart, seasonEnd, holidayStart, holidayEnd, eveningStart, eveningEnd},
+      fields: {year, seasonStart, seasonEnd, eveningStart, events, eveningEnd},
       handleSubmit,
       resetForm,
       invalid,
@@ -75,12 +84,32 @@ export default class SeasonConfigurationForm extends Component {
       <div>
         <form className="form-horizontal" onSubmit={handleSubmit}>
           {renderInput(year, 'Jahr', null, 'number', {readOnly: true})}
-          {renderDate(seasonStart, 'Erste Tour')}
+          {renderDate(seasonStart, 'Erste Tour', 'text', {autoFocus: true})}
           {renderDate(seasonEnd, 'Letzte Tour')}
-          {renderDate(holidayStart, 'Ferientour Start')}
-          {renderDate(holidayEnd, 'Ferientour Ende')}
           {renderDate(eveningStart, 'Abendtour Start')}
           {renderDate(eveningEnd, 'Abendtour Ende')}
+          <div style={{textAlign: 'center', margin: '10px'}}>
+            <button className="btn btn-success" onClick={event => {
+              event.preventDefault(); // prevent form submission
+              events.addField();    // pushes empty child field onto the end of the array
+            }}><i className="fa fa-plus"/> Event hinzufügen
+            </button>
+          </div>
+          {(!events || !events.length) && <div className="form-group"><div className="col-xs-12">Keine Events</div></div>}
+          {events && events.map((child, index) => <div key={index}>
+            <div className="form-group">
+              {renderDate(child.from, null, 'text', 'col-xs-3', {placeholder: 'Von'})}
+              {renderDate(child.to, null, 'text', 'col-xs-3', {placeholder: 'Bis'})}
+              {renderInput(child.name, null, 'text', 'col-xs-3', {placeholder: 'Name'})}
+              <div className="col-xs-1">
+                <button className="btn btn-danger" onClick={event => {
+                  event.preventDefault();       // prevent form submission
+                  events.removeField(index);  // remove from index
+                }}><i className="fa fa-trash"/> Löschen
+                </button>
+              </div>
+            </div>
+          </div>)}
           <div className="form-group">
             <div className="col-sm-offset-2 col-sm-10">
               <button className="btn btn-success"

@@ -1,3 +1,5 @@
+import {moment} from 'utils/moment';
+
 const isEmpty = value => value === undefined || value === null || value === '';
 const join = (rules) => (value, data) => rules.map(rule => rule(value, data)).filter(error => !!error)[0 /* first error */ ];
 
@@ -11,6 +13,13 @@ export function email(value) {
 export function required(value) {
   if (isEmpty(value)) {
     return 'Required';
+  }
+}
+
+export function dateTime(value) {
+  const date = moment(value, moment.ISO_8601, true);
+  if (!date.isValid()) {
+    return 'Invalid date';
   }
 }
 
