@@ -2,6 +2,7 @@ export loadInfo from './loadInfo';
 export loadAuth from './loadAuth';
 export login from './login';
 export logout from './logout';
+export * as tour from './tour/index';
 export * as widget from './widget/index';
 export * as restaurant from './restaurant/index';
 export * as location from './location/index';

@@ -83,7 +83,6 @@ export default class Tours extends Component {
         setTimelineDate(momentDate.format());
       }
     };
-    console.log(tours);
 
     const styles = require('./Tours.scss');
     return (
@@ -124,7 +123,7 @@ export default class Tours extends Component {
           </tr>
           </thead>
           <tbody>
-            {tours.map(tour => (<div key={tour.id}>{tour.name}</div>))}
+            {tours.map(tour => (<tr key={tour.id}><td>{tour.year}</td></tr>))}
             {adding ?
               <div>Form</div> :
               <tr key="new">
