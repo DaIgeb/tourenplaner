@@ -11,12 +11,14 @@ import restaurants from './restaurants';
 import seasons from './seasons';
 import locations from './locations';
 import configurations from './configurations';
+import tours from './tours';
 
 export default combineReducers({
   router: routerStateReducer,
   auth,
   form,
   configurations,
+  tours,
   multireducer: multireducer({
     counter1: counter,
     counter2: counter,

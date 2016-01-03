@@ -14,6 +14,8 @@ import {
     Restaurants,
     Configurations,
     Seasons,
+    Tours,
+    Tour,
     Locations
   } from 'containers';
 
@@ -55,6 +57,10 @@ export default (store) => {
       <Route path="survey" component={Survey}/>
       <Route path="locations" component={Locations}/>
       <Route path="restaurants" component={Restaurants}/>
+      <Route path="tours" >
+        <IndexRoute component={Tours} />
+        <Route path=":id" component={Tour} />
+      </Route>
       <Route path="seasons" component={Seasons} />
       <Route path="locations" component={Locations} />
       <Route path="configurations" component={Configurations}/>

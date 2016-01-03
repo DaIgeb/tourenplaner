@@ -14,7 +14,7 @@ import * as restaurantActions from 'redux/modules/restaurants';
 )
 @reduxForm({
   form: 'restaurant',
-  fields: ['id', 'location', 'name', 'address', 'zipCode', 'city', 'phone', 'notes'],
+  fields: ['id', 'location', 'phone', 'notes', 'timelines[]'],
   // validate: restaurantValidation
 })
 export default class RestaurantForm extends Component {
@@ -34,7 +34,7 @@ export default class RestaurantForm extends Component {
   };
 
   render() {
-    const { fields: {id, name, address, zipCode, city, phone, notes, location}, locations, formKey, handleSubmit, save, invalid,
+    const { fields: {id, phone, notes, location}, locations, formKey, handleSubmit, save, invalid,
       pristine, submitting, saveError: { [formKey]: saveError }, values } = this.props;
     const handleCancel = (restaurant) => {
       if (restaurant && restaurant !== 'new') {
@@ -49,25 +49,12 @@ export default class RestaurantForm extends Component {
     return (
       <tr className={submitting ? styles.saving : ''}>
         <td className={styles.idCol}>{id.value}</td>
-        <td className={styles.nameCol}>
-          <input type="text" className="form-control" {...name} />
-          {name.error && name.touched && <div className="text-danger">{name.error}</div>}
-        </td>
         <td className={styles.addressCol}>
           <select
             className="form-control"
             {...location}>
-            {locations.map(option => <option key={option.id} value={JSON.stringify(option.id)}>{option.name}</option>)}
+            {locations.map(option => <option key={option.id} value={JSON.stringify(option.id)}>{option.city} - {option.name}</option>)}
           </select>
-        </td>
-        <td className={styles.addressCol}>
-          <input type="text" className="form-control" {...address}/>
-          {address.error && address.touched && <div className="text-danger">{address.error}</div>}
-          <br/>
-          <input type="text" className="form-control" {...zipCode}/>
-          {zipCode.error && zipCode.touched && <div className="text-danger">{zipCode.error}</div>}
-          <input type="text" className="form-control" {...city}/>
-          {city.error && city.touched && <div className="text-danger">{city.error}</div>}
         </td>
         <td className={styles.notesCol}>
         <input type="text" className="form-control" {...phone}/>

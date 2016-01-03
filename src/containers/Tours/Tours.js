@@ -3,21 +3,25 @@ import {connect} from 'react-redux';
 import DocumentMeta from 'react-document-meta';
 import connectData from 'helpers/connectData';
 import config from '../../config';
-import * as restaurantActions from 'redux/modules/restaurants';
-import {isLoaded as isLocationsLoaded, load as loadLocations} from 'redux/modules/locations';
-import {isLoaded, load as loadRestaurants} from 'redux/modules/restaurants';
-import {RestaurantForm, Timeline} from 'components';
-import RestaurantRow from './RestaurantRow';
+import * as tourActions from 'redux/modules/tours';
+import {isLoaded, load as loadTour} from 'redux/modules/tours';
+import {isLoaded as isRestaurantsLoaded, load as loadRest} from 'redux/modules/restaurants';
+import {isLoaded as isLocationsLoaded, load as loadLoc} from 'redux/modules/locations';
+import {Timeline} from 'components';
 
 function fetchDataDeferred(getState, dispatch) {
   const promise = new Promise((resolve, reject) => {
     const promises = [];
     if (!isLocationsLoaded(getState())) {
-      promises.push(dispatch(loadLocations()));
+      promises.push(dispatch(loadLoc()));
+    }
+
+    if (!isRestaurantsLoaded(getState())) {
+      promises.push(dispatch(loadRest()));
     }
 
     if (!isLoaded(getState())) {
-      promises.push(dispatch(loadRestaurants()));
+      promises.push(dispatch(loadTour()));
     }
 
     Promise.all(promises).then(values => resolve(values)).catch(error => reject(error));
@@ -28,25 +32,28 @@ function fetchDataDeferred(getState, dispatch) {
 
 function getActions() {
   return {
-    ...restaurantActions,
-    loadLoc: loadLocations
+    ...tourActions,
+    loadRestaurants: loadRest,
+    loadLocations: loadLoc
   };
 }
 
 @connectData(null, fetchDataDeferred)
 @connect(
   state => ({
-    restaurants: state.restaurants.data,
-    editing: state.restaurants.editing,
-    error: state.restaurants.error,
-    adding: state.restaurants.adding,
-    loading: state.restaurants.loading,
-    timelineDate: state.restaurants.currentDate,
-    locations: state.locations.data
+    tours: state.tours.data,
+    editing: state.tours.editing,
+    error: state.tours.error,
+    adding: state.tours.adding,
+    loading: state.tours.loading,
+    timelineDate: state.tours.currentDate,
+    locations: state.locations.data,
+    restaurants: state.restaurants.data
   }),
   getActions())
-export default class Restaurants extends Component {
+export default class Tours extends Component {
   static propTypes = {
+    tours: PropTypes.array,
     restaurants: PropTypes.array,
     locations: PropTypes.array,
     error: PropTypes.string,
@@ -54,7 +61,8 @@ export default class Restaurants extends Component {
     editing: PropTypes.object.isRequired,
     adding: PropTypes.object,
     load: PropTypes.func.isRequired,
-    loadLoc: PropTypes.func.isRequired,
+    loadLocations: PropTypes.func.isRequired,
+    loadRestaurants: PropTypes.func.isRequired,
     addStart: PropTypes.func.isRequired,
     setTimelineDate: PropTypes.func.isRequired,
     timelineDate: PropTypes.string.isRequired
@@ -65,7 +73,7 @@ export default class Restaurants extends Component {
       const {addStart} = this.props; // eslint-disable-line no-shadow
       return () => addStart();
     };
-    const {restaurants, loadLoc, locations, error, editing, loading, load, adding, setTimelineDate, timelineDate} = this.props;
+    const {tours, loadLocations, loadRestaurants, error, loading, load, adding, setTimelineDate} = this.props;
     let refreshClassName = 'fa fa-refresh';
     if (loading) {
       refreshClassName += ' fa-spin';
@@ -75,44 +83,50 @@ export default class Restaurants extends Component {
         setTimelineDate(momentDate.format());
       }
     };
+    console.log(tours);
 
-    const styles = require('./Restaurants.scss');
+    const styles = require('./Tours.scss');
     return (
       <div className={styles.restaurants + ' container'}>
         <h1>Restaurants
         <button className={styles.refreshBtn + ' btn btn-success'} onClick={load}>
+          <i className={refreshClassName}/> {' '} Reload Tours
+        </button>
+        <button className={styles.refreshBtn + ' btn btn-success'} onClick={loadRestaurants}>
           <i className={refreshClassName}/> {' '} Reload Restaurants
         </button>
-        <button className={styles.refreshBtn + ' btn btn-success'} onClick={loadLoc}>
+        <button className={styles.refreshBtn + ' btn btn-success'} onClick={loadLocations}>
           <i className={refreshClassName}/> {' '} Reload Locations
         </button>
         </h1>
-        <DocumentMeta title={config.app.title + ': Restaurants'}/>
+        <DocumentMeta title={config.app.title + ': Touren'}/>
 
         {error &&
         <div className="alert alert-danger" role="alert">
-          <span className="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+          <span className="glyphicon glyphicon-exclamation-sign" aria-hidden="true" />
           {' '}
           {error}
         </div>}
 
         <Timeline date={this.props.timelineDate} onTimelineChanged={changeTimeline}/>
 
-        {restaurants && restaurants.length &&
+        {tours && tours.length &&
         <table className="table table-striped table-hover table-condensed">
           <thead>
           <tr>
             <th className={styles.idCol}>ID</th>
-            <th className={styles.addressCol}>Adresse</th>
-            <th className={styles.notesCol}>Telefon<br/>Notizen</th>
-            <th className={styles.businessHours}>Öffnungszeiten</th>
+            <th className={styles.addressCol}>Name</th>
+            <th className={styles.notesCol}>Type</th>
+            <th className={styles.notesCol}>Schwierigkeit</th>
+            <th className={styles.notesCol}>Distanz</th>
+            <th className={styles.notesCol}>Höhenmeter</th>
             <th className={styles.buttonCol} />
           </tr>
           </thead>
           <tbody>
-            {restaurants.map(restaurant => (<RestaurantRow key={String(restaurant.id)} restaurant={restaurant} isEditing={editing[restaurant.id]} timeline={timelineDate} locations={locations}/>))}
+            {tours.map(tour => (<div key={tour.id}>{tour.name}</div>))}
             {adding ?
-              <RestaurantForm formKey="new" key="new" initialValues={adding} locations={locations}/> :
+              <div>Form</div> :
               <tr key="new">
                 <td colSpan={5}/>
                 <td>

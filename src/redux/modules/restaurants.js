@@ -95,13 +95,28 @@ export default function reducer(state = initialState, action = {}) {
         }
       };
     case SAVE_FAIL:
-      return typeof action.error === 'string' ? {
-        ...state,
-        saveError: {
-          ...state.saveError,
-          [action.id]: action.error
-        }
-      } : state;
+      const errorType = typeof action.error;
+      switch (errorType) {
+        case 'string':
+          return {
+            ...state,
+            adding: {
+              ...state.adding,
+              [action.id]: action.error
+            }
+          };
+        case 'object':
+          return {
+            ...state,
+            saveError: {
+              ...state.saveError,
+              [action.id]: JSON.stringify(action.error.map(err => {return {field: err.field, message: err.message};}), null, 2)
+            }
+          };
+        default:
+          return state;
+      }
+      break;
     case DELETE:
       return state; // 'saving' flag handled by redux-form
     case DELETE_SUCCESS:

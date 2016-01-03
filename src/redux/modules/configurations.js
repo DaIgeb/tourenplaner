@@ -272,13 +272,7 @@ export default function reducer(state = initialState, action = {}) {
         default:
           return state;
       }
-      return errorType === 'string' ? {
-        ...state,
-        adding: {
-          ...state.adding,
-          error: action.error
-        }
-      } : state;
+      break;
     default:
       return state;
   }

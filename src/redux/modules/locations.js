@@ -16,7 +16,6 @@ const DELETE_FAIL = 'tourenplaner/location/DELETE_FAIL';
 const NEW = 'tourenplaner/location/NEW';
 const NEW_SUCCESS = 'tourenplaner/location/NEW_SUCCESS';
 const NEW_FAIL = 'tourenplaner/location/NEW_FAIL';
-const SET_TIMELINE_DATE = 'tourenplaner/location/SET_TIMELINE_DATE';
 
 const initialState = {
   loaded: false,
@@ -146,19 +145,28 @@ export default function reducer(state = initialState, action = {}) {
         }
       };
     case NEW_FAIL:
-      return typeof action.error === 'string' ? {
-        ...state,
-        saveError: {
-          ...state.saveError,
-          [action.id]: action.error
-        }
-      } : state;
-    case SET_TIMELINE_DATE:
-      const dateString = typeof action.date === 'string' ? action.date : action.date.format();
-      return {
-        ...state,
-        currentDate: dateString
-      };
+      const errorType = typeof action.error;
+      switch (errorType) {
+        case 'string':
+          return {
+            ...state,
+            adding: {
+              ...state.adding,
+              error: action.error
+            }
+          };
+        case 'object':
+          return {
+            ...state,
+            adding: {
+              ...state.adding,
+              error: JSON.stringify(action.error.map(err => {return {field: err.field, message: err.message};}), null, 2)
+            }
+          };
+        default:
+          return state;
+      }
+      break;
     default:
       return state;
   }
@@ -218,11 +226,4 @@ export function addStart() {
 
 export function addStop() {
   return { type: ADD_STOP };
-}
-
-export function setTimelineDate(date) {
-  return {
-    type: SET_TIMELINE_DATE,
-    date: date
-  };
 }
