@@ -20,10 +20,11 @@ export default class DataListHandler {
     let nextId = this.getNextId();
     obj.id = nextId;
     if (!this.validator(obj)) {
-      return {errors: validate.errors};
+      return {errors: this.validator.errors};
     }
 
     this.data.push(obj);
+    this.write();
 
     return obj;
   }
@@ -66,7 +67,7 @@ export default class DataListHandler {
   }
 
   getNextId() {
-    let maxIdItem = this.data.slice(0).sort((r:T, r2:T) => r2.id - r.id)[0];
+    let maxIdItem = this.data.slice(0).sort((r, r2) => r2.id - r.id)[0];
     return maxIdItem.id + 1;
   }
 

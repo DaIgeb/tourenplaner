@@ -10,7 +10,7 @@ import widgets from './widgets';
 import restaurants from './restaurants';
 import seasons from './seasons';
 import locations from './locations';
-import configurations from './seasonConfigurations';
+import configurations from './configurations';
 
 export default combineReducers({
   router: routerStateReducer,

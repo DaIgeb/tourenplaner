@@ -13,7 +13,8 @@ import {
     NotFound,
     Restaurants,
     Configurations,
-    Seasons
+    Seasons,
+    Locations
   } from 'containers';
 
 export default (store) => {
@@ -52,11 +53,10 @@ export default (store) => {
       <Route path="about" component={About}/>
       <Route path="login" component={Login}/>
       <Route path="survey" component={Survey}/>
+      <Route path="locations" component={Locations}/>
       <Route path="restaurants" component={Restaurants}/>
-      <Route path="seasons">
-        <IndexRoute component={Seasons}/>
-        <Route path="seasons/:id" component={Seasons}/>
-      </Route>
+      <Route path="seasons" component={Seasons} />
+      <Route path="locations" component={Locations} />
       <Route path="configurations" component={Configurations}/>
       <Route path="widgets" component={Widgets}/>
 

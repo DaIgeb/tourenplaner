@@ -24,6 +24,7 @@ import {ObjectSelect, DateInput} from 'components';
     'eveningEnd',
     'events[].from',
     'events[].to',
+    'events[].name',
     'dates[].date',
     'dates[].type',
     'dates[].description',

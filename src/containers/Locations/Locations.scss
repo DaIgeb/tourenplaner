@@ -1,26 +1,28 @@
-.seasons {
+.locations {
   .refreshBtn {
     margin-left: 20px;
   }
-  .yearCol {
-    width: 30%;
+  .idCol {
+    width: 5%;
   }
-  .versionCol {
-    width: 30%;
+  .nameCol {
+    width: 10%;
+  }
+  .addressCol {
+    width: 15%;
     text-align: left;
     input {
       text-align: left;
     }
   }
-  .configCol {
-    width: 30%;
-    text-align: left;
-    input {
-      text-align: left;
-    }
+  .notesCol {
+    width: 25%;
+  }
+  .businessHours {
+    width: 25%;
   }
   .buttonCol {
-    width: 30%;
+    width: 20%;
     :global(.btn) {
       margin: 0 5px;
     }

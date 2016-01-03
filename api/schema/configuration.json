@@ -1,0 +1,178 @@
+{
+  "title": "Configuration",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "number"
+    },
+    "seasonStart": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "seasonEnd": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "eveningStart": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "eveningEnd": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "holidayStart": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "holidayEnd": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "events": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "from": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "to": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "name": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "from",
+          "to",
+          "name"
+        ]
+      }
+    },
+    "dates": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "date":  {
+            "type": "string",
+            "format": "date-time"
+          },
+          "type":  {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "number"
+              },
+              "label": {
+                "type": "string"
+              }
+            }
+          },
+          "description":  {
+            "type": "string"
+          }
+        },
+        "required": [
+          "date",
+          "type"
+        ]
+      }
+    },
+    "specialDates": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "date":  {
+            "type": "string",
+            "format": "date-time"
+          },
+          "type":  {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "number"
+              },
+              "label": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "id",
+              "label"
+            ]
+          },
+          "action": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "number"
+              },
+              "label": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "id",
+              "label"
+            ]
+          },
+          "description": {
+            "type": "string"
+          },
+          "tours": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "number"
+                },
+                "label": {
+                  "type": "string"
+                },
+                "type":  {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "number"
+                    },
+                    "label": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "label"
+                  ]
+                }
+              },
+              "required": [
+                "id",
+                "type"
+              ]
+            }
+          }
+        },
+        "required": [
+          "date",
+          "type",
+          "action"
+        ]
+      }
+    }
+  },
+  "required": [
+    "seasonStart",
+    "seasonEnd",
+    "eveningStart",
+    "eveningEnd",
+    "dates",
+    "specialDates"
+  ]
+}

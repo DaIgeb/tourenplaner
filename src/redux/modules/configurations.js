@@ -1,24 +1,24 @@
 import {moment} from 'utils/moment';
 
-const LOAD = 'tourenplaner/seasons/LOAD';
-const LOAD_SUCCESS = 'tourenplaner/seasons/LOAD_SUCCESS';
-const LOAD_FAIL = 'tourenplaner/seasons/LOAD_FAIL';
-const EDIT_START = 'tourenplaner/seasons/EDIT_START';
-const EDIT_STOP = 'tourenplaner/seasons/EDIT_STOP';
-const ADD_START = 'tourenplaner/seasons/ADD_START';
-const ADD_SET_PAGE = 'tourenplaner/seasons/ADD_SET_PAGE';
-const ADD_SET_YEAR = 'tourenplaner/seasons/ADD_SET_YEAR';
-const ADD_SET_DATES = 'tourenplaner/seasons/ADD_SET_DATES';
-const ADD_STOP = 'tourenplaner/seasons/ADD_STOP';
-const SAVE = 'tourenplaner/seasons/SAVE';
-const SAVE_SUCCESS = 'tourenplaner/seasons/SAVE_SUCCESS';
-const SAVE_FAIL = 'tourenplaner/seasons/SAVE_FAIL';
-const DELETE = 'tourenplaner/seasons/DELETE';
-const DELETE_SUCCESS = 'tourenplaner/seasons/DELETE_SUCCESS';
-const DELETE_FAIL = 'tourenplaner/seasons/DELETE_FAIL';
-const NEW = 'tourenplaner/seasons/NEW';
-const NEW_SUCCESS = 'tourenplaner/seasons/NEW_SUCCESS';
-const NEW_FAIL = 'tourenplaner/seasons/NEW_FAIL';
+const LOAD = 'tourenplaner/configurations/LOAD';
+const LOAD_SUCCESS = 'tourenplaner/configurations/LOAD_SUCCESS';
+const LOAD_FAIL = 'tourenplaner/configurations/LOAD_FAIL';
+const EDIT_START = 'tourenplaner/configurations/EDIT_START';
+const EDIT_STOP = 'tourenplaner/configurations/EDIT_STOP';
+const ADD_START = 'tourenplaner/configurations/ADD_START';
+const ADD_SET_PAGE = 'tourenplaner/configurations/ADD_SET_PAGE';
+const ADD_SET_YEAR = 'tourenplaner/configurations/ADD_SET_YEAR';
+const ADD_SET_DATES = 'tourenplaner/configurations/ADD_SET_DATES';
+const ADD_STOP = 'tourenplaner/configurations/ADD_STOP';
+const SAVE = 'tourenplaner/configurations/SAVE';
+const SAVE_SUCCESS = 'tourenplaner/configurations/SAVE_SUCCESS';
+const SAVE_FAIL = 'tourenplaner/configurations/SAVE_FAIL';
+const DELETE = 'tourenplaner/configurations/DELETE';
+const DELETE_SUCCESS = 'tourenplaner/configurations/DELETE_SUCCESS';
+const DELETE_FAIL = 'tourenplaner/configurations/DELETE_FAIL';
+const NEW = 'tourenplaner/configurations/NEW';
+const NEW_SUCCESS = 'tourenplaner/configurations/NEW_SUCCESS';
+const NEW_FAIL = 'tourenplaner/configurations/NEW_FAIL';
 
 export const PageEnum = Object.freeze({
   year: Object.freeze({}),

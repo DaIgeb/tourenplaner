@@ -4,23 +4,32 @@ import DocumentMeta from 'react-document-meta';
 import connectData from 'helpers/connectData';
 import config from '../../config';
 import * as seasonActions from 'redux/modules/seasons';
-import {isLoaded, load as loadSeasons, PageEnum} from 'redux/modules/seasons';
-import {
-  SeasonConfigurationForm,
-  SeasonConfigurationYearForm,
-  SeasonConfigurationDatesForm
-} from 'components';
+import {isLoaded, load as loadSeasons} from 'redux/modules/seasons';
+import {isLoaded as isConfigLoaded, load as loadConfigs} from 'redux/modules/configurations';
+
 
 function fetchDataDeferred(getState, dispatch) {
-  if (!isLoaded(getState())) {
-    return dispatch(loadSeasons());
-  }
+  const loadPromise = new Promise((resolve, reject) => {
+    const promises = [];
+    if (!isLoaded(getState())) {
+      promises.push(dispatch(loadSeasons()));
+    }
+
+    if (!isConfigLoaded(getState())) {
+      promises.push(dispatch(loadConfigs()));
+    }
+
+    Promise.all(promises).then(values => resolve(values)).catch(error => reject(error));
+  });
+
+  return loadPromise;
 }
 
 @connectData(null, fetchDataDeferred)
 @connect(
   state => ({
     seasons: state.seasons.data,
+    configs: state.configurations.data,
     error: state.seasons.error,
     adding: state.seasons.adding,
     loading: state.seasons.loading
@@ -29,14 +38,12 @@ function fetchDataDeferred(getState, dispatch) {
 export default class Seasons extends Component {
   static propTypes = {
     seasons: PropTypes.array,
+    configs: PropTypes.array,
     error: PropTypes.string,
     loading: PropTypes.bool,
     adding: PropTypes.object,
     load: PropTypes.func.isRequired,
     del: PropTypes.func.isRequired,
-    addSetYear: PropTypes.func.isRequired,
-    addSetPage: PropTypes.func.isRequired,
-    addSetDates: PropTypes.func.isRequired,
     addStart: PropTypes.func.isRequired,
     addStop: PropTypes.func.isRequired,
     editStart: PropTypes.func.isRequired,
@@ -48,10 +55,6 @@ export default class Seasons extends Component {
       const {addStart} = this.props; // eslint-disable-line no-shadow
       return () => addStart();
     };
-    const handleStop = () => {
-      const {addStop} = this.props; // eslint-disable-line no-shadow
-      return () => addStop();
-    };
     const handleEdit = (season) => {
       const {editStart} = this.props; // eslint-disable-line no-shadow
       return () => editStart(String(season.id));
@@ -61,77 +64,23 @@ export default class Seasons extends Component {
       return () => del(String(season.id));
     };
 
-    const {seasons, error, loading, load, adding, children} = this.props;
+    const {seasons, configs, error, loading, load, adding, children} = this.props;
     let refreshClassName = 'fa fa-refresh';
     if (loading) {
       refreshClassName += ' fa-spin';
     }
-
-    const styles = require('./Seasons.scss');
-    if (adding) {
-      let wizard = null;
-      switch (adding.page) {
-        case PageEnum.year:
-          const handleSubmitYear = (data) => {
-            const {addSetYear, addSetPage} = this.props; // eslint-disable-line no-shadow
-            addSetYear(data.year);
-            addSetPage(PageEnum.dates);
-          };
-
-          wizard = [(<SeasonConfigurationYearForm initialValues={adding} onSubmit={handleSubmitYear} onCancel={handleStop()}/>)];
-          break;
-        case PageEnum.dates:
-          const handleSubmitDates = (data) => {
-            const {addSetPage, addSetDates} = this.props; // eslint-disable-line no-shadow
-            addSetDates(data);
-            addSetPage(PageEnum.dateList);
-          };
-          const handleBackToYear = () => {
-            const {addSetPage} = this.props; // eslint-disable-line no-shadow
-            return () => addSetPage(PageEnum.year);
-          };
-
-          wizard = <SeasonConfigurationForm initialValues={adding} onSubmit={handleSubmitDates} onCancel={handleStop()} onBack={handleBackToYear()}/>;
-          break;
-        case PageEnum.dateList:
-          const showYearPage = () => {
-            const {addSetPage} = this.props; // eslint-disable-line no-shadow
-            return () => addSetPage(PageEnum.year);
-          };
-          const handleVerifyDates = (data) => {
-            if (data) {
-              console.log(data);
-            }
-            handleStop()();
-          };
-
-          wizard = <SeasonConfigurationDatesForm initialValues={adding} onSubmit={handleVerifyDates} onCancel={handleStop()} onBack={showYearPage()}/>;
-          break;
-        default:
-          wizard = <div>Invalid Wizard Page</div>;
-          break;
+    const findConfiguration = id => {
+      if (configs) {
+        const configuration = configs.find(item => item.id === id);
+        if (configuration) {
+          return <div>{configuration.year}</div>;
+        }
       }
 
-      return (
-        <div className={styles.seasons + ' container'}>
-          <h1>Seasons
-            <button className={styles.refreshBtn + ' btn btn-success'} onClick={load}>
-              <i className={refreshClassName}/> {' '} Reload Seasons
-            </button>
-          </h1>
-          <DocumentMeta title={config.app.title + ': Tourenpläne'}/>
+      return <div>Config not found</div>;
+    };
 
-          {error && typeof(error) === 'string' &&
-          <div className="alert alert-danger" role="alert">
-            <span className="glyphicon glyphicon-exclamation-sign" aria-hidden="true"/>
-            {' '}
-            {error}
-          </div>}
-
-          {wizard}
-        </div>);
-    }
-
+    const styles = require('./Seasons.scss');
     return (
       <div className={styles.seasons + ' container'}>
         <h1>Seasons
@@ -152,8 +101,9 @@ export default class Seasons extends Component {
         <table className="table table-striped table-hover table-condensed">
           <thead>
           <tr>
-            <th className={styles.yearCol}>Jahr</th>
+            <th className={styles.yearCol}>Bezeichnung</th>
             <th className={styles.versionCol}>Version</th>
+            <th className={styles.configCol}>Konfiguration</th>
             <th className={styles.buttonCol} />
           </tr>
           </thead>
@@ -161,6 +111,7 @@ export default class Seasons extends Component {
             {seasons.map(season => (<tr key={`${season.year}/${season.version}`}>
               <td className={styles.yearCol}>{season.year}</td>
               <td className={styles.versionCol}>{season.version}</td>
+              <td className={styles.configCol}>{findConfiguration(season.configurationId)}</td>
               <td className={styles.buttonCol}>
                 <button className="btn btn-primary" onClick={handleEdit(season)}>
                   <i className="fa fa-pencil"/> Edit

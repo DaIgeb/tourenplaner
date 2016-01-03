@@ -113,7 +113,7 @@ export default class Restaurants extends Component {
           <tbody>
             {restaurants.map(restaurant => (<RestaurantRow key={String(restaurant.id)} restaurant={restaurant} isEditing={editing[restaurant.id]} timeline={timelineDate} locations={locations}/>))}
             {adding ?
-              <RestaurantForm formKey="new" key="new" initialValues={adding}/> :
+              <RestaurantForm formKey="new" key="new" initialValues={adding} locations={locations}/> :
               <tr key="new">
                 <td colSpan={5}/>
                 <td>

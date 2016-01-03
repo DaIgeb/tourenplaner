@@ -3,21 +3,20 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import {reduxForm} from 'redux-form';
 // import restaurantValidation from './restaurantValidation';
-import * as restaurantActions from 'redux/modules/restaurants';
-import {ObjectSelect} from 'components';
+import * as locationActions from 'redux/modules/locations';
 
 @connect(
   state => ({
     saveError: state.restaurants.saveError
   }),
-  dispatch => bindActionCreators(restaurantActions, dispatch)
+  dispatch => bindActionCreators(locationActions, dispatch)
 )
 @reduxForm({
-  form: 'restaurant',
-  fields: ['id', 'location', 'name', 'address', 'zipCode', 'city', 'phone', 'notes'],
+  form: 'location',
+  fields: ['id', 'name', 'streetAddress', 'addressCountry', 'postalCode', 'city', 'latitude', 'longitude']
   // validate: restaurantValidation
 })
-export default class RestaurantForm extends Component {
+export default class LocationForm extends Component {
   static propTypes = {
     fields: PropTypes.object.isRequired,
     editStop: PropTypes.func.isRequired,
@@ -29,12 +28,11 @@ export default class RestaurantForm extends Component {
     submitting: PropTypes.bool.isRequired,
     saveError: PropTypes.object,
     formKey: PropTypes.string.isRequired,
-    values: PropTypes.object.isRequired,
-    locations: PropTypes.array.isRequired
+    values: PropTypes.object.isRequired
   };
 
   render() {
-    const { fields: {id, name, address, zipCode, city, phone, notes, location}, locations, formKey, handleSubmit, save, invalid,
+    const { fields: {id, name, streetAddress, addressCountry, postalCode, city, latitude, longitude}, formKey, handleSubmit, save, invalid,
       pristine, submitting, saveError: { [formKey]: saveError }, values } = this.props;
     const handleCancel = (restaurant) => {
       if (restaurant && restaurant !== 'new') {
@@ -45,36 +43,39 @@ export default class RestaurantForm extends Component {
       const {addStop} = this.props; // eslint-disable-line no-shadow
       return () => addStop();
     };
-    const styles = require('containers/Restaurants/Restaurants.scss');
-    const locationOptions = locations.map(loc => { return {id: loc.id, label: loc.name};});
+
+    const styles = require('containers/Locations/Locations.scss');
     return (
       <tr className={submitting ? styles.saving : ''}>
         <td className={styles.idCol}>{id.value}</td>
         <td className={styles.nameCol}>
-          <input type="text" className="form-control" {...name} />
+          <input type="text" className="form-control" {...name} placeholder="Bezeichnung"/>
           {name.error && name.touched && <div className="text-danger">{name.error}</div>}
         </td>
         <td className={styles.addressCol}>
-          {location.value}
-          <ObjectSelect options={locationOptions} {...location}/>
+          <input type="text" className="form-control" {...streetAddress} placeholder="Adresse"/>
+          {streetAddress.error && streetAddress.touched && <div className="text-danger">{streetAddress.error}</div>}
         </td>
         <td className={styles.addressCol}>
-          <input type="text" className="form-control" {...address}/>
-          {address.error && address.touched && <div className="text-danger">{address.error}</div>}
-          <br/>
-          <input type="text" className="form-control" {...zipCode}/>
-          {zipCode.error && zipCode.touched && <div className="text-danger">{zipCode.error}</div>}
-          <input type="text" className="form-control" {...city}/>
+          <input type="text" className="form-control" {...addressCountry} placeholder="Land" />
+          {addressCountry.error && addressCountry.touched && <div className="text-danger">{addressCountry.error}</div>}
+        </td>
+        <td className={styles.addressCol}>
+          <input type="text" className="form-control" {...postalCode} placeholder="PLZ"/>
+          {postalCode.error && postalCode.touched && <div className="text-danger">{postalCode.error}</div>}
+        </td>
+        <td className={styles.addressCol}>
+          <input type="text" className="form-control" {...city} placeholder="Ort"/>
           {city.error && city.touched && <div className="text-danger">{city.error}</div>}
         </td>
-        <td className={styles.notesCol}>
-        <input type="text" className="form-control" {...phone}/>
-        {phone.error && phone.touched && <div className="text-danger">{phone.error}</div>}
-        <br/>
-        <input type="text" className="form-control" {...notes}/>
-        {notes.error && notes.touched && <div className="text-danger">{notes.error}</div>}
+        <td className={styles.addressCol}>
+          <input type="text" className="form-control" {...latitude} placeholder="Breite"/>
+          {latitude.error && latitude.touched && <div className="text-danger">{latitude.error}</div>}
         </td>
-        <td className={styles.businessHours}></td>
+        <td className={styles.addressCol}>
+          <input type="text" className="form-control" {...longitude} placeholder="Länge"/>
+          {longitude.error && longitude.touched && <div className="text-danger">{longitude.error}</div>}
+        </td>
         <td className={styles.buttonCol}>
           <button className="btn btn-default"
                   onClick={handleCancel(formKey)}

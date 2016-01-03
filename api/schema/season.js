@@ -9,7 +9,7 @@ export default {
       type: "number"
     },
     configurationId: {
-      $ref: "#seasonconfiguration"
+      $ref: "#configuration"
     },
     tours: {
       type: "array",

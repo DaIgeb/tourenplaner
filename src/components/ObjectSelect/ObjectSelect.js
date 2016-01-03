@@ -42,8 +42,7 @@ export default class ObjectSelect extends Component {
         initialValue={multiple ? initialValue.map(JSON.stringify) : JSON.stringify(initialValue)}
         defaultValue={multiple ? defaultValue.map(JSON.stringify) : JSON.stringify(defaultValue)}
         {...rest}>
-        {options.map(option =>
-          <option key={option.id} value={JSON.stringify(option)}>{option.label}</option>)}
+        {options.map(option => <option key={option.id} value={JSON.stringify(option)}>{option.label}</option>)}
       </select>
     );
   }

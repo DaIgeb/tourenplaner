@@ -34,7 +34,10 @@ export default class Restaurants extends Component {
       if (locations && locations.length > 0) {
         const location = locations.find(loc => loc.id === restaurant.location);
         if (location) {
-          return (<td className={styles.addressCol}>{location.address}
+          return (<td className={styles.addressCol}>
+            {location.id}/{restaurant.location}
+            <br/>
+            {location.address}
             <br/>
             {location.postalCode} {location.city}
             <br/>
@@ -100,11 +103,11 @@ export default class Restaurants extends Component {
       </td>)];
     };
 
-    const {restaurant, isEditing} = this.props;
+    const {restaurant, isEditing, locations} = this.props;
 
     return (
       isEditing ?
-        <RestaurantForm formKey={String(restaurant.id)} key={String(restaurant.id)} initialValues={restaurant}/> :
+        <RestaurantForm formKey={String(restaurant.id)} key={String(restaurant.id)} initialValues={restaurant} locations={locations}/> :
         <tr key={restaurant.id}>
           <td className={styles.idCol}>{restaurant.id}</td>
           <td className={styles.nameCol}>{restaurant.name}</td>

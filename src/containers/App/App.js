@@ -76,6 +76,9 @@ export default class App extends Component {
                 <NavItem eventKey={1}>Chat</NavItem>
               </LinkContainer>}
 
+              <LinkContainer to="/locations">
+                <NavItem eventKey={10}>Locations</NavItem>
+              </LinkContainer>
               <LinkContainer to="/restaurants">
                 <NavItem eventKey={7}>Restaurants</NavItem>
               </LinkContainer>
@@ -83,7 +86,7 @@ export default class App extends Component {
                 <NavItem eventKey={8}>Tourenpläne</NavItem>
               </LinkContainer>
               <LinkContainer to="/configurations">
-                <NavItem eventKey={9}>Saison-Konfigurationen</NavItem>
+                <NavItem eventKey={9}>Konfigurationen</NavItem>
               </LinkContainer>
               <LinkContainer to="/widgets">
                 <NavItem eventKey={2}>Widgets</NavItem>

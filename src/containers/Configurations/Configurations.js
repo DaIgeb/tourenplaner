@@ -3,8 +3,8 @@ import {connect} from 'react-redux';
 import DocumentMeta from 'react-document-meta';
 import connectData from 'helpers/connectData';
 import config from '../../config';
-import * as seasonConfigurationActions from 'redux/modules/seasonConfigurations';
-import {isLoaded, load as loadSeasons, PageEnum} from 'redux/modules/seasonConfigurations';
+import * as seasonConfigurationActions from 'redux/modules/configurations';
+import {isLoaded, load as loadConfigurations, PageEnum} from 'redux/modules/configurations';
 import {
   SeasonConfigurationForm,
   SeasonConfigurationYearForm,
@@ -13,7 +13,7 @@ import {
 
 function fetchDataDeferred(getState, dispatch) {
   if (!isLoaded(getState())) {
-    return dispatch(loadSeasons());
+    return dispatch(loadConfigurations());
   }
 }
 
