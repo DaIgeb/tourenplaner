@@ -14,13 +14,11 @@ export default class ObjectSelect extends Component {
       id: PropTypes.number.isRequired,
       label: PropTypes.string.isRequired
     })),
-    initialValue: PropTypes.any, // array or individual value
-    defaultValue: PropTypes.any, // array or individual value
     value: PropTypes.any // array or individual value
   };
 
   render() {
-    const {multiple, onBlur, onChange, options, value, initialValue, defaultValue, ...rest} = this.props;
+    const {multiple, onBlur, onChange, options, value, ...rest} = this.props;
     const parse = event => {
       if (multiple) {
         const result = [];
@@ -39,8 +37,6 @@ export default class ObjectSelect extends Component {
         onBlur={event => onBlur(parse(event))}
         onChange={event => onChange(parse(event))}
         value={multiple ? value.map(JSON.stringify) : JSON.stringify(value)}
-        initialValue={multiple ? initialValue.map(JSON.stringify) : JSON.stringify(initialValue)}
-        defaultValue={multiple ? defaultValue.map(JSON.stringify) : JSON.stringify(defaultValue)}
         {...rest}>
         {options.map(option => <option key={option.id} value={JSON.stringify(option)}>{option.label}</option>)}
       </select>

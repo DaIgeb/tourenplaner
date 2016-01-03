@@ -4,7 +4,7 @@ import {bindActionCreators} from 'redux';
 import {reduxForm} from 'redux-form';
 // import restaurantValidation from './restaurantValidation';
 import * as restaurantActions from 'redux/modules/restaurants';
-import {ObjectSelect} from 'components';
+// import {ObjectSelect} from 'components';
 
 @connect(
   state => ({
@@ -46,7 +46,6 @@ export default class RestaurantForm extends Component {
       return () => addStop();
     };
     const styles = require('containers/Restaurants/Restaurants.scss');
-    const locationOptions = locations.map(loc => { return {id: loc.id, label: loc.name};});
     return (
       <tr className={submitting ? styles.saving : ''}>
         <td className={styles.idCol}>{id.value}</td>
@@ -55,8 +54,11 @@ export default class RestaurantForm extends Component {
           {name.error && name.touched && <div className="text-danger">{name.error}</div>}
         </td>
         <td className={styles.addressCol}>
-          {location.value}
-          <ObjectSelect options={locationOptions} {...location}/>
+          <select
+            className="form-control"
+            {...location}>
+            {locations.map(option => <option key={option.id} value={JSON.stringify(option.id)}>{option.name}</option>)}
+          </select>
         </td>
         <td className={styles.addressCol}>
           <input type="text" className="form-control" {...address}/>
