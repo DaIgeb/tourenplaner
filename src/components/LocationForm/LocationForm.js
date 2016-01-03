@@ -47,7 +47,10 @@ export default class LocationForm extends Component {
     const styles = require('containers/Locations/Locations.scss');
     return (
       <tr className={submitting ? styles.saving : ''}>
-        <td className={styles.idCol}>{id.value}</td>
+        <td className={styles.idCol}>
+          <input type="text" className="form-control" {...id} onChange={event => id.onChange(parseInt(event.target.value, 10))} placeholder="ID" readOnly/>
+          {id.error && id.touched && <div className="text-danger">{id.error}</div>}
+        </td>
         <td className={styles.nameCol}>
           <input type="text" className="form-control" {...name} placeholder="Bezeichnung"/>
           {name.error && name.touched && <div className="text-danger">{name.error}</div>}

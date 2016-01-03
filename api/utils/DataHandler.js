@@ -9,18 +9,21 @@ export default class DataListHandler {
     this.data = this.read();
   }
 
-  getData() {
+  getData(reload = false) {
+    if (reload) {
+      this.data = this.read();
+    }
+
     return this.data;
   }
 
   add(obj) {
     if (obj.id) {
-      return {errors: ['Season has an id assigned and cannot be created again.']};
+      return {errors: ['Season has an id assigned and cannot be created again.', JSON.stringify(obj)]};
     }
-    let nextId = this.getNextId();
-    obj.id = nextId;
+    obj.id = this.getNextId();
     if (!this.validator(obj)) {
-      return {errors: this.validator.errors};
+      return {errors: [...this.validator.errors, JSON.stringify(obj)]};
     }
 
     this.data.push(obj);
@@ -29,32 +32,40 @@ export default class DataListHandler {
     return obj;
   }
 
-  update(id, obj) {
+  update(obj) {
     try {
-      let index = this.data.findIndex(i => i.id === id);
+      if (!this.validator(obj)) {
+        console.log('Invalid object');
+        return {errors: [...this.validator.errors, JSON.stringify(obj)]};
+      }
+
+      const index = this.data.findIndex(i => i.id === obj.id);
       if (index < 0) {
-        return false;
+        console.log('Index not found');
+        return {errors: [`Item with id ${id} does not exist`, JSON.stringify(obj)]};
       }
 
       this.data[index] = obj;
       this.write();
 
-      return true;
+      return obj;
     } catch (err) {
       console.error(err);
+
+      return {errors: [JSON.stringify(err), JSON.stringify(obj)]};
     }
   }
 
   delete(id) {
     let index = this.data.findIndex(i => i.id === id);
     if (index < 0) {
-      return false;
+      return {errors: [`Item with id ${id} does not exist`]};
     }
 
     this.data = this.data.splice(index);
     this.write();
 
-    return true;
+    return id;
   }
 
   read() {

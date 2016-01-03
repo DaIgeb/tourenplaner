@@ -1,26 +1,26 @@
 [
   {
     "id": 1,
-    "name": "Hirschen",
+    "name": "Rest. Hirschen",
     "streetAddress": "Foobar",
     "addressCountry": "CH",
     "postalCode": "1234",
     "city": "Hagenbuch",
-    "longitude": 47.523741,
-    "latitude": 8.837266
+    "latitude": 8.837266,
+    "longitude": 47.523741
   },
   {
     "id": 2,
-    "name": "Sonne",
+    "name": "Rest. Sonne",
     "streetAddress": "Foobar",
     "postalCode": "2",
     "city": "Warth",
-    "longitude": 12345.123,
-    "latitude": 123541.123
+    "latitude": 123541.123,
+    "longitude": 12345.123
   },
   {
     "id": 3,
-    "name": "Schäfli",
+    "name": "Rest. Schäfli",
     "streetAddress": "Foobar",
     "postalCode": "3",
     "city": "Ossingen",
