@@ -1,4 +1,5 @@
 import {moment} from 'utils/moment';
+import {TourType} from 'models/TourType';
 
 const LOAD = 'tourenplaner/configurations/LOAD';
 const LOAD_SUCCESS = 'tourenplaner/configurations/LOAD_SUCCESS';
@@ -24,14 +25,6 @@ export const PageEnum = Object.freeze({
   year: Object.freeze({}),
   dates: Object.freeze({}),
   dateList: Object.freeze({})
-});
-
-export const TourType = Object.freeze({
-  none: Object.freeze({id: 1, label: 'Keine' }),
-  morning: Object.freeze({id: 2, label: 'Morgentour' }),
-  afternoon: Object.freeze({id: 3, label: 'Nachmittagstour' }),
-  evening: Object.freeze({id: 4, label: 'Abendtour' }),
-  fullday: Object.freeze({id: 5, label: 'Tagestour' })
 });
 
 export const SpecialDateAction = Object.freeze({

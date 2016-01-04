@@ -123,7 +123,7 @@ export default class Tours extends Component {
           </tr>
           </thead>
           <tbody>
-            {tours.map(tour => (<tr key={tour.id}><td>{tour.year}</td></tr>))}
+            {tours.map(tour => (<tr key={tour.id}><td>{tour.id}</td><td>{tour.name}</td></tr>))}
             {adding ?
               <div>Form</div> :
               <tr key="new">

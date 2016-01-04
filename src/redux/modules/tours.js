@@ -1,16 +1,23 @@
-const LOAD = 'redux-example/tours/LOAD';
-const LOAD_SUCCESS = 'redux-example/tours/LOAD_SUCCESS';
-const LOAD_FAIL = 'redux-example/tours/LOAD_FAIL';
-const EDIT_START = 'redux-example/tours/EDIT_START';
-const EDIT_STOP = 'redux-example/tours/EDIT_STOP';
-const SAVE = 'redux-example/tours/SAVE';
-const SAVE_SUCCESS = 'redux-example/tours/SAVE_SUCCESS';
-const SAVE_FAIL = 'redux-example/tours/SAVE_FAIL';
+import {moment} from 'utils/moment';
+
+const LOAD = 'tourenplaner/tours/LOAD';
+const LOAD_SUCCESS = 'tourenplaner/tours/LOAD_SUCCESS';
+const LOAD_FAIL = 'tourenplaner/tours/LOAD_FAIL';
+const EDIT_START = 'tourenplaner/tours/EDIT_START';
+const EDIT_STOP = 'tourenplaner/tours/EDIT_STOP';
+const SAVE = 'tourenplaner/tours/SAVE';
+const SAVE_SUCCESS = 'tourenplaner/tours/SAVE_SUCCESS';
+const SAVE_FAIL = 'tourenplaner/tours/SAVE_FAIL';
+const SET_TIMELINE_DATE = 'tourenplaner/tours/SET_TIMELINE_DATE';
+const ADD_START = 'tourenplaner/tours/ADD_START';
+const ADD_STOP = 'tourenplaner/tours/ADD_STOP';
+
 
 const initialState = {
   loaded: false,
   editing: {},
-  saveError: {}
+  saveError: {},
+  currentDate: moment().format()
 };
 
 export default function reducer(state = initialState, action = {}) {
@@ -52,6 +59,17 @@ export default function reducer(state = initialState, action = {}) {
           [action.id]: false
         }
       };
+    case ADD_START:
+      return {
+        ...state,
+        adding: {
+        }
+      };
+    case ADD_STOP:
+      return {
+        ...state,
+        adding: null
+      };
     case SAVE:
       return state; // 'saving' flag handled by redux-form
     case SAVE_SUCCESS:
@@ -77,6 +95,12 @@ export default function reducer(state = initialState, action = {}) {
           [action.id]: action.error
         }
       } : state;
+    case SET_TIMELINE_DATE:
+      const dateString = typeof action.date === 'string' ? action.date : action.date.format();
+      return {
+        ...state,
+        currentDate: dateString
+      };
     default:
       return state;
   }
@@ -109,4 +133,19 @@ export function editStart(id) {
 
 export function editStop(id) {
   return { type: EDIT_STOP, id };
+}
+
+export function setTimelineDate(date) {
+  return {
+    type: SET_TIMELINE_DATE,
+    date: date
+  };
+}
+
+export function addStart() {
+  return { type: ADD_START };
+}
+
+export function addStop() {
+  return { type: ADD_STOP };
 }

@@ -3,7 +3,8 @@ import {connect} from 'react-redux';
 import {reduxForm} from 'redux-form';
 import seasonConfigurationFormValidation from './seasonConfigurationDatesFormValidation';
 import * as seasonActions from 'redux/modules/seasons';
-import {TourType, SpecialDateAction} from 'redux/modules/seasons';
+import {SpecialDateAction} from 'redux/modules/seasons';
+import {TourType} from 'models/TourType';
 import {ObjectSelect, DateInput} from 'components';
 
 @connect(

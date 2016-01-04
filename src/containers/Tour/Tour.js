@@ -7,7 +7,8 @@ import * as tourActions from 'redux/modules/tours';
 import {isLoaded, load as loadTour} from 'redux/modules/tours';
 import {isLoaded as isRestaurantsLoaded, load as loadRest} from 'redux/modules/restaurants';
 import {isLoaded as isLocationsLoaded, load as loadLoc} from 'redux/modules/locations';
-import {Timeline} from 'components';
+import {Timeline, TourForm} from 'components';
+import {moment} from 'utils/moment';
 
 function fetchDataDeferred(getState, dispatch) {
   const promise = new Promise((resolve, reject) => {
@@ -32,27 +33,27 @@ function fetchDataDeferred(getState, dispatch) {
 
 function getActions() {
   return {
-    ...tourActions,
-    loadRestaurants: loadRest,
-    loadLocations: loadLoc
+    ...tourActions
   };
 }
 
 @connectData(null, fetchDataDeferred)
 @connect(
   state => ({
-    tours: state.tours.data,
+    id: state.router.params.id,
     editing: state.tours.editing,
     error: state.tours.error,
     adding: state.tours.adding,
     loading: state.tours.loading,
     timelineDate: state.tours.currentDate,
+    tours: state.tours.data,
     locations: state.locations.data,
     restaurants: state.restaurants.data
   }),
   getActions())
 export default class Tours extends Component {
   static propTypes = {
+    id: PropTypes.string.isRequired,
     tours: PropTypes.array,
     restaurants: PropTypes.array,
     locations: PropTypes.array,
@@ -61,44 +62,81 @@ export default class Tours extends Component {
     editing: PropTypes.object.isRequired,
     adding: PropTypes.object,
     load: PropTypes.func.isRequired,
-    loadLocations: PropTypes.func.isRequired,
-    loadRestaurants: PropTypes.func.isRequired,
-    addStart: PropTypes.func.isRequired,
+    editStart: PropTypes.func.isRequired,
     setTimelineDate: PropTypes.func.isRequired,
     timelineDate: PropTypes.string.isRequired
   };
 
   render() {
-    const handleAdd = () => {
-      const {addStart} = this.props; // eslint-disable-line no-shadow
-      return () => addStart();
+    const handleEditStart = (id) => {
+      const {editStart} = this.props; // eslint-disable-line no-shadow
+      return () => editStart(id);
     };
-    const {tours, loadLocations, loadRestaurants, error, loading, load, adding, setTimelineDate} = this.props;
-    let refreshClassName = 'fa fa-refresh';
-    if (loading) {
-      refreshClassName += ' fa-spin';
-    }
+    const {id, tours, error, editing, restaurants, locations, timelineDate, setTimelineDate} = this.props;
+
     const changeTimeline = (momentDate) => {
       if (momentDate.isValid()) {
         setTimelineDate(momentDate.format());
       }
     };
+    if (!tours) {
+      return <div>Loading</div>;
+    }
+    const idNumber = parseInt(id, 10);
+    const tour = tours.find(item => item.id === idNumber);
+    if (!tour) {
+      return <div>Invalid tour</div>;
+    }
+    const timelineMatches = (timeline, date) => {
+      const fromDate = moment(timeline.from, moment.ISO_8601, true);
+      const untilDate = moment(timeline.to, moment.ISO_8601, true);
+
+      if (!date.isValid()) {
+        return false;
+      }
+
+      if (!fromDate.isValid() && timeline.from) {
+        return false;
+      }
+      if (!untilDate.isValid() && timeline.until) {
+        return false;
+      }
+
+      if (fromDate.isValid() && fromDate > date) {
+        return false;
+      }
+
+      if (untilDate.isValid() && untilDate < date) {
+        return false;
+      }
+
+      return true;
+    };
+    const date = moment(timelineDate, moment.ISO_8601. true);
+    const timeline = tour.timelines ? tour.timelines.find(tl => timelineMatches(tl, date)) : null;
 
     const styles = require('./Tour.scss');
+    if (editing[id]) {
+      return (
+        <div className={styles.restaurants + ' container'}>
+        <h1>Tour: {tour.name}</h1>
+        <DocumentMeta title={config.app.title + ': Tour ' + tour.name}/>
+
+        {error &&
+        <div className="alert alert-danger" role="alert">
+          <span className="glyphicon glyphicon-exclamation-sign" aria-hidden="true" />
+          {' '}
+          {error}
+        </div>}
+
+        <TourForm formKey={id} initialValues={tour} locations={locations} restaurants={restaurants}/>
+      </div>);
+    }
+
     return (
       <div className={styles.restaurants + ' container'}>
-        <h1>Restaurants
-          <button className={styles.refreshBtn + ' btn btn-success'} onClick={load}>
-            <i className={refreshClassName}/> {' '} Reload Tours
-          </button>
-          <button className={styles.refreshBtn + ' btn btn-success'} onClick={loadRestaurants}>
-            <i className={refreshClassName}/> {' '} Reload Restaurants
-          </button>
-          <button className={styles.refreshBtn + ' btn btn-success'} onClick={loadLocations}>
-            <i className={refreshClassName}/> {' '} Reload Locations
-          </button>
-        </h1>
-        <DocumentMeta title={config.app.title + ': Touren'}/>
+        <h1>Tour: {tour.name}</h1>
+        <DocumentMeta title={config.app.title + ': Tour ' + tour.name}/>
 
         {error &&
         <div className="alert alert-danger" role="alert">
@@ -109,34 +147,14 @@ export default class Tours extends Component {
 
         <Timeline date={this.props.timelineDate} onTimelineChanged={changeTimeline}/>
 
-        {tours && tours.length &&
-        <table className="table table-striped table-hover table-condensed">
-          <thead>
-          <tr>
-            <th className={styles.idCol}>ID</th>
-            <th className={styles.addressCol}>Name</th>
-            <th className={styles.notesCol}>Type</th>
-            <th className={styles.notesCol}>Schwierigkeit</th>
-            <th className={styles.notesCol}>Distanz</th>
-            <th className={styles.notesCol}>Höhenmeter</th>
-            <th className={styles.buttonCol} />
-          </tr>
-          </thead>
-          <tbody>
-          {tours.map(tour => (<div>{tour.name}</div>))}
-          {adding ?
-            <div>Form</div> :
-            <tr key="new">
-              <td colSpan={5}/>
-              <td>
-                <button className="btn btn-success" onClick={handleAdd()}>
-                  <i className="fa fa-plus"/> Add
-                </button>
-              </td>
-            </tr>
-          }
-          </tbody>
-        </table>}
+        <div>
+          {!timeline && <div>No Timeline available</div>}
+          {timeline && <div>{timeline.from}</div>}
+          {tour.name}
+          <button className="btn btn-primary" onClick={handleEditStart(id)}>
+            <i className="fa fa-pencil"/> Edit
+          </button>
+        </div>
       </div>
     );
   }

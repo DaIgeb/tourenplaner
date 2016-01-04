@@ -1,5 +1,5 @@
 import React, {Component, PropTypes} from 'react';
-import moment from 'moment';
+import {moment} from 'utils/moment';
 import config from '../../config';
 
 export default class Timeline extends Component {
@@ -14,10 +14,10 @@ export default class Timeline extends Component {
 
   render() {
     const changeTimeline = (evt) => {
-      const message = moment.unix(parseInt(evt.target.value, 10));
-      if (message.isValid()) {
+      const dateValue = moment.unix(parseInt(evt.target.value, 10));
+      if (dateValue.isValid()) {
         const {onTimelineChanged} = this.props;
-        onTimelineChanged(message);
+        onTimelineChanged(dateValue);
       }
     };
 

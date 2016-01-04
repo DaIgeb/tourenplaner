@@ -2,7 +2,7 @@ import React, {Component, PropTypes} from 'react';
 import {connect} from 'react-redux';
 import * as restaurantActions from 'redux/modules/restaurants';
 import {RestaurantForm} from 'components';
-import moment from 'moment';
+import {moment} from 'utils/moment';
 
 @connect(
   null,

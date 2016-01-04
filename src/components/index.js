@@ -11,6 +11,7 @@ export InfoBar from './InfoBar/InfoBar';
 export MiniInfoBar from './MiniInfoBar/MiniInfoBar';
 export SurveyForm from './SurveyForm/SurveyForm';
 export RestaurantForm from './RestaurantForm/RestaurantForm';
+export TourForm from './TourForm/TourForm';
 export LocationForm from './LocationForm/LocationForm';
 export WidgetForm from './WidgetForm/WidgetForm';
 export Timeline from './Timeline/Timeline';
