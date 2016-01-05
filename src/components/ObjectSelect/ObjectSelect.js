@@ -30,13 +30,20 @@ export default class ObjectSelect extends Component {
       }
       return JSON.parse(event.target.value);
     };
+    const toString = selection => {
+      if (selection) {
+        return multiple ? selection.map(JSON.stringify) : JSON.stringify(selection);
+      }
+
+      return null;
+    };
     return (
       <select
         className="form-control"
         multiple={multiple}
         onBlur={event => onBlur(parse(event))}
         onChange={event => onChange(parse(event))}
-        value={multiple ? value.map(JSON.stringify) : JSON.stringify(value)}
+        value={toString(value)}
         {...rest}>
         {options.map(option => <option key={option.id} value={JSON.stringify(option)}>{option.label}</option>)}
       </select>

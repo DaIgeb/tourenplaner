@@ -1,4 +1,4 @@
-export const TourType = Object.freeze({
+export default Object.freeze({
   none: Object.freeze({id: 1, label: 'Keine' }),
   morning: Object.freeze({id: 2, label: 'Morgentour' }),
   afternoon: Object.freeze({id: 3, label: 'Nachmittagstour' }),

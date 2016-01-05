@@ -23,7 +23,7 @@ export default class DataListHandler {
     }
     obj.id = this.getNextId();
     if (!this.validator(obj)) {
-      return {errors: [...this.validator.errors, JSON.stringify(obj)]};
+      return {errors: this.validator.errors};
     }
 
     this.data.push(obj);
@@ -36,7 +36,7 @@ export default class DataListHandler {
     try {
       if (!this.validator(obj)) {
         console.log('Invalid object');
-        return {errors: [...this.validator.errors, JSON.stringify(obj)]};
+        return {errors: this.validator.errors.map(e => {return {field: e.field, message: e.message};})};
       }
 
       const index = this.data.findIndex(i => i.id === obj.id);

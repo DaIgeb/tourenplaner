@@ -88,13 +88,28 @@ export default function reducer(state = initialState, action = {}) {
         }
       };
     case SAVE_FAIL:
-      return typeof action.error === 'string' ? {
-        ...state,
-        saveError: {
-          ...state.saveError,
-          [action.id]: action.error
-        }
-      } : state;
+      const errorType = typeof action.error;
+      switch (errorType) {
+        case 'string':
+          return {
+            ...state,
+            saveError: {
+              ...state.saveError,
+              [action.id]: action.error
+            }
+          };
+        case 'object':
+          return {
+            ...state,
+            saveError: {
+              ...state.saveError,
+              [action.id]: JSON.stringify(action.error, null, 2)
+            }
+          };
+        default:
+          return state;
+      }
+      break;
     case SET_TIMELINE_DATE:
       const dateString = typeof action.date === 'string' ? action.date : action.date.format();
       return {

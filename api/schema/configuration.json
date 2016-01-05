@@ -71,7 +71,11 @@
               "label": {
                 "type": "string"
               }
-            }
+            },
+            "required": [
+              "id",
+              "label"
+            ]
           },
           "description":  {
             "type": "string"

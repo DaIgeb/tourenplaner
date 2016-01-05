@@ -4,8 +4,8 @@ import {bindActionCreators} from 'redux';
 import {reduxForm} from 'redux-form';
 // import restaurantValidation from './restaurantValidation';
 import * as tourActions from 'redux/modules/tours';
-import {DateInput, ObjectSelect} from 'components';
-import {TourType} from 'models/TourType';
+import {DateInput, NumberInput, ObjectSelect} from 'components';
+import {TourType, Difficulty} from 'models';
 
 @connect(
   state => ({
@@ -48,7 +48,7 @@ export default class TourForm extends Component {
 
   render() {
     const { fields: {id, name, timelines}, restaurants, locations, formKey, handleSubmit, save, invalid,
-      pristine, submitting, saveError: { [formKey]: saveError }, values } = this.props;
+      submitting, saveError: { [formKey]: saveError }, values } = this.props;
 
     const tourTypeOptions = [
       TourType.none,
@@ -59,12 +59,9 @@ export default class TourForm extends Component {
     ];
 
     const difficultyOptions = [
-      TourType.morning,
-      TourType.afternoon,
-      TourType.evening,
-      TourType.fullday,
-      { id: 1, label: 'Einfach'},
-
+      Difficulty.easy,
+      Difficulty.medium,
+      Difficulty.difficult
     ];
 
     const handleCancel = (tourId) => {
@@ -83,6 +80,9 @@ export default class TourForm extends Component {
     };
     const renderDateControl = (field, attributes = null) => {
       return (<DateInput className="form-control" id={field.name} {...field} {...attributes} displayFormat="L"/>);
+    };
+    const renderNumberControl = (field, attributes = null) => {
+      return (<NumberInput className="form-control" id={field.name} {...field} {...attributes}/>);
     };
     const renderObjectSelectControl = (field, options, attributes = null) => {
       return <ObjectSelect {...field} {...attributes} options={options}/>;
@@ -122,7 +122,9 @@ export default class TourForm extends Component {
                 {renderDate(timeline.from, 'Gültig Von')}
                 {renderDate(timeline.to, 'Gültig Bis')}
                 {renderInput(timeline.restaurant, 'Restaurant', <select className="form-control"
-                  {...timeline.restaurant}>
+                  {...timeline.restaurant}
+                  onBlur={evt => timeline.restaurant.onBlur(parseInt(evt.target.value, 10))}
+                  onChange={evt => timeline.restaurant.onChange(parseInt(evt.target.value, 10))}>
                   {restaurants.map(option => {
                     const loc = findLocation(option.location);
                     return <option key={option.id} value={JSON.stringify(option.id)}>{loc.city} - {loc.name}</option>;
@@ -130,14 +132,16 @@ export default class TourForm extends Component {
                 </select>)}
                 {renderInput(timeline.types, 'Typen', renderObjectSelectControl(timeline.types, tourTypeOptions, {multiple: true}))}
                 {renderInput(timeline.difficulty, 'Schwierigkeit', renderObjectSelectControl(timeline.difficulty, difficultyOptions))}
-                {renderInput(timeline.distance, 'Distanz', renderInputControl(timeline.distance))}
-                {renderInput(timeline.elevation, 'Höhenmeter', renderInputControl(timeline.elevation))}
+                {renderInput(timeline.distance, 'Distanz', <div className="input-group">{renderNumberControl(timeline.distance, {min: 0, step: 0.1, decimalPlaces: 1})}<span className="input-group-addon">km</span></div>)}
+                {renderInput(timeline.elevation, 'Höhenmeter', <div className="input-group">{renderNumberControl(timeline.elevation, {min: 0, step: 25})}<span className="input-group-addon">m</span></div>)}
               </div>
               <div className="col-xs-5">
                 <h4>Ortschaften</h4>
                 {timeline.locations && timeline.locations.map((location, locIdx)=> (<div key={locIdx} className="form-group"><select
                   className="form-control"
-                  {...location}>
+                  {...location}
+                  onBlur={evt => location.onBlur(parseInt(evt.target.value, 10))}
+                  onChange={evt => location.onChange(parseInt(evt.target.value, 10))}>
                   {locations.map(option => <option key={option.id} value={JSON.stringify(option.id)}>{option.city} - {option.name}</option>)}
                 </select></div>))}
                 <div style={{textAlign: 'center', margin: '10px'}}>
@@ -164,7 +168,7 @@ export default class TourForm extends Component {
                       }
                     })
                   )}
-                  disabled={pristine || invalid || submitting}>
+                  disabled={invalid || submitting}>
             <i className={'fa ' + (submitting ? 'fa-cog fa-spin' : 'fa-cloud')}/> Save
           </button>
           </div>
