@@ -7,7 +7,9 @@ import * as tourActions from 'redux/modules/tours';
 import {isLoaded, load as loadTour} from 'redux/modules/tours';
 import {isLoaded as isRestaurantsLoaded, load as loadRest} from 'redux/modules/restaurants';
 import {isLoaded as isLocationsLoaded, load as loadLoc} from 'redux/modules/locations';
-import {Timeline} from 'components';
+import {Timeline, TourForm} from 'components';
+import {moment} from 'utils/moment';
+import { LinkContainer } from 'react-router-bootstrap';
 
 function fetchDataDeferred(getState, dispatch) {
   const promise = new Promise((resolve, reject) => {
@@ -61,11 +63,14 @@ export default class Tours extends Component {
     editing: PropTypes.object.isRequired,
     adding: PropTypes.object,
     load: PropTypes.func.isRequired,
+    editStart: PropTypes.func.isRequired,
+    del: PropTypes.func.isRequired,
+    add: PropTypes.func.isRequired,
     loadLocations: PropTypes.func.isRequired,
     loadRestaurants: PropTypes.func.isRequired,
     addStart: PropTypes.func.isRequired,
     setTimelineDate: PropTypes.func.isRequired,
-    timelineDate: PropTypes.string.isRequired
+    timelineDate: PropTypes.string.isRequired,
   };
 
   render() {
@@ -73,7 +78,12 @@ export default class Tours extends Component {
       const {addStart} = this.props; // eslint-disable-line no-shadow
       return () => addStart();
     };
-    const {tours, loadLocations, loadRestaurants, error, loading, load, adding, setTimelineDate} = this.props;
+    const handleDelete = (tour) => {
+      const {del} = this.props; // eslint-disable-line no-shadow
+      return () => del(String(tour.id));
+    };
+
+    const {tours, locations, restaurants, loadLocations, loadRestaurants, error, loading, add, load, adding, setTimelineDate} = this.props;
     let refreshClassName = 'fa fa-refresh';
     if (loading) {
       refreshClassName += ' fa-spin';
@@ -84,7 +94,71 @@ export default class Tours extends Component {
       }
     };
 
+    const timelineMatches = (timeline, date) => {
+      const fromDate = moment(timeline.from, moment.ISO_8601, true);
+      const untilDate = moment(timeline.to, moment.ISO_8601, true);
+
+      if (!date.isValid()) {
+        return false;
+      }
+
+      if (!fromDate.isValid() && timeline.from) {
+        return false;
+      }
+      if (!untilDate.isValid() && timeline.until) {
+        return false;
+      }
+
+      if (fromDate.isValid() && fromDate > date) {
+        return false;
+      }
+
+      if (untilDate.isValid() && untilDate < date) {
+        return false;
+      }
+
+      return true;
+    };
+    const {timelineDate} = this.props;
+    const date = moment(timelineDate, moment.ISO_8601. true);
+
     const styles = require('./Tours.scss');
+    const renderTimline = (tourId, timeline) => {
+      const cols = [];
+      if (timeline) {
+        const types = timeline.types.map(type => type.label).join(',');
+        cols.push(<td>{types}</td>);
+        cols.push(<td>{timeline.difficulty.label}</td>);
+        cols.push(<td>{timeline.distance}</td>);
+        cols.push(<td>{timeline.elevation}</td>);
+      } else {
+        cols.push(<td colSpan={4}/>);
+      }
+      cols.push(<td className={styles.buttonCol}>
+        <button className="btn btn-danger" onClick={handleDelete(tourId)}>
+          <i className="fa fa-trash"/> Löschen
+        </button>
+        <LinkContainer to={'/tours/' + tourId}>
+          <a className="btn btn-default">
+            <i className="fa fa-trash"/> Details
+          </a>
+        </LinkContainer>
+      </td>);
+
+      return cols;
+    };
+
+    const renderTour = (tour) => {
+      const timeline = tour.timelines.find(time => timelineMatches(time, date));
+
+      return (
+        <tr key={tour.id}>
+          <td>{tour.id}</td>
+          <td>{tour.name}</td>
+          {renderTimline(tour.id, timeline)}
+        </tr>);
+    };
+
     return (
       <div className={styles.restaurants + ' container'}>
         <h1>Restaurants
@@ -123,11 +197,11 @@ export default class Tours extends Component {
           </tr>
           </thead>
           <tbody>
-            {tours.map(tour => (<tr key={tour.id}><td>{tour.id}</td><td>{tour.name}</td></tr>))}
+            {tours.map(tour => renderTour(tour))}
             {adding ?
-              <div>Form</div> :
+              <tr><td colSpan={5}><TourForm formKey="new" locations={locations} restaurants={restaurants} onSubmit={values => add(values)}/></td></tr> :
               <tr key="new">
-                <td colSpan={5}/>
+                <td colSpan={6}/>
                 <td>
                   <button className="btn btn-success" onClick={handleAdd()}>
                     <i className="fa fa-plus"/> Add

@@ -9,6 +9,7 @@ import {isLoaded as isRestaurantsLoaded, load as loadRest} from 'redux/modules/r
 import {isLoaded as isLocationsLoaded, load as loadLoc} from 'redux/modules/locations';
 import {Timeline, TourForm} from 'components';
 import {moment} from 'utils/moment';
+import { LinkContainer } from 'react-router-bootstrap';
 
 function fetchDataDeferred(getState, dispatch) {
   const promise = new Promise((resolve, reject) => {
@@ -61,6 +62,7 @@ export default class Tours extends Component {
     loading: PropTypes.bool,
     editing: PropTypes.object.isRequired,
     adding: PropTypes.object,
+    save: PropTypes.func.isRequired,
     load: PropTypes.func.isRequired,
     editStart: PropTypes.func.isRequired,
     setTimelineDate: PropTypes.func.isRequired,
@@ -72,7 +74,7 @@ export default class Tours extends Component {
       const {editStart} = this.props; // eslint-disable-line no-shadow
       return () => editStart(id);
     };
-    const {id, tours, error, editing, restaurants, locations, timelineDate, setTimelineDate} = this.props;
+    const {id, tours, save, error, editing, restaurants, locations, timelineDate, setTimelineDate} = this.props;
 
     const changeTimeline = (momentDate) => {
       if (momentDate.isValid()) {
@@ -129,13 +131,19 @@ export default class Tours extends Component {
           {error}
         </div>}
 
-        <TourForm formKey={id} initialValues={tour} locations={locations} restaurants={restaurants}/>
+        <TourForm formKey={id} initialValues={tour} locations={locations} restaurants={restaurants} onSubmit={values => save(values)}/>
       </div>);
     }
 
     return (
       <div className={styles.restaurants + ' container'}>
-        <h1>Tour: {tour.name}</h1>
+        <h1>Tour: {tour.name}
+          <LinkContainer to="/tours">
+            <button className="btn btn-primary">
+              <i className="fa fa-pencil"/> Zurück
+            </button>
+          </LinkContainer>
+        </h1>
         <DocumentMeta title={config.app.title + ': Tour ' + tour.name}/>
 
         {error &&

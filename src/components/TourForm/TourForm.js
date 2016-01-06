@@ -37,18 +37,16 @@ export default class TourForm extends Component {
     handleSubmit: PropTypes.func.isRequired,
     invalid: PropTypes.bool.isRequired,
     pristine: PropTypes.bool.isRequired,
-    save: PropTypes.func.isRequired,
     submitting: PropTypes.bool.isRequired,
     saveError: PropTypes.object,
     formKey: PropTypes.string.isRequired,
-    values: PropTypes.object.isRequired,
     locations: PropTypes.array.isRequired,
     restaurants: PropTypes.array.isRequired
   };
 
   render() {
-    const { fields: {id, name, timelines}, restaurants, locations, formKey, handleSubmit, save, invalid,
-      submitting, saveError: { [formKey]: saveError }, values } = this.props;
+    const { fields: {id, name, timelines}, restaurants, locations, formKey, handleSubmit, invalid,
+      submitting, saveError: { [formKey]: saveError } } = this.props;
 
     const tourTypeOptions = [
       TourType.none,
@@ -161,13 +159,7 @@ export default class TourForm extends Component {
             <i className="fa fa-ban"/> Cancel
           </button>
           <button className="btn btn-success"
-                  onClick={handleSubmit(() => save(values)
-                    .then(result => {
-                      if (result && typeof result.error === 'object') {
-                        return Promise.reject(result.error);
-                      }
-                    })
-                  )}
+                  onClick={handleSubmit}
                   disabled={invalid || submitting}>
             <i className={'fa ' + (submitting ? 'fa-cog fa-spin' : 'fa-cloud')}/> Save
           </button>

@@ -11,6 +11,12 @@ const SAVE_FAIL = 'tourenplaner/tours/SAVE_FAIL';
 const SET_TIMELINE_DATE = 'tourenplaner/tours/SET_TIMELINE_DATE';
 const ADD_START = 'tourenplaner/tours/ADD_START';
 const ADD_STOP = 'tourenplaner/tours/ADD_STOP';
+const ADD = 'tourenplaner/tours/ADD';
+const ADD_SUCCESS = 'tourenplaner/tours/ADD_SUCCESS';
+const ADD_FAIL = 'tourenplaner/tours/ADD_FAIL';
+const DELETE = 'tourenplaner/tours/DELETE';
+const DELETE_SUCCESS = 'tourenplaner/tours/DELETE_SUCCESS';
+const DELETE_FAIL = 'tourenplaner/tours/DELETE_FAIL';
 
 
 const initialState = {
@@ -70,6 +76,42 @@ export default function reducer(state = initialState, action = {}) {
         ...state,
         adding: null
       };
+    case ADD:
+      return state; // 'saving' flag handled by redux-form
+    case ADD_SUCCESS:
+      const currentData = [...state.data];
+      currentData.push(action.result);
+      return {
+        ...state,
+        data: currentData,
+        saveError: {
+          ...state.saveError,
+          ['new']: null
+        },
+        adding: null
+      };
+    case ADD_FAIL:
+      switch (typeof action.error) {
+        case 'string':
+          return {
+            ...state,
+            saveError: {
+              ...state.saveError,
+              ['new']: action.error
+            }
+          };
+        case 'object':
+          return {
+            ...state,
+            saveError: {
+              ...state.saveError,
+              ['new']: JSON.stringify(action.error, null, 2)
+            }
+          };
+        default:
+          return state;
+      }
+      break;
     case SAVE:
       return state; // 'saving' flag handled by redux-form
     case SAVE_SUCCESS:
@@ -116,6 +158,31 @@ export default function reducer(state = initialState, action = {}) {
         ...state,
         currentDate: dateString
       };
+    case DELETE:
+      return state; // 'saving' flag handled by redux-form
+    case DELETE_SUCCESS:
+      const beforeDelete = [...state.data];
+      beforeDelete.splice(beforeDelete.findIndex(tour => tour.id === action.result.id));
+      return {
+        ...state,
+        data: beforeDelete,
+        editing: {
+          ...state.editing,
+          [action.id]: false
+        },
+        saveError: {
+          ...state.saveError,
+          [action.id]: null
+        }
+      };
+    case DELETE_FAIL:
+      return typeof action.error === 'string' ? {
+        ...state,
+        saveError: {
+          ...state.saveError,
+          [action.id]: action.error
+        }
+      } : state;
     default:
       return state;
   }
@@ -142,6 +209,15 @@ export function save(tour) {
   };
 }
 
+export function add(tour) {
+  return {
+    types: [ADD, ADD_SUCCESS, ADD_FAIL],
+    promise: (client) => client.post('/tour/add', {
+      data: tour
+    })
+  };
+}
+
 export function editStart(id) {
   return { type: EDIT_START, id };
 }
@@ -163,4 +239,14 @@ export function addStart() {
 
 export function addStop() {
   return { type: ADD_STOP };
+}
+
+export function del(tour) {
+  return {
+    types: [DELETE, DELETE_SUCCESS, DELETE_FAIL],
+    id: tour,
+    promise: (client) => client.del('/tour/del', {
+      data: tour
+    })
+  };
 }

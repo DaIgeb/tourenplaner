@@ -47,7 +47,42 @@
         "distance": 1.1,
         "elevation": 275,
         "restaurant": 3,
-        "locations": []
+        "locations": [
+          1,
+          3
+        ]
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "name": "Kollbrunn",
+    "timelines": [
+      {
+        "from": "2000-12-31T23:00:00.000Z",
+        "to": "2018-12-30T23:00:00.000Z",
+        "types": [
+          {
+            "id": 2,
+            "label": "Morgentour"
+          },
+          {
+            "id": 4,
+            "label": "Abendtour"
+          }
+        ],
+        "difficulty": {
+          "id": 2,
+          "label": "Mittel"
+        },
+        "distance": 60,
+        "elevation": 725,
+        "restaurant": 7,
+        "locations": [
+          8,
+          7,
+          7
+        ]
       }
     ]
   }
