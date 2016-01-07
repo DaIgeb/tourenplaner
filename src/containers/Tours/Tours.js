@@ -123,39 +123,42 @@ export default class Tours extends Component {
     const date = moment(timelineDate, moment.ISO_8601. true);
 
     const styles = require('./Tours.scss');
-    const renderTimline = (tourId, timeline) => {
-      const cols = [];
-      if (timeline) {
-        const types = timeline.types.map(type => type.label).join(',');
-        cols.push(<td>{types}</td>);
-        cols.push(<td>{timeline.difficulty.label}</td>);
-        cols.push(<td>{timeline.distance}</td>);
-        cols.push(<td>{timeline.elevation}</td>);
-      } else {
-        cols.push(<td colSpan={4}/>);
-      }
-      cols.push(<td className={styles.buttonCol}>
-        <button className="btn btn-danger" onClick={handleDelete(tourId)}>
-          <i className="fa fa-trash"/> Löschen
-        </button>
-        <LinkContainer to={'/tours/' + tourId}>
-          <a className="btn btn-default">
-            <i className="fa fa-trash"/> Details
-          </a>
-        </LinkContainer>
-      </td>);
-
-      return cols;
+    const renderButtonCell = (tourId) => {
+      return (
+        <td className={styles.buttonCol}>
+          <button className="btn btn-danger" onClick={handleDelete(tourId)}>
+            <i className="fa fa-trash"/> Löschen
+          </button>
+          <LinkContainer to={'/tours/' + tourId}>
+            <a className="btn btn-default">
+              <i className="fa fa-trash"/> Details
+            </a>
+          </LinkContainer>
+        </td>);
     };
 
     const renderTour = (tour) => {
       const timeline = tour.timelines.find(time => timelineMatches(time, date));
+      if (timeline) {
+        const types = timeline.types.map(type => type.label).join(',');
+        return (
+          <tr key={tour.id}>
+            <td>{tour.id}</td>
+            <td>{tour.name}</td>
+            <td>{types}</td>
+            <td>{timeline.difficulty.label}</td>
+            <td>{timeline.distance}</td>
+            <td>{timeline.elevation}</td>
+            {renderButtonCell(tour.id)}
+          </tr>);
+      }
 
       return (
         <tr key={tour.id}>
           <td>{tour.id}</td>
           <td>{tour.name}</td>
-          {renderTimline(tour.id, timeline)}
+          <td colSpan={4}/>
+          {renderButtonCell(tour.id)}
         </tr>);
     };
 
@@ -200,7 +203,7 @@ export default class Tours extends Component {
             {tours.map(tour => renderTour(tour))}
             {adding ?
               <tr><td colSpan={5}><TourForm formKey="new" locations={locations} restaurants={restaurants} onSubmit={values => add(values)}/></td></tr> :
-              <tr key="new">
+              <tr>
                 <td colSpan={6}/>
                 <td>
                   <button className="btn btn-success" onClick={handleAdd()}>

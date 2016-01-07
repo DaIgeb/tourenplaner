@@ -63,7 +63,7 @@ export default class RestaurantForm extends Component {
         <input type="text" className="form-control" {...notes}/>
         {notes.error && notes.touched && <div className="text-danger">{notes.error}</div>}
         </td>
-        <td className={styles.businessHours}></td>
+        <td className={styles.businessHours}/>
         <td className={styles.buttonCol}>
           <button className="btn btn-default"
                   onClick={handleCancel(formKey)}

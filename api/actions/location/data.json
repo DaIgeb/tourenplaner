@@ -80,5 +80,15 @@
     "postalCode": null,
     "latitude": null,
     "longitude": null
+  },
+  {
+    "id": 13,
+    "name": "Rest. Frohsinn",
+    "streetAddress": "Dorfstrasse 3",
+    "addressCountry": "CH",
+    "postalCode": "8483",
+    "city": "Kollbrunn",
+    "latitude": 47.457702,
+    "longitude": 8.774701
   }
 ]

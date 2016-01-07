@@ -7,7 +7,7 @@ import {moment} from 'utils/moment';
 @connect(
   null,
   ...restaurantActions)
-export default class Restaurants extends Component {
+export default class RestaurantRow extends Component {
   static propTypes = {
     locations: PropTypes.array.isRequired,
     restaurant: PropTypes.object.isRequired,
@@ -27,22 +27,6 @@ export default class Restaurants extends Component {
     const handleDelete = (restaurant) => {
       const {del} = this.props; // eslint-disable-line no-shadow
       return () => del(String(restaurant.id));
-    };
-
-    const renderLocation = (restaurant) => {
-      const {locations} = this.props;
-      if (locations && locations.length > 0) {
-        const location = locations.find(loc => loc.id === restaurant.location);
-        if (location) {
-          return (<td className={styles.addressCol}>
-            {location.name}<br/>
-            {location.streetAddress}<br/>
-            {location.addressCountry ? `${location.addressCountry}-` : ''}{location.postalCode} {location.city}
-          </td>);
-        }
-
-        return (<td>Location not found</td>);
-      }
     };
 
     const timelineMatches = (timeline, date) => {
@@ -78,7 +62,27 @@ export default class Restaurants extends Component {
       return `${hour.substr(hour.length - 2)}:${minute.substr(minute.length - 2)}`;
     };
 
-    const renderBuisnessHours = (businessHour, idx) => {
+    const {restaurant, timeline, isEditing, locations} = this.props;
+    const timelineDate = moment(timeline, moment.ISO_8601, true);
+
+    const openingHours = restaurant.timelines.find(time => timelineMatches(time, timelineDate));
+
+    const renderLocation = () => {
+      if (locations && locations.length > 0) {
+        const location = locations.find(loc => loc.id === restaurant.location);
+        if (location) {
+          return (<td className={styles.addressCol}>
+            {location.name}<br/>
+            {location.streetAddress}<br/>
+            {location.addressCountry ? `${location.addressCountry}-` : ''}{location.postalCode} {location.city}
+          </td>);
+        }
+
+        return (<td>Location not found</td>);
+      }
+    };
+
+    const renderBusinessHour = (businessHour, idx) => {
       return (
         <div className="row" key={idx}>
           <div className="col-sm-4">{businessHour.weekday}</div>
@@ -86,28 +90,30 @@ export default class Restaurants extends Component {
         </div>);
     };
 
-    const renderTimeline = (restaurant) => {
-      const {timeline} = this.props;
-      const timelineDate = moment(timeline, moment.ISO_8601, true);
-
-      const openingHours = restaurant.timelines.find(time => timelineMatches(time, timelineDate));
-
-      return [(<td className={styles.notesCol}>{openingHours && openingHours.phone}
-        <br/>
-        {openingHours && openingHours.notes}</td>),
-        (<td className={styles.businessHours}>{openingHours && openingHours.businessHours && openingHours.businessHours.map((hour, idx) => renderBuisnessHours(hour, idx))}
-      </td>)];
+    const renderTimeline = () => {
+      return (
+        <td className={styles.notesCol}>
+          {openingHours && openingHours.phone}
+          <br/>
+          {openingHours && openingHours.notes}
+        </td>);
     };
 
-    const {restaurant, isEditing, locations} = this.props;
+    const renderBusinessHours = () => {
+      return (
+        <td className={styles.businessHours}>
+          {openingHours && openingHours.businessHours && openingHours.businessHours.map((hour, idx) => renderBusinessHour(hour, idx))}
+        </td>);
+    };
 
     return (
       isEditing ?
         <RestaurantForm formKey={String(restaurant.id)} key={String(restaurant.id)} initialValues={restaurant} locations={locations}/> :
-        <tr key={restaurant.id}>
+        <tr>
           <td className={styles.idCol}>{restaurant.id}</td>
-          {renderLocation(restaurant)}
-          {renderTimeline(restaurant)}
+          {renderLocation()}
+          {renderTimeline()}
+          {renderBusinessHours()}
           <td className={styles.buttonCol}>
             <button className="btn btn-primary" onClick={handleEdit(restaurant)}>
               <i className="fa fa-pencil"/> Edit

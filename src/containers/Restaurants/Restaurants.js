@@ -65,7 +65,7 @@ export default class Restaurants extends Component {
       const {addStart} = this.props; // eslint-disable-line no-shadow
       return () => addStart();
     };
-    const {restaurants, loadLoc, locations, error, editing, loading, load, adding, setTimelineDate, timelineDate} = this.props;
+    const {restaurants, loadLoc, error, loading, load, setTimelineDate, timelineDate} = this.props;
     let refreshClassName = 'fa fa-refresh';
     if (loading) {
       refreshClassName += ' fa-spin';
@@ -77,6 +77,29 @@ export default class Restaurants extends Component {
     };
 
     const styles = require('./Restaurants.scss');
+    const renderRestaurant = (restaurant) => {
+      const {editing, locations} = this.props;
+
+      return <RestaurantRow key={String(restaurant.id)} restaurant={restaurant} isEditing={editing[restaurant.id] ? true : false} timeline={timelineDate} locations={locations}/>;
+    };
+
+    const renderAddingRow = () => {
+      const {adding, locations} = this.props;
+      if (adding) {
+        return <RestaurantForm formKey="new" initialValues={adding} locations={locations}/>;
+      }
+
+      return (
+        <tr>
+          <td colSpan={5}/>
+          <td>
+            <button className="btn btn-success" onClick={handleAdd()}>
+              <i className="fa fa-plus"/> Add
+            </button>
+          </td>
+        </tr>);
+    };
+
     return (
       <div className={styles.restaurants + ' container'}>
         <h1>Restaurants
@@ -91,7 +114,7 @@ export default class Restaurants extends Component {
 
         {error &&
         <div className="alert alert-danger" role="alert">
-          <span className="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+          <span className="glyphicon glyphicon-exclamation-sign" aria-hidden="true" />
           {' '}
           {error}
         </div>}
@@ -110,18 +133,8 @@ export default class Restaurants extends Component {
           </tr>
           </thead>
           <tbody>
-            {restaurants.map(restaurant => (<RestaurantRow key={String(restaurant.id)} restaurant={restaurant} isEditing={editing[restaurant.id]} timeline={timelineDate} locations={locations}/>))}
-            {adding ?
-              <RestaurantForm formKey="new" key="new" initialValues={adding} locations={locations}/> :
-              <tr key="new">
-                <td colSpan={5}/>
-                <td>
-                  <button className="btn btn-success" onClick={handleAdd()}>
-                    <i className="fa fa-plus"/> Add
-                  </button>
-                </td>
-              </tr>
-              }
+            {restaurants.map((restaurant) => renderRestaurant(restaurant))}
+            {renderAddingRow()}
           </tbody>
         </table>}
       </div>

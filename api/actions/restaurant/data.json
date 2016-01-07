@@ -311,5 +311,86 @@
         ]
       }
     ]
+  },
+  {
+    "id": 13,
+    "name": "Sonne",
+    "location": 13,
+    "timelines": [
+      {
+        "phone": "+41523831190",
+        "notes": "Montag geschlossen\nhttp://www.geniesse.ch/component/myjspace/see/frohsinn_kollbrunn.html",
+        "from": "2015-11-18T19:26:40.900Z",
+        "until": null,
+        "businessHours": [
+          {
+            "weekday": "Tuesday",
+            "from": {
+              "hour": 8,
+              "minute": 0
+            },
+            "until": {
+              "hour": 0,
+              "minute": 30
+            }
+          },
+          {
+            "weekday": "Wednesday",
+            "from": {
+              "hour": 8,
+              "minute": 0
+            },
+            "until": {
+              "hour": 0,
+              "minute": 30
+            }
+          },
+          {
+            "weekday": "Thursday",
+            "from": {
+              "hour": 8,
+              "minute": 0
+            },
+            "until": {
+              "hour": 0,
+              "minute": 30
+            }
+          },
+          {
+            "weekday": "Friday",
+            "from": {
+              "hour": 8,
+              "minute": 0
+            },
+            "until": {
+              "hour": 0,
+              "minute": 30
+            }
+          },
+          {
+            "weekday": "Saturday",
+            "from": {
+              "hour": 8,
+              "minute": 0
+            },
+            "until": {
+              "hour": 0,
+              "minute": 30
+            }
+          },
+          {
+            "weekday": "Sunday",
+            "from": {
+              "hour": 8,
+              "minute": 0
+            },
+            "until": {
+              "hour": 22,
+              "minute": 0
+            }
+          }
+        ]
+      }
+    ]
   }
 ]

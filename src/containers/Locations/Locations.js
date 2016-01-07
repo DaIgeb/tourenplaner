@@ -38,6 +38,7 @@ export default class Locations extends Component {
     editing: PropTypes.object.isRequired,
     adding: PropTypes.object,
     load: PropTypes.func.isRequired,
+    add: PropTypes.func.isRequired,
     addStart: PropTypes.func.isRequired
   };
 
@@ -46,7 +47,7 @@ export default class Locations extends Component {
       const {addStart} = this.props; // eslint-disable-line no-shadow
       return () => addStart();
     };
-    const {locations, error, editing, loading, load, adding} = this.props;
+    const {locations, error, editing, loading, load, add, adding} = this.props;
     let refreshClassName = 'fa fa-refresh';
     if (loading) {
       refreshClassName += ' fa-spin';
@@ -85,9 +86,9 @@ export default class Locations extends Component {
           </tr>
           </thead>
           <tbody>
-            {locations.map(location => <LocationRow key={String(location.id)} location={location} isEditing={editing[location.id]}/>)}
+            {locations.map(location => <LocationRow key={String(location.id)} location={location} isEditing={editing[location.id] ? true : false}/>)}
             {adding ?
-              <LocationForm formKey="new" key="new" initialValues={adding}/> :
+              <LocationForm formKey="new" key="new" initialValues={adding} onSubmit={values => {console.log(values); add(values);}}/> :
               <tr key="new">
                 <td colSpan={8}/>
                 <td>

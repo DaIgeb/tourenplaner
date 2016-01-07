@@ -52,7 +52,7 @@ function getActions() {
     restaurants: state.restaurants.data
   }),
   getActions())
-export default class Tours extends Component {
+export default class Tour extends Component {
   static propTypes = {
     id: PropTypes.string.isRequired,
     tours: PropTypes.array,

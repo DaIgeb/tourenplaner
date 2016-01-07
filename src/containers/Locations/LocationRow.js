@@ -11,6 +11,7 @@ export default class LocationRow extends Component {
     location: PropTypes.object.isRequired,
     isEditing: PropTypes.bool.isRequired,
     del: PropTypes.func.isRequired,
+    save: PropTypes.func.isRequired,
     editStart: PropTypes.func.isRequired
   };
 
@@ -26,11 +27,11 @@ export default class LocationRow extends Component {
       return () => del(String(location.id));
     };
 
-    const {location, isEditing} = this.props;
+    const {location, isEditing, save} = this.props;
     return (
       isEditing ?
-        <LocationForm formKey={String(location.id)} key={String(location.id)} initialValues={location}/> :
-        <tr key={location.id}>
+        <LocationForm formKey={String(location.id)} key={String(location.id)} initialValues={location} onSubmit={values => save(values)}/> :
+        <tr>
           <td className={styles.idCol}>
             {location.id}
           </td>

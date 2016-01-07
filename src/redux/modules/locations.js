@@ -138,7 +138,7 @@ export default function reducer(state = initialState, action = {}) {
           ...state.editing,
           [action.id]: false
         },
-        adding: false,
+        adding: null,
         saveError: {
           ...state.saveError,
           [action.id]: null
@@ -156,11 +156,12 @@ export default function reducer(state = initialState, action = {}) {
             }
           };
         case 'object':
+          console.log(action.error);
           return {
             ...state,
             adding: {
               ...state.adding,
-              error: JSON.stringify(action.error.map(err => {return {field: err.field, message: err.message};}), null, 2)
+              error: JSON.stringify(action.error, null, 2)
             }
           };
         default:
@@ -184,6 +185,7 @@ export function load() {
 }
 
 export function save(location) {
+  console.log(location);
   return {
     types: [SAVE, SAVE_SUCCESS, SAVE_FAIL],
     id: location.id,
@@ -206,7 +208,7 @@ export function del(location) {
 export function add(location) {
   return {
     types: [NEW, NEW_SUCCESS, NEW_FAIL],
-    promise: (client) => client.put('/location/new', {
+    promise: (client) => client.put('/location/add', {
       data: location
     })
   };

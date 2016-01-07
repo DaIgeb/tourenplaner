@@ -4,6 +4,7 @@ import {bindActionCreators} from 'redux';
 import {reduxForm} from 'redux-form';
 // import restaurantValidation from './restaurantValidation';
 import * as locationActions from 'redux/modules/locations';
+import {NumberInput} from 'components';
 
 @connect(
   state => ({
@@ -32,8 +33,8 @@ export default class LocationForm extends Component {
   };
 
   render() {
-    const { fields: {id, name, streetAddress, addressCountry, postalCode, city, latitude, longitude}, formKey, handleSubmit, save, invalid,
-      pristine, submitting, saveError: { [formKey]: saveError }, values } = this.props;
+    const { fields: {id, name, streetAddress, addressCountry, postalCode, city, latitude, longitude}, formKey, handleSubmit, invalid,
+      submitting, saveError: { [formKey]: saveError }} = this.props;
     const handleCancel = (restaurant) => {
       if (restaurant && restaurant !== 'new') {
         const {editStop} = this.props; // eslint-disable-line no-shadow
@@ -48,7 +49,7 @@ export default class LocationForm extends Component {
     return (
       <tr className={submitting ? styles.saving : ''}>
         <td className={styles.idCol}>
-          <input type="text" className="form-control" {...id} onChange={event => id.onChange(parseInt(event.target.value, 10))} placeholder="ID" readOnly/>
+          <input type="text" className="form-control" value={id.value} placeholder="ID" readOnly/>
           {id.error && id.touched && <div className="text-danger">{id.error}</div>}
         </td>
         <td className={styles.nameCol}>
@@ -72,11 +73,11 @@ export default class LocationForm extends Component {
           {city.error && city.touched && <div className="text-danger">{city.error}</div>}
         </td>
         <td className={styles.addressCol}>
-          <input type="text" className="form-control" {...latitude} placeholder="Breite"/>
+          <NumberInput className="form-control" {...latitude} placeholder="Breite"/>
           {latitude.error && latitude.touched && <div className="text-danger">{latitude.error}</div>}
         </td>
         <td className={styles.addressCol}>
-          <input type="text" className="form-control" {...longitude} placeholder="Länge"/>
+          <NumberInput className="form-control" {...longitude} placeholder="Länge"/>
           {longitude.error && longitude.touched && <div className="text-danger">{longitude.error}</div>}
         </td>
         <td className={styles.buttonCol}>
@@ -85,15 +86,7 @@ export default class LocationForm extends Component {
                   disabled={submitting}>
             <i className="fa fa-ban"/> Cancel
           </button>
-          <button className="btn btn-success"
-                  onClick={handleSubmit(() => save(values)
-                    .then(result => {
-                      if (result && typeof result.error === 'object') {
-                        return Promise.reject(result.error);
-                      }
-                    })
-                  )}
-                  disabled={pristine || invalid || submitting}>
+          <button className="btn btn-success" onClick={handleSubmit} disabled={invalid || submitting}>
             <i className={'fa ' + (submitting ? 'fa-cog fa-spin' : 'fa-cloud')}/> Save
           </button>
           {saveError && <div className="text-danger">{saveError}</div>}
