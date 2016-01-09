@@ -4,7 +4,7 @@ import {bindActionCreators} from 'redux';
 import {reduxForm} from 'redux-form';
 // import restaurantValidation from './restaurantValidation';
 import * as tourActions from 'redux/modules/tours';
-import {DateInput, NumberInput, ObjectSelect} from 'components';
+import {DateInput, NumberInput, ObjectSelect, LocationInput} from 'components';
 import {TourType, Difficulty} from 'models';
 
 @connect(
@@ -135,13 +135,7 @@ export default class TourForm extends Component {
               </div>
               <div className="col-xs-5">
                 <h4>Ortschaften</h4>
-                {timeline.locations && timeline.locations.map((location, locIdx)=> (<div key={locIdx} className="form-group"><select
-                  className="form-control"
-                  {...location}
-                  onBlur={evt => location.onBlur(parseInt(evt.target.value, 10))}
-                  onChange={evt => location.onChange(parseInt(evt.target.value, 10))}>
-                  {locations.map(option => <option key={option.id} value={JSON.stringify(option.id)}>{option.city} - {option.name}</option>)}
-                </select></div>))}
+                {timeline.locations && timeline.locations.map((location, locIdx)=> <div key={locIdx} className="form-group"><LocationInput className="form-control" {...location}/></div>)}
                 <div style={{textAlign: 'center', margin: '10px'}}>
                   <button className="btn btn-success" onClick={event => {
                     event.preventDefault(); // prevent form submission
@@ -151,18 +145,17 @@ export default class TourForm extends Component {
                 </div>
               </div>
             </div>))}
-
           <div style={{textAlign: 'center', margin: '10px'}}>
-          <button className="btn btn-default"
-                  onClick={handleCancel(formKey)}
-                  disabled={submitting}>
-            <i className="fa fa-ban"/> Cancel
-          </button>
-          <button className="btn btn-success"
-                  onClick={handleSubmit}
-                  disabled={invalid || submitting}>
-            <i className={'fa ' + (submitting ? 'fa-cog fa-spin' : 'fa-cloud')}/> Save
-          </button>
+            <button className="btn btn-default"
+                    onClick={handleCancel(formKey)}
+                    disabled={submitting}>
+              <i className="fa fa-ban"/> Cancel
+            </button>
+            <button className="btn btn-success"
+                    onClick={handleSubmit}
+                    disabled={invalid || submitting}>
+              <i className={'fa ' + (submitting ? 'fa-cog fa-spin' : 'fa-cloud')}/> Save
+            </button>
           </div>
         </form>
       </div>

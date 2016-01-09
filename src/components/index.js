@@ -22,3 +22,5 @@ export Dialog from './Dialog/Dialog';
 export ObjectSelect from './ObjectSelect/ObjectSelect';
 export DateInput from './DateInput/DateInput';
 export NumberInput from './NumberInput/NumberInput';
+export LocationInput from './LocationInput/LocationInput';
+export WeekdayInput from './WeekdayInput/WeekdayInput';

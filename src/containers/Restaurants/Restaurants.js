@@ -124,13 +124,13 @@ export default class Restaurants extends Component {
         {restaurants && restaurants.length &&
         <table className="table table-striped table-hover table-condensed">
           <thead>
-          <tr>
-            <th className={styles.idCol}>ID</th>
-            <th className={styles.addressCol}>Adresse</th>
-            <th className={styles.notesCol}>Telefon<br/>Notizen</th>
-            <th className={styles.businessHours}>Öffnungszeiten</th>
-            <th className={styles.buttonCol} />
-          </tr>
+            <tr>
+              <th className={styles.idCol}>ID</th>
+              <th className={styles.addressCol}>Adresse</th>
+              <th className={styles.notesCol}>Telefon<br/>Notizen</th>
+              <th className={styles.businessHours}>Öffnungszeiten</th>
+              <th className={styles.buttonCol} />
+            </tr>
           </thead>
           <tbody>
             {restaurants.map((restaurant) => renderRestaurant(restaurant))}

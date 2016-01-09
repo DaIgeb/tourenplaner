@@ -35,7 +35,8 @@ export default class DataListHandler {
   update(obj) {
     try {
       if (!this.validator(obj)) {
-        console.log('Invalid object');
+        console.log('Invalid object', JSON.stringify(this.validator.errors, null, 2));
+
         return {errors: this.validator.errors.map(e => {return {field: e.field, message: e.message};})};
       }
 

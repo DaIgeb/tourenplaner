@@ -7,16 +7,8 @@ export default {
       minimum: 1,
       readonly: true
     },
-    name: {
-      type: "string",
-      readonly: true
-    },
     location: {
-      oneOf: [
-        {type: "integer"},
-        {$ref: "#location"}
-      ],
-      required: true
+      type: "integer"
     },
     timelines: {
       type: "array",
@@ -27,7 +19,6 @@ export default {
     }
   },
   required: [
-    "name",
     "location",
     "timelines"
   ]

@@ -101,7 +101,8 @@
         "elevation": 1200,
         "restaurant": 7,
         "locations": [
-          7
+          7,
+          3
         ]
       }
     ]
