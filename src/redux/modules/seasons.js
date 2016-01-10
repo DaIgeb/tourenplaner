@@ -1,3 +1,4 @@
+import {SeasonState} from 'models';
 const LOAD = 'tourenplaner/seasons/LOAD';
 const LOAD_SUCCESS = 'tourenplaner/seasons/LOAD_SUCCESS';
 const LOAD_FAIL = 'tourenplaner/seasons/LOAD_FAIL';
@@ -14,6 +15,9 @@ const DELETE_FAIL = 'tourenplaner/seasons/DELETE_FAIL';
 const NEW = 'tourenplaner/seasons/NEW';
 const NEW_SUCCESS = 'tourenplaner/seasons/NEW_SUCCESS';
 const NEW_FAIL = 'tourenplaner/seasons/NEW_FAIL';
+const ADD_ADD_TOUR = 'tourenplaner/seasons/ADD_ADD_TOUR';
+const ADD_ADD_TOUR_SUCCESS = 'tourenplaner/seasons/ADD_ADD_TOUR_SUCCESS';
+const ADD_ADD_TOUR_FAIL = 'tourenplaner/seasons/ADD_ADD_TOUR_FAIL';
 
 const initialState = {
   loaded: false,
@@ -65,6 +69,7 @@ export default function reducer(state = initialState, action = {}) {
       return {
         ...state,
         adding: {
+          state: SeasonState.setup
         }
       };
     case ADD_STOP:
@@ -90,6 +95,36 @@ export default function reducer(state = initialState, action = {}) {
         }
       };
     case SAVE_FAIL:
+      return typeof action.error === 'string' ? {
+        ...state,
+        saveError: {
+          ...state.saveError,
+          [action.id]: action.error
+        }
+      } : state;
+    case ADD_ADD_TOUR:
+      return state; // 'saving' flag handled by redux-form
+    case ADD_ADD_TOUR_SUCCESS:
+      const items = [...state.data];
+      items[items.findIndex(rest => rest.id === action.result.id)] = action.result;
+      return {
+        ...state,
+        data: items,
+        editing: {
+          ...state.editing,
+          [action.id]: false
+        },
+        adding: {
+          ...state.adding,
+          ...action.result,
+          state: state.adding.state
+        },
+        saveError: {
+          ...state.saveError,
+          [action.id]: null
+        }
+      };
+    case ADD_ADD_TOUR_FAIL:
       return typeof action.error === 'string' ? {
         ...state,
         saveError: {
@@ -134,7 +169,11 @@ export default function reducer(state = initialState, action = {}) {
           ...state.editing,
           [action.id]: false
         },
-        adding: false,
+        adding: {
+          ...state.adding,
+          ...action.result,
+          state: SeasonState.buildingList
+        },
         saveError: {
           ...state.saveError,
           [action.id]: null
@@ -187,7 +226,7 @@ export function del(seasonId) {
 export function add(season) {
   return {
     types: [NEW, NEW_SUCCESS, NEW_FAIL],
-    promise: (client) => client.put('/season/new', {
+    promise: (client) => client.put('/season/add', {
       data: season
     })
   };
@@ -207,4 +246,16 @@ export function addStart() {
 
 export function addStop() {
   return { type: ADD_STOP };
+}
+
+export function addTour(season, tour) {
+  return {
+    types: [ADD_ADD_TOUR, ADD_ADD_TOUR_SUCCESS, ADD_ADD_TOUR_FAIL],
+    promise: (client) => client.put('/season/addTour', {
+      data: {
+        season: season,
+        tour: tour
+      }
+    })
+  };
 }

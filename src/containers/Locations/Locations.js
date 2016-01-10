@@ -88,7 +88,7 @@ export default class Locations extends Component {
           <tbody>
             {locations.map(location => <LocationRow key={String(location.id)} location={location} isEditing={editing[location.id] ? true : false}/>)}
             {adding ?
-              <LocationForm formKey="new" key="new" initialValues={adding} onSubmit={values => {console.log(values); add(values);}}/> :
+              <LocationForm formKey="new" key="new" initialValues={adding} onSubmit={values => {add(values);}}/> :
               <tr key="new">
                 <td colSpan={8}/>
                 <td>

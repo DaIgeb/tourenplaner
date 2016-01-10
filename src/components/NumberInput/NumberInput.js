@@ -111,8 +111,10 @@ export default class NumberInput extends Component {
     const value = this.state.stringValue;
 
     return (
-      <input {...this.props}
+      <input
         type="text"
+        className="form-control"
+        {...this.props}
         onChange={this._change.bind(this)}
         onBlur={this._finish.bind(this)}
         aria-disabled={this.props.disabled}

@@ -5,6 +5,7 @@ import connectData from 'helpers/connectData';
 import config from '../../config';
 import * as seasonConfigurationActions from 'redux/modules/configurations';
 import {isLoaded, load as loadConfigurations, PageEnum} from 'redux/modules/configurations';
+import {isLoaded as isTourLoaded, load as loadTours} from 'redux/modules/tours';
 import {
   SeasonConfigurationForm,
   SeasonConfigurationYearForm,
@@ -12,9 +13,20 @@ import {
 } from 'components';
 
 function fetchDataDeferred(getState, dispatch) {
-  if (!isLoaded(getState())) {
-    return dispatch(loadConfigurations());
-  }
+  const promise = new Promise((resolve, reject) => {
+    const promises = [];
+    if (!isTourLoaded(getState())) {
+      promises.push(dispatch(loadTours()));
+    }
+
+    if (!isLoaded(getState())) {
+      promises.push(dispatch(loadConfigurations()));
+    }
+
+    Promise.all(promises).then(values => resolve(values)).catch(error => reject(error));
+  });
+
+  return promise;
 }
 
 @connectData(null, fetchDataDeferred)

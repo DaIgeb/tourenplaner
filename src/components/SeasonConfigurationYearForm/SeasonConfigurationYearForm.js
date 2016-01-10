@@ -25,7 +25,6 @@ export default class SeasonConfigurationYearForm extends Component {
     invalid: PropTypes.bool.isRequired,
     saveError: PropTypes.object,
     save: PropTypes.func.isRequired,
-    addSetYear: PropTypes.func.isRequired,
     addStop: PropTypes.func.isRequired,
     submitting: PropTypes.bool.isRequired,
     valid: PropTypes.bool.isRequired,

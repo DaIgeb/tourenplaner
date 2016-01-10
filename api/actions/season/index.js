@@ -24,7 +24,41 @@ export function update(req) {
 export function add(req) {
   return new Promise((resolve, reject) => {
     const season = req.body;
+    if (season.year) {
+      const sortedSeasons = dataHandler.getData().filter(sea => sea.year === season.year).sort((seasonOne, seasonTwo) =>  seasonOne.version < seasonTwo.version);
+      if (sortedSeasons.length) {
+        season.version = sortedSeasons[0].version + 1;
+      }
+      else {
+        season.version = 1;
+      }
+    }
     const result = dataHandler.add(season);
+    if (result.errors) {
+      reject(result.errors)
+    }
+
+    resolve(result);
+  });
+}
+
+export function addTour(req) {
+  return new Promise((resolve, reject) => {
+    const season = req.body.season;
+    const tour = req.body.tour;
+    const chosenSeason = dataHandler.getData().find(item => item.id === season);
+    if (!chosenSeason) {
+      reject('Season not found');
+    }
+
+    const updatedSeason = {
+      ...chosenSeason,
+      tours: [
+        ...chosenSeason.tours,
+        tour
+          ]
+      };
+    const result = dataHandler.update(updatedSeason);
     if (result.errors) {
       reject(result.errors)
     }

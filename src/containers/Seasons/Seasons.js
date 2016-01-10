@@ -6,6 +6,8 @@ import config from '../../config';
 import * as seasonActions from 'redux/modules/seasons';
 import {isLoaded, load as loadSeasons} from 'redux/modules/seasons';
 import {isLoaded as isConfigLoaded, load as loadConfigs} from 'redux/modules/configurations';
+import {isLoaded as isTourLoaded, load as loadTours} from 'redux/modules/tours';
+import {SeasonForm} from 'components';
 
 
 function fetchDataDeferred(getState, dispatch) {
@@ -17,6 +19,10 @@ function fetchDataDeferred(getState, dispatch) {
 
     if (!isConfigLoaded(getState())) {
       promises.push(dispatch(loadConfigs()));
+    }
+
+    if (!isTourLoaded(getState())) {
+      promises.push(dispatch(loadTours()));
     }
 
     Promise.all(promises).then(values => resolve(values)).catch(error => reject(error));
@@ -44,6 +50,7 @@ export default class Seasons extends Component {
     adding: PropTypes.object,
     load: PropTypes.func.isRequired,
     del: PropTypes.func.isRequired,
+    add: PropTypes.func.isRequired,
     addStart: PropTypes.func.isRequired,
     addStop: PropTypes.func.isRequired,
     editStart: PropTypes.func.isRequired,
@@ -64,11 +71,12 @@ export default class Seasons extends Component {
       return () => del(String(season.id));
     };
 
-    const {seasons, configs, error, loading, load, adding, children} = this.props;
+    const {seasons, configs, error, loading, load, adding, add} = this.props;
     let refreshClassName = 'fa fa-refresh';
     if (loading) {
       refreshClassName += ' fa-spin';
     }
+
     const findConfiguration = id => {
       if (configs) {
         const configuration = configs.find(item => item.id === id);
@@ -81,6 +89,52 @@ export default class Seasons extends Component {
     };
 
     const styles = require('./Seasons.scss');
+    const renderBody = () => {
+      if (adding) {
+        return <div><SeasonForm formKey="new" initialValues={adding} onSubmit={(values) => add(values)}/></div>;
+      }
+
+      if (seasons && seasons.length) {
+        return (<table className="table table-striped table-hover table-condensed">
+          <thead>
+          <tr>
+            <th className={styles.yearCol}>ID</th>
+            <th className={styles.yearCol}>Bezeichnung</th>
+            <th className={styles.versionCol}>Version</th>
+            <th className={styles.configCol}>Konfiguration</th>
+            <th className={styles.buttonCol}/>
+          </tr>
+          </thead>
+          <tbody>
+          {seasons.map(season => (<tr key={`${season.year}/${season.version}`}>
+            <td className={styles.yearCol}>{season.id}</td>
+            <td className={styles.yearCol}>{season.year}</td>
+            <td className={styles.versionCol}>{season.version}</td>
+            <td className={styles.configCol}>{findConfiguration(season.configuration)}</td>
+            <td className={styles.buttonCol}>
+              <button className="btn btn-primary" onClick={handleEdit(season)}>
+                <i className="fa fa-pencil"/> Edit
+              </button>
+              <button className="btn btn-danger" onClick={handleDelete(season)}>
+                <i className="fa fa-trash"/> Löschen
+              </button>
+            </td>
+          </tr>))}
+          <tr>
+            <td colSpan={2}/>
+            <td>
+              <button className="btn btn-success" onClick={handleAdd()} disabled={adding}>
+                <i className="fa fa-plus"/> Add
+              </button>
+            </td>
+          </tr>
+          </tbody>
+        </table>);
+      }
+
+      return <div></div>;
+    };
+
     return (
       <div className={styles.seasons + ' container'}>
         <h1>Seasons
@@ -97,42 +151,7 @@ export default class Seasons extends Component {
           {error}
         </div>}
 
-        {seasons && seasons.length &&
-        <table className="table table-striped table-hover table-condensed">
-          <thead>
-          <tr>
-            <th className={styles.yearCol}>Bezeichnung</th>
-            <th className={styles.versionCol}>Version</th>
-            <th className={styles.configCol}>Konfiguration</th>
-            <th className={styles.buttonCol} />
-          </tr>
-          </thead>
-          <tbody>
-            {seasons.map(season => (<tr key={`${season.year}/${season.version}`}>
-              <td className={styles.yearCol}>{season.year}</td>
-              <td className={styles.versionCol}>{season.version}</td>
-              <td className={styles.configCol}>{findConfiguration(season.configurationId)}</td>
-              <td className={styles.buttonCol}>
-                <button className="btn btn-primary" onClick={handleEdit(season)}>
-                  <i className="fa fa-pencil"/> Edit
-                </button>
-                <button className="btn btn-danger" onClick={handleDelete(season)}>
-                  <i className="fa fa-trash"/> Löschen
-                </button>
-              </td>
-            </tr>))}
-            <tr key="new">
-              <td colSpan={2}/>
-              <td>
-                <button className="btn btn-success" onClick={handleAdd()} disabled={adding}>
-                  <i className="fa fa-plus"/> Add
-                </button>
-              </td>
-            </tr>
-          </tbody>
-        </table>}
-
-        {children}
+        {renderBody()}
       </div>
     );
   }

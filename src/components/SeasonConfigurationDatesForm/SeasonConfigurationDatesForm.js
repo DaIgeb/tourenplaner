@@ -2,10 +2,10 @@ import React, {Component, PropTypes} from 'react';
 import {connect} from 'react-redux';
 import {reduxForm} from 'redux-form';
 import seasonConfigurationFormValidation from './seasonConfigurationDatesFormValidation';
-import * as seasonActions from 'redux/modules/seasons';
-import {SpecialDateAction} from 'redux/modules/seasons';
+import * as seasonActions from 'redux/modules/configurations';
+import {SpecialDateAction} from 'redux/modules/configurations';
 import {TourType} from 'models';
-import {ObjectSelect, DateInput} from 'components';
+import {ObjectSelect, DateInput, TourInput} from 'components';
 
 @connect(
   state => ({
@@ -32,6 +32,7 @@ import {ObjectSelect, DateInput} from 'components';
     'specialDates[].date',
     'specialDates[].name',
     'specialDates[].action',
+    'specialDates[].tours[].id',
     'specialDates[].tours[].name',
     'specialDates[].tours[].type'
   ],
@@ -96,6 +97,7 @@ export default class SeasonConfigurationDatesForm extends Component {
           {field.error && field.touched && <div className="text-danger">{field.error}</div>}
         </div>
       </div>;
+
     const tourTypeOptions = [
       TourType.none,
       TourType.morning,
@@ -155,7 +157,10 @@ export default class SeasonConfigurationDatesForm extends Component {
               <div className="form-group">
                 <label className="col-xs-2 col-xs-offset-1 control-label">Tour #{tourIndex + 1}</label>
                 {renderOptionField(tour.type, tourTypeOptions, null, 'text', 'col-xs-2', {placeholder: 'Type'})}
-                {renderField(tour.name, null, 'text', 'col-xs-5', {placeholder: 'Tour'})}
+                <div className="col-xs-5">
+                  <TourInput className="form-control" id={tour.id.name} {...tour.id}/>
+                  {tour.id.error && tour.id.touched && <div className="text-danger">{tour.id.error}</div>}
+                </div>
                 <div className="col-xs-1">
                   <button className="btn btn-danger" onClick={event => {
                     event.preventDefault();               // prevent form submission

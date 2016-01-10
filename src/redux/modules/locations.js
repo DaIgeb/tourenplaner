@@ -156,7 +156,6 @@ export default function reducer(state = initialState, action = {}) {
             }
           };
         case 'object':
-          console.log(action.error);
           return {
             ...state,
             adding: {
@@ -185,7 +184,6 @@ export function load() {
 }
 
 export function save(location) {
-  console.log(location);
   return {
     types: [SAVE, SAVE_SUCCESS, SAVE_FAIL],
     id: location.id,

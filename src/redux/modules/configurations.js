@@ -1,5 +1,5 @@
 import {moment} from 'utils/moment';
-import {TourType} from 'models/TourType';
+import {TourType} from 'models';
 
 const LOAD = 'tourenplaner/configurations/LOAD';
 const LOAD_SUCCESS = 'tourenplaner/configurations/LOAD_SUCCESS';

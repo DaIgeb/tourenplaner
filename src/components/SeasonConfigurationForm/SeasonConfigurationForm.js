@@ -28,6 +28,7 @@ import {DateInput} from 'components';
     'specialDates[].date',
     'specialDates[].name',
     'specialDates[].action',
+    'specialDates[].tours[].id',
     'specialDates[].tours[].name',
     'specialDates[].tours[].type'
   ],
