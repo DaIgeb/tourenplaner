@@ -1,4 +1,7 @@
 import {SeasonState} from 'models';
+import {isLoaded as isConfigurationLoaded, load as loadConfigurations} from './configurations';
+import {isLoaded as isTourLoaded, load as loadTours} from './tours';
+
 const LOAD = 'tourenplaner/seasons/LOAD';
 const LOAD_SUCCESS = 'tourenplaner/seasons/LOAD_SUCCESS';
 const LOAD_FAIL = 'tourenplaner/seasons/LOAD_FAIL';
@@ -162,6 +165,12 @@ export default function reducer(state = initialState, action = {}) {
     case NEW_SUCCESS:
       const beforeAdd = [...state.data];
       beforeAdd.push(action.result);
+      const adding = {
+        ...state.adding,
+        ...action.result,
+        state: SeasonState.buildingList
+      };
+
       return {
         ...state,
         data: beforeAdd,
@@ -169,11 +178,7 @@ export default function reducer(state = initialState, action = {}) {
           ...state.editing,
           [action.id]: false
         },
-        adding: {
-          ...state.adding,
-          ...action.result,
-          state: SeasonState.buildingList
-        },
+        adding: adding,
         saveError: {
           ...state.saveError,
           [action.id]: null
@@ -223,7 +228,7 @@ export function del(seasonId) {
   };
 }
 
-export function add(season) {
+function addSeason(season) {
   return {
     types: [NEW, NEW_SUCCESS, NEW_FAIL],
     promise: (client) => client.put('/season/add', {
@@ -248,7 +253,7 @@ export function addStop() {
   return { type: ADD_STOP };
 }
 
-export function addTour(season, tour) {
+function addTour(season, tour) {
   return {
     types: [ADD_ADD_TOUR, ADD_ADD_TOUR_SUCCESS, ADD_ADD_TOUR_FAIL],
     promise: (client) => client.put('/season/addTour', {
@@ -257,5 +262,56 @@ export function addTour(season, tour) {
         tour: tour
       }
     })
+  };
+}
+
+function addNextTour(seasonId) {
+  return (dispatch, getState) => {
+    const globalState = getState();
+    const loadPromises = [];
+    if (!isLoaded(globalState)) {
+      loadPromises.push(dispatch(load()));
+    }
+    if (!isConfigurationLoaded(globalState)) {
+      loadPromises.push(dispatch(loadConfigurations()));
+    }
+    if (!isTourLoaded(globalState)) {
+      loadPromises.push(dispatch(loadTours()));
+    }
+    return Promise.all(loadPromises).then(() => {
+      const {seasons: {data: seasons}, configurations: {data: configurations}, tours: {data: tours}} = getState();
+
+      if (!seasons || !tours || !configurations) {
+
+        // You don’t have to return Promises, but it’s a handy convention
+        // so the caller can always call .then() on async dispatch result.
+
+        return Promise.reject({error: 'dependent data is missing'});
+      }
+      const currentSeason = seasons.find(item => item.id === seasonId);
+      if (!currentSeason) {
+        return Promise.reject('Season not found');
+      }
+      const currentConfiguration = configurations.find(item => item.id === currentSeason.configuration);
+      console.log(currentConfiguration.dates.length);
+      const addTourPromises = [];
+      currentConfiguration.dates.forEach((date, idx) => {
+        const newTour = {
+          date: date.date,
+          tour: idx,
+          type: date.type.label,
+          scores: [{name: 'UniqueLocations', score: idx, note: 'All locations are unique'}]
+        };
+        addTourPromises.push(dispatch(addTour(seasonId, newTour)));
+      });
+
+      return Promise.all(addTourPromises);
+    });
+  };
+}
+
+export function add(season) {
+  return (dispatch) => {
+    return dispatch(addSeason(season)).then((result) => dispatch(addNextTour(result.result.id)));
   };
 }

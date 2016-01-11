@@ -80,11 +80,11 @@ export default class SeasonForm extends Component {
     switch (state.value) {
       case SeasonState.buildingList:
         // TODO create tour list
-        const {addTour} = this.props;
+        /* const {addTour} = this.props;
         if (!tours || tours.length < 10) {
           setTimeout(() => addTour(id.value, { date: '2011-03-04T23:00:00.000Z', tour: 1, type: 'afternoon', scores: [{name: 'UniqueLocations', score: 0, note: 'All locations are unique'}]}), 2000);
         }
-
+*/
         const findTour = (tourId) => {
           const {tours} = this.props; // eslint-disable-line no-shadow
 
@@ -109,7 +109,7 @@ export default class SeasonForm extends Component {
             <tr key={idx + '/tour'}>
               <td>{dateString}</td>
               <td>{tour.type.value}</td>
-              <td>{tourObj.name}</td>
+              <td>{tourObj ? tourObj.name : 'Unkown tour'}</td>
             </tr>), (
             <tr key={idx + '/score'}>
               <td colSpan={3}>{scores && scores.length && <table className="table table-striped table-hover table-condensed"><thead><tr><td>Bezeichnung</td><td>Score</td><td>Notiz</td></tr></thead><tbody>{tour.scores.map(renderScore)}</tbody></table>}</td>
