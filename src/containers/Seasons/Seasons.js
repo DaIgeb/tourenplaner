@@ -8,7 +8,7 @@ import {isLoaded, load as loadSeasons} from 'redux/modules/seasons';
 import {isLoaded as isConfigLoaded, load as loadConfigs} from 'redux/modules/configurations';
 import {isLoaded as isTourLoaded, load as loadTours} from 'redux/modules/tours';
 import {SeasonForm} from 'components';
-
+import {SeasonState} from 'models';
 
 function fetchDataDeferred(getState, dispatch) {
   const loadPromise = new Promise((resolve, reject) => {
@@ -38,23 +38,25 @@ function fetchDataDeferred(getState, dispatch) {
     configs: state.configurations.data,
     error: state.seasons.error,
     adding: state.seasons.adding,
-    loading: state.seasons.loading
+    loading: state.seasons.loading,
+    editing: state.seasons.editing
   }),
   seasonActions)
 export default class Seasons extends Component {
   static propTypes = {
     seasons: PropTypes.array,
     configs: PropTypes.array,
+    editing: PropTypes.number,
     error: PropTypes.string,
     loading: PropTypes.bool,
     adding: PropTypes.object,
     load: PropTypes.func.isRequired,
     del: PropTypes.func.isRequired,
     add: PropTypes.func.isRequired,
+    save: PropTypes.func.isRequired,
     addStart: PropTypes.func.isRequired,
     addStop: PropTypes.func.isRequired,
-    editStart: PropTypes.func.isRequired,
-    children: PropTypes.object
+    editStart: PropTypes.func.isRequired
   };
 
   render() {
@@ -64,14 +66,14 @@ export default class Seasons extends Component {
     };
     const handleEdit = (season) => {
       const {editStart} = this.props; // eslint-disable-line no-shadow
-      return () => editStart(String(season.id));
+      return () => editStart(season.id);
     };
     const handleDelete = (season) => {
       const {del} = this.props; // eslint-disable-line no-shadow
-      return () => del(String(season.id));
+      return () => del(season.id);
     };
 
-    const {seasons, configs, error, loading, load, adding, add} = this.props;
+    const {seasons, configs, error, loading, load, editing, adding, save, add} = this.props;
     let refreshClassName = 'fa fa-refresh';
     if (loading) {
       refreshClassName += ' fa-spin';
@@ -92,6 +94,12 @@ export default class Seasons extends Component {
     const renderBody = () => {
       if (adding) {
         return <div><SeasonForm formKey="new" initialValues={adding} onSubmit={(values) => add(values)}/></div>;
+      }
+      if (editing) {
+        return (<div><SeasonForm formKey="new" initialValues={{
+          ...seasons.find(season => season.id === editing),
+          state: SeasonState.confirm
+        }} onSubmit={(values) => save(values)}/></div>);
       }
 
       if (seasons && seasons.length) {

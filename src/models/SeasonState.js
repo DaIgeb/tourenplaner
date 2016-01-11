@@ -1,5 +1,5 @@
 export default Object.freeze({
-  setup: Object.freeze({}),
-  buildingList: Object.freeze({}),
-  confirm: Object.freeze({})
+  setup: Object.freeze({id: 'setup'}),
+  buildingList: Object.freeze({id: 'buildingList'}),
+  confirm: Object.freeze({id: 'confirm'})
 });

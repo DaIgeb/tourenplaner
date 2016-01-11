@@ -21,10 +21,11 @@ const NEW_FAIL = 'tourenplaner/seasons/NEW_FAIL';
 const ADD_ADD_TOUR = 'tourenplaner/seasons/ADD_ADD_TOUR';
 const ADD_ADD_TOUR_SUCCESS = 'tourenplaner/seasons/ADD_ADD_TOUR_SUCCESS';
 const ADD_ADD_TOUR_FAIL = 'tourenplaner/seasons/ADD_ADD_TOUR_FAIL';
+const ADD_TOUR_LIST_DONE = 'tourenplaner/seasons/ADD_TOUR_LIST_DONE';
 
 const initialState = {
   loaded: false,
-  editing: {},
+  editing: null,
   adding: null,
   saveError: {}
 };
@@ -55,18 +56,12 @@ export default function reducer(state = initialState, action = {}) {
     case EDIT_START:
       return {
         ...state,
-        editing: {
-          ...state.editing,
-          [action.id]: true
-        }
+        editing: action.id
       };
     case EDIT_STOP:
       return {
         ...state,
-        editing: {
-          ...state.editing,
-          [action.id]: false
-        }
+        editing: null
       };
     case ADD_START:
       return {
@@ -88,10 +83,7 @@ export default function reducer(state = initialState, action = {}) {
       return {
         ...state,
         data: data,
-        editing: {
-          ...state.editing,
-          [action.id]: false
-        },
+        editing: null,
         saveError: {
           ...state.saveError,
           [action.id]: null
@@ -105,6 +97,14 @@ export default function reducer(state = initialState, action = {}) {
           [action.id]: action.error
         }
       } : state;
+    case ADD_TOUR_LIST_DONE:
+      return {
+        ...state,
+        adding: {
+          ...state.adding,
+          state: SeasonState.confirm
+        }
+      };
     case ADD_ADD_TOUR:
       return state; // 'saving' flag handled by redux-form
     case ADD_ADD_TOUR_SUCCESS:
@@ -143,10 +143,7 @@ export default function reducer(state = initialState, action = {}) {
       return {
         ...state,
         data: beforeDelete,
-        editing: {
-          ...state.editing,
-          [action.id]: false
-        },
+        editing: null,
         saveError: {
           ...state.saveError,
           [action.id]: null
@@ -174,10 +171,6 @@ export default function reducer(state = initialState, action = {}) {
       return {
         ...state,
         data: beforeAdd,
-        editing: {
-          ...state.editing,
-          [action.id]: false
-        },
         adding: adding,
         saveError: {
           ...state.saveError,
@@ -305,7 +298,11 @@ function addNextTour(seasonId) {
         addTourPromises.push(dispatch(addTour(seasonId, newTour)));
       });
 
-      return Promise.all(addTourPromises);
+      return Promise.all(addTourPromises)
+        .then(result => dispatch({
+          type: ADD_TOUR_LIST_DONE,
+          data: result
+        }));
     });
   };
 }
