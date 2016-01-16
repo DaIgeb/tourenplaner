@@ -14,7 +14,7 @@ import {NumberInput} from 'components';
 )
 @reduxForm({
   form: 'location',
-  fields: ['id', 'name', 'streetAddress', 'addressCountry', 'postalCode', 'city', 'latitude', 'longitude']
+  fields: ['id', 'name', 'identifier', 'streetAddress', 'addressCountry', 'postalCode', 'city', 'latitude', 'longitude']
   // validate: restaurantValidation
 })
 export default class LocationForm extends Component {
@@ -33,7 +33,7 @@ export default class LocationForm extends Component {
   };
 
   render() {
-    const { fields: {id, name, streetAddress, addressCountry, postalCode, city, latitude, longitude}, formKey, handleSubmit, invalid,
+    const { fields: {id, name, identifier, streetAddress, addressCountry, postalCode, city, latitude, longitude}, formKey, handleSubmit, invalid,
       submitting, saveError: { [formKey]: saveError }} = this.props;
     const handleCancel = (restaurant) => {
       if (restaurant && restaurant !== 'new') {
@@ -53,24 +53,36 @@ export default class LocationForm extends Component {
           {id.error && id.touched && <div className="text-danger">{id.error}</div>}
         </td>
         <td className={styles.nameCol}>
-          <input type="text" className="form-control" {...name} placeholder="Bezeichnung"/>
-          {name.error && name.touched && <div className="text-danger">{name.error}</div>}
+          <div>
+            <input type="text" className="form-control" {...name} placeholder="Bezeichnung"/>
+            {name.error && name.touched && <div className="text-danger">{name.error}</div>}
+          </div>
+          <div>
+            <input type="text" className="form-control" {...identifier} placeholder="Zusatz"/>
+            {identifier.error && identifier.touched && <div className="text-danger">{identifier.error}</div>}
+          </div>
         </td>
         <td className={styles.addressCol}>
-          <input type="text" className="form-control" {...streetAddress} placeholder="Adresse"/>
-          {streetAddress.error && streetAddress.touched && <div className="text-danger">{streetAddress.error}</div>}
-        </td>
-        <td className={styles.addressCol}>
-          <input type="text" className="form-control" {...addressCountry} placeholder="Land" />
-          {addressCountry.error && addressCountry.touched && <div className="text-danger">{addressCountry.error}</div>}
-        </td>
-        <td className={styles.addressCol}>
-          <input type="text" className="form-control" {...postalCode} placeholder="PLZ"/>
-          {postalCode.error && postalCode.touched && <div className="text-danger">{postalCode.error}</div>}
-        </td>
-        <td className={styles.addressCol}>
-          <input type="text" className="form-control" {...city} placeholder="Ort"/>
-          {city.error && city.touched && <div className="text-danger">{city.error}</div>}
+          <div className="row">
+            <div className="col-xs-12">
+              <input type="text" className="form-control" {...streetAddress} placeholder="Adresse"/>
+              {streetAddress.error && streetAddress.touched && <div className="text-danger">{streetAddress.error}</div>}
+            </div>
+          </div>
+          <div className="row">
+            <div className="col-xs-3">
+              <input type="text" className="form-control" {...addressCountry} placeholder="Land" />
+              {addressCountry.error && addressCountry.touched && <div className="text-danger">{addressCountry.error}</div>}
+            </div>
+            <div className="col-xs-3">
+              <input type="text" className="form-control" {...postalCode} placeholder="PLZ"/>
+              {postalCode.error && postalCode.touched && <div className="text-danger">{postalCode.error}</div>}
+            </div>
+            <div className="col-xs-6">
+              <input type="text" className="form-control" {...city} placeholder="Ort"/>
+              {city.error && city.touched && <div className="text-danger">{city.error}</div>}
+            </div>
+          </div>
         </td>
         <td className={styles.addressCol}>
           <NumberInput className="form-control" {...latitude} placeholder="Breite"/>

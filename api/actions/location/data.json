@@ -60,14 +60,15 @@
     "id": 6
   },
   {
+    "id": 7,
     "name": "Flaach",
-    "streetAddress": "Oberdorf",
+    "identifier": "Oberdorf",
+    "streetAddress": "",
     "addressCountry": "",
     "postalCode": "",
     "city": "",
     "latitude": 47.559366,
-    "longitude": 8.616986,
-    "id": 7
+    "longitude": 8.616986
   },
   {
     "name": "Ellikon am Rhein",
@@ -127,10 +128,14 @@
     "id": 13
   },
   {
+    "id": 14,
     "name": "Winterthur",
+    "identifier": "Museumsplatz",
     "streetAddress": "",
+    "addressCountry": "",
+    "postalCode": "",
+    "city": "",
     "latitude": 47.501246,
-    "longitude": 8.730467,
-    "id": 14
+    "longitude": 8.730467
   }
 ]

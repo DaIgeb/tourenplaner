@@ -28,6 +28,7 @@ export default class LocationRow extends Component {
     };
 
     const {location, isEditing, save} = this.props;
+    const cityLine = (location.addressCounty ? (location.addressCounty + '-') : '') + (location.postalCode ? (location.postalCode + ' ') : '') + location.city;
     return (
       isEditing ?
         <LocationForm formKey={String(location.id)} key={String(location.id)} initialValues={location} onSubmit={values => save(values)}/> :
@@ -36,19 +37,20 @@ export default class LocationRow extends Component {
             {location.id}
           </td>
           <td className={styles.addressCol}>
-            {location.name}
+            <div className="row">
+              {location.name}
+            </div>
+            <div className="row">
+              {location.identifier}
+            </div>
           </td>
           <td className={styles.addressCol}>
-            {location.streetAddress}
-          </td>
-          <td className={styles.addressCol}>
-            {location.addressCountry}
-          </td>
-          <td className={styles.addressCol}>
-            {location.postalCode}
-          </td>
-          <td className={styles.addressCol}>
-            {location.city}
+            <div className="row">
+              {location.streetAddress}
+            </div>
+            <div className="row">
+              {cityLine}
+            </div>
           </td>
           <td className={styles.addressCol}>
             {location.latitude}

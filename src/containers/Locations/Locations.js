@@ -76,12 +76,9 @@ export default class Locations extends Component {
           <tr>
             <th className={styles.idCol}>ID</th>
             <th className={styles.nameCol}>Bezeichnung</th>
-            <th className={styles.addressCol}>Adresse</th>
-            <th className={styles.addressCol}>Land</th>
-            <th className={styles.addressCol}>PLZ</th>
-            <th className={styles.addressCol}>Ort</th>
-            <th className={styles.addressCol}>Breite</th>
-            <th className={styles.addressCol}>Länge</th>
+            <th className={styles.addressCol}>Adresse/Land/PLZ/Ort</th>
+            <th className={styles.coordsCol}>Breite</th>
+            <th className={styles.coordsCol}>Länge</th>
             <th className={styles.buttonCol} />
           </tr>
           </thead>
