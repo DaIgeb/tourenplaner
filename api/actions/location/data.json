@@ -134,7 +134,7 @@
     "streetAddress": "",
     "addressCountry": "",
     "postalCode": "",
-    "city": "",
+    "city": "Winterthur",
     "latitude": 47.501246,
     "longitude": 8.730467
   },
@@ -156,15 +156,15 @@
     "id": 16
   },
   {
+    "id": 17,
     "name": "Bahnunterführung",
-    "identifier": "",
+    "identifier": "bei Pflanzschuldstrasse",
     "streetAddress": "",
     "addressCountry": "",
     "postalCode": "",
     "city": "Winterthur",
     "latitude": 47.502355,
-    "longitude": 8.739503,
-    "id": 17
+    "longitude": 8.739503
   },
   {
     "name": "Leimeneggstr.",
@@ -369,5 +369,184 @@
     "latitude": 47.515835,
     "longitude": 8.696964,
     "id": 37
+  },
+  {
+    "name": "Unt. Graben",
+    "identifier": "",
+    "streetAddress": "",
+    "addressCountry": "",
+    "postalCode": "",
+    "city": "Winterthur",
+    "latitude": 47.499113,
+    "longitude": 8.731051,
+    "id": 38
+  },
+  {
+    "name": "Zeughausstr.",
+    "identifier": "",
+    "streetAddress": "",
+    "addressCountry": "",
+    "postalCode": "",
+    "city": "Winterthur",
+    "latitude": 47.495271,
+    "longitude": 8.732906,
+    "id": 39
+  },
+  {
+    "name": "Langgasse",
+    "identifier": "",
+    "streetAddress": "",
+    "addressCountry": "",
+    "postalCode": "",
+    "city": "Winterthur",
+    "latitude": 47.490189,
+    "longitude": 8.735009,
+    "id": 40
+  },
+  {
+    "name": "Waldeggstr.",
+    "identifier": "",
+    "streetAddress": "",
+    "addressCountry": "",
+    "postalCode": "",
+    "city": "Winterthur",
+    "latitude": 47.488094,
+    "longitude": 8.741983,
+    "id": 41
+  },
+  {
+    "name": "Rössligasse",
+    "identifier": "",
+    "streetAddress": "",
+    "addressCountry": "",
+    "postalCode": "",
+    "city": "Winterthur",
+    "latitude": 47.482366,
+    "longitude": 8.761231,
+    "id": 42
+  },
+  {
+    "id": 43,
+    "name": "Seen",
+    "identifier": "",
+    "streetAddress": "",
+    "addressCountry": "",
+    "postalCode": "",
+    "city": "Winterthur",
+    "latitude": 47.48246,
+    "longitude": 8.762014
+  },
+  {
+    "name": "Technikumstr.",
+    "identifier": "",
+    "streetAddress": "",
+    "addressCountry": "",
+    "postalCode": "",
+    "city": "Winterthur",
+    "latitude": 47.497768,
+    "longitude": 8.7289,
+    "id": 44
+  },
+  {
+    "name": "Lagerhausstr.",
+    "identifier": "",
+    "streetAddress": "",
+    "addressCountry": "",
+    "postalCode": "",
+    "city": "Winterthur",
+    "latitude": 47.497642,
+    "longitude": 8.724215,
+    "id": 45
+  },
+  {
+    "name": "Untere Vogelsangstr.",
+    "city": "Winterthur",
+    "latitude": 47.496297,
+    "longitude": 8.721554,
+    "id": 46
+  },
+  {
+    "name": "Auswiesenstr.",
+    "identifier": "",
+    "streetAddress": "",
+    "addressCountry": "",
+    "postalCode": "",
+    "city": "Winterthur",
+    "latitude": 47.485006,
+    "longitude": 8.709336,
+    "id": 47
+  },
+  {
+    "name": "Zürichstr.",
+    "identifier": "",
+    "streetAddress": "",
+    "addressCountry": "",
+    "postalCode": "",
+    "city": "Winterthur",
+    "latitude": 47.482379,
+    "longitude": 8.703431,
+    "id": 48
+  },
+  {
+    "name": "Töss",
+    "city": "Winterthur",
+    "latitude": 47.480189,
+    "longitude": 8.704,
+    "id": 49
+  },
+  {
+    "name": "Lindstr.",
+    "identifier": "",
+    "streetAddress": "",
+    "addressCountry": "",
+    "postalCode": "",
+    "city": "Winterthur",
+    "latitude": 47.50281,
+    "longitude": 8.730531,
+    "id": 50
+  },
+  {
+    "name": "Schaffhauserstr.",
+    "identifier": "",
+    "streetAddress": "",
+    "addressCountry": "",
+    "postalCode": "",
+    "city": "Winterthur",
+    "latitude": 47.509795,
+    "longitude": 8.722682,
+    "id": 51
+  },
+  {
+    "name": "Seuzacherstr.",
+    "identifier": "",
+    "streetAddress": "",
+    "addressCountry": "",
+    "postalCode": "",
+    "city": "Winterthur",
+    "latitude": 47.517462,
+    "longitude": 8.720707,
+    "id": 52
+  },
+  {
+    "name": "Rosenberg",
+    "identifier": "",
+    "streetAddress": "",
+    "addressCountry": "",
+    "postalCode": "",
+    "city": "Winterthur",
+    "latitude": 47.519577,
+    "longitude": 8.721656,
+    "id": 53
+  },
+  {
+    "name": "Bahnunterführung",
+    "identifier": "Bahnhof Oberi",
+    "streetAddress": "",
+    "addressCountry": "",
+    "postalCode": "",
+    "city": "Winterthur",
+    "latitude": 47.506108,
+    "longitude": 8.759489,
+    "id": 54
   }
 ]
