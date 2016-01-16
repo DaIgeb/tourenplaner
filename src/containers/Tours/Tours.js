@@ -164,7 +164,7 @@ export default class Tours extends Component {
 
     return (
       <div className={styles.restaurants + ' container'}>
-        <h1>Restaurants
+        <h1>Touren
         <button className={styles.refreshBtn + ' btn btn-success'} onClick={load}>
           <i className={refreshClassName}/> {' '} Reload Tours
         </button>
@@ -186,7 +186,6 @@ export default class Tours extends Component {
 
         <Timeline date={this.props.timelineDate} onTimelineChanged={changeTimeline}/>
 
-        {tours && tours.length &&
         <table className="table table-striped table-hover table-condensed">
           <thead>
           <tr>
@@ -200,7 +199,7 @@ export default class Tours extends Component {
           </tr>
           </thead>
           <tbody>
-            {tours.map(tour => renderTour(tour))}
+            {tours && tours.map(tour => renderTour(tour))}
             {adding ?
               <tr><td colSpan={5}><TourForm formKey="new" locations={locations} restaurants={restaurants} onSubmit={values => add(values)}/></td></tr> :
               <tr>
@@ -213,7 +212,7 @@ export default class Tours extends Component {
               </tr>
               }
           </tbody>
-        </table>}
+        </table>
       </div>
     );
   }

@@ -35,17 +35,15 @@ export default class RestaurantForm extends Component {
     handleSubmit: PropTypes.func.isRequired,
     invalid: PropTypes.bool.isRequired,
     pristine: PropTypes.bool.isRequired,
-    save: PropTypes.func.isRequired,
     submitting: PropTypes.bool.isRequired,
     saveError: PropTypes.object,
     formKey: PropTypes.string.isRequired,
-    values: PropTypes.object.isRequired,
     locations: PropTypes.array.isRequired
   };
 
   render() {
-    const { fields: {id, location, timelines}, formKey, handleSubmit, save, invalid,
-      pristine, submitting, saveError: { [formKey]: saveError }, values } = this.props;
+    const { fields: {id, location, timelines}, formKey, handleSubmit, invalid,
+      pristine, submitting, saveError: { [formKey]: saveError } } = this.props;
     const handleCancel = (restaurant) => {
       if (restaurant && restaurant !== 'new') {
         const {editStop} = this.props; // eslint-disable-line no-shadow
@@ -91,20 +89,20 @@ export default class RestaurantForm extends Component {
       return [(
         <tr key={idx + '/timeline'}>
             <td className="col-xs-4">
-              <DateInput className="form-control" displayFormat="L" {...from}/>
+              <DateInput className="form-control" displayFormat="L" {...from} placeholder="Von"/>
             </td>
             <td className="col-xs-4">
-              <DateInput className="form-control" displayFormat="L" {...until}/>
+              <DateInput className="form-control" displayFormat="L" {...until} placeholder="Bis"/>
             </td>
             <td className="col-xs-4" />
           </tr>),
         (<tr key={idx + '/data'} >
         <td className={styles.notesCol}>
-          <input type="text" className="form-control" {...phone}/>
+          <input type="text" className="form-control" {...phone} placeholder="Telefon"/>
           {phone.error && phone.touched && <div className="text-danger">{phone.error}</div>}
         </td>
         <td colSpan={2}>
-          <textarea rows={4} className="form-control" {...notes}/>
+          <textarea rows={4} className="form-control" {...notes} placeholder="Notiz"/>
           {notes.error && notes.touched && <div className="text-danger">{notes.error}</div>}
         </td>
       </tr>),
@@ -145,13 +143,7 @@ export default class RestaurantForm extends Component {
             <i className="fa fa-plus"/> Add Timeline
           </button>
           <button className="btn btn-success"
-                  onClick={handleSubmit(() => save(values)
-                    .then(result => {
-                      if (result && typeof result.error === 'object') {
-                        return Promise.reject(result.error);
-                      }
-                    })
-                  )}
+                  onClick={handleSubmit}
                   disabled={(pristine && formKey !== 'new') || invalid || submitting}>
             <i className={'fa ' + (submitting ? 'fa-cog fa-spin' : 'fa-cloud')}/> Save
           </button>

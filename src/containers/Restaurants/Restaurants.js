@@ -53,6 +53,7 @@ export default class Restaurants extends Component {
     loading: PropTypes.bool,
     editing: PropTypes.object.isRequired,
     adding: PropTypes.object,
+    add: PropTypes.func.isRequired,
     load: PropTypes.func.isRequired,
     loadLoc: PropTypes.func.isRequired,
     addStart: PropTypes.func.isRequired,
@@ -65,7 +66,7 @@ export default class Restaurants extends Component {
       const {addStart} = this.props; // eslint-disable-line no-shadow
       return () => addStart();
     };
-    const {restaurants, loadLoc, error, loading, load, setTimelineDate, timelineDate} = this.props;
+    const {restaurants, loadLoc, error, loading, load, add, setTimelineDate, timelineDate} = this.props;
     let refreshClassName = 'fa fa-refresh';
     if (loading) {
       refreshClassName += ' fa-spin';
@@ -86,7 +87,7 @@ export default class Restaurants extends Component {
     const renderAddingRow = () => {
       const {adding, locations} = this.props;
       if (adding) {
-        return <RestaurantForm formKey="new" initialValues={adding} locations={locations}/>;
+        return <RestaurantForm formKey="new" initialValues={adding} locations={locations} onSubmit={data => add(data)}/>;
       }
 
       return (
@@ -121,7 +122,6 @@ export default class Restaurants extends Component {
 
         <Timeline date={this.props.timelineDate} onTimelineChanged={changeTimeline}/>
 
-        {restaurants && restaurants.length &&
         <table className="table table-striped table-hover table-condensed">
           <thead>
             <tr>
@@ -133,10 +133,10 @@ export default class Restaurants extends Component {
             </tr>
           </thead>
           <tbody>
-            {restaurants.map((restaurant) => renderRestaurant(restaurant))}
+            {restaurants && restaurants.map((restaurant) => renderRestaurant(restaurant))}
             {renderAddingRow()}
           </tbody>
-        </table>}
+        </table>
       </div>
     );
   }

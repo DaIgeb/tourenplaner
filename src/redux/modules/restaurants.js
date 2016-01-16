@@ -213,7 +213,7 @@ export function del(restaurant) {
 export function add(restaurant) {
   return {
     types: [NEW, NEW_SUCCESS, NEW_FAIL],
-    promise: (client) => client.put('/restaurant/new', {
+    promise: (client) => client.put('/restaurant/add', {
       data: restaurant
     })
   };

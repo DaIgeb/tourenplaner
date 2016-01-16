@@ -80,7 +80,7 @@ export default class DataListHandler {
 
   getNextId() {
     let maxIdItem = this.data.slice(0).sort((r, r2) => r2.id - r.id)[0];
-    return maxIdItem.id + 1;
+    return maxIdItem ? maxIdItem.id + 1 : 1;
   }
 
   initializeDataDirectory = () => {

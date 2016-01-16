@@ -79,17 +79,17 @@ export default class App extends Component {
               <LinkContainer to="/locations">
                 <NavItem eventKey={10}>Locations</NavItem>
               </LinkContainer>
-              <LinkContainer to="/tours">
-                <NavItem eventKey={11}>Touren</NavItem>
-              </LinkContainer>
               <LinkContainer to="/restaurants">
                 <NavItem eventKey={7}>Restaurants</NavItem>
               </LinkContainer>
-              <LinkContainer to="/seasons">
-                <NavItem eventKey={8}>Tourenpläne</NavItem>
+              <LinkContainer to="/tours">
+                <NavItem eventKey={11}>Touren</NavItem>
               </LinkContainer>
               <LinkContainer to="/configurations">
                 <NavItem eventKey={9}>Konfigurationen</NavItem>
+              </LinkContainer>
+              <LinkContainer to="/seasons">
+                <NavItem eventKey={8}>Tourenpläne</NavItem>
               </LinkContainer>
               <LinkContainer to="/widgets">
                 <NavItem eventKey={2}>Widgets</NavItem>

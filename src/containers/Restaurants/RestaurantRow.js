@@ -14,6 +14,7 @@ export default class RestaurantRow extends Component {
     isEditing: PropTypes.bool.isRequired,
     timeline: PropTypes.string.isRequired,
     del: PropTypes.func.isRequired,
+    save: PropTypes.func.isRequired,
     editStart: PropTypes.func.isRequired
   };
 
@@ -62,7 +63,7 @@ export default class RestaurantRow extends Component {
       return `${hour.substr(hour.length - 2)}:${minute.substr(minute.length - 2)}`;
     };
 
-    const {restaurant, timeline, isEditing, locations} = this.props;
+    const {restaurant, timeline, isEditing, locations, save} = this.props;
     const timelineDate = moment(timeline, moment.ISO_8601, true);
 
     const openingHours = restaurant.timelines.find(time => timelineMatches(time, timelineDate));
@@ -108,7 +109,7 @@ export default class RestaurantRow extends Component {
 
     return (
       isEditing ?
-        <RestaurantForm formKey={String(restaurant.id)} key={String(restaurant.id)} initialValues={restaurant} locations={locations}/> :
+        <RestaurantForm formKey={String(restaurant.id)} key={String(restaurant.id)} initialValues={restaurant} locations={locations} onSubmit={data => save(data)}/> :
         <tr>
           <td className={styles.idCol}>{restaurant.id}</td>
           {renderLocation()}
