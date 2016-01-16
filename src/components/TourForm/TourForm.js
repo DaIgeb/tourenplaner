@@ -53,7 +53,8 @@ export default class TourForm extends Component {
       TourType.morning,
       TourType.afternoon,
       TourType.evening,
-      TourType.fullday
+      TourType.fullday,
+      TourType.startroute
     ];
 
     const difficultyOptions = [

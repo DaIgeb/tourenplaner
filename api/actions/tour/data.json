@@ -38,6 +38,7 @@
     "id": 1
   },
   {
+    "id": 2,
     "name": "Stadel",
     "timelines": [
       {
@@ -45,8 +46,8 @@
         "to": "2100-12-30T23:00:00.000Z",
         "types": [
           {
-            "id": 1,
-            "label": "Keine"
+            "id": 6,
+            "label": "Startroute"
           }
         ],
         "difficulty": {
@@ -70,10 +71,10 @@
           24
         ]
       }
-    ],
-    "id": 2
+    ]
   },
   {
+    "id": 3,
     "name": "Wiesendangen",
     "timelines": [
       {
@@ -81,8 +82,8 @@
         "to": "2100-12-30T23:00:00.000Z",
         "types": [
           {
-            "id": 1,
-            "label": "Keine"
+            "id": 6,
+            "label": "Startroute"
           }
         ],
         "difficulty": {
@@ -106,8 +107,7 @@
           27
         ]
       }
-    ],
-    "id": 3
+    ]
   },
   {
     "id": 4,
@@ -118,8 +118,8 @@
         "to": "2100-12-30T23:00:00.000Z",
         "types": [
           {
-            "id": 1,
-            "label": "Keine"
+            "id": 6,
+            "label": "Startroute"
           }
         ],
         "difficulty": {
@@ -144,5 +144,71 @@
         ]
       }
     ]
+  },
+  {
+    "name": "Wülflingen",
+    "timelines": [
+      {
+        "from": "2015-12-31T23:00:00.000Z",
+        "to": "2100-12-30T23:00:00.000Z",
+        "types": [
+          {
+            "id": 6,
+            "label": "Startroute"
+          }
+        ],
+        "difficulty": {
+          "id": 1,
+          "label": "Einfach"
+        },
+        "distance": 0,
+        "elevation": 0,
+        "restaurant": 1,
+        "locations": [
+          14,
+          32,
+          33,
+          35,
+          36,
+          37,
+          10,
+          10,
+          10
+        ]
+      }
+    ],
+    "id": 5
+  },
+  {
+    "name": "Seen",
+    "timelines": [
+      {
+        "from": "2015-12-31T23:00:00.000Z",
+        "to": "2100-12-30T23:00:00.000Z",
+        "types": [
+          {
+            "id": 6,
+            "label": "Startroute"
+          }
+        ],
+        "difficulty": {
+          "id": 1,
+          "label": "Einfach"
+        },
+        "distance": 0,
+        "elevation": 0,
+        "restaurant": 1,
+        "locations": [
+          14,
+          38,
+          39,
+          40,
+          41,
+          42,
+          43
+        ]
+      }
+    ],
+    "id": 6
   }
 ]
