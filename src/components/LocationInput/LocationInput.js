@@ -36,17 +36,17 @@ export default class LocationInput extends Component {
     };
     const options = locations
       .sort((loc1, loc2) => {
-        if (loc1.name !== loc2.name) {
-          return compareValue(loc1.name, loc2.name);
-        }
         if (loc1.city !== loc2.city) {
           return compareValue(loc1.city, loc2.city);
+        }
+        if (loc1.name !== loc2.name) {
+          return compareValue(loc1.name, loc2.name);
         }
 
         return compareValue(loc1.identifier, loc2.identifier);
       })
       .map(option => {
-        const label = option.name + (option.identifier ? ` (${option.identifier})` : '') + (option.city ? ` - ${option.city}` : '');
+        const label = (option.city && option.city !== option.name ? `${option.city} - ` : '') + option.name + (option.identifier ? ` (${option.identifier})` : '');
         return <option key={option.id} value={JSON.stringify(option.id)}>{label}</option>;
       });
     return (

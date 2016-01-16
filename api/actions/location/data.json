@@ -137,5 +137,237 @@
     "city": "",
     "latitude": 47.501246,
     "longitude": 8.730467
+  },
+  {
+    "id": 15,
+    "name": "Museumstr.",
+    "identifier": "",
+    "city": "Winterthur",
+    "latitude": 47.50146,
+    "longitude": 8.735745
+  },
+  {
+    "name": "Pflanzschulstr.",
+    "identifier": "",
+    "postalCode": "",
+    "city": "Winterthur",
+    "latitude": 47.501589,
+    "longitude": 8.739235,
+    "id": 16
+  },
+  {
+    "name": "Bahnunterführung",
+    "identifier": "",
+    "streetAddress": "",
+    "addressCountry": "",
+    "postalCode": "",
+    "city": "Winterthur",
+    "latitude": 47.502355,
+    "longitude": 8.739503,
+    "id": 17
+  },
+  {
+    "name": "Leimeneggstr.",
+    "identifier": "",
+    "streetAddress": "",
+    "addressCountry": "",
+    "postalCode": "",
+    "city": "Winterthur",
+    "latitude": 47.501536,
+    "longitude": 8.743698,
+    "id": 18
+  },
+  {
+    "id": 19,
+    "name": "Hegistr.",
+    "identifier": "",
+    "streetAddress": "",
+    "addressCountry": "",
+    "postalCode": "",
+    "city": "Winterthur",
+    "latitude": 47.502775,
+    "longitude": 8.756015
+  },
+  {
+    "id": 20,
+    "name": "Frauenfelderstr.",
+    "identifier": "vor Technorama",
+    "streetAddress": "",
+    "addressCountry": "",
+    "postalCode": "",
+    "city": "Winterthur",
+    "latitude": 47.508645,
+    "longitude": 8.759877
+  },
+  {
+    "name": "Technoramastr.",
+    "identifier": "",
+    "streetAddress": "",
+    "addressCountry": "",
+    "postalCode": "",
+    "city": "Winterthur",
+    "latitude": 47.512181,
+    "longitude": 8.762956,
+    "id": 21
+  },
+  {
+    "name": "Paffenwiesenstr.",
+    "city": "Winterthur",
+    "latitude": 47.516311,
+    "longitude": 8.762355,
+    "id": 22
+  },
+  {
+    "name": "Guggenbühlstr.",
+    "identifier": "",
+    "streetAddress": "",
+    "addressCountry": "",
+    "postalCode": "",
+    "city": "Winterthur",
+    "latitude": 47.518876,
+    "longitude": 8.759287,
+    "id": 23
+  },
+  {
+    "name": "Stadel",
+    "identifier": "",
+    "streetAddress": "",
+    "addressCountry": "",
+    "postalCode": "",
+    "city": "Stadel",
+    "latitude": 47.533856,
+    "longitude": 8.76115,
+    "id": 24
+  },
+  {
+    "name": "Frauenfelderstr.",
+    "identifier": "nach Technorama",
+    "streetAddress": "",
+    "addressCountry": "",
+    "postalCode": "",
+    "city": "Winterthur",
+    "latitude": 47.518668,
+    "longitude": 8.768044,
+    "id": 25
+  },
+  {
+    "name": "Rietstr.",
+    "identifier": "",
+    "streetAddress": "",
+    "addressCountry": "",
+    "postalCode": "",
+    "city": "Wiesendangen",
+    "latitude": 47.522233,
+    "longitude": 8.77579,
+    "id": 26
+  },
+  {
+    "name": "Wiesendangen",
+    "identifier": "",
+    "streetAddress": "",
+    "addressCountry": "",
+    "postalCode": "",
+    "city": "Wiesendangen",
+    "latitude": 47.522574,
+    "longitude": 8.786079,
+    "id": 27
+  },
+  {
+    "name": "Hegifeldstr.",
+    "identifier": "",
+    "streetAddress": "",
+    "addressCountry": "",
+    "postalCode": "",
+    "city": "Winterthur",
+    "latitude": 47.506243,
+    "longitude": 8.760022,
+    "id": 28
+  },
+  {
+    "name": "Rümikerstr.",
+    "identifier": "",
+    "streetAddress": "",
+    "addressCountry": "",
+    "postalCode": "",
+    "city": "Winterthur",
+    "latitude": 47.504441,
+    "longitude": 8.769992,
+    "id": 29
+  },
+  {
+    "name": "Im Heidenloch",
+    "identifier": "",
+    "streetAddress": "",
+    "addressCountry": "",
+    "postalCode": "",
+    "city": "Winterthur",
+    "latitude": 47.500288,
+    "longitude": 8.789778,
+    "id": 30
+  },
+  {
+    "name": "Räterschen",
+    "city": "Räterschen",
+    "latitude": 47.498516,
+    "longitude": 8.797605,
+    "id": 31
+  },
+  {
+    "name": "St. Georgenstr.",
+    "city": "Winterthur",
+    "latitude": 47.502532,
+    "longitude": 8.728826,
+    "id": 32
+  },
+  {
+    "id": 33,
+    "name": "Wülflingerstr.",
+    "city": "Winterthur",
+    "latitude": 47.503329,
+    "longitude": 8.722549
+  },
+  {
+    "name": "Feldstr.",
+    "identifier": "",
+    "streetAddress": "",
+    "addressCountry": "",
+    "postalCode": "",
+    "city": "Winterthur",
+    "latitude": 47.507214,
+    "longitude": 8.718547,
+    "id": 34
+  },
+  {
+    "name": "Bachtelstr.",
+    "identifier": "",
+    "streetAddress": "",
+    "addressCountry": "",
+    "postalCode": "",
+    "city": "Winterthur",
+    "latitude": 47.509149,
+    "longitude": 8.715403,
+    "id": 35
+  },
+  {
+    "name": "Weinbergstr.",
+    "identifier": "",
+    "streetAddress": "",
+    "addressCountry": "",
+    "postalCode": "",
+    "city": "Winterthur",
+    "latitude": 47.510328,
+    "longitude": 8.708894,
+    "id": 36
+  },
+  {
+    "name": "Wülflingen",
+    "identifier": "",
+    "streetAddress": "",
+    "addressCountry": "",
+    "postalCode": "",
+    "city": "Winterthur",
+    "latitude": 47.515835,
+    "longitude": 8.696964,
+    "id": 37
   }
 ]
