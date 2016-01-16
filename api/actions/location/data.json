@@ -1,88 +1,6 @@
 [
   {
     "id": 1,
-    "name": "Rest. Hirschen",
-    "streetAddress": "Foobar",
-    "addressCountry": "CH",
-    "postalCode": "1234",
-    "city": "Hagenbuch",
-    "latitude": 8.837266,
-    "longitude": 47.523741
-  },
-  {
-    "id": 2,
-    "name": "Rest. Sonne",
-    "streetAddress": "Foobar",
-    "postalCode": "2",
-    "city": "Warth",
-    "latitude": 123541.123,
-    "longitude": 12345.123
-  },
-  {
-    "id": 3,
-    "name": "Rest. Schäfli",
-    "streetAddress": "Foobar",
-    "postalCode": "3",
-    "city": "Ossingen",
-    "longitude": 12345.123,
-    "latitude": 123541.123
-  },
-  {
-    "id": 7,
-    "name": "Sonne",
-    "streetAddress": "Foobar",
-    "city": "Ossingen",
-    "postalCode": "3",
-    "longitude": 12345.123,
-    "latitude": 123541.123
-  },
-  {
-    "id": 8,
-    "name": "Frohe Aussicht",
-    "streetAddress": null,
-    "city": "Alten",
-    "postalCode": null,
-    "latitude": 123,
-    "longitude": 123
-  },
-  {
-    "id": 9,
-    "name": "Kreuzstrasse",
-    "streetAddress": null,
-    "city": "Altikon",
-    "postalCode": null,
-    "latitude": null,
-    "longitude": 456
-  },
-  {
-    "id": 10,
-    "name": "Krone",
-    "streetAddress": null,
-    "city": "Appenzell",
-    "postalCode": null,
-    "latitude": null,
-    "longitude": null
-  },
-  {
-    "id": 11,
-    "name": "Traube",
-    "streetAddress": null,
-    "city": "Appenzell",
-    "postalCode": null,
-    "latitude": null,
-    "longitude": null
-  },
-  {
-    "id": 12,
-    "name": "Sonne",
-    "streetAddress": null,
-    "city": "Appenzell",
-    "postalCode": null,
-    "latitude": null,
-    "longitude": null
-  },
-  {
-    "id": 13,
     "name": "Rest. Frohsinn",
     "streetAddress": "Dorfstrasse 3",
     "addressCountry": "CH",
@@ -90,5 +8,129 @@
     "city": "Kollbrunn",
     "latitude": 47.457702,
     "longitude": 8.774701
+  },
+  {
+    "name": "Riet",
+    "streetAddress": "",
+    "addressCountry": "",
+    "postalCode": "",
+    "city": "",
+    "latitude": 47.536672,
+    "longitude": 8.688084,
+    "id": 2
+  },
+  {
+    "name": "Neftenbach",
+    "streetAddress": "",
+    "addressCountry": "",
+    "postalCode": "",
+    "city": "",
+    "latitude": 47.529307,
+    "longitude": 8.667762,
+    "id": 3
+  },
+  {
+    "name": "Hünikon",
+    "streetAddress": "",
+    "addressCountry": "",
+    "postalCode": "",
+    "city": "",
+    "latitude": 47.551972,
+    "longitude": 8.668238,
+    "id": 4
+  },
+  {
+    "name": "Dorf",
+    "streetAddress": "",
+    "addressCountry": "",
+    "postalCode": "",
+    "city": "",
+    "latitude": 47.573036,
+    "longitude": 8.644692,
+    "id": 5
+  },
+  {
+    "name": "Wiler",
+    "streetAddress": "",
+    "addressCountry": "",
+    "postalCode": "",
+    "city": "",
+    "latitude": 47.559366,
+    "longitude": 8.616986,
+    "id": 6
+  },
+  {
+    "name": "Flaach",
+    "streetAddress": "Oberdorf",
+    "addressCountry": "",
+    "postalCode": "",
+    "city": "",
+    "latitude": 47.559366,
+    "longitude": 8.616986,
+    "id": 7
+  },
+  {
+    "name": "Ellikon am Rhein",
+    "city": "Ellikon am Rhein",
+    "latitude": 47.604284,
+    "longitude": 8.600192,
+    "id": 8
+  },
+  {
+    "name": "Rest. Frohe Aussicht",
+    "streetAddress": "Marthalerstrasse 17",
+    "addressCountry": "CH",
+    "postalCode": "8453",
+    "city": "Alten",
+    "latitude": 47.604284,
+    "longitude": 8.600192,
+    "id": 9
+  },
+  {
+    "name": "Andelfingen",
+    "streetAddress": "",
+    "addressCountry": "",
+    "postalCode": "",
+    "city": "",
+    "latitude": 47.59535,
+    "longitude": 8.676579,
+    "id": 10
+  },
+  {
+    "name": "Humlikon",
+    "streetAddress": "",
+    "addressCountry": "",
+    "postalCode": "",
+    "city": "",
+    "latitude": 47.580347,
+    "longitude": 8.6711,
+    "id": 11
+  },
+  {
+    "name": "Henggart",
+    "streetAddress": "",
+    "addressCountry": "",
+    "postalCode": "",
+    "city": "",
+    "latitude": 47.56667,
+    "longitude": 8.683919,
+    "id": 12
+  },
+  {
+    "name": "Hettlingen",
+    "streetAddress": "",
+    "addressCountry": "",
+    "postalCode": "",
+    "city": "",
+    "latitude": 47.54686,
+    "longitude": 8.709035,
+    "id": 13
+  },
+  {
+    "name": "Winterthur",
+    "streetAddress": "",
+    "latitude": 47.501246,
+    "longitude": 8.730467,
+    "id": 14
   }
 ]
