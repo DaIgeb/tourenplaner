@@ -431,5 +431,32 @@
       }
     ],
     "id": 11
+  },
+  {
+    "name": "Bänikon",
+    "types": [
+      {
+        "id": 2,
+        "label": "Morgentour"
+      }
+    ],
+    "timelines": [
+      {
+        "from": "2015-12-31T23:00:00.000Z",
+        "to": "2100-12-30T23:00:00.000Z",
+        "startroute": 2,
+        "difficulty": {
+          "id": 1,
+          "label": "Einfach"
+        },
+        "distance": 85,
+        "elevation": 850,
+        "restaurants": [
+          6
+        ],
+        "locations": []
+      }
+    ],
+    "id": 12
   }
 ]

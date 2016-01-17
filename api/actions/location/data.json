@@ -661,8 +661,8 @@
     "name": "Rest. Bahnhöfli",
     "identifier": "",
     "streetAddress": "Stationstrasse 101",
-    "addressCountry": "",
-    "postalCode": "",
+    "addressCountry": "CH",
+    "postalCode": "8478",
     "city": "Thalheim",
     "latitude": 47.569684,
     "longitude": 8.758024
@@ -710,15 +710,15 @@
     "id": 73
   },
   {
+    "id": 74,
     "name": "Rest. Krone",
     "identifier": "",
     "streetAddress": "Unterdorf 20",
-    "addressCountry": "",
-    "postalCode": "",
+    "addressCountry": "CH",
+    "postalCode": "9607",
     "city": "Mosnang",
     "latitude": 47.364057,
-    "longitude": 9.041145,
-    "id": 74
+    "longitude": 9.041145
   },
   {
     "name": "Bütschwil",
@@ -1052,5 +1052,142 @@
     "latitude": 47.479036,
     "longitude": 8.820297,
     "id": 111
+  },
+  {
+    "name": "Lanzenneunforn",
+    "identifier": "",
+    "streetAddress": "",
+    "addressCountry": "",
+    "postalCode": "",
+    "city": "Lanzenneunforn",
+    "latitude": 47.622619,
+    "longitude": 8.939064,
+    "id": 112
+  },
+  {
+    "name": "Hörhausen",
+    "city": "Hörhausen",
+    "latitude": 47.631448,
+    "longitude": 8.96844,
+    "id": 113
+  },
+  {
+    "name": "Müllheim",
+    "identifier": "",
+    "city": "Müllheim",
+    "latitude": 47.602371,
+    "longitude": 9.001612,
+    "id": 114
+  },
+  {
+    "id": 115,
+    "name": "Rest. Ochsen",
+    "streetAddress": "Wilerstrasse 136",
+    "addressCountry": "",
+    "postalCode": "8514",
+    "city": "Bänikon",
+    "latitude": 47.554967,
+    "longitude": 9.041753
+  },
+  {
+    "name": "Seuzach",
+    "identifier": "Kreisel",
+    "streetAddress": "",
+    "addressCountry": "",
+    "postalCode": "",
+    "city": "Seuzach",
+    "latitude": 47.53675,
+    "longitude": 8.729751,
+    "id": 116
+  },
+  {
+    "name": "Bänk",
+    "city": "Bänk",
+    "latitude": 47.548528,
+    "longitude": 8.73909,
+    "id": 117
+  },
+  {
+    "name": "Dägerlen",
+    "city": "Dägerlen",
+    "latitude": 47.55759,
+    "longitude": 8.729296,
+    "id": 118
+  },
+  {
+    "name": "Oberwil",
+    "identifier": "bei Dägerlen",
+    "city": "Oberwil",
+    "latitude": 47.572791,
+    "longitude": 8.716341,
+    "id": 119
+  },
+  {
+    "name": "Flaach",
+    "identifier": "Kreuzung Ellikon",
+    "streetAddress": "",
+    "addressCountry": "",
+    "postalCode": "",
+    "city": "Flaach",
+    "latitude": 47.578912,
+    "longitude": 8.611553,
+    "id": 120
+  },
+  {
+    "name": "Rheinau",
+    "identifier": "",
+    "streetAddress": "",
+    "addressCountry": "",
+    "postalCode": "",
+    "city": "Rheinau",
+    "latitude": 47.63816,
+    "longitude": 8.600476,
+    "id": 121
+  },
+  {
+    "name": "Dachsen",
+    "city": "Dachsen",
+    "latitude": 47.665828,
+    "longitude": 8.616303,
+    "id": 122
+  },
+  {
+    "name": "Rheinfall",
+    "city": "Laufen",
+    "latitude": 47.674601,
+    "longitude": 8.615069,
+    "id": 123
+  },
+  {
+    "name": "Uhwiesen",
+    "city": "Uhwiesen",
+    "latitude": 47.670103,
+    "longitude": 8.636284,
+    "id": 124
+  },
+  {
+    "name": "Gasthof Baumgarten",
+    "identifier": "",
+    "streetAddress": "",
+    "addressCountry": "",
+    "postalCode": "",
+    "city": "Benken",
+    "latitude": 47.652242,
+    "longitude": 8.655972,
+    "id": 125
+  },
+  {
+    "name": "Wildensbuch",
+    "city": "Wildensbuch",
+    "latitude": 47.65163,
+    "longitude": 8.675875,
+    "id": 126
+  },
+  {
+    "name": "Schlatt",
+    "city": "Schlatt",
+    "latitude": 47.661231,
+    "longitude": 8.702968,
+    "id": 127
   }
 ]
