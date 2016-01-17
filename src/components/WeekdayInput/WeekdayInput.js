@@ -19,6 +19,7 @@ export default class WeekdayInput extends Component {
 
     return (
       <select
+        default={englishWeekDays[0]}
         {...this.props}>
         {options}
       </select>);

@@ -40,6 +40,7 @@ export default class ObjectSelect extends Component {
     return (
       <select
         className="form-control"
+        default={JSON.stringify(options[0])}
         multiple={multiple}
         onBlur={event => onBlur(parse(event))}
         onChange={event => onChange(parse(event))}

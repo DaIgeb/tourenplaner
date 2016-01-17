@@ -1,7 +1,7 @@
 import React, {Component, PropTypes} from 'react';
 
 function formatNumber(number) {
-  return number ? number.toString() : '';
+  return number !== undefined && number !== null ? number.toString() : '';
 }
 
 function parseNumber(number) {
