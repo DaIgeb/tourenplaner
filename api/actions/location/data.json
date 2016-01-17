@@ -2097,5 +2097,179 @@
     "latitude": 47.285925,
     "longitude": 8.680962,
     "id": 232
+  },
+  {
+    "name": "Dättlikon",
+    "city": "Dättlikon",
+    "latitude": 47.525042,
+    "longitude": 8.624045,
+    "id": 233
+  },
+  {
+    "name": "Landgasthof Sternen",
+    "identifier": "",
+    "streetAddress": "Giessenstrasse 10",
+    "addressCountry": "CH",
+    "postalCode": "8717",
+    "city": "Benken SG",
+    "latitude": 47.183785,
+    "longitude": 8.99387,
+    "id": 234
+  },
+  {
+    "name": "Wagenbreche [bei Hühnerfarm links]",
+    "identifier": "",
+    "streetAddress": "",
+    "addressCountry": "",
+    "postalCode": "",
+    "city": "Wagenbreche",
+    "latitude": 47.54741,
+    "longitude": 8.550115,
+    "id": 235
+  },
+  {
+    "name": "Rest. Frohsinn",
+    "identifier": "",
+    "streetAddress": "Landstrasse 11",
+    "addressCountry": "CH",
+    "postalCode": "8197",
+    "city": "Rafz",
+    "latitude": 47.611224,
+    "longitude": 8.539568,
+    "id": 236
+  },
+  {
+    "name": "Bülach",
+    "identifier": "",
+    "streetAddress": "",
+    "addressCountry": "",
+    "postalCode": "",
+    "city": "Bülach",
+    "latitude": 47.527435,
+    "longitude": 8.534394,
+    "id": 237
+  },
+  {
+    "name": "Hochfelden",
+    "city": "Hochfelden",
+    "latitude": 47.523553,
+    "longitude": 8.518257,
+    "id": 238
+  },
+  {
+    "name": "Neerach",
+    "city": "Neerach",
+    "latitude": 47.512591,
+    "longitude": 8.473009,
+    "id": 239
+  },
+  {
+    "name": "Riedt bei Neerach",
+    "identifier": "",
+    "streetAddress": "",
+    "addressCountry": "",
+    "postalCode": "",
+    "city": "Riedt bei Neerach",
+    "latitude": 47.499981,
+    "longitude": 8.477238,
+    "id": 240
+  },
+  {
+    "name": "Steinmaur",
+    "city": "Steinmaur",
+    "latitude": 47.499742,
+    "longitude": 8.455613,
+    "id": 241
+  },
+  {
+    "name": "Sünikon",
+    "city": "Sünikon",
+    "latitude": 47.49078,
+    "longitude": 8.436065,
+    "id": 242
+  },
+  {
+    "name": "Schleinikon",
+    "city": "Schleinikon",
+    "latitude": 47.498217,
+    "longitude": 8.391115,
+    "id": 243
+  },
+  {
+    "name": "Niederweningen",
+    "city": "Niederweningen",
+    "latitude": 47.505878,
+    "longitude": 8.377877,
+    "id": 244
+  },
+  {
+    "name": "Siglistorf",
+    "identifier": "",
+    "streetAddress": "",
+    "addressCountry": "",
+    "postalCode": "",
+    "city": "Siglistorf",
+    "latitude": 47.545173,
+    "longitude": 8.379857,
+    "id": 245
+  },
+  {
+    "name": "Kaiserstuhl",
+    "city": "Kaiserstuhl",
+    "latitude": 47.5664,
+    "longitude": 8.417181,
+    "id": 246
+  },
+  {
+    "name": "Hohentengen",
+    "addressCountry": "D",
+    "city": "Hohentengen",
+    "latitude": 47.570574,
+    "longitude": 8.434624,
+    "id": 247
+  },
+  {
+    "name": "Günzgen",
+    "addressCountry": "D",
+    "city": "Günzgen",
+    "latitude": 47.584545,
+    "longitude": 8.460732,
+    "id": 248
+  },
+  {
+    "name": "Wasterkingen",
+    "identifier": "",
+    "streetAddress": "",
+    "addressCountry": "",
+    "postalCode": "",
+    "city": "Wasterkingen",
+    "latitude": 47.587916,
+    "longitude": 8.473628,
+    "id": 249
+  },
+  {
+    "name": "Wil",
+    "identifier": "Rafzerfeld",
+    "streetAddress": "",
+    "addressCountry": "",
+    "postalCode": "",
+    "city": "Wil",
+    "latitude": 47.605059,
+    "longitude": 8.507891,
+    "id": 250
+  },
+  {
+    "name": "Rafz",
+    "city": "Rafz",
+    "latitude": 47.611476,
+    "longitude": 8.540258,
+    "id": 251
+  },
+  {
+    "name": "Volken",
+    "city": "Volken",
+    "latitude": 47.574061,
+    "longitude": 8.624941,
+    "id": 252
   }
 ]

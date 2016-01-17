@@ -865,6 +865,7 @@
     ]
   },
   {
+    "id": 22,
     "name": "Fischingen",
     "types": [
       {
@@ -882,7 +883,7 @@
           "label": "Schwierig"
         },
         "distance": 70,
-        "elevation": 0,
+        "elevation": 850,
         "restaurants": [
           16
         ],
@@ -897,10 +898,65 @@
           231,
           107,
           70,
+          14,
+          179,
+          179,
+          179
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Fisibach",
+    "types": [
+      {
+        "id": 3,
+        "label": "Nachmittagstour"
+      }
+    ],
+    "timelines": [
+      {
+        "from": "2015-12-31T23:00:00.000Z",
+        "to": "2100-12-30T23:00:00.000Z",
+        "startroute": 5,
+        "difficulty": {
+          "id": 2,
+          "label": "Mittel"
+        },
+        "distance": 85,
+        "elevation": 900,
+        "restaurants": [
+          17
+        ],
+        "locations": [
+          3,
+          233,
+          198,
+          235,
+          237,
+          238,
+          239,
+          240,
+          241,
+          242,
+          243,
+          244,
+          245,
+          176,
+          246,
+          247,
+          248,
+          249,
+          250,
+          251,
+          7,
+          252,
+          12,
+          13,
           14
         ]
       }
     ],
-    "id": 22
+    "id": 23
   }
 ]
