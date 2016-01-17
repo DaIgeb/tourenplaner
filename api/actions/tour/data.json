@@ -388,5 +388,48 @@
         ]
       }
     ]
+  },
+  {
+    "name": "Balterswil",
+    "types": [
+      {
+        "id": 4,
+        "label": "Abendtour"
+      }
+    ],
+    "timelines": [
+      {
+        "from": "2015-12-31T23:00:00.000Z",
+        "to": "2100-12-30T23:00:00.000Z",
+        "startroute": 3,
+        "difficulty": {
+          "id": 2,
+          "label": "Mittel"
+        },
+        "distance": 55,
+        "elevation": 700,
+        "restaurants": [
+          5
+        ],
+        "locations": [
+          99,
+          100,
+          101,
+          102,
+          103,
+          104,
+          105,
+          106,
+          107,
+          108,
+          109,
+          71,
+          110,
+          111,
+          14
+        ]
+      }
+    ],
+    "id": 11
   }
 ]

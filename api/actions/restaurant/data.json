@@ -50,5 +50,18 @@
       }
     ],
     "id": 4
+  },
+  {
+    "location": 108,
+    "timelines": [
+      {
+        "from": "2015-12-31T23:00:00.000Z",
+        "until": "2100-12-30T23:00:00.000Z",
+        "notes": "TODO",
+        "phone": "",
+        "businessHours": []
+      }
+    ],
+    "id": 5
   }
 ]

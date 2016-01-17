@@ -6,20 +6,30 @@
     width: 5%;
   }
   .nameCol {
-    width: 10%;
   }
-  .addressCol {
-    width: 20%;
+  .typesCol {
+    width: 18%;
     text-align: left;
     input {
       text-align: left;
     }
   }
-  .notesCol {
-    width: 25%;
+  .difficultyCol {
+    width: 10%;
   }
-  .businessHours {
-    width: 25%;
+  .distanceCol {
+    width: 10%;
+    text-align: right;
+    input {
+      text-align: right;
+    }
+  }
+  .elevationCol {
+    width: 10%;
+    text-align: right;
+    input {
+      text-align: right;
+    }
   }
   .buttonCol {
     width: 20%;

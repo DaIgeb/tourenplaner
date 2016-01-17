@@ -143,20 +143,20 @@ export default class Tours extends Component {
         const types = tour.types.map(type => type.label).join(',');
         return (
           <tr key={tour.id}>
-            <td>{tour.id}</td>
-            <td>{tour.name}</td>
-            <td>{types}</td>
-            <td>{timeline.difficulty.label}</td>
-            <td>{timeline.distance}</td>
-            <td>{timeline.elevation}</td>
+            <td className={styles.idCol}>{tour.id}</td>
+            <td className={styles.nameCol}>{tour.name}</td>
+            <td className={styles.typesCol}>{types}</td>
+            <td className={styles.difficultyCol}>{timeline.difficulty.label}</td>
+            <td className={styles.distanceCol}>{timeline.distance}</td>
+            <td className={styles.elevationCol}>{timeline.elevation}</td>
             {renderButtonCell(tour.id)}
           </tr>);
       }
 
       return (
         <tr key={tour.id}>
-          <td>{tour.id}</td>
-          <td>{tour.name}</td>
+          <td className={styles.idCol}>{tour.id}</td>
+          <td className={styles.idCol}>{tour.name}</td>
           <td colSpan={4}/>
           {renderButtonCell(tour.id)}
         </tr>);
@@ -190,11 +190,11 @@ export default class Tours extends Component {
           <thead>
           <tr>
             <th className={styles.idCol}>ID</th>
-            <th className={styles.addressCol}>Name</th>
-            <th className={styles.notesCol}>Type</th>
-            <th className={styles.notesCol}>Schwierigkeit</th>
-            <th className={styles.notesCol}>Distanz</th>
-            <th className={styles.notesCol}>Höhenmeter</th>
+            <th className={styles.nameCol}>Name</th>
+            <th className={styles.typesCol}>Type</th>
+            <th className={styles.difficultyCol}>Schwierigkeit</th>
+            <th className={styles.distanceCol}>Distanz</th>
+            <th className={styles.elevationCol}>Höhenmeter</th>
             <th className={styles.buttonCol} />
           </tr>
           </thead>

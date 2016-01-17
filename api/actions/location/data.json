@@ -944,5 +944,113 @@
     "latitude": 47.621494,
     "longitude": 8.648994,
     "id": 98
+  },
+  {
+    "name": "Bertschikon",
+    "city": "Bertschikon",
+    "latitude": 47.526812,
+    "longitude": 8.814497,
+    "id": 99
+  },
+  {
+    "name": "Liebensberg",
+    "city": "Liebensberg",
+    "latitude": 47.536289,
+    "longitude": 8.836106,
+    "id": 100
+  },
+  {
+    "name": "Stegen",
+    "city": "Stegen",
+    "latitude": 47.528701,
+    "longitude": 8.848323,
+    "id": 101
+  },
+  {
+    "name": "Hagenbuch",
+    "city": "Hagenbuch",
+    "latitude": 47.520986,
+    "longitude": 8.88775,
+    "id": 102
+  },
+  {
+    "name": "Schneitberg",
+    "city": "Schneitberg",
+    "latitude": 47.511643,
+    "longitude": 8.872148,
+    "id": 103
+  },
+  {
+    "name": "Richtung Elgg",
+    "identifier": "",
+    "streetAddress": "",
+    "addressCountry": "",
+    "postalCode": "",
+    "city": "Elgg",
+    "latitude": 47.511643,
+    "longitude": 8.872148,
+    "id": 104
+  },
+  {
+    "name": "Radweg",
+    "identifier": "Richtung Haggenberg",
+    "streetAddress": "",
+    "addressCountry": "",
+    "postalCode": "",
+    "city": "Elgg",
+    "latitude": 47.493912,
+    "longitude": 8.886786,
+    "id": 105
+  },
+  {
+    "name": "Haggenberg",
+    "identifier": "",
+    "streetAddress": "",
+    "addressCountry": "",
+    "postalCode": "",
+    "city": "Aadorf",
+    "latitude": 47.487954,
+    "longitude": 8.896786,
+    "id": 106
+  },
+  {
+    "name": "Ettenhausen",
+    "city": "Ettenhausen",
+    "latitude": 47.477599,
+    "longitude": 8.899662,
+    "id": 107
+  },
+  {
+    "id": 108,
+    "name": "Gasthaus Krone",
+    "identifier": "",
+    "streetAddress": "Hauptstrasse 31",
+    "addressCountry": "",
+    "postalCode": "8362",
+    "city": "Balterswil",
+    "latitude": 47.452818,
+    "longitude": 8.937135
+  },
+  {
+    "name": "Bichelsee",
+    "city": "Bichelsee",
+    "latitude": 47.451369,
+    "longitude": 8.91642,
+    "id": 109
+  },
+  {
+    "name": "Huggenberg",
+    "identifier": "Rest. Schauenberg",
+    "city": "Huggenberg",
+    "latitude": 47.460867,
+    "longitude": 8.879691,
+    "id": 110
+  },
+  {
+    "name": "Waltenstein",
+    "city": "Waltenstein",
+    "latitude": 47.479036,
+    "longitude": 8.820297,
+    "id": 111
   }
 ]
