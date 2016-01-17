@@ -39,15 +39,11 @@
             "type": "string",
             "format": "date-time"
           },
-          "restaurant": {
-            "anyOf" : [
-              {
-                "type": "string"
-              },
-              {
-                "type": "null"
-              }
-            ]
+          "restaurants": {
+            "type": "array",
+            "items": {
+              "type": "number"
+            }
           },
           "distance": {
             "type": "number"
@@ -80,7 +76,7 @@
         "required": [
           "from",
           "to",
-          "restaurant",
+          "restaurants",
           "distance",
           "elevation",
           "difficulty",

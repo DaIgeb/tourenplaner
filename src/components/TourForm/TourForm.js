@@ -25,7 +25,7 @@ import {TourType, Difficulty} from 'models';
     'timelines[].difficulty',
     'timelines[].distance',
     'timelines[].elevation',
-    'timelines[].restaurant',
+    'timelines[].restaurants[]',
     'timelines[].locations[]'
   ],
   // validate: restaurantValidation
@@ -100,6 +100,30 @@ export default class TourForm extends Component {
     const renderDate = (field, label, attributes = null) => renderInput(field, label, renderDateControl(field, attributes));
 
     const findLocation = (locationId) => locations.find(loc => loc.id === locationId);
+    const renderRestaurant = (restaurantsField, restaurant, restIdx) => {
+      const mapRestaurant = (option) => {
+        const loc = findLocation(option.location);
+        return <option key={option.id} value={JSON.stringify(option.id)}>{loc.city} - {loc.name}</option>;
+      };
+      return (
+        <div key={restIdx} className="form-group">
+          <div className="col-xs-10">
+            <select className="form-control"
+              {...restaurant}
+              onBlur={evt => restaurant.onBlur(parseInt(evt.target.value, 10))}
+              onChange={evt => restaurant.onChange(parseInt(evt.target.value, 10))}>
+              {restaurants.map(mapRestaurant)}
+            </select>
+          </div>
+          <div className="col-xs-2">
+            <button className="btn btn-danger" onClick={event => {
+              event.preventDefault();       // prevent form submission
+              restaurantsField.removeField(restIdx);  // remove from index
+            }}><i className="fa fa-trash"/>
+            </button>
+          </div>
+        </div>);
+    };
 
     return (
       <div>
@@ -127,24 +151,35 @@ export default class TourForm extends Component {
                                                                             default={undefined}
                                                                             filter={item => item.types.findIndex(type => type.id === TourType.startroute.id) >= 0}
                   {...timeline.startroute} />)}
-                {renderInput(timeline.restaurant, 'Restaurant', <select className="form-control"
-                                                                        default={undefined}
-                  {...timeline.restaurant}
-                  onBlur={evt => timeline.restaurant.onBlur(parseInt(evt.target.value, 10))}
-                  onChange={evt => timeline.restaurant.onChange(parseInt(evt.target.value, 10))}>
-                  <option value={undefined}>Keines</option>
-                  {restaurants.map(option => {
-                    const loc = findLocation(option.location);
-                    return <option key={option.id} value={JSON.stringify(option.id)}>{loc.city} - {loc.name}</option>;
-                  })}
-                </select>)}
                 {renderInput(timeline.difficulty, 'Schwierigkeit', renderObjectSelectControl(timeline.difficulty, difficultyOptions))}
                 {renderInput(timeline.distance, 'Distanz', <div className="input-group">{renderNumberControl(timeline.distance, {min: 0, step: 0.1, decimalPlaces: 1})}<span className="input-group-addon">km</span></div>)}
                 {renderInput(timeline.elevation, 'Höhenmeter', <div className="input-group">{renderNumberControl(timeline.elevation, {min: 0, step: 25})}<span className="input-group-addon">m</span></div>)}
+
+                <h4>Restaurants</h4>
+                {timeline.restaurants && timeline.restaurants.map((rest, restIdx) => renderRestaurant(timeline.restaurants, rest, restIdx))}
+                <div style={{textAlign: 'center', margin: '10px'}}>
+                  <button className="btn btn-success" onClick={event => {
+                    event.preventDefault(); // prevent form submission
+                    timeline.restaurants.addField();    // pushes empty child field onto the end of the array
+                  }}><i className="fa fa-plus"/> Restaurant hinzufügen
+                  </button>
+                </div>
               </div>
               <div className="col-xs-5">
                 <h4>Ortschaften</h4>
-                {timeline.locations && timeline.locations.map((location, locIdx)=> <div key={locIdx} className="form-group"><LocationInput className="form-control" {...location}/></div>)}
+                {timeline.locations && timeline.locations.map((location, locIdx)=> (
+                  <div key={locIdx} className="form-group">
+                    <div className="col-xs-10">
+                      <LocationInput className="form-control" {...location}/>
+                    </div>
+                    <div className="col-xs-2">
+                      <button className="btn btn-danger" onClick={event => {
+                        event.preventDefault();       // prevent form submission
+                        timeline.locations.removeField(locIdx);  // remove from index
+                      }}><i className="fa fa-trash"/>
+                      </button>
+                    </div>
+                  </div>))}
                 <div style={{textAlign: 'center', margin: '10px'}}>
                   <button className="btn btn-success" onClick={event => {
                     event.preventDefault(); // prevent form submission

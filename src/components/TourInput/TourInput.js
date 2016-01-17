@@ -20,7 +20,7 @@ export default class TourInput extends Component {
     onChange: PropTypes.func.isRequired,
     onBlur: PropTypes.func,
     filter: PropTypes.func,
-    allowNull: PropTypes.boolean
+    allowNull: PropTypes.bool
   };
 
   render() {

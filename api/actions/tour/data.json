@@ -19,7 +19,9 @@
         },
         "distance": 50,
         "elevation": 450,
-        "restaurant": 1,
+        "restaurants": [
+          1
+        ],
         "locations": [
           2,
           3,
@@ -28,19 +30,21 @@
           6,
           7,
           8,
+          98,
           9,
           10,
           11,
           12,
           13,
-          14
+          14,
+          98
         ]
       }
     ]
   },
   {
     "id": 2,
-    "name": "Stadel",
+    "name": "Stadel (1)",
     "types": [
       {
         "id": 6,
@@ -58,7 +62,7 @@
         },
         "distance": 0,
         "elevation": 0,
-        "restaurant": null,
+        "restaurants": [],
         "locations": [
           14,
           15,
@@ -77,7 +81,7 @@
   },
   {
     "id": 3,
-    "name": "Wiesendangen",
+    "name": "Wiesendangen (2)",
     "types": [
       {
         "id": 6,
@@ -95,7 +99,7 @@
         },
         "distance": 0,
         "elevation": 0,
-        "restaurant": null,
+        "restaurants": [],
         "locations": [
           14,
           15,
@@ -114,7 +118,7 @@
   },
   {
     "id": 4,
-    "name": "Räterschen",
+    "name": "Räterschen (3)",
     "types": [
       {
         "id": 6,
@@ -132,7 +136,7 @@
         },
         "distance": 0,
         "elevation": 0,
-        "restaurant": null,
+        "restaurants": [],
         "locations": [
           14,
           15,
@@ -151,7 +155,7 @@
   },
   {
     "id": 5,
-    "name": "Wülflingen",
+    "name": "Wülflingen (4)",
     "types": [
       {
         "id": 6,
@@ -169,7 +173,7 @@
         },
         "distance": 0,
         "elevation": 0,
-        "restaurant": null,
+        "restaurants": [],
         "locations": [
           14,
           32,
@@ -186,7 +190,7 @@
   },
   {
     "id": 6,
-    "name": "Seen",
+    "name": "Seen (5)",
     "types": [
       {
         "id": 6,
@@ -204,7 +208,7 @@
         },
         "distance": 0,
         "elevation": 0,
-        "restaurant": null,
+        "restaurants": [],
         "locations": [
           14,
           38,
@@ -218,7 +222,8 @@
     ]
   },
   {
-    "name": "Töss",
+    "id": 7,
+    "name": "Töss (6)",
     "types": [
       {
         "id": 6,
@@ -236,7 +241,7 @@
         },
         "distance": 0,
         "elevation": 0,
-        "restaurant": null,
+        "restaurants": [],
         "locations": [
           14,
           38,
@@ -248,11 +253,11 @@
           49
         ]
       }
-    ],
-    "id": 7
+    ]
   },
   {
-    "name": "Rosenberg",
+    "id": 8,
+    "name": "Rosenberg (7)",
     "types": [
       {
         "id": 6,
@@ -270,7 +275,7 @@
         },
         "distance": 0,
         "elevation": 0,
-        "restaurant": null,
+        "restaurants": [],
         "locations": [
           14,
           50,
@@ -279,7 +284,109 @@
           53
         ]
       }
+    ]
+  },
+  {
+    "id": 9,
+    "name": "Altikon",
+    "types": [
+      {
+        "id": 4,
+        "label": "Abendtour"
+      }
     ],
-    "id": 8
+    "timelines": [
+      {
+        "from": "2015-12-31T23:00:00.000Z",
+        "to": "2100-12-30T23:00:00.000Z",
+        "startroute": 2,
+        "difficulty": {
+          "id": 1,
+          "label": "Einfach"
+        },
+        "distance": 50,
+        "elevation": 650,
+        "restaurants": [
+          2
+        ],
+        "locations": [
+          55,
+          56,
+          57,
+          58,
+          59,
+          60,
+          61,
+          62,
+          63,
+          65,
+          66,
+          67,
+          68,
+          14
+        ]
+      }
+    ]
+  },
+  {
+    "id": 10,
+    "name": "Appenzell",
+    "types": [
+      {
+        "id": 5,
+        "label": "Tagestour"
+      }
+    ],
+    "timelines": [
+      {
+        "from": "2015-12-31T23:00:00.000Z",
+        "to": "2100-12-30T23:00:00.000Z",
+        "startroute": 4,
+        "difficulty": {
+          "id": 3,
+          "label": "Schwierig"
+        },
+        "distance": 150,
+        "elevation": 2600,
+        "restaurants": [
+          3,
+          4
+        ],
+        "locations": [
+          69,
+          70,
+          71,
+          72,
+          73,
+          74,
+          75,
+          76,
+          77,
+          79,
+          78,
+          80,
+          81,
+          82,
+          83,
+          84,
+          85,
+          86,
+          87,
+          88,
+          89,
+          90,
+          97,
+          91,
+          92,
+          57,
+          94,
+          95,
+          96,
+          70,
+          69,
+          14
+        ]
+      }
+    ]
   }
 ]

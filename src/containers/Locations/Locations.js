@@ -87,7 +87,7 @@ export default class Locations extends Component {
             {adding ?
               <LocationForm formKey="new" key="new" initialValues={adding} onSubmit={values => {add(values);}}/> :
               <tr key="new">
-                <td colSpan={8}/>
+                <td colSpan={5}/>
                 <td>
                   <button className="btn btn-success" onClick={handleAdd()}>
                     <i className="fa fa-plus"/> Add

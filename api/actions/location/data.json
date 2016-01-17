@@ -10,54 +10,54 @@
     "longitude": 8.774701
   },
   {
+    "id": 2,
     "name": "Riet",
     "streetAddress": "",
     "addressCountry": "",
     "postalCode": "",
-    "city": "",
+    "city": "Riet",
     "latitude": 47.536672,
-    "longitude": 8.688084,
-    "id": 2
+    "longitude": 8.688084
   },
   {
+    "id": 3,
     "name": "Neftenbach",
     "streetAddress": "",
     "addressCountry": "",
     "postalCode": "",
-    "city": "",
+    "city": "Neftenbach",
     "latitude": 47.529307,
-    "longitude": 8.667762,
-    "id": 3
+    "longitude": 8.667762
   },
   {
+    "id": 4,
     "name": "Hünikon",
     "streetAddress": "",
     "addressCountry": "",
     "postalCode": "",
-    "city": "",
+    "city": "Hünikon",
     "latitude": 47.551972,
-    "longitude": 8.668238,
-    "id": 4
+    "longitude": 8.668238
   },
   {
+    "id": 5,
     "name": "Dorf",
     "streetAddress": "",
     "addressCountry": "",
     "postalCode": "",
-    "city": "",
+    "city": "Dorf",
     "latitude": 47.573036,
-    "longitude": 8.644692,
-    "id": 5
+    "longitude": 8.644692
   },
   {
+    "id": 6,
     "name": "Wiler",
     "streetAddress": "",
     "addressCountry": "",
     "postalCode": "",
-    "city": "",
+    "city": "Wiler",
     "latitude": 47.559366,
-    "longitude": 8.616986,
-    "id": 6
+    "longitude": 8.616986
   },
   {
     "id": 7,
@@ -66,7 +66,7 @@
     "streetAddress": "",
     "addressCountry": "",
     "postalCode": "",
-    "city": "",
+    "city": "Flaach",
     "latitude": 47.559366,
     "longitude": 8.616986
   },
@@ -88,44 +88,44 @@
     "id": 9
   },
   {
+    "id": 10,
     "name": "Andelfingen",
     "streetAddress": "",
     "addressCountry": "",
     "postalCode": "",
-    "city": "",
+    "city": "Andelfingen",
     "latitude": 47.59535,
-    "longitude": 8.676579,
-    "id": 10
+    "longitude": 8.676579
   },
   {
+    "id": 11,
     "name": "Humlikon",
     "streetAddress": "",
     "addressCountry": "",
     "postalCode": "",
-    "city": "",
+    "city": "Humlikon",
     "latitude": 47.580347,
-    "longitude": 8.6711,
-    "id": 11
+    "longitude": 8.6711
   },
   {
+    "id": 12,
     "name": "Henggart",
     "streetAddress": "",
     "addressCountry": "",
     "postalCode": "",
-    "city": "",
+    "city": "Henggart",
     "latitude": 47.56667,
-    "longitude": 8.683919,
-    "id": 12
+    "longitude": 8.683919
   },
   {
+    "id": 13,
     "name": "Hettlingen",
     "streetAddress": "",
     "addressCountry": "",
     "postalCode": "",
-    "city": "",
+    "city": "Hettlingen",
     "latitude": 47.54686,
-    "longitude": 8.709035,
-    "id": 13
+    "longitude": 8.709035
   },
   {
     "id": 14,
@@ -548,5 +548,401 @@
     "latitude": 47.506108,
     "longitude": 8.759489,
     "id": 54
+  },
+  {
+    "name": "Grundhof",
+    "identifier": "",
+    "streetAddress": "",
+    "city": "Stadel",
+    "latitude": 47.539516,
+    "longitude": 8.772909,
+    "id": 55
+  },
+  {
+    "name": "Riedmüli",
+    "identifier": "",
+    "streetAddress": "",
+    "addressCountry": "",
+    "postalCode": "",
+    "city": "Dinhard",
+    "latitude": 47.548315,
+    "longitude": 8.781181,
+    "id": 56
+  },
+  {
+    "id": 57,
+    "name": "Rickenbach",
+    "identifier": "ZH",
+    "city": "Rickenbach",
+    "latitude": 47.551828,
+    "longitude": 8.795895
+  },
+  {
+    "name": "Ellikon an der Thur",
+    "identifier": "",
+    "streetAddress": "",
+    "addressCountry": "",
+    "postalCode": "",
+    "city": "Ellikon an der Thur",
+    "latitude": 47.56303,
+    "longitude": 8.824639,
+    "id": 58
+  },
+  {
+    "name": "Uesslingen",
+    "identifier": "",
+    "streetAddress": "",
+    "addressCountry": "",
+    "postalCode": "",
+    "city": "Uesslingen",
+    "latitude": 47.579761,
+    "longitude": 8.833643,
+    "id": 59
+  },
+  {
+    "name": "Warth",
+    "identifier": "",
+    "streetAddress": "",
+    "addressCountry": "",
+    "postalCode": "",
+    "city": "Warth",
+    "latitude": 47.583651,
+    "longitude": 8.872971,
+    "id": 60
+  },
+  {
+    "name": "Herdern",
+    "city": "Herdern",
+    "latitude": 47.604835,
+    "longitude": 8.909691,
+    "id": 61
+  },
+  {
+    "name": "Kalchrain",
+    "city": "Kalchrain",
+    "latitude": 47.612141,
+    "longitude": 8.889263,
+    "id": 62
+  },
+  {
+    "name": "Hüttwilen",
+    "city": "Hüttwilen",
+    "latitude": 47.606456,
+    "longitude": 8.870756,
+    "id": 63
+  },
+  {
+    "id": 64,
+    "name": "Buch bei Üsslingen",
+    "city": "Buch",
+    "latitude": 47.599364,
+    "longitude": 8.838075
+  },
+  {
+    "name": "Niederneunforn",
+    "city": "Niederneunforn",
+    "latitude": 47.595852,
+    "longitude": 8.783625,
+    "id": 65
+  },
+  {
+    "name": "Altikon",
+    "identifier": "",
+    "streetAddress": "",
+    "addressCountry": "",
+    "postalCode": "",
+    "city": "Altikon",
+    "latitude": 47.573358,
+    "longitude": 8.780935,
+    "id": 66
+  },
+  {
+    "id": 67,
+    "name": "Rest. Bahnhöfli",
+    "identifier": "",
+    "streetAddress": "Stationstrasse 101",
+    "addressCountry": "",
+    "postalCode": "",
+    "city": "Thalheim",
+    "latitude": 47.569684,
+    "longitude": 8.758024
+  },
+  {
+    "name": "Welsikon",
+    "city": "Welsikon",
+    "latitude": 47.553524,
+    "longitude": 8.75248,
+    "id": 68
+  },
+  {
+    "name": "Schottikon",
+    "city": "Schottikon",
+    "latitude": 47.500298,
+    "longitude": 8.811899,
+    "id": 69
+  },
+  {
+    "name": "Elgg",
+    "city": "Elgg",
+    "latitude": 47.49252,
+    "longitude": 8.863976,
+    "id": 70
+  },
+  {
+    "name": "Rüetschberg",
+    "city": "Rüetschberg",
+    "latitude": 47.463445,
+    "longitude": 8.894114,
+    "id": 71
+  },
+  {
+    "name": "Fischingen",
+    "city": "Fischingen",
+    "latitude": 47.413918,
+    "longitude": 8.968595,
+    "id": 72
+  },
+  {
+    "name": "Mühlrüti",
+    "city": "Mühlrüti",
+    "latitude": 47.370924,
+    "longitude": 8.98497,
+    "id": 73
+  },
+  {
+    "name": "Rest. Krone",
+    "identifier": "",
+    "streetAddress": "Unterdorf 20",
+    "addressCountry": "",
+    "postalCode": "",
+    "city": "Mosnang",
+    "latitude": 47.364057,
+    "longitude": 9.041145,
+    "id": 74
+  },
+  {
+    "name": "Bütschwil",
+    "identifier": "",
+    "streetAddress": "",
+    "addressCountry": "",
+    "postalCode": "",
+    "city": "Bütschwil",
+    "latitude": 47.358604,
+    "longitude": 9.070963,
+    "id": 75
+  },
+  {
+    "name": "Dietfurt",
+    "identifier": "",
+    "streetAddress": "",
+    "addressCountry": "",
+    "postalCode": "",
+    "city": "Dietfurt",
+    "latitude": 47.345836,
+    "longitude": 9.080505,
+    "id": 76
+  },
+  {
+    "name": "Wigetshof",
+    "city": "Oberhelfenschwil",
+    "latitude": 47.345549,
+    "longitude": 9.092387,
+    "id": 77
+  },
+  {
+    "name": "Ebersol",
+    "identifier": "",
+    "streetAddress": "",
+    "addressCountry": "",
+    "postalCode": "",
+    "city": "Ebersol",
+    "latitude": 47.350175,
+    "longitude": 9.151489,
+    "id": 78
+  },
+  {
+    "name": "Oberhelfenschwil",
+    "city": "Oberhelfenschwil",
+    "latitude": 47.350175,
+    "longitude": 9.151489,
+    "id": 79
+  },
+  {
+    "name": "Chäseren",
+    "identifier": "",
+    "streetAddress": "",
+    "addressCountry": "",
+    "postalCode": "",
+    "city": "Sankt Peterzell",
+    "latitude": 47.329767,
+    "longitude": 9.203143,
+    "id": 80
+  },
+  {
+    "name": "Schönengrund",
+    "city": "Schönengrund",
+    "latitude": 47.328237,
+    "longitude": 9.222561,
+    "id": 81
+  },
+  {
+    "name": "Urnäsch",
+    "city": "Urnäsch",
+    "latitude": 47.3175,
+    "longitude": 9.283745,
+    "id": 82
+  },
+  {
+    "name": "Rest. Sonne",
+    "identifier": "",
+    "streetAddress": "Landsgemeindeplatz 1",
+    "addressCountry": "",
+    "postalCode": "9050",
+    "city": "Appenzell",
+    "latitude": 47.331538,
+    "longitude": 9.407986,
+    "id": 83
+  },
+  {
+    "name": "Hundwil",
+    "identifier": "",
+    "streetAddress": "",
+    "addressCountry": "",
+    "postalCode": "",
+    "city": "Hundwil",
+    "latitude": 47.363071,
+    "longitude": 9.326979,
+    "id": 84
+  },
+  {
+    "name": "Waldstatt",
+    "identifier": "",
+    "streetAddress": "",
+    "addressCountry": "",
+    "postalCode": "",
+    "city": "Waldstatt",
+    "latitude": 47.361833,
+    "longitude": 9.292471,
+    "id": 85
+  },
+  {
+    "name": "Herisau",
+    "identifier": "",
+    "streetAddress": "",
+    "addressCountry": "",
+    "postalCode": "",
+    "city": "Herisau",
+    "latitude": 47.384617,
+    "longitude": 9.273954,
+    "id": 86
+  },
+  {
+    "id": 87,
+    "name": "Degersheim",
+    "city": "Degersheim",
+    "latitude": 47.376345,
+    "longitude": 9.2051
+  },
+  {
+    "id": 88,
+    "name": "Wolfertswil",
+    "identifier": "",
+    "streetAddress": "",
+    "addressCountry": "",
+    "postalCode": "",
+    "city": "Wolfertswil",
+    "latitude": 47.394351,
+    "longitude": 9.182709
+  },
+  {
+    "name": "Magdenau",
+    "city": "Magdenau",
+    "latitude": 47.401587,
+    "longitude": 9.171675,
+    "id": 89
+  },
+  {
+    "id": 90,
+    "name": "Dieselbach",
+    "identifier": "",
+    "streetAddress": "",
+    "addressCountry": "",
+    "postalCode": "",
+    "city": "Nassen",
+    "latitude": 47.389017,
+    "longitude": 9.133786
+  },
+  {
+    "name": "Lütisburg",
+    "city": "Lütisburg",
+    "latitude": 47.395357,
+    "longitude": 9.075221,
+    "id": 91
+  },
+  {
+    "name": "Bazenheid",
+    "city": "Bazenheid",
+    "latitude": 47.413578,
+    "longitude": 9.06812,
+    "id": 92
+  },
+  {
+    "id": 93,
+    "name": "Rickenbach bei Wil",
+    "identifier": "",
+    "city": "Rickenbach",
+    "latitude": 47.445948,
+    "longitude": 9.050963
+  },
+  {
+    "name": "Busswil",
+    "city": "Busswil",
+    "latitude": 47.452553,
+    "longitude": 9.015406,
+    "id": 94
+  },
+  {
+    "name": "Littenheid",
+    "identifier": "",
+    "streetAddress": "",
+    "addressCountry": "",
+    "postalCode": "",
+    "city": "Littenheid",
+    "latitude": 47.442115,
+    "longitude": 9.0086,
+    "id": 95
+  },
+  {
+    "name": "Eschlikon",
+    "identifier": "",
+    "streetAddress": "",
+    "addressCountry": "",
+    "postalCode": "",
+    "city": "Eschlikon",
+    "latitude": 47.46189,
+    "longitude": 8.956723,
+    "id": 96
+  },
+  {
+    "name": "Tufertswil",
+    "identifier": "",
+    "streetAddress": "",
+    "addressCountry": "",
+    "postalCode": "",
+    "city": "Tufertswil",
+    "latitude": 47.393866,
+    "longitude": 9.099565,
+    "id": 97
+  },
+  {
+    "name": "Marthalen",
+    "identifier": "Kreuzung nach Alten",
+    "streetAddress": "",
+    "addressCountry": "",
+    "postalCode": "",
+    "city": "Marthalen",
+    "latitude": 47.621494,
+    "longitude": 8.648994,
+    "id": 98
   }
 ]

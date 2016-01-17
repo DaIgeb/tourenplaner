@@ -11,5 +11,44 @@
       }
     ],
     "id": 1
+  },
+  {
+    "location": 67,
+    "timelines": [
+      {
+        "from": "2015-12-31T23:00:00.000Z",
+        "until": "2100-12-30T23:00:00.000Z",
+        "notes": "TODO",
+        "phone": "",
+        "businessHours": []
+      }
+    ],
+    "id": 2
+  },
+  {
+    "location": 74,
+    "timelines": [
+      {
+        "from": "2015-12-31T23:00:00.000Z",
+        "until": "2100-12-30T23:00:00.000Z",
+        "notes": "TODO",
+        "phone": "",
+        "businessHours": []
+      }
+    ],
+    "id": 3
+  },
+  {
+    "location": 83,
+    "timelines": [
+      {
+        "from": "2015-12-31T23:00:00.000Z",
+        "until": "2100-12-30T23:00:00.000Z",
+        "notes": "TODO",
+        "phone": "",
+        "businessHours": []
+      }
+    ],
+    "id": 4
   }
 ]
