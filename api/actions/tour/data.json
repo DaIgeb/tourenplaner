@@ -458,5 +458,190 @@
       }
     ],
     "id": 12
+  },
+  {
+    "name": "Benken",
+    "types": [
+      {
+        "id": 2,
+        "label": "Morgentour"
+      },
+      {
+        "id": 3,
+        "label": "Nachmittagstour"
+      }
+    ],
+    "timelines": [
+      {
+        "from": "2015-12-31T23:00:00.000Z",
+        "to": "2100-12-30T23:00:00.000Z",
+        "startroute": 8,
+        "difficulty": {
+          "id": 1,
+          "label": "Einfach"
+        },
+        "distance": 75,
+        "elevation": 750,
+        "restaurants": [],
+        "locations": [
+          116,
+          117,
+          118,
+          119,
+          10,
+          120,
+          121,
+          122,
+          123,
+          124,
+          125,
+          126,
+          127,
+          128,
+          129,
+          130,
+          131,
+          132,
+          134,
+          135,
+          14
+        ]
+      }
+    ],
+    "id": 13
+  },
+  {
+    "name": "Brütten",
+    "types": [
+      {
+        "id": 4,
+        "label": "Abendtour"
+      }
+    ],
+    "timelines": [
+      {
+        "from": "2015-12-31T23:00:00.000Z",
+        "to": "2100-12-30T23:00:00.000Z",
+        "startroute": 5,
+        "difficulty": {
+          "id": 3,
+          "label": "Schwierig"
+        },
+        "distance": 45,
+        "elevation": 700,
+        "restaurants": [
+          8
+        ],
+        "locations": [
+          136,
+          137,
+          138,
+          141,
+          142,
+          143,
+          144,
+          133,
+          145,
+          146,
+          14
+        ]
+      }
+    ],
+    "id": 14
+  },
+  {
+    "id": 15,
+    "name": "Diessenhofen",
+    "types": [
+      {
+        "id": 3,
+        "label": "Nachmittagstour"
+      }
+    ],
+    "timelines": [
+      {
+        "from": "2015-12-31T23:00:00.000Z",
+        "to": "2100-12-30T23:00:00.000Z",
+        "startroute": 8,
+        "difficulty": {
+          "id": 1,
+          "label": "Einfach"
+        },
+        "distance": 85,
+        "elevation": 800,
+        "restaurants": [
+          9
+        ],
+        "locations": [
+          116,
+          163,
+          134,
+          148,
+          132,
+          149,
+          150,
+          64,
+          152,
+          153,
+          154,
+          139,
+          155,
+          157,
+          127,
+          126,
+          158,
+          159,
+          160,
+          162,
+          135,
+          14
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Dingenhart",
+    "types": [
+      {
+        "id": 2,
+        "label": "Morgentour"
+      }
+    ],
+    "timelines": [
+      {
+        "from": "2015-12-31T23:00:00.000Z",
+        "to": "2100-12-30T23:00:00.000Z",
+        "startroute": 2,
+        "difficulty": {
+          "id": 2,
+          "label": "Mittel"
+        },
+        "distance": 70,
+        "elevation": 950,
+        "restaurants": [
+          10
+        ],
+        "locations": [
+          55,
+          56,
+          57,
+          58,
+          59,
+          164,
+          166,
+          167,
+          168,
+          169,
+          170,
+          171,
+          140,
+          173,
+          174,
+          175,
+          14
+        ]
+      }
+    ],
+    "id": 16
   }
 ]

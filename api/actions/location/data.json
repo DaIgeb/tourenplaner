@@ -1166,15 +1166,15 @@
     "id": 124
   },
   {
+    "id": 125,
     "name": "Gasthof Baumgarten",
     "identifier": "",
-    "streetAddress": "",
-    "addressCountry": "",
-    "postalCode": "",
+    "streetAddress": "Rudolfingerstrasse 2",
+    "addressCountry": "CH",
+    "postalCode": "8463",
     "city": "Benken",
     "latitude": 47.652242,
-    "longitude": 8.655972,
-    "id": 125
+    "longitude": 8.655972
   },
   {
     "name": "Wildensbuch",
@@ -1189,5 +1189,428 @@
     "latitude": 47.661231,
     "longitude": 8.702968,
     "id": 127
+  },
+  {
+    "name": "Basadingen",
+    "city": "Basadingen",
+    "latitude": 47.669724,
+    "longitude": 8.748959,
+    "id": 128
+  },
+  {
+    "name": "Schlattingen",
+    "city": "Schlattingen",
+    "latitude": 47.666397,
+    "longitude": 8.768203,
+    "id": 129
+  },
+  {
+    "name": "Guntalingen",
+    "city": "Guntalingen",
+    "latitude": 47.635184,
+    "longitude": 8.770381,
+    "id": 130
+  },
+  {
+    "name": "Waltalingen",
+    "city": "Waltalingen",
+    "latitude": 47.635184,
+    "longitude": 8.770381,
+    "id": 131
+  },
+  {
+    "name": "Oberneunforn",
+    "city": "Oberneunforn",
+    "latitude": 47.605981,
+    "longitude": 8.76878,
+    "id": 132
+  },
+  {
+    "name": "Rest. Sonnenhof",
+    "identifier": "",
+    "streetAddress": "Unterdorfstrasse 48",
+    "addressCountry": "CH",
+    "postalCode": "8311",
+    "city": "Brütten",
+    "latitude": 47.471927,
+    "longitude": 8.677593,
+    "id": 133
+  },
+  {
+    "name": "Gütighausen",
+    "city": "Gütighausen",
+    "latitude": 47.58745,
+    "longitude": 8.735639,
+    "id": 134
+  },
+  {
+    "name": "Berg",
+    "identifier": "bei Dägerlen",
+    "streetAddress": "",
+    "addressCountry": "",
+    "postalCode": "",
+    "city": "Berg",
+    "latitude": 47.563231,
+    "longitude": 8.731799,
+    "id": 135
+  },
+  {
+    "name": "Weiertal",
+    "city": "Winterthur",
+    "latitude": 47.503982,
+    "longitude": 8.660558,
+    "id": 136
+  },
+  {
+    "name": "Pfungen",
+    "identifier": "Radweg Embrach",
+    "city": "Pfungen",
+    "latitude": 47.512392,
+    "longitude": 8.632857,
+    "id": 137
+  },
+  {
+    "name": "Oberembrach",
+    "city": "Oberembrach",
+    "latitude": 47.487708,
+    "longitude": 8.618398,
+    "id": 138
+  },
+  {
+    "id": 139,
+    "name": "Ristorante Da Leone",
+    "identifier": "",
+    "streetAddress": "Obertor 29",
+    "addressCountry": "CH",
+    "postalCode": "8253",
+    "city": "Diessenhofen",
+    "latitude": 47.688974,
+    "longitude": 8.7536
+  },
+  {
+    "name": "Rest. Stählibuck",
+    "streetAddress": "Stählibuckstrasse 244",
+    "addressCountry": "CH",
+    "postalCode": "8500",
+    "city": "Frauenfeld",
+    "latitude": 47.546358,
+    "longitude": 8.93973,
+    "id": 140
+  },
+  {
+    "name": "Lufingen",
+    "city": "Lufingen",
+    "latitude": 47.490467,
+    "longitude": 8.596089,
+    "id": 141
+  },
+  {
+    "name": "Augwil",
+    "city": "Augwil",
+    "latitude": 47.472969,
+    "longitude": 8.60393,
+    "id": 142
+  },
+  {
+    "name": "Birchwil",
+    "city": "Birchwil",
+    "latitude": 47.457898,
+    "longitude": 8.638992,
+    "id": 143
+  },
+  {
+    "name": "Oberwil",
+    "identifier": "bei Nürensdorf",
+    "streetAddress": "",
+    "addressCountry": "",
+    "postalCode": "",
+    "city": "Oberwil",
+    "latitude": 47.464281,
+    "longitude": 8.640741,
+    "id": 144
+  },
+  {
+    "name": "Kleinikon",
+    "city": "Kleinikon",
+    "latitude": 47.456914,
+    "longitude": 8.685657,
+    "id": 145
+  },
+  {
+    "name": "Kemptthal",
+    "city": "Kemptthal",
+    "latitude": 47.453481,
+    "longitude": 8.705611,
+    "id": 146
+  },
+  {
+    "name": "Rest. Alte Mühle",
+    "identifier": "",
+    "streetAddress": "Müliweg 3",
+    "addressCountry": "CH",
+    "postalCode": "8545",
+    "city": "Rickenbach",
+    "latitude": 47.552574,
+    "longitude": 8.79913,
+    "id": 147
+  },
+  {
+    "name": "Ossingen",
+    "city": "Ossingen",
+    "latitude": 47.610942,
+    "longitude": 8.727087,
+    "id": 148
+  },
+  {
+    "name": "Wilen",
+    "identifier": "bei Neunforn",
+    "streetAddress": "",
+    "addressCountry": "",
+    "postalCode": "",
+    "city": "Wilen",
+    "latitude": 47.602449,
+    "longitude": 8.795843,
+    "id": 149
+  },
+  {
+    "name": "Trüttlikon",
+    "city": "Trüttlikon",
+    "latitude": 47.596937,
+    "longitude": 8.817712,
+    "id": 150
+  },
+  {
+    "name": "Rest. Brückenwaage",
+    "identifier": "",
+    "streetAddress": "Kurhausstrasse 38",
+    "addressCountry": "CH",
+    "postalCode": "8374",
+    "city": "Dussnang",
+    "latitude": 47.430247,
+    "longitude": 8.961607,
+    "id": 151
+  },
+  {
+    "name": "Stammheim",
+    "city": "Stammheim",
+    "latitude": 47.632159,
+    "longitude": 8.800095,
+    "id": 152
+  },
+  {
+    "name": "Etzwilen",
+    "city": "Etzwilen",
+    "latitude": 47.659716,
+    "longitude": 8.817693,
+    "id": 153
+  },
+  {
+    "name": "Rheinklingen",
+    "identifier": "",
+    "streetAddress": "",
+    "addressCountry": "",
+    "postalCode": "",
+    "city": "Rheinklingen",
+    "latitude": 47.673977,
+    "longitude": 8.808185,
+    "id": 154
+  },
+  {
+    "name": "Willisdorf",
+    "city": "Willisdorf",
+    "latitude": 47.680818,
+    "longitude": 8.735575,
+    "id": 155
+  },
+  {
+    "name": "Rest. Rheinfels",
+    "identifier": "",
+    "streetAddress": "Rheinfelderstrasse 2",
+    "addressCountry": "CH",
+    "postalCode": "8193",
+    "city": "Eglisau",
+    "latitude": 47.574864,
+    "longitude": 8.517043,
+    "id": 156
+  },
+  {
+    "name": "Buechberg",
+    "city": "Buechberg",
+    "latitude": 47.674394,
+    "longitude": 8.718373,
+    "id": 157
+  },
+  {
+    "name": "Benken",
+    "identifier": "Wildensbuch/Örlingen",
+    "streetAddress": "",
+    "addressCountry": "",
+    "postalCode": "",
+    "city": "Benken",
+    "latitude": 47.650973,
+    "longitude": 8.658525,
+    "id": 158
+  },
+  {
+    "name": "Örlingen",
+    "city": "Örlingen",
+    "latitude": 47.622753,
+    "longitude": 8.676531,
+    "id": 159
+  },
+  {
+    "name": "Kleinandelfingen",
+    "city": "Kleinandelfingen",
+    "latitude": 47.602348,
+    "longitude": 8.687842,
+    "id": 160
+  },
+  {
+    "name": "Restaurant Rhygarte",
+    "identifier": "",
+    "streetAddress": "Dorfstrass 22",
+    "addressCountry": "CH",
+    "postalCode": "8464",
+    "city": "Ellikon am Rhein",
+    "latitude": 47.605251,
+    "longitude": 8.596788,
+    "id": 161
+  },
+  {
+    "name": "Niederwil",
+    "identifier": "bei Adlikon",
+    "streetAddress": "",
+    "addressCountry": "",
+    "postalCode": "",
+    "city": "Niederwil",
+    "latitude": 47.579049,
+    "longitude": 8.718247,
+    "id": 162
+  },
+  {
+    "name": "Thalheim",
+    "streetAddress": "",
+    "city": "Thalheim",
+    "latitude": 47.569684,
+    "longitude": 8.758024,
+    "id": 163
+  },
+  {
+    "name": "Weiningen",
+    "identifier": "TG",
+    "streetAddress": "",
+    "city": "Weiningen",
+    "latitude": 47.588619,
+    "longitude": 8.886178,
+    "id": 164
+  },
+  {
+    "id": 165,
+    "name": "Gasthaus Blume",
+    "identifier": "",
+    "streetAddress": "Tösstalstrasse 432",
+    "addressCountry": "CH",
+    "postalCode": "8497",
+    "city": "Fischenthal",
+    "latitude": 47.331614,
+    "longitude": 8.919936
+  },
+  {
+    "name": "Pfyn",
+    "identifier": "Bürgi",
+    "streetAddress": "",
+    "addressCountry": "",
+    "postalCode": "",
+    "city": "Pfyn",
+    "latitude": 47.595821,
+    "longitude": 8.9515,
+    "id": 166
+  },
+  {
+    "name": "Mettendorf",
+    "city": "Mettendorf",
+    "latitude": 47.577323,
+    "longitude": 8.970442,
+    "id": 167
+  },
+  {
+    "name": "Hüttlingen",
+    "city": "Hüttlingen",
+    "latitude": 47.577511,
+    "longitude": 8.980345,
+    "id": 168
+  },
+  {
+    "name": "Harenwilen",
+    "city": "Harenwilen",
+    "latitude": 47.571061,
+    "longitude": 9.000391,
+    "id": 169
+  },
+  {
+    "name": "Lustdorf",
+    "city": "Lustdorf",
+    "latitude": 47.550302,
+    "longitude": 8.987954,
+    "id": 170
+  },
+  {
+    "name": "Thundorf",
+    "identifier": "",
+    "streetAddress": "",
+    "addressCountry": "",
+    "postalCode": "",
+    "city": "Thundorf",
+    "latitude": 47.547135,
+    "longitude": 8.974238,
+    "id": 171
+  },
+  {
+    "name": "Gasthaus Sternen",
+    "identifier": "",
+    "streetAddress": "Hauptstrasse 33",
+    "addressCountry": "CH",
+    "postalCode": "8376",
+    "city": "Fischingen",
+    "latitude": 47.414809,
+    "longitude": 8.969267,
+    "id": 172
+  },
+  {
+    "name": "Oberherten",
+    "identifier": "",
+    "city": "Frauenfeld",
+    "latitude": 47.560236,
+    "longitude": 8.929665,
+    "id": 173
+  },
+  {
+    "name": "Frauenfeld",
+    "identifier": "Reittribüne",
+    "streetAddress": "",
+    "addressCountry": "",
+    "postalCode": "",
+    "city": "Frauenfeld",
+    "latitude": 47.570365,
+    "longitude": 8.903585,
+    "id": 174
+  },
+  {
+    "name": "Kefikon",
+    "city": "Kefikon",
+    "latitude": 47.552161,
+    "longitude": 8.830605,
+    "id": 175
+  },
+  {
+    "id": 176,
+    "name": "Restaurant Rössli",
+    "identifier": "",
+    "streetAddress": "Belchenstrasse 48",
+    "addressCountry": "CH",
+    "postalCode": "8567",
+    "city": "Fisibach",
+    "latitude": 47.564029,
+    "longitude": 8.406702
   }
 ]
