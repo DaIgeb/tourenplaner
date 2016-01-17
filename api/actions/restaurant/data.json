@@ -884,5 +884,880 @@
         "businessHours": []
       }
     ]
+  },
+  {
+    "location": 184,
+    "timelines": [
+      {
+        "from": "2015-12-31T23:00:00.000Z",
+        "until": "2100-12-30T23:00:00.000Z",
+        "notes": "",
+        "phone": "052 363 11 22",
+        "businessHours": [
+          {
+            "weekday": "Monday",
+            "from": {
+              "hour": 9,
+              "minute": 0
+            },
+            "until": {
+              "hour": 14,
+              "minute": 0
+            }
+          },
+          {
+            "weekday": "Wednesday",
+            "from": {
+              "hour": 9,
+              "minute": 0
+            },
+            "until": {
+              "hour": 0,
+              "minute": 0
+            }
+          },
+          {
+            "weekday": "Thursday",
+            "from": {
+              "hour": 9,
+              "minute": 0
+            },
+            "until": {
+              "hour": 0,
+              "minute": 0
+            }
+          },
+          {
+            "weekday": "Friday",
+            "from": {
+              "hour": 9,
+              "minute": 0
+            },
+            "until": {
+              "hour": 0,
+              "minute": 0
+            }
+          },
+          {
+            "weekday": "Saturday",
+            "from": {
+              "hour": 17,
+              "minute": 0
+            },
+            "until": {
+              "hour": 0,
+              "minute": 0
+            }
+          },
+          {
+            "from": {
+              "hour": 17,
+              "minute": 0
+            },
+            "until": {
+              "hour": 21,
+              "minute": 0
+            }
+          }
+        ]
+      }
+    ],
+    "id": 18
+  },
+  {
+    "location": 187,
+    "timelines": [
+      {
+        "from": "2015-12-31T23:00:00.000Z",
+        "until": "2100-12-30T23:00:00.000Z",
+        "notes": "Jedes 4. Kalenderwochenende im Monat geschlossen",
+        "phone": "052 301 28 29",
+        "businessHours": [
+          {
+            "weekday": "Monday",
+            "from": {
+              "hour": 6,
+              "minute": 30
+            },
+            "until": {
+              "hour": 24,
+              "minute": 0
+            }
+          },
+          {
+            "weekday": "Tuesday",
+            "from": {
+              "hour": 6,
+              "minute": 30
+            },
+            "until": {
+              "hour": 14,
+              "minute": 0
+            }
+          },
+          {
+            "weekday": "Thursday",
+            "from": {
+              "hour": 6,
+              "minute": 30
+            },
+            "until": {
+              "hour": 24,
+              "minute": 0
+            }
+          },
+          {
+            "weekday": "Friday",
+            "from": {
+              "hour": 6,
+              "minute": 30
+            },
+            "until": {
+              "hour": 24,
+              "minute": 0
+            }
+          },
+          {
+            "weekday": "Friday",
+            "from": {
+              "hour": 8,
+              "minute": 0
+            },
+            "until": {
+              "hour": 24,
+              "minute": 0
+            }
+          },
+          {
+            "from": {
+              "hour": 9,
+              "minute": 0
+            },
+            "until": {
+              "hour": 21,
+              "minute": 0
+            }
+          }
+        ]
+      }
+    ],
+    "id": 19
+  },
+  {
+    "id": 20,
+    "location": 191,
+    "timelines": [
+      {
+        "from": "2015-12-31T23:00:00.000Z",
+        "until": "2100-12-30T23:00:00.000Z",
+        "phone": "044 858 22 06",
+        "businessHours": [
+          {
+            "weekday": "Tuesday",
+            "from": {
+              "hour": 8,
+              "minute": 0
+            },
+            "until": {
+              "hour": 24,
+              "minute": 0
+            }
+          },
+          {
+            "weekday": "Wednesday",
+            "from": {
+              "hour": 8,
+              "minute": 0
+            },
+            "until": {
+              "hour": 24,
+              "minute": 0
+            }
+          },
+          {
+            "weekday": "Thursday",
+            "from": {
+              "hour": 8,
+              "minute": 0
+            },
+            "until": {
+              "hour": 24,
+              "minute": 0
+            }
+          },
+          {
+            "weekday": "Friday",
+            "from": {
+              "hour": 8,
+              "minute": 0
+            },
+            "until": {
+              "hour": 24,
+              "minute": 0
+            }
+          },
+          {
+            "weekday": "Saturday",
+            "from": {
+              "hour": 8,
+              "minute": 0
+            },
+            "until": {
+              "hour": 24,
+              "minute": 0
+            }
+          },
+          {
+            "weekday": "Sunday",
+            "from": {
+              "hour": 9,
+              "minute": 0
+            },
+            "until": {
+              "hour": 21,
+              "minute": 0
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "location": 194,
+    "timelines": [
+      {
+        "from": "2015-12-31T23:00:00.000Z",
+        "until": "2100-12-30T23:00:00.000Z",
+        "phone": "052 317 13 07",
+        "businessHours": []
+      }
+    ],
+    "id": 21
+  },
+  {
+    "id": 22,
+    "location": 195,
+    "timelines": [
+      {
+        "from": "2015-12-31T23:00:00.000Z",
+        "until": "2100-12-30T23:00:00.000Z",
+        "notes": "Di - Do ab 17.00",
+        "phone": "+49 7736 92470",
+        "businessHours": [
+          {
+            "weekday": "Friday",
+            "from": {
+              "hour": 11,
+              "minute": 30
+            },
+            "until": {
+              "hour": 14,
+              "minute": 0
+            }
+          },
+          {
+            "weekday": "Friday",
+            "from": {
+              "hour": 17,
+              "minute": 0
+            },
+            "until": {
+              "hour": 21,
+              "minute": 30
+            }
+          },
+          {
+            "weekday": "Saturday",
+            "from": {
+              "hour": 11,
+              "minute": 30
+            },
+            "until": {
+              "hour": 14,
+              "minute": 0
+            }
+          },
+          {
+            "weekday": "Saturday",
+            "from": {
+              "hour": 17,
+              "minute": 0
+            },
+            "until": {
+              "hour": 21,
+              "minute": 30
+            }
+          },
+          {
+            "weekday": "Sunday",
+            "from": {
+              "hour": 11,
+              "minute": 30
+            },
+            "until": {
+              "hour": 14,
+              "minute": 0
+            }
+          },
+          {
+            "weekday": "Sunday",
+            "from": {
+              "hour": 17,
+              "minute": 0
+            },
+            "until": {
+              "hour": 21,
+              "minute": 30
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "location": 1,
+    "timelines": [
+      {
+        "from": "2015-12-31T23:00:00.000Z",
+        "until": "2100-12-30T23:00:00.000Z",
+        "phone": "052 383 11 90",
+        "businessHours": []
+      }
+    ],
+    "id": 23
+  },
+  {
+    "location": 201,
+    "timelines": [
+      {
+        "from": "2015-12-31T23:00:00.000Z",
+        "until": "2100-12-30T23:00:00.000Z",
+        "phone": "052 741 24 63",
+        "businessHours": [
+          {
+            "weekday": "Monday",
+            "from": {
+              "hour": 8,
+              "minute": 30
+            },
+            "until": {
+              "hour": 22,
+              "minute": 0
+            }
+          },
+          {
+            "weekday": "Tuesday",
+            "from": {
+              "hour": 8,
+              "minute": 30
+            },
+            "until": {
+              "hour": 22,
+              "minute": 0
+            }
+          },
+          {
+            "weekday": "Friday",
+            "from": {
+              "hour": 8,
+              "minute": 30
+            },
+            "until": {
+              "hour": 22,
+              "minute": 0
+            }
+          },
+          {
+            "weekday": "Saturday",
+            "from": {
+              "hour": 9,
+              "minute": 0
+            },
+            "until": {
+              "hour": 22,
+              "minute": 0
+            }
+          },
+          {
+            "weekday": "Sunday",
+            "from": {
+              "hour": 9,
+              "minute": 0
+            },
+            "until": {
+              "hour": 22,
+              "minute": 0
+            }
+          }
+        ]
+      }
+    ],
+    "id": 24
+  },
+  {
+    "location": 202,
+    "timelines": [
+      {
+        "from": "2015-12-31T23:00:00.000Z",
+        "until": "2100-12-30T23:00:00.000Z",
+        "phone": "052 376 16 67",
+        "businessHours": [
+          {
+            "weekday": "Monday",
+            "from": {
+              "hour": 9,
+              "minute": 0
+            },
+            "until": {
+              "hour": 22,
+              "minute": 0
+            }
+          },
+          {
+            "weekday": "Thursday",
+            "from": {
+              "hour": 9,
+              "minute": 0
+            },
+            "until": {
+              "hour": 22,
+              "minute": 0
+            }
+          },
+          {
+            "weekday": "Friday",
+            "from": {
+              "hour": 9,
+              "minute": 0
+            },
+            "until": {
+              "hour": 22,
+              "minute": 0
+            }
+          },
+          {
+            "weekday": "Saturday",
+            "from": {
+              "hour": 9,
+              "minute": 0
+            },
+            "until": {
+              "hour": 22,
+              "minute": 0
+            }
+          },
+          {
+            "weekday": "Sunday",
+            "from": {
+              "hour": 9,
+              "minute": 0
+            },
+            "until": {
+              "hour": 22,
+              "minute": 0
+            }
+          }
+        ]
+      }
+    ],
+    "id": 25
+  },
+  {
+    "location": 206,
+    "timelines": [
+      {
+        "from": "2015-12-31T23:00:00.000Z",
+        "until": "2100-12-30T23:00:00.000Z",
+        "phone": "044 980 13 80",
+        "businessHours": [
+          {
+            "weekday": "Monday",
+            "from": {
+              "hour": 8,
+              "minute": 30
+            },
+            "until": {
+              "hour": 23,
+              "minute": 0
+            }
+          },
+          {
+            "weekday": "Tuesday",
+            "from": {
+              "hour": 8,
+              "minute": 30
+            },
+            "until": {
+              "hour": 23,
+              "minute": 0
+            }
+          },
+          {
+            "weekday": "Wednesday",
+            "from": {
+              "hour": 8,
+              "minute": 30
+            },
+            "until": {
+              "hour": 23,
+              "minute": 0
+            }
+          },
+          {
+            "weekday": "Thursday",
+            "from": {
+              "hour": 8,
+              "minute": 30
+            },
+            "until": {
+              "hour": 23,
+              "minute": 0
+            }
+          },
+          {
+            "weekday": "Friday",
+            "from": {
+              "hour": 8,
+              "minute": 30
+            },
+            "until": {
+              "hour": 23,
+              "minute": 0
+            }
+          },
+          {
+            "weekday": "Saturday",
+            "from": {
+              "hour": 10,
+              "minute": 0
+            },
+            "until": {
+              "hour": 23,
+              "minute": 0
+            }
+          },
+          {
+            "weekday": "Sunday",
+            "from": {
+              "hour": 10,
+              "minute": 0
+            },
+            "until": {
+              "hour": 22,
+              "minute": 0
+            }
+          }
+        ]
+      }
+    ],
+    "id": 26
+  },
+  {
+    "location": 208,
+    "timelines": [
+      {
+        "from": "2015-12-31T23:00:00.000Z",
+        "until": "2100-12-30T23:00:00.000Z",
+        "phone": "052 657 20 47",
+        "businessHours": []
+      }
+    ],
+    "id": 27
+  },
+  {
+    "location": 210,
+    "timelines": [
+      {
+        "from": "2015-12-31T23:00:00.000Z",
+        "until": "2100-12-30T23:00:00.000Z",
+        "phone": "052 315 10 44",
+        "businessHours": [
+          {
+            "weekday": "Tuesday",
+            "from": {
+              "hour": 8,
+              "minute": 30
+            },
+            "until": {
+              "hour": 24,
+              "minute": 0
+            }
+          },
+          {
+            "weekday": "Wednesday",
+            "from": {
+              "hour": 8,
+              "minute": 30
+            },
+            "until": {
+              "hour": 24,
+              "minute": 0
+            }
+          },
+          {
+            "weekday": "Thursday",
+            "from": {
+              "hour": 8,
+              "minute": 30
+            },
+            "until": {
+              "hour": 24,
+              "minute": 0
+            }
+          },
+          {
+            "weekday": "Friday",
+            "from": {
+              "hour": 8,
+              "minute": 30
+            },
+            "until": {
+              "hour": 24,
+              "minute": 0
+            }
+          },
+          {
+            "weekday": "Saturday",
+            "from": {
+              "hour": 8,
+              "minute": 30
+            },
+            "until": {
+              "hour": 24,
+              "minute": 0
+            }
+          },
+          {
+            "weekday": "Sunday",
+            "from": {
+              "hour": 10,
+              "minute": 0
+            },
+            "until": {
+              "hour": 22,
+              "minute": 0
+            }
+          }
+        ]
+      }
+    ],
+    "id": 28
+  },
+  {
+    "location": 214,
+    "timelines": [
+      {
+        "from": "2015-12-31T23:00:00.000Z",
+        "until": "2100-12-30T23:00:00.000Z",
+        "phone": "052 384 11 36",
+        "businessHours": []
+      }
+    ],
+    "id": 29
+  },
+  {
+    "location": 217,
+    "timelines": [
+      {
+        "from": "2015-12-31T23:00:00.000Z",
+        "until": "2100-12-30T23:00:00.000Z",
+        "phone": "044 836 51 54",
+        "businessHours": []
+      }
+    ],
+    "id": 30
+  },
+  {
+    "location": 221,
+    "timelines": [
+      {
+        "from": "2015-12-31T23:00:00.000Z",
+        "until": "2100-12-30T23:00:00.000Z",
+        "notes": "Mi/Do geschlossen",
+        "phone": "052 745 12 62",
+        "businessHours": []
+      }
+    ],
+    "id": 31
+  },
+  {
+    "location": 226,
+    "timelines": [
+      {
+        "from": "2015-12-31T23:00:00.000Z",
+        "until": "2100-12-30T23:00:00.000Z",
+        "phone": "044 858 25 00",
+        "businessHours": [
+          {
+            "weekday": "Monday",
+            "from": {
+              "hour": 8,
+              "minute": 0
+            },
+            "until": {
+              "hour": 24,
+              "minute": 0
+            }
+          },
+          {
+            "weekday": "Tuesday",
+            "from": {
+              "hour": 8,
+              "minute": 0
+            },
+            "until": {
+              "hour": 24,
+              "minute": 0
+            }
+          },
+          {
+            "weekday": "Wednesday",
+            "from": {
+              "hour": 8,
+              "minute": 0
+            },
+            "until": {
+              "hour": 24,
+              "minute": 0
+            }
+          },
+          {
+            "weekday": "Thursday",
+            "from": {
+              "hour": 8,
+              "minute": 0
+            },
+            "until": {
+              "hour": 24,
+              "minute": 0
+            }
+          },
+          {
+            "weekday": "Friday",
+            "from": {
+              "hour": 8,
+              "minute": 0
+            },
+            "until": {
+              "hour": 24,
+              "minute": 0
+            }
+          },
+          {
+            "weekday": "Saturday",
+            "from": {
+              "hour": 8,
+              "minute": 0
+            },
+            "until": {
+              "hour": 24,
+              "minute": 0
+            }
+          },
+          {
+            "weekday": "Sunday",
+            "from": {
+              "hour": 8,
+              "minute": 0
+            },
+            "until": {
+              "hour": 24,
+              "minute": 0
+            }
+          }
+        ]
+      }
+    ],
+    "id": 32
+  },
+  {
+    "location": 230,
+    "timelines": [
+      {
+        "from": "2015-12-31T23:00:00.000Z",
+        "until": "2100-12-30T23:00:00.000Z",
+        "phone": "052 345 11 46",
+        "businessHours": [
+          {
+            "weekday": "Monday",
+            "from": {
+              "hour": 8,
+              "minute": 0
+            },
+            "until": {
+              "hour": 23,
+              "minute": 0
+            }
+          },
+          {
+            "weekday": "Tuesday",
+            "from": {
+              "hour": 8,
+              "minute": 0
+            },
+            "until": {
+              "hour": 23,
+              "minute": 0
+            }
+          },
+          {
+            "weekday": "Wednesday",
+            "from": {
+              "hour": 8,
+              "minute": 0
+            },
+            "until": {
+              "hour": 23,
+              "minute": 0
+            }
+          },
+          {
+            "weekday": "Thursday",
+            "from": {
+              "hour": 8,
+              "minute": 0
+            },
+            "until": {
+              "hour": 23,
+              "minute": 0
+            }
+          },
+          {
+            "weekday": "Friday",
+            "from": {
+              "hour": 8,
+              "minute": 0
+            },
+            "until": {
+              "hour": 23,
+              "minute": 0
+            }
+          },
+          {
+            "weekday": "Saturday",
+            "from": {
+              "hour": 11,
+              "minute": 0
+            },
+            "until": {
+              "hour": 23,
+              "minute": 0
+            }
+          },
+          {
+            "weekday": "Sunday",
+            "from": {
+              "hour": 10,
+              "minute": 0
+            },
+            "until": {
+              "hour": 22,
+              "minute": 0
+            }
+          }
+        ]
+      }
+    ],
+    "id": 33
   }
 ]

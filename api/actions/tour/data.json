@@ -643,5 +643,264 @@
       }
     ],
     "id": 16
+  },
+  {
+    "name": "Dinhard",
+    "types": [
+      {
+        "id": 4,
+        "label": "Abendtour"
+      }
+    ],
+    "timelines": [
+      {
+        "from": "2015-12-31T23:00:00.000Z",
+        "to": "2100-12-30T23:00:00.000Z",
+        "startroute": 6,
+        "difficulty": {
+          "id": 2,
+          "label": "Mittel"
+        },
+        "distance": 55,
+        "elevation": 620,
+        "restaurants": [
+          11
+        ],
+        "locations": [
+          177,
+          111,
+          178,
+          110,
+          71,
+          107,
+          106,
+          179,
+          180,
+          181,
+          182,
+          58,
+          66,
+          183,
+          147,
+          68,
+          14
+        ]
+      }
+    ],
+    "id": 17
+  },
+  {
+    "id": 18,
+    "name": "Dussnang",
+    "types": [
+      {
+        "id": 3,
+        "label": "Nachmittagstour"
+      }
+    ],
+    "timelines": [
+      {
+        "from": "2015-12-31T23:00:00.000Z",
+        "to": "2100-12-30T23:00:00.000Z",
+        "startroute": 4,
+        "difficulty": {
+          "id": 2,
+          "label": "Mittel"
+        },
+        "distance": 75,
+        "elevation": 1200,
+        "restaurants": [
+          12
+        ],
+        "locations": [
+          69,
+          70,
+          107,
+          185,
+          186,
+          188,
+          189,
+          190,
+          192,
+          193,
+          72,
+          151,
+          109,
+          71,
+          110,
+          14
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Eglisau",
+    "types": [
+      {
+        "id": 2,
+        "label": "Morgentour"
+      },
+      {
+        "id": 3,
+        "label": "Nachmittagstour"
+      }
+    ],
+    "timelines": [
+      {
+        "from": "2015-12-31T23:00:00.000Z",
+        "to": "2100-12-30T23:00:00.000Z",
+        "startroute": 8,
+        "difficulty": {
+          "id": 1,
+          "label": "Einfach"
+        },
+        "distance": 70,
+        "elevation": 820,
+        "restaurants": [
+          13
+        ],
+        "locations": [
+          116,
+          13,
+          196,
+          4,
+          7,
+          197,
+          198,
+          199,
+          156,
+          200,
+          120,
+          10,
+          11,
+          12,
+          13,
+          14
+        ]
+      }
+    ],
+    "id": 19
+  },
+  {
+    "name": "Ellikon am Rhein",
+    "types": [
+      {
+        "id": 4,
+        "label": "Abendtour"
+      }
+    ],
+    "timelines": [
+      {
+        "from": "2015-12-31T23:00:00.000Z",
+        "to": "2100-12-30T23:00:00.000Z",
+        "startroute": 3,
+        "difficulty": {
+          "id": 2,
+          "label": "Mittel"
+        },
+        "distance": 60,
+        "elevation": 670,
+        "restaurants": [
+          14
+        ],
+        "locations": [
+          203,
+          57,
+          66,
+          204,
+          205,
+          148,
+          159,
+          98,
+          161,
+          207,
+          3,
+          2,
+          14
+        ]
+      }
+    ],
+    "id": 20
+  },
+  {
+    "id": 21,
+    "name": "Fischenthal",
+    "types": [
+      {
+        "id": 3,
+        "label": "Nachmittagstour"
+      }
+    ],
+    "timelines": [
+      {
+        "from": "2015-12-31T23:00:00.000Z",
+        "to": "2100-12-30T23:00:00.000Z",
+        "startroute": 6,
+        "difficulty": {
+          "id": 2,
+          "label": "Mittel"
+        },
+        "distance": 75,
+        "elevation": 920,
+        "restaurants": [
+          15
+        ],
+        "locations": [
+          209,
+          213,
+          212,
+          215,
+          216,
+          218,
+          219,
+          220,
+          222,
+          225,
+          165,
+          223,
+          224,
+          14
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Fischingen",
+    "types": [
+      {
+        "id": 3,
+        "label": "Nachmittagstour"
+      }
+    ],
+    "timelines": [
+      {
+        "from": "2015-12-31T23:00:00.000Z",
+        "to": "2100-12-30T23:00:00.000Z",
+        "startroute": 6,
+        "difficulty": {
+          "id": 3,
+          "label": "Schwierig"
+        },
+        "distance": 70,
+        "elevation": 0,
+        "restaurants": [
+          16
+        ],
+        "locations": [
+          209,
+          227,
+          223,
+          228,
+          229,
+          172,
+          185,
+          231,
+          107,
+          70,
+          14
+        ]
+      }
+    ],
+    "id": 22
   }
 ]

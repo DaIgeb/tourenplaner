@@ -1452,11 +1452,11 @@
     "id": 158
   },
   {
-    "name": "Örlingen",
-    "city": "Örlingen",
+    "id": 159,
+    "name": "Oerlingen",
+    "city": "Oerlingen",
     "latitude": 47.622753,
-    "longitude": 8.676531,
-    "id": 159
+    "longitude": 8.676531
   },
   {
     "name": "Kleinandelfingen",
@@ -1612,5 +1612,490 @@
     "city": "Fisibach",
     "latitude": 47.564029,
     "longitude": 8.406702
+  },
+  {
+    "name": "Ricketwil",
+    "identifier": "",
+    "streetAddress": "",
+    "addressCountry": "",
+    "postalCode": "",
+    "city": "Ricketwil",
+    "latitude": 47.485745,
+    "longitude": 8.801046,
+    "id": 177
+  },
+  {
+    "name": "Hofstetten",
+    "city": "Hofstetten",
+    "latitude": 47.47313,
+    "longitude": 8.853824,
+    "id": 178
+  },
+  {
+    "name": "Aadorf",
+    "city": "Aadorf",
+    "latitude": 47.494295,
+    "longitude": 8.893346,
+    "id": 179
+  },
+  {
+    "name": "Gerlikon",
+    "city": "Gerlikon",
+    "latitude": 47.535553,
+    "longitude": 8.877006,
+    "id": 180
+  },
+  {
+    "name": "Gachnang",
+    "city": "Gachnang",
+    "latitude": 47.540549,
+    "longitude": 8.850164,
+    "id": 181
+  },
+  {
+    "name": "Islikon",
+    "city": "Islikon",
+    "latitude": 47.545467,
+    "longitude": 8.841917,
+    "id": 182
+  },
+  {
+    "name": "Grüt",
+    "city": "Grüt",
+    "latitude": 47.563519,
+    "longitude": 8.773626,
+    "id": 183
+  },
+  {
+    "name": "Rest. Frohsinn",
+    "identifier": "",
+    "streetAddress": "Dorfstrasse 1",
+    "addressCountry": "CH",
+    "postalCode": "8352",
+    "city": "Elsau",
+    "latitude": 47.505203,
+    "longitude": 8.801799,
+    "id": 184
+  },
+  {
+    "name": "Balterswil",
+    "city": "Balterswil",
+    "latitude": 47.454322,
+    "longitude": 8.939244,
+    "id": 185
+  },
+  {
+    "name": "Vogelsang",
+    "identifier": "",
+    "streetAddress": "",
+    "addressCountry": "",
+    "postalCode": "",
+    "city": "Vogelsang",
+    "latitude": 47.439697,
+    "longitude": 8.967224,
+    "id": 186
+  },
+  {
+    "name": "Rest. Zur Kreuzstrasse",
+    "identifier": "",
+    "streetAddress": "Zur Kreuzstrasse",
+    "addressCountry": "CH",
+    "postalCode": "8457",
+    "city": "Humlikon",
+    "latitude": 47.574556,
+    "longitude": 8.683437,
+    "id": 187
+  },
+  {
+    "name": "Oberwangen",
+    "city": "Oberwangen",
+    "latitude": 47.43402,
+    "longitude": 8.971808,
+    "id": 188
+  },
+  {
+    "name": "Dietschwil",
+    "city": "Dietschwil",
+    "latitude": 47.421654,
+    "longitude": 9.015582,
+    "id": 189
+  },
+  {
+    "name": "Kirchberg",
+    "identifier": "",
+    "streetAddress": "",
+    "addressCountry": "",
+    "postalCode": "",
+    "city": "Kirchberg",
+    "latitude": 47.411335,
+    "longitude": 9.040154,
+    "id": 190
+  },
+  {
+    "name": "Rest. Kreuz",
+    "streetAddress": "Bahnhofpl. 64",
+    "addressCountry": "CH",
+    "postalCode": "5466",
+    "city": "Kaiserstuhl",
+    "latitude": 47.566687,
+    "longitude": 8.417746,
+    "id": 191
+  },
+  {
+    "name": "Müselbach",
+    "city": "Müselbach",
+    "latitude": 47.392202,
+    "longitude": 9.041246,
+    "id": 192
+  },
+  {
+    "name": "Dreien",
+    "city": "Dreien",
+    "latitude": 47.371964,
+    "longitude": 9.017161,
+    "id": 193
+  },
+  {
+    "name": "Wirtschaft zum Thalacker",
+    "identifier": "",
+    "streetAddress": "Stationsstrasse 1",
+    "addressCountry": "CH",
+    "postalCode": "8475",
+    "city": "Ossingen",
+    "latitude": 47.614402,
+    "longitude": 8.725893,
+    "id": 194
+  },
+  {
+    "name": "Hegau Camping",
+    "streetAddress": "An der Sonnenhalde 1",
+    "addressCountry": "D",
+    "postalCode": "78250",
+    "city": "Tengen",
+    "latitude": 47.823896,
+    "longitude": 8.653852,
+    "id": 195
+  },
+  {
+    "name": "Aesch",
+    "city": "Aesch",
+    "latitude": 47.542089,
+    "longitude": 8.68122,
+    "id": 196
+  },
+  {
+    "name": "um den Irchel",
+    "city": "um den Irchel",
+    "latitude": 47.561001,
+    "longitude": 8.571252,
+    "id": 197
+  },
+  {
+    "name": "Freienstein",
+    "city": "Freienstein",
+    "latitude": 47.530872,
+    "longitude": 8.581215,
+    "id": 198
+  },
+  {
+    "name": "Wagenbreche",
+    "city": "Wagenbreche",
+    "latitude": 47.54741,
+    "longitude": 8.550115,
+    "id": 199
+  },
+  {
+    "name": "Buchberg",
+    "identifier": "Eglisau/Steinenkreuz",
+    "streetAddress": "",
+    "addressCountry": "",
+    "postalCode": "",
+    "city": "Buchberg",
+    "latitude": 47.572711,
+    "longitude": 8.562895,
+    "id": 200
+  },
+  {
+    "name": "Gasthaus zum Hecht",
+    "streetAddress": "Hauptstrasse 5",
+    "addressCountry": "CH",
+    "postalCode": "8265",
+    "city": "Mammern",
+    "latitude": 47.645663,
+    "longitude": 8.915714,
+    "id": 201
+  },
+  {
+    "id": 202,
+    "name": "Rest. Mühle",
+    "streetAddress": "Alte Poststrasse 25",
+    "addressCountry": "CH",
+    "postalCode": "9548",
+    "city": "Matzingen",
+    "latitude": 47.519254,
+    "longitude": 8.930654
+  },
+  {
+    "name": "Attikon",
+    "city": "Attikon",
+    "latitude": 47.536429,
+    "longitude": 8.799706,
+    "id": 203
+  },
+  {
+    "name": "Farhof",
+    "city": "Farhof",
+    "latitude": 47.598141,
+    "longitude": 8.753518,
+    "id": 204
+  },
+  {
+    "name": "Oberneunforn",
+    "identifier": "Fahrhof/Ossingen",
+    "streetAddress": "",
+    "addressCountry": "",
+    "postalCode": "",
+    "city": "Oberneunforn",
+    "latitude": 47.606279,
+    "longitude": 8.765255,
+    "id": 205
+  },
+  {
+    "name": "Rest. Dörfli",
+    "identifier": "",
+    "streetAddress": "Rellikonstrasse 9",
+    "addressCountry": "CH",
+    "postalCode": "8124",
+    "city": "Maur",
+    "latitude": 47.339641,
+    "longitude": 8.67148,
+    "id": 206
+  },
+  {
+    "name": "Buch am Irchel",
+    "identifier": "",
+    "streetAddress": "",
+    "addressCountry": "",
+    "postalCode": "",
+    "city": "Buch am Irchel",
+    "latitude": 47.547367,
+    "longitude": 8.621714,
+    "id": 207
+  },
+  {
+    "name": "Herrmann's Besenbeiz",
+    "identifier": "",
+    "streetAddress": "Im Zil 161",
+    "addressCountry": "CH",
+    "postalCode": "8253",
+    "city": "Schlatt",
+    "latitude": 47.656891,
+    "longitude": 8.690537,
+    "id": 208
+  },
+  {
+    "name": "Sennhof",
+    "city": "Sennhof",
+    "latitude": 47.467361,
+    "longitude": 8.759814,
+    "id": 209
+  },
+  {
+    "id": 210,
+    "name": "Gasthaus zum Löwen",
+    "identifier": "",
+    "streetAddress": "Zürichstrasse 37",
+    "addressCountry": "CH",
+    "postalCode": "8413",
+    "city": "Neftenbach",
+    "latitude": 47.527019,
+    "longitude": 8.665002
+  },
+  {
+    "id": 211,
+    "name": "Kollbrunn",
+    "identifier": "Sennhof/Zell",
+    "city": "Kollbrunn",
+    "latitude": 47.45508,
+    "longitude": 8.77358
+  },
+  {
+    "name": "Weisslingen",
+    "city": "Weisslingen",
+    "latitude": 47.431328,
+    "longitude": 8.763843,
+    "id": 212
+  },
+  {
+    "id": 213,
+    "name": "Kollbrunn",
+    "identifier": "Richtung Weisslingen",
+    "streetAddress": "",
+    "city": "Kollbrunn",
+    "latitude": 47.454273,
+    "longitude": 8.773139
+  },
+  {
+    "name": "Rest. Freihof",
+    "identifier": "",
+    "streetAddress": "Ludetswilerstrasse 19",
+    "addressCountry": "CH",
+    "postalCode": "8484",
+    "city": "Neschwil",
+    "latitude": 47.429119,
+    "longitude": 8.789013,
+    "id": 214
+  },
+  {
+    "name": "Russikon",
+    "city": "Russikon",
+    "latitude": 47.394504,
+    "longitude": 8.777053,
+    "id": 215
+  },
+  {
+    "name": "Hittnau",
+    "city": "Hittnau",
+    "latitude": 47.368565,
+    "longitude": 8.823518,
+    "id": 216
+  },
+  {
+    "id": 217,
+    "name": "Rest. Kreuzstrasse",
+    "identifier": "",
+    "streetAddress": "Eigentalstrasse 55",
+    "addressCountry": "CH",
+    "postalCode": "8309",
+    "city": "Nürensdorf",
+    "latitude": 47.453915,
+    "longitude": 8.634216
+  },
+  {
+    "name": "Bäretswil",
+    "city": "Bäretswil",
+    "latitude": 47.335421,
+    "longitude": 8.856714,
+    "id": 218
+  },
+  {
+    "name": "Bettswil",
+    "city": "Bettswil",
+    "latitude": 47.333121,
+    "longitude": 8.881927,
+    "id": 219
+  },
+  {
+    "name": "Matt",
+    "city": "Matt",
+    "latitude": 47.33859,
+    "longitude": 8.888173,
+    "id": 220
+  },
+  {
+    "id": 221,
+    "name": "Rest. Freihof",
+    "streetAddress": "Dorfstrasse 18",
+    "addressCountry": "CH",
+    "postalCode": "8537",
+    "city": "Nussbaumen",
+    "latitude": 47.626227,
+    "longitude": 8.828731
+  },
+  {
+    "name": "Ghöch",
+    "identifier": "",
+    "streetAddress": "",
+    "addressCountry": "",
+    "postalCode": "",
+    "city": "Ghöch",
+    "latitude": 47.331485,
+    "longitude": 8.902929,
+    "id": 222
+  },
+  {
+    "name": "Bauma",
+    "city": "Bauma",
+    "latitude": 47.368313,
+    "longitude": 8.87642,
+    "id": 223
+  },
+  {
+    "name": "Turbenthal",
+    "city": "Turbenthal",
+    "latitude": 47.43888,
+    "longitude": 8.842908,
+    "id": 224
+  },
+  {
+    "name": "Gibswil",
+    "identifier": "",
+    "streetAddress": "",
+    "addressCountry": "",
+    "postalCode": "",
+    "city": "Gibswil",
+    "latitude": 47.313891,
+    "longitude": 8.915258,
+    "id": 225
+  },
+  {
+    "name": "Rest. Pöstli",
+    "streetAddress": "Zürcherstrasse 10",
+    "addressCountry": "CH",
+    "postalCode": "8174",
+    "city": "Stadel b. Niederglatt",
+    "latitude": 47.52796,
+    "longitude": 8.467173,
+    "id": 226
+  },
+  {
+    "name": "Rikon",
+    "city": "Rikon",
+    "latitude": 47.443987,
+    "longitude": 8.798073,
+    "id": 227
+  },
+  {
+    "name": "Steg",
+    "city": "Steg",
+    "latitude": 47.350295,
+    "longitude": 8.935028,
+    "id": 228
+  },
+  {
+    "name": "Hulftegg",
+    "city": "Hulftegg",
+    "latitude": 47.358167,
+    "longitude": 8.962294,
+    "id": 229
+  },
+  {
+    "name": "Rest. Thalegg",
+    "identifier": "",
+    "streetAddress": "Pfäffikerstrasse 27",
+    "addressCountry": "CH",
+    "postalCode": "8310",
+    "city": "Kemptthal",
+    "latitude": 47.44345,
+    "longitude": 8.704471,
+    "id": 230
+  },
+  {
+    "name": "Ifwil",
+    "city": "Ifwil",
+    "latitude": 47.466211,
+    "longitude": 8.937365,
+    "id": 231
+  },
+  {
+    "name": "Rest. Vorderer Pfannenstiel",
+    "identifier": "",
+    "streetAddress": "Herrenweg 380",
+    "addressCountry": "CH",
+    "postalCode": "8706",
+    "city": "Meilen",
+    "latitude": 47.285925,
+    "longitude": 8.680962,
+    "id": 232
   }
 ]
