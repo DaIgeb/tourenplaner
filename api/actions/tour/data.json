@@ -1,16 +1,18 @@
 [
   {
+    "id": 1,
     "name": "Alten",
+    "types": [
+      {
+        "id": 4,
+        "label": "Abendtour"
+      }
+    ],
     "timelines": [
       {
         "from": "2015-12-31T23:00:00.000Z",
         "to": "2100-12-30T23:00:00.000Z",
-        "types": [
-          {
-            "id": 4,
-            "label": "Abendtour"
-          }
-        ],
+        "startroute": 5,
         "difficulty": {
           "id": 1,
           "label": "Einfach"
@@ -34,29 +36,29 @@
           14
         ]
       }
-    ],
-    "id": 1
+    ]
   },
   {
     "id": 2,
     "name": "Stadel",
+    "types": [
+      {
+        "id": 6,
+        "label": "Startroute"
+      }
+    ],
     "timelines": [
       {
         "from": "2015-12-31T23:00:00.000Z",
         "to": "2100-12-30T23:00:00.000Z",
-        "types": [
-          {
-            "id": 6,
-            "label": "Startroute"
-          }
-        ],
+        "startroute": null,
         "difficulty": {
           "id": 1,
           "label": "Einfach"
         },
         "distance": 0,
         "elevation": 0,
-        "restaurant": 1,
+        "restaurant": null,
         "locations": [
           14,
           15,
@@ -76,23 +78,24 @@
   {
     "id": 3,
     "name": "Wiesendangen",
+    "types": [
+      {
+        "id": 6,
+        "label": "Startroute"
+      }
+    ],
     "timelines": [
       {
         "from": "2015-12-31T23:00:00.000Z",
         "to": "2100-12-30T23:00:00.000Z",
-        "types": [
-          {
-            "id": 6,
-            "label": "Startroute"
-          }
-        ],
+        "startroute": null,
         "difficulty": {
           "id": 1,
           "label": "Einfach"
         },
         "distance": 0,
         "elevation": 0,
-        "restaurant": 1,
+        "restaurant": null,
         "locations": [
           14,
           15,
@@ -112,23 +115,24 @@
   {
     "id": 4,
     "name": "Räterschen",
+    "types": [
+      {
+        "id": 6,
+        "label": "Startroute"
+      }
+    ],
     "timelines": [
       {
         "from": "2015-12-31T23:00:00.000Z",
         "to": "2100-12-30T23:00:00.000Z",
-        "types": [
-          {
-            "id": 6,
-            "label": "Startroute"
-          }
-        ],
+        "startroute": null,
         "difficulty": {
           "id": 1,
           "label": "Einfach"
         },
         "distance": 0,
         "elevation": 0,
-        "restaurant": 1,
+        "restaurant": null,
         "locations": [
           14,
           15,
@@ -146,24 +150,26 @@
     ]
   },
   {
+    "id": 5,
     "name": "Wülflingen",
+    "types": [
+      {
+        "id": 6,
+        "label": "Startroute"
+      }
+    ],
     "timelines": [
       {
         "from": "2015-12-31T23:00:00.000Z",
         "to": "2100-12-30T23:00:00.000Z",
-        "types": [
-          {
-            "id": 6,
-            "label": "Startroute"
-          }
-        ],
+        "startroute": null,
         "difficulty": {
           "id": 1,
           "label": "Einfach"
         },
         "distance": 0,
         "elevation": 0,
-        "restaurant": 1,
+        "restaurant": null,
         "locations": [
           14,
           32,
@@ -176,28 +182,29 @@
           10
         ]
       }
-    ],
-    "id": 5
+    ]
   },
   {
+    "id": 6,
     "name": "Seen",
+    "types": [
+      {
+        "id": 6,
+        "label": "Startroute"
+      }
+    ],
     "timelines": [
       {
         "from": "2015-12-31T23:00:00.000Z",
         "to": "2100-12-30T23:00:00.000Z",
-        "types": [
-          {
-            "id": 6,
-            "label": "Startroute"
-          }
-        ],
+        "startroute": null,
         "difficulty": {
           "id": 1,
           "label": "Einfach"
         },
         "distance": 0,
         "elevation": 0,
-        "restaurant": 1,
+        "restaurant": null,
         "locations": [
           14,
           38,
@@ -208,7 +215,71 @@
           43
         ]
       }
+    ]
+  },
+  {
+    "name": "Töss",
+    "types": [
+      {
+        "id": 6,
+        "label": "Startroute"
+      }
     ],
-    "id": 6
+    "timelines": [
+      {
+        "from": "2015-12-31T23:00:00.000Z",
+        "to": "2100-12-30T23:00:00.000Z",
+        "startroute": null,
+        "difficulty": {
+          "id": 1,
+          "label": "Einfach"
+        },
+        "distance": 0,
+        "elevation": 0,
+        "restaurant": null,
+        "locations": [
+          14,
+          38,
+          44,
+          45,
+          46,
+          47,
+          48,
+          49
+        ]
+      }
+    ],
+    "id": 7
+  },
+  {
+    "name": "Rosenberg",
+    "types": [
+      {
+        "id": 6,
+        "label": "Startroute"
+      }
+    ],
+    "timelines": [
+      {
+        "from": "2015-12-31T23:00:00.000Z",
+        "to": "2100-12-30T23:00:00.000Z",
+        "startroute": null,
+        "difficulty": {
+          "id": 1,
+          "label": "Einfach"
+        },
+        "distance": 0,
+        "elevation": 0,
+        "restaurant": null,
+        "locations": [
+          14,
+          50,
+          51,
+          52,
+          53
+        ]
+      }
+    ],
+    "id": 8
   }
 ]

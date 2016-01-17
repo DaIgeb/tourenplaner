@@ -8,6 +8,24 @@
     "name": {
       "type": "string"
     },
+    "types": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "number"
+          },
+          "label": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "label"
+        ]
+      }
+    },
     "timelines": {
       "type": "array",
       "items": {
@@ -22,31 +40,20 @@
             "format": "date-time"
           },
           "restaurant": {
-            "type": "number"
+            "anyOf" : [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
           },
           "distance": {
             "type": "number"
           },
           "elevation": {
             "type": "number"
-          },
-          "types": {
-            "type": "array",
-            "items": {
-              "type": "object",
-              "properties": {
-                "id": {
-                  "type": "number"
-                },
-                "label": {
-                  "type": "string"
-                }
-              },
-              "required": [
-                "id",
-                "label"
-              ]
-            }
           },
           "difficulty": {
             "type": "object",
@@ -76,7 +83,6 @@
           "restaurant",
           "distance",
           "elevation",
-          "types",
           "difficulty",
           "locations"
         ]
@@ -86,6 +92,7 @@
   "required": [
     "id",
     "name",
+    "types",
     "timelines"
   ]
 }

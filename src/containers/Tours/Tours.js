@@ -140,7 +140,7 @@ export default class Tours extends Component {
     const renderTour = (tour) => {
       const timeline = tour.timelines.find(time => timelineMatches(time, date));
       if (timeline) {
-        const types = timeline.types.map(type => type.label).join(',');
+        const types = tour.types.map(type => type.label).join(',');
         return (
           <tr key={tour.id}>
             <td>{tour.id}</td>

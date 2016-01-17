@@ -4,7 +4,7 @@ import {bindActionCreators} from 'redux';
 import {reduxForm} from 'redux-form';
 // import restaurantValidation from './restaurantValidation';
 import * as tourActions from 'redux/modules/tours';
-import {DateInput, NumberInput, ObjectSelect, LocationInput} from 'components';
+import {DateInput, NumberInput, ObjectSelect, LocationInput, TourInput} from 'components';
 import {TourType, Difficulty} from 'models';
 
 @connect(
@@ -18,9 +18,10 @@ import {TourType, Difficulty} from 'models';
   fields: [
     'id',
     'name',
+    'types',
     'timelines[].from',
     'timelines[].to',
-    'timelines[].types',
+    'timelines[].startroute',
     'timelines[].difficulty',
     'timelines[].distance',
     'timelines[].elevation',
@@ -45,7 +46,7 @@ export default class TourForm extends Component {
   };
 
   render() {
-    const { fields: {id, name, timelines}, restaurants, locations, formKey, handleSubmit, invalid,
+    const { fields: {id, name, types, timelines}, restaurants, locations, formKey, handleSubmit, invalid,
       submitting, saveError: { [formKey]: saveError } } = this.props;
 
     const tourTypeOptions = [
@@ -107,6 +108,7 @@ export default class TourForm extends Component {
         <form className="form-horizontal" onSubmit={handleSubmit}>
           {renderInput(id, 'ID', renderInputControl(id, 'number', {readOnly: true}))}
           {renderInput(name, 'Name', renderInputControl(name))}
+          {renderInput(types, 'Typen', renderObjectSelectControl(types, tourTypeOptions, {multiple: true}))}
           <div style={{textAlign: 'center', margin: '10px'}}>
             <button className="btn btn-success" onClick={event => {
               event.preventDefault(); // prevent form submission
@@ -120,16 +122,22 @@ export default class TourForm extends Component {
               <div className="col-xs-7">
                 {renderDate(timeline.from, 'Gültig Von')}
                 {renderDate(timeline.to, 'Gültig Bis')}
+                {renderInput(timeline.startroute, 'Start Route', <TourInput className="form-control"
+                                                                            allowNull
+                                                                            default={undefined}
+                                                                            filter={item => item.types.findIndex(type => type.id === TourType.startroute.id) >= 0}
+                  {...timeline.startroute} />)}
                 {renderInput(timeline.restaurant, 'Restaurant', <select className="form-control"
+                                                                        default={undefined}
                   {...timeline.restaurant}
                   onBlur={evt => timeline.restaurant.onBlur(parseInt(evt.target.value, 10))}
                   onChange={evt => timeline.restaurant.onChange(parseInt(evt.target.value, 10))}>
+                  <option value={undefined}>Keines</option>
                   {restaurants.map(option => {
                     const loc = findLocation(option.location);
                     return <option key={option.id} value={JSON.stringify(option.id)}>{loc.city} - {loc.name}</option>;
                   })}
                 </select>)}
-                {renderInput(timeline.types, 'Typen', renderObjectSelectControl(timeline.types, tourTypeOptions, {multiple: true}))}
                 {renderInput(timeline.difficulty, 'Schwierigkeit', renderObjectSelectControl(timeline.difficulty, difficultyOptions))}
                 {renderInput(timeline.distance, 'Distanz', <div className="input-group">{renderNumberControl(timeline.distance, {min: 0, step: 0.1, decimalPlaces: 1})}<span className="input-group-addon">km</span></div>)}
                 {renderInput(timeline.elevation, 'Höhenmeter', <div className="input-group">{renderNumberControl(timeline.elevation, {min: 0, step: 25})}<span className="input-group-addon">m</span></div>)}

@@ -18,23 +18,33 @@ export default class TourInput extends Component {
   static propTypes = {
     tours: PropTypes.array,
     onChange: PropTypes.func.isRequired,
-    onBlur: PropTypes.func
+    onBlur: PropTypes.func,
+    filter: PropTypes.func,
+    allowNull: PropTypes.boolean
   };
 
   render() {
-    const {tours, onBlur, onChange} = this.props;
+    const {onBlur, onChange, filter, allowNull} = this.props;
     const bluring = onBlur || onChange;
+
+    let tours = this.props.tours;
     if (!tours) {
       return <p>Loading</p>;
     }
 
+
+    if (filter) {
+      tours = tours.filter(filter);
+    }
     const options = tours.map(option => <option key={option.id} value={JSON.stringify(option.id)}>{option.name}</option>);
+
     return (
     <select
       {...this.props}
       className="form-control"
       onBlur={evt => bluring(parseInt(evt.target.value, 10))}
       onChange={evt => onChange(parseInt(evt.target.value, 10))}>
+      {allowNull && (<option value={undefined}>Keine</option>)}
       {options}
     </select>
     );
