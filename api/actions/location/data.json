@@ -1632,11 +1632,12 @@
     "id": 178
   },
   {
+    "id": 179,
     "name": "Aadorf",
+    "identifier": "Dorf Ausgang",
     "city": "Aadorf",
     "latitude": 47.494295,
-    "longitude": 8.893346,
-    "id": 179
+    "longitude": 8.893346
   },
   {
     "name": "Gerlikon",
@@ -2271,5 +2272,504 @@
     "latitude": 47.574061,
     "longitude": 8.624941,
     "id": 252
+  },
+  {
+    "name": "Landgasthof Hirschen",
+    "identifier": "",
+    "streetAddress": "Fortenbach 239",
+    "addressCountry": "CH",
+    "postalCode": "8262",
+    "city": "Ramsen",
+    "latitude": 47.708532,
+    "longitude": 8.80994,
+    "id": 253
+  },
+  {
+    "name": "Oberseen",
+    "city": "Oberseen",
+    "latitude": 47.479341,
+    "longitude": 8.77158,
+    "id": 254
+  },
+  {
+    "name": "Gotzenwil",
+    "identifier": "",
+    "streetAddress": "",
+    "addressCountry": "",
+    "postalCode": "",
+    "city": "Gotzenwil",
+    "latitude": 47.473253,
+    "longitude": 8.775399,
+    "id": 255
+  },
+  {
+    "name": "Eidberg",
+    "identifier": "",
+    "streetAddress": "",
+    "addressCountry": "",
+    "postalCode": "",
+    "city": "Eidberg",
+    "latitude": 47.47384,
+    "longitude": 8.795119,
+    "id": 256
+  },
+  {
+    "name": "Gasthof zum Schweizerhaus",
+    "identifier": "",
+    "streetAddress": "Wattwilerstrasse 2",
+    "addressCountry": "CH",
+    "postalCode": "8726",
+    "city": "Ricken SG",
+    "latitude": 47.263002,
+    "longitude": 9.044799,
+    "id": 257
+  },
+  {
+    "name": "Aadorf",
+    "identifier": "Kreisel Bahnhof",
+    "streetAddress": "",
+    "addressCountry": "",
+    "postalCode": "",
+    "city": "Aadorf",
+    "latitude": 47.488249,
+    "longitude": 8.903817,
+    "id": 258
+  },
+  {
+    "name": "Wittenwil",
+    "city": "Wittenwil",
+    "latitude": 47.503284,
+    "longitude": 8.921878,
+    "id": 259
+  },
+  {
+    "name": "Matzingen",
+    "city": "Matzingen",
+    "latitude": 47.503284,
+    "longitude": 8.921878,
+    "id": 260
+  },
+  {
+    "name": "Gündlikon",
+    "city": "Gündlikon",
+    "latitude": 47.523668,
+    "longitude": 8.83778,
+    "id": 261
+  },
+  {
+    "name": "Zünikon",
+    "city": "Zünikon",
+    "latitude": 47.517834,
+    "longitude": 8.837269,
+    "id": 262
+  },
+  {
+    "name": "Restaurant Sonnenhof",
+    "streetAddress": "Dorfstrasse 1",
+    "addressCountry": "CH",
+    "postalCode": "8523",
+    "city": "Hagenbuch",
+    "latitude": 47.52128,
+    "longitude": 8.88851,
+    "id": 263
+  },
+  {
+    "name": "Fulau",
+    "identifier": "",
+    "streetAddress": "",
+    "addressCountry": "",
+    "postalCode": "",
+    "city": "Fulau",
+    "latitude": 47.514779,
+    "longitude": 8.821709,
+    "id": 264
+  },
+  {
+    "name": "Elsau",
+    "city": "Elsau",
+    "latitude": 47.505025,
+    "longitude": 8.80178,
+    "id": 265
+  },
+  {
+    "name": "Restaurant zur frohen Aussicht",
+    "streetAddress": "Hauptstrasse 22",
+    "addressCountry": "CH",
+    "postalCode": "8522",
+    "city": "Häuslenen",
+    "latitude": 47.525772,
+    "longitude": 8.901194,
+    "id": 266
+  },
+  {
+    "name": "Dätwil",
+    "city": "Dätwil",
+    "latitude": 47.596216,
+    "longitude": 8.708942,
+    "id": 267
+  },
+  {
+    "name": "Restaurant Krone",
+    "streetAddress": "Kronenweg 2",
+    "addressCountry": "CH",
+    "postalCode": "8332",
+    "city": "Russikon",
+    "latitude": 47.395933,
+    "longitude": 8.772837,
+    "id": 268
+  },
+  {
+    "name": "Restaurant Rössli",
+    "identifier": "",
+    "streetAddress": "Rütistrasse 21",
+    "addressCountry": "CH",
+    "postalCode": "8734",
+    "city": "Ermenswil",
+    "latitude": 47.246266,
+    "longitude": 8.882303,
+    "id": 269
+  },
+  {
+    "name": "Hüntwangen",
+    "city": "Hüntwangen",
+    "latitude": 47.592167,
+    "longitude": 8.499577,
+    "id": 270
+  },
+  {
+    "name": "Bühl",
+    "addressCountry": "D",
+    "city": "Bühl",
+    "latitude": 47.617079,
+    "longitude": 8.468131,
+    "id": 271
+  },
+  {
+    "id": 272,
+    "name": "Griessern",
+    "addressCountry": "D",
+    "city": "Griessern",
+    "latitude": 47.625156,
+    "longitude": 8.414472
+  },
+  {
+    "id": 273,
+    "name": "Kalter Wangen",
+    "addressCountry": "D",
+    "city": "Kalter Wangen",
+    "latitude": 47.603737,
+    "longitude": 8.43758
+  },
+  {
+    "name": "Bergöschingen",
+    "addressCountry": "D",
+    "city": "Bergöschingen",
+    "latitude": 47.595101,
+    "longitude": 8.420617,
+    "id": 274
+  },
+  {
+    "name": "Kuhn Back & Gastro AG",
+    "streetAddress": "Dorfstrasse 28",
+    "addressCountry": "CH",
+    "postalCode": "9125",
+    "city": "Brunnadern",
+    "latitude": 47.334538,
+    "longitude": 9.131188,
+    "id": 275
+  },
+  {
+    "name": "Weiach",
+    "city": "Weiach",
+    "latitude": 47.55825,
+    "longitude": 8.435567,
+    "id": 276
+  },
+  {
+    "name": "Glattfelden",
+    "city": "Glattfelden",
+    "latitude": 47.559844,
+    "longitude": 8.499406,
+    "id": 277
+  },
+  {
+    "name": "Embrach",
+    "city": "Embrach",
+    "latitude": 47.515831,
+    "longitude": 8.593731,
+    "id": 278
+  },
+  {
+    "name": "Radweg",
+    "identifier": "Embrach-Pfungen",
+    "streetAddress": "",
+    "addressCountry": "",
+    "postalCode": "",
+    "city": "Embrach",
+    "latitude": 47.52089,
+    "longitude": 8.612835,
+    "id": 279
+  },
+  {
+    "name": "Gasthaus Witznau",
+    "streetAddress": "Witznau 2",
+    "addressCountry": "D",
+    "postalCode": "79777",
+    "city": "Ühlingen-Birkendorf",
+    "latitude": 47.68054,
+    "longitude": 8.254371,
+    "id": 280
+  },
+  {
+    "name": "Restaurant Chrebsbach",
+    "identifier": "",
+    "streetAddress": "Birchstrasse 2A",
+    "addressCountry": "CH",
+    "postalCode": "8472",
+    "city": "Seuzach",
+    "latitude": 47.536382,
+    "longitude": 8.735748,
+    "id": 281
+  },
+  {
+    "name": "Eglisau",
+    "identifier": "",
+    "streetAddress": "",
+    "addressCountry": "",
+    "postalCode": "",
+    "city": "Eglisau",
+    "latitude": 47.575318,
+    "longitude": 8.521827,
+    "id": 282
+  },
+  {
+    "name": "Eichmühle",
+    "city": "Hettlingen",
+    "latitude": 47.550577,
+    "longitude": 8.716098,
+    "id": 283
+  },
+  {
+    "name": "Eschlikon",
+    "city": "Eschlikon",
+    "latitude": 47.56585,
+    "longitude": 8.753477,
+    "id": 284
+  },
+  {
+    "name": "Restaurant Sternen",
+    "streetAddress": "Oberhamberg 5",
+    "addressCountry": "CH",
+    "postalCode": "8495",
+    "city": "Schmidrüti",
+    "latitude": 47.423548,
+    "longitude": 8.912148,
+    "id": 285
+  },
+  {
+    "name": "Dietingen",
+    "city": "Dietingen",
+    "latitude": 47.589982,
+    "longitude": 8.809392,
+    "id": 286
+  },
+  {
+    "name": "Iselisberg",
+    "city": "Iselisberg",
+    "latitude": 47.586492,
+    "longitude": 8.827113,
+    "id": 287
+  },
+  {
+    "name": "Uerschhausen",
+    "city": "Uerschhausen",
+    "latitude": 47.610363,
+    "longitude": 8.819717,
+    "id": 288
+  },
+  {
+    "name": "Restaurant Freudenberg",
+    "streetAddress": "Freudenbergstrasse 27",
+    "addressCountry": "CH",
+    "postalCode": "9507",
+    "city": "Stettfurt",
+    "latitude": 47.532064,
+    "longitude": 8.951289,
+    "id": 289
+  },
+  {
+    "name": "Thurhof",
+    "city": "Thurhof",
+    "latitude": 47.601804,
+    "longitude": 8.707346,
+    "id": 290
+  },
+  {
+    "name": "Restaurant Brauerei",
+    "streetAddress": "Zürcherstrasse 29",
+    "addressCountry": "CH",
+    "postalCode": "8174",
+    "city": "Stadel b. Niederglatt",
+    "latitude": 47.526841,
+    "longitude": 8.468617,
+    "id": 291
+  },
+  {
+    "name": "Diessenhofen [Zoll]",
+    "identifier": "",
+    "streetAddress": "",
+    "addressCountry": "",
+    "postalCode": "",
+    "city": "Diessenhofen",
+    "latitude": 47.690776,
+    "longitude": 8.750877,
+    "id": 292
+  },
+  {
+    "name": "Dörflingen",
+    "addressCountry": "D",
+    "city": "Dörflingen",
+    "latitude": 47.705814,
+    "longitude": 8.723238,
+    "id": 293
+  },
+  {
+    "name": "Thayngen",
+    "identifier": "",
+    "streetAddress": "",
+    "addressCountry": "D",
+    "postalCode": "",
+    "city": "Thayngen",
+    "latitude": 47.705814,
+    "longitude": 8.723238,
+    "id": 294
+  },
+  {
+    "name": "Bibern",
+    "identifier": "",
+    "streetAddress": "",
+    "addressCountry": "",
+    "postalCode": "",
+    "city": "Bibern",
+    "latitude": 47.772695,
+    "longitude": 8.679199,
+    "id": 295
+  },
+  {
+    "name": "Büsslingen",
+    "addressCountry": "D",
+    "city": "Büsslingen",
+    "latitude": 47.790744,
+    "longitude": 8.682832,
+    "id": 296
+  },
+  {
+    "name": "Lattenbach-Beizli",
+    "identifier": "",
+    "streetAddress": "Neunfornerstrasse 33",
+    "addressCountry": "CH",
+    "postalCode": "8475",
+    "city": "Ossingen",
+    "latitude": 47.611664,
+    "longitude": 8.735653,
+    "id": 297
+  },
+  {
+    "name": "Watterdingen",
+    "city": "Watterdingen",
+    "latitude": 47.83604,
+    "longitude": 8.696147,
+    "id": 298
+  },
+  {
+    "name": "Anselfingen",
+    "addressCountry": "D",
+    "city": "Anselfingen",
+    "latitude": 47.846763,
+    "longitude": 8.761339,
+    "id": 299
+  },
+  {
+    "name": "Welschingen",
+    "addressCountry": "D",
+    "city": "Welschingen",
+    "latitude": 47.825328,
+    "longitude": 8.766958,
+    "id": 300
+  },
+  {
+    "name": "Mühlhausen",
+    "city": "Mühlhausen",
+    "latitude": 47.809488,
+    "longitude": 8.80699,
+    "id": 301
+  },
+  {
+    "name": "Hilzingen",
+    "addressCountry": "D",
+    "postalCode": "",
+    "city": "Hilzingen",
+    "latitude": 47.76497,
+    "longitude": 8.777928,
+    "id": 302
+  },
+  {
+    "name": "Rielasingen",
+    "addressCountry": "D",
+    "city": "Rielasingen",
+    "latitude": 47.730936,
+    "longitude": 8.838142,
+    "id": 303
+  },
+  {
+    "name": "Bohlingen",
+    "addressCountry": "D",
+    "city": "Bohlingen",
+    "latitude": 47.718531,
+    "longitude": 8.895571,
+    "id": 304
+  },
+  {
+    "name": "Schienerberg",
+    "addressCountry": "D",
+    "city": "Schienerberg",
+    "latitude": 47.698934,
+    "longitude": 8.909528,
+    "id": 305
+  },
+  {
+    "name": "Ammenhausen",
+    "city": "Ammenhausen",
+    "latitude": 47.627045,
+    "longitude": 8.922785,
+    "id": 306
+  },
+  {
+    "name": "Gündelhart",
+    "city": "Gündelhart",
+    "latitude": 47.63663,
+    "longitude": 8.946501,
+    "id": 307
+  },
+  {
+    "name": "Haidenhaus",
+    "city": "Haidenhaus",
+    "latitude": 47.647988,
+    "longitude": 9.011623,
+    "id": 308
+  },
+  {
+    "name": "Homburg",
+    "city": "Homburg",
+    "latitude": 47.634414,
+    "longitude": 9.007549,
+    "id": 309
+  },
+  {
+    "name": "Strass",
+    "city": "Strass",
+    "latitude": 47.563135,
+    "longitude": 8.859453,
+    "id": 310
   }
 ]
