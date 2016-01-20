@@ -572,8 +572,8 @@
   {
     "id": 57,
     "name": "Rickenbach",
-    "identifier": "ZH",
-    "city": "Rickenbach",
+    "identifier": "",
+    "city": "Rickenbach (ZH)",
     "latitude": 47.551828,
     "longitude": 8.795895
   },
@@ -1344,15 +1344,15 @@
     "id": 146
   },
   {
+    "id": 147,
     "name": "Rest. Alte Mühle",
     "identifier": "",
     "streetAddress": "Müliweg 3",
     "addressCountry": "CH",
     "postalCode": "8545",
-    "city": "Rickenbach",
+    "city": "Rickenbach (ZH)",
     "latitude": 47.552574,
-    "longitude": 8.79913,
-    "id": 147
+    "longitude": 8.79913
   },
   {
     "name": "Ossingen",
@@ -1488,12 +1488,12 @@
     "id": 162
   },
   {
-    "name": "Thalheim",
+    "id": 163,
+    "name": "Bahnhof Thalheim",
     "streetAddress": "",
     "city": "Thalheim",
     "latitude": 47.569684,
-    "longitude": 8.758024,
-    "id": 163
+    "longitude": 8.758024
   },
   {
     "name": "Weiningen",
@@ -2771,5 +2771,529 @@
     "latitude": 47.563135,
     "longitude": 8.859453,
     "id": 310
+  },
+  {
+    "name": "Rhy Lounge",
+    "streetAddress": "Oehningerstrasse 10",
+    "addressCountry": "CH",
+    "postalCode": "8260",
+    "city": "Stein am Rhein",
+    "latitude": 447.6594,
+    "longitude": 8.863053,
+    "id": 311
+  },
+  {
+    "name": "Gasthaus zum Hirschen",
+    "streetAddress": "Steigstrasse 4",
+    "addressCountry": "CH",
+    "postalCode": "8477",
+    "city": "Oberstammheim",
+    "latitude": 47.631825,
+    "longitude": 8.801171,
+    "id": 312
+  },
+  {
+    "name": "Restaurant Obstgarten",
+    "streetAddress": "Bachstrasse 19",
+    "addressCountry": "CH",
+    "postalCode": "8477",
+    "city": "Oberstammheim",
+    "latitude": 47.631373,
+    "longitude": 8.797475,
+    "id": 313
+  },
+  {
+    "name": "Winterberg",
+    "city": "Winterberg",
+    "latitude": 47.456575,
+    "longitude": 8.692119,
+    "id": 314
+  },
+  {
+    "name": "Restaurant Bahnhof",
+    "streetAddress": "Bahnhofstrasse 17",
+    "addressCountry": "CH",
+    "postalCode": "8496",
+    "city": "Steg",
+    "latitude": 47.353449,
+    "longitude": 8.933136,
+    "id": 315
+  },
+  {
+    "name": "Lindau",
+    "city": "Lindau",
+    "latitude": 47.44079,
+    "longitude": 8.671233,
+    "id": 316
+  },
+  {
+    "name": "Restaurant Steinenkreuz",
+    "streetAddress": "Steinenkreuz 94",
+    "addressCountry": "CH",
+    "postalCode": "8455",
+    "city": "Rüdlingen",
+    "latitude": 47.581349,
+    "longitude": 8.562866,
+    "id": 317
+  },
+  {
+    "name": "Effretikon",
+    "city": "Effretikon",
+    "latitude": 47.428616,
+    "longitude": 8.686625,
+    "id": 318
+  },
+  {
+    "name": "Illnau",
+    "identifier": "",
+    "city": "Illnau",
+    "latitude": 47.408457,
+    "longitude": 8.725517,
+    "id": 319
+  },
+  {
+    "name": "Mesikon",
+    "city": "Mesikon",
+    "latitude": 47.406411,
+    "longitude": 8.74501,
+    "id": 320
+  },
+  {
+    "name": "Theilingen",
+    "city": "Theilingen",
+    "latitude": 47.42111,
+    "longitude": 8.767673,
+    "id": 321
+  },
+  {
+    "name": "Dickbuch",
+    "city": "Dickbuch",
+    "latitude": 47.495786,
+    "longitude": 8.831031,
+    "id": 322
+  },
+  {
+    "name": "Gasthof Sternen",
+    "streetAddress": "Sternen 107",
+    "addressCountry": "CH",
+    "postalCode": "8499",
+    "city": "Sternenberg",
+    "latitude": 47.387123,
+    "longitude": 8.912555,
+    "id": 323
+  },
+  {
+    "name": "Restaurant Ochsen",
+    "streetAddress": "Rudolfingerstrasse 2",
+    "addressCountry": "CHCH",
+    "postalCode": "8466",
+    "city": "Trüllikon",
+    "latitude": 47.638184,
+    "longitude": 8.6926,
+    "id": 324
+  },
+  {
+    "name": "Pfyn",
+    "identifier": "Kreuzung",
+    "city": "Pfyn",
+    "latitude": 47.59662,
+    "longitude": 8.957943,
+    "id": 325
+  },
+  {
+    "name": "Schloss Klingenberg",
+    "identifier": "",
+    "streetAddress": "",
+    "addressCountry": "",
+    "postalCode": "",
+    "city": "Klingenberg",
+    "latitude": 47.622533,
+    "longitude": 9.002667,
+    "id": 326
+  },
+  {
+    "name": "Restaurant Alpenrösli",
+    "streetAddress": "Hohenstrasse 7",
+    "addressCountry": "CH",
+    "postalCode": "8330",
+    "city": "Pfäffikon",
+    "latitude": 47.378516,
+    "longitude": 8.805273,
+    "id": 327
+  },
+  {
+    "name": "Steckborn",
+    "city": "Steckborn",
+    "latitude": 47.659425,
+    "longitude": 8.977604,
+    "id": 328
+  },
+  {
+    "name": "Liebefels",
+    "city": "Liebefels",
+    "latitude": 47.631051,
+    "longitude": 8.926312,
+    "id": 329
+  },
+  {
+    "name": "Nafzger GmbH",
+    "streetAddress": "Dorfstrasse 3",
+    "addressCountry": "CH",
+    "postalCode": "9545",
+    "city": "Wängi",
+    "latitude": 47.497139,
+    "longitude": 8.953315,
+    "id": 330
+  },
+  {
+    "name": "Horben",
+    "identifier": "",
+    "streetAddress": "",
+    "addressCountry": "",
+    "postalCode": "",
+    "city": "Horben",
+    "latitude": 47.589304,
+    "longitude": 8.851669,
+    "id": 331
+  },
+  {
+    "name": "Tannholz",
+    "city": "Tannholz",
+    "latitude": 47.587372,
+    "longitude": 8.839829,
+    "id": 332
+  },
+  {
+    "name": "Feldi",
+    "city": "Feldi",
+    "latitude": 47.578466,
+    "longitude": 8.798674,
+    "id": 333
+  },
+  {
+    "name": "Gasthof Linde",
+    "streetAddress": "Lommiserstrasse 1",
+    "addressCountry": "CH",
+    "postalCode": "9545",
+    "city": "Wängi",
+    "latitude": 47.501042,
+    "longitude": 8.954967,
+    "id": 334
+  },
+  {
+    "name": "Restaurant Weinberg",
+    "streetAddress": "Kirchgasse 11",
+    "addressCountry": "CH",
+    "postalCode": "8532",
+    "city": "Warth",
+    "latitude": 47.584522,
+    "longitude": 8.872615,
+    "id": 335
+  },
+  {
+    "name": "Gmaandhuus Wilchingen",
+    "streetAddress": "Hauptstrasse 21",
+    "addressCountry": "CH",
+    "postalCode": "8217",
+    "city": "Wilchingen",
+    "latitude": 47.667217,
+    "longitude": 8.469893,
+    "id": 336
+  },
+  {
+    "id": 337,
+    "name": "Kreisel vor Bahnhof links",
+    "identifier": "",
+    "streetAddress": "",
+    "addressCountry": "",
+    "postalCode": "",
+    "city": "Frauenfeld",
+    "latitude": 47.559924,
+    "longitude": 8.899759
+  },
+  {
+    "name": "Kreisel Autobahnzubringer rechts",
+    "city": "Frauenfeld",
+    "latitude": 47.565064,
+    "longitude": 8.911072,
+    "id": 338
+  },
+  {
+    "name": "Restaurant Frohsinn",
+    "streetAddress": "Ausserdorfstrasse 2",
+    "addressCountry": "CH",
+    "postalCode": "8489",
+    "city": "Wildberg",
+    "latitude": 47.427345,
+    "longitude": 8.815783,
+    "id": 339
+  },
+  {
+    "name": "Radweg Wellhausen",
+    "city": "Wellhausen",
+    "latitude": 47.56911,
+    "longitude": 8.934734,
+    "id": 340
+  },
+  {
+    "name": "Wellenberg",
+    "city": "Wellenberg",
+    "latitude": 47.565666,
+    "longitude": 8.946907,
+    "id": 341
+  },
+  {
+    "name": "Rüti",
+    "city": "Rüti bei Frauenfeld",
+    "latitude": 47.558405,
+    "longitude": 8.947031,
+    "id": 342
+  },
+  {
+    "name": "Restaurant Sonnenhof",
+    "streetAddress": "Laupetswilerstrasse 10",
+    "addressCountry": "CH",
+    "postalCode": "8344",
+    "city": "Bäretswil",
+    "latitude": 47.34411,
+    "longitude": 8.893711,
+    "id": 343
+  },
+  {
+    "name": "Wetzikon",
+    "city": "Wetzikon (TG)",
+    "latitude": 47.537874,
+    "longitude": 9.001252,
+    "id": 344
+  },
+  {
+    "id": 345,
+    "name": "Restaurant Wiesenthal",
+    "streetAddress": "Wührenbach ",
+    "addressCountry": "CH",
+    "postalCode": "8815",
+    "city": "Horgenberg",
+    "latitude": 47.247308,
+    "longitude": 8.588299
+  },
+  {
+    "name": "Spiegelberg",
+    "city": "Spiegelberg",
+    "latitude": 47.529317,
+    "longitude": 8.995948,
+    "id": 346
+  },
+  {
+    "name": "Weingarten",
+    "city": "Weingarten",
+    "latitude": 47.524625,
+    "longitude": 8.985512,
+    "id": 347
+  },
+  {
+    "name": "Stettfurt",
+    "city": "Stettfurt",
+    "latitude": 47.524181,
+    "longitude": 8.954971,
+    "id": 348
+  },
+  {
+    "name": "Häuslenen",
+    "city": "Häuslenen",
+    "latitude": 47.526353,
+    "longitude": 8.902787,
+    "id": 349
+  },
+  {
+    "name": "Landgasthof Fähre",
+    "streetAddress": "Rheinsfelderstrasse 47",
+    "addressCountry": "CH",
+    "postalCode": "8192",
+    "city": "Zweidlen",
+    "latitude": 47.575477,
+    "longitude": 8.476692,
+    "id": 350
+  },
+  {
+    "name": "Frauenfeld",
+    "identifier": "Eisbahn",
+    "city": "Frauenfeld",
+    "latitude": 47.560771,
+    "longitude": 8.890628,
+    "id": 351
+  },
+  {
+    "name": "Pfäffikon",
+    "identifier": "ZH",
+    "streetAddress": "",
+    "addressCountry": "",
+    "postalCode": "",
+    "city": "Pfäffikon",
+    "latitude": 47.368497,
+    "longitude": 8.779457,
+    "id": 352
+  },
+  {
+    "name": "Seegräben",
+    "city": "Seegräben",
+    "latitude": 47.34233,
+    "longitude": 8.770952,
+    "id": 353
+  },
+  {
+    "name": "Aathal",
+    "city": "Aathal",
+    "latitude": 47.335845,
+    "longitude": 8.768485,
+    "id": 354
+  },
+  {
+    "name": "Heusberg",
+    "city": "Heusberg",
+    "latitude": 47.329824,
+    "longitude": 8.759813,
+    "id": 355
+  },
+  {
+    "name": "Lindhof",
+    "city": "Lindhof",
+    "latitude": 47.319769,
+    "longitude": 8.738778,
+    "id": 356
+  },
+  {
+    "name": "Mönchaltorf",
+    "city": "Mönchaltorf",
+    "latitude": 47.310426,
+    "longitude": 8.721151,
+    "id": 357
+  },
+  {
+    "name": "Rällikon",
+    "city": "Rällikon",
+    "latitude": 47.317792,
+    "longitude": 8.699027,
+    "id": 358
+  },
+  {
+    "name": "Fällanden",
+    "city": "Fällanden",
+    "latitude": 47.370685,
+    "longitude": 8.638854,
+    "id": 359
+  },
+  {
+    "name": "Volketswil",
+    "city": "Volketswil",
+    "latitude": 47.389505,
+    "longitude": 8.673806,
+    "id": 360
+  },
+  {
+    "name": "Kreuzstrasse",
+    "city": "Kreuzstrasse",
+    "latitude": 47.574459,
+    "longitude": 8.681247,
+    "id": 361
+  },
+  {
+    "name": "Adlikon",
+    "city": "Adlikon",
+    "latitude": 47.583036,
+    "longitude": 8.692363,
+    "id": 362
+  },
+  {
+    "name": "Dätwil",
+    "identifier": "Abzweiger Kleinandelfingen",
+    "streetAddress": "",
+    "addressCountry": "",
+    "postalCode": "",
+    "city": "Dätwil",
+    "latitude": 47.594072,
+    "longitude": 8.700336,
+    "id": 363
+  },
+  {
+    "name": "Kreisel Rudolfingen",
+    "city": "Rudolfingen",
+    "latitude": 47.64014,
+    "longitude": 8.670012,
+    "id": 364
+  },
+  {
+    "name": "durch den Rebberg",
+    "city": "Rudolfingen",
+    "latitude": 47.642766,
+    "longitude": 8.675342,
+    "id": 365
+  },
+  {
+    "name": "Radweg",
+    "identifier": "",
+    "streetAddress": "",
+    "addressCountry": "",
+    "postalCode": "",
+    "city": "Schlatt",
+    "latitude": 47.651455,
+    "longitude": 8.695622,
+    "id": 366
+  },
+  {
+    "name": "Trüllikon",
+    "city": "Trüllikon",
+    "latitude": 47.63807,
+    "longitude": 8.693015,
+    "id": 367
+  },
+  {
+    "name": "Abzweigung Truttikon dann rechts",
+    "city": "Trüllikon",
+    "latitude": 47.637698,
+    "longitude": 8.706253,
+    "id": 368
+  },
+  {
+    "name": "Langenmoos",
+    "city": "Langenmoos",
+    "latitude": 47.631868,
+    "longitude": 8.705061,
+    "id": 369
+  },
+  {
+    "name": "Radweg",
+    "city": "Thalheim",
+    "latitude": 47.584064,
+    "longitude": 8.738373,
+    "id": 370
+  },
+  {
+    "name": "Bitzi",
+    "city": "Bitzi",
+    "latitude": 47.365036,
+    "longitude": 9.056938,
+    "id": 371
+  },
+  {
+    "name": "Lütisburg Station",
+    "identifier": "",
+    "streetAddress": "",
+    "addressCountry": "",
+    "postalCode": "",
+    "city": "Lütisburg",
+    "latitude": 47.383516,
+    "longitude": 9.07209,
+    "id": 372
+  },
+  {
+    "name": "Dussnang",
+    "identifier": "",
+    "streetAddress": "",
+    "addressCountry": "",
+    "postalCode": "",
+    "city": "Dussnang",
+    "latitude": 47.430247,
+    "longitude": 8.961607,
+    "id": 373
   }
 ]
