@@ -1493,5 +1493,464 @@
         ]
       }
     ]
+  },
+  {
+    "name": "Neftenbach",
+    "types": [
+      {
+        "id": 4,
+        "label": "Abendtour"
+      }
+    ],
+    "timelines": [
+      {
+        "from": "2015-12-31T23:00:00.000Z",
+        "to": "2100-12-30T23:00:00.000Z",
+        "startroute": 5,
+        "difficulty": {
+          "id": 3,
+          "label": "Schwierig"
+        },
+        "distance": 55,
+        "elevation": 0,
+        "restaurants": [
+          28
+        ],
+        "locations": [
+          37,
+          374,
+          375,
+          144,
+          143,
+          376,
+          142,
+          377,
+          378,
+          379,
+          380,
+          381,
+          382,
+          383,
+          384,
+          198,
+          233,
+          210,
+          2,
+          14
+        ]
+      }
+    ],
+    "id": 35
+  },
+  {
+    "name": "Neschwil",
+    "types": [
+      {
+        "id": 4,
+        "label": "Abendtour"
+      }
+    ],
+    "timelines": [
+      {
+        "from": "2015-12-31T23:00:00.000Z",
+        "to": "2100-12-30T23:00:00.000Z",
+        "startroute": 3,
+        "difficulty": {
+          "id": 3,
+          "label": "Schwierig"
+        },
+        "distance": 50,
+        "elevation": 0,
+        "restaurants": [
+          29
+        ],
+        "locations": [
+          385,
+          262,
+          386,
+          387,
+          388,
+          389,
+          224,
+          390,
+          391,
+          392,
+          212,
+          209,
+          14
+        ]
+      }
+    ],
+    "id": 36
+  },
+  {
+    "name": "Nürensdorf",
+    "types": [
+      {
+        "id": 2,
+        "label": "Morgentour"
+      }
+    ],
+    "timelines": [
+      {
+        "from": "2015-12-31T23:00:00.000Z",
+        "to": "2100-12-30T23:00:00.000Z",
+        "startroute": 5,
+        "difficulty": {
+          "id": 1,
+          "label": "Einfach"
+        },
+        "distance": 70,
+        "elevation": 0,
+        "restaurants": [
+          30
+        ],
+        "locations": [
+          2,
+          3,
+          233,
+          198,
+          384,
+          383,
+          393,
+          394,
+          395,
+          380,
+          142,
+          376,
+          217,
+          316,
+          318,
+          396,
+          397,
+          212,
+          398,
+          227,
+          211,
+          14
+        ]
+      }
+    ],
+    "id": 37
+  },
+  {
+    "name": "Nussbaumen",
+    "types": [
+      {
+        "id": 4,
+        "label": "Abendtour"
+      }
+    ],
+    "timelines": [
+      {
+        "from": "2015-12-31T23:00:00.000Z",
+        "to": "2100-12-30T23:00:00.000Z",
+        "startroute": 8,
+        "difficulty": {
+          "id": 1,
+          "label": "Einfach"
+        },
+        "distance": 55,
+        "elevation": 0,
+        "restaurants": [
+          31
+        ],
+        "locations": [
+          116,
+          68,
+          66,
+          333,
+          59,
+          65,
+          132,
+          131,
+          399,
+          221,
+          64,
+          59,
+          58,
+          24,
+          14
+        ]
+      }
+    ],
+    "id": 38
+  },
+  {
+    "id": 39,
+    "name": "Oberglatt",
+    "types": [
+      {
+        "id": 2,
+        "label": "Morgentour"
+      },
+      {
+        "id": 3,
+        "label": "Nachmittagstour"
+      }
+    ],
+    "timelines": [
+      {
+        "from": "2015-12-31T23:00:00.000Z",
+        "to": "2100-12-30T23:00:00.000Z",
+        "startroute": 5,
+        "difficulty": {
+          "id": 2,
+          "label": "Mittel"
+        },
+        "distance": 70,
+        "elevation": 0,
+        "restaurants": [
+          32
+        ],
+        "locations": [
+          3,
+          233,
+          198,
+          394,
+          237,
+          238,
+          400,
+          401,
+          241,
+          402,
+          403,
+          404,
+          226,
+          405,
+          406,
+          138,
+          137,
+          136,
+          14
+        ]
+      }
+    ]
+  },
+  {
+    "id": 40,
+    "name": "Ossingen",
+    "types": [
+      {
+        "id": 4,
+        "label": "Abendtour"
+      }
+    ],
+    "timelines": [
+      {
+        "from": "2015-12-31T23:00:00.000Z",
+        "to": "2100-12-30T23:00:00.000Z",
+        "startroute": 2,
+        "difficulty": {
+          "id": 1,
+          "label": "Einfach"
+        },
+        "distance": 55,
+        "elevation": 0,
+        "restaurants": [
+          21
+        ],
+        "locations": [
+          68,
+          66,
+          333,
+          59,
+          65,
+          204,
+          134,
+          290,
+          363,
+          408,
+          407,
+          194,
+          134,
+          163,
+          68,
+          116,
+          14
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Ottikon",
+    "types": [
+      {
+        "id": 2,
+        "label": "Morgentour"
+      },
+      {
+        "id": 4,
+        "label": "Abendtour"
+      }
+    ],
+    "timelines": [
+      {
+        "from": "2015-12-31T23:00:00.000Z",
+        "to": "2100-12-30T23:00:00.000Z",
+        "startroute": 6,
+        "difficulty": {
+          "id": 1,
+          "label": "Einfach"
+        },
+        "distance": 50,
+        "elevation": 0,
+        "restaurants": [
+          33
+        ],
+        "locations": [
+          209,
+          224,
+          390,
+          409,
+          410,
+          411,
+          268,
+          397,
+          412,
+          230,
+          14
+        ]
+      }
+    ],
+    "id": 41
+  },
+  {
+    "name": "Pfannenstiel",
+    "types": [
+      {
+        "id": 2,
+        "label": "Morgentour"
+      }
+    ],
+    "timelines": [
+      {
+        "from": "2015-12-31T23:00:00.000Z",
+        "to": "2100-12-30T23:00:00.000Z",
+        "startroute": 6,
+        "difficulty": {
+          "id": 2,
+          "label": "Mittel"
+        },
+        "distance": 70,
+        "elevation": 0,
+        "restaurants": [
+          34
+        ],
+        "locations": [
+          209,
+          212,
+          414,
+          415,
+          416,
+          358,
+          417,
+          232,
+          418,
+          419,
+          420,
+          421,
+          422,
+          359,
+          360,
+          318,
+          146,
+          14
+        ]
+      }
+    ],
+    "id": 42
+  },
+  {
+    "id": 43,
+    "name": "Pragelpass",
+    "types": [
+      {
+        "id": 5,
+        "label": "Tagestour"
+      }
+    ],
+    "timelines": [
+      {
+        "from": "2015-12-31T23:00:00.000Z",
+        "to": "2100-12-30T23:00:00.000Z",
+        "startroute": 6,
+        "difficulty": {
+          "id": 3,
+          "label": "Schwierig"
+        },
+        "distance": 200,
+        "elevation": 0,
+        "restaurants": [
+          35,
+          66
+        ],
+        "locations": [
+          209,
+          223,
+          424,
+          427,
+          426,
+          234,
+          428,
+          429,
+          430,
+          431,
+          432,
+          423,
+          434,
+          435,
+          436,
+          438,
+          14
+        ]
+      }
+    ]
+  },
+  {
+    "id": 44,
+    "name": "Rafz",
+    "types": [
+      {
+        "id": 3,
+        "label": "Nachmittagstour"
+      },
+      {
+        "id": 4,
+        "label": "Abendtour"
+      }
+    ],
+    "timelines": [
+      {
+        "from": "2015-12-31T23:00:00.000Z",
+        "to": "2100-12-30T23:00:00.000Z",
+        "startroute": 5,
+        "difficulty": {
+          "id": 1,
+          "label": "Einfach"
+        },
+        "distance": 60,
+        "elevation": 0,
+        "restaurants": [
+          36
+        ],
+        "locations": [
+          2,
+          196,
+          4,
+          5,
+          7,
+          441,
+          236,
+          440,
+          443,
+          442,
+          197,
+          233,
+          3,
+          14
+        ]
+      }
+    ]
   }
 ]

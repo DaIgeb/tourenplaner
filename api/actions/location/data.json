@@ -90,6 +90,7 @@
   {
     "id": 10,
     "name": "Andelfingen",
+    "identifier": "Richtung Flaach",
     "streetAddress": "",
     "addressCountry": "",
     "postalCode": "",
@@ -1895,11 +1896,11 @@
     "id": 208
   },
   {
+    "id": 209,
     "name": "Sennhof",
-    "city": "Sennhof",
+    "city": "Sennhof bei Kollbrunn",
     "latitude": 47.467361,
-    "longitude": 8.759814,
-    "id": 209
+    "longitude": 8.759814
   },
   {
     "id": 210,
@@ -1937,15 +1938,15 @@
     "longitude": 8.773139
   },
   {
-    "name": "Rest. Freihof",
+    "id": 214,
+    "name": "Restaurant Sonne",
     "identifier": "",
-    "streetAddress": "Ludetswilerstrasse 19",
+    "streetAddress": "Dorfstrasse 32",
     "addressCountry": "CH",
     "postalCode": "8484",
-    "city": "Neschwil",
-    "latitude": 47.429119,
-    "longitude": 8.789013,
-    "id": 214
+    "city": "Weisslingen",
+    "latitude": 47.432159,
+    "longitude": 8.763471
   },
   {
     "name": "Russikon",
@@ -2022,11 +2023,15 @@
     "id": 223
   },
   {
+    "id": 224,
     "name": "Turbenthal",
+    "identifier": "Kreuzung Wildberg",
+    "streetAddress": "",
+    "addressCountry": "",
+    "postalCode": "",
     "city": "Turbenthal",
-    "latitude": 47.43888,
-    "longitude": 8.842908,
-    "id": 224
+    "latitude": 47.440338,
+    "longitude": 8.837212
   },
   {
     "name": "Gibswil",
@@ -2040,14 +2045,14 @@
     "id": 225
   },
   {
+    "id": 226,
     "name": "Rest. Pöstli",
-    "streetAddress": "Zürcherstrasse 10",
+    "streetAddress": "Bahnhofstrasse 45",
     "addressCountry": "CH",
-    "postalCode": "8174",
-    "city": "Stadel b. Niederglatt",
-    "latitude": 47.52796,
-    "longitude": 8.467173,
-    "id": 226
+    "postalCode": "8154",
+    "city": "Oberglatt",
+    "latitude": 47.472139,
+    "longitude": 8.513586
   },
   {
     "name": "Rikon",
@@ -2493,11 +2498,12 @@
     "id": 277
   },
   {
+    "id": 278,
     "name": "Embrach",
+    "identifier": "Kreisel Ausfahrt Pfungen",
     "city": "Embrach",
     "latitude": 47.515831,
-    "longitude": 8.593731,
-    "id": 278
+    "longitude": 8.593731
   },
   {
     "name": "Radweg",
@@ -3295,5 +3301,581 @@
     "latitude": 47.430247,
     "longitude": 8.961607,
     "id": 373
+  },
+  {
+    "name": "Sonnenbühl",
+    "city": "Sonnenbühl",
+    "latitude": 47.490998,
+    "longitude": 8.66083,
+    "id": 374
+  },
+  {
+    "name": "Brütten",
+    "city": "Brütten",
+    "latitude": 47.471119,
+    "longitude": 8.670719,
+    "id": 375
+  },
+  {
+    "name": "Geerlisberg",
+    "city": "Geerlisberg",
+    "latitude": 47.464548,
+    "longitude": 8.61522,
+    "id": 376
+  },
+  {
+    "name": "Unterführung",
+    "identifier": "",
+    "city": "Augwil",
+    "latitude": 47.481299,
+    "longitude": 8.589967,
+    "id": 377
+  },
+  {
+    "name": "Moosbrunnen",
+    "city": "Moosbrunnen",
+    "latitude": 47.485566,
+    "longitude": 8.58052,
+    "id": 378
+  },
+  {
+    "name": "Baltsberg",
+    "city": "Baltsberg",
+    "latitude": 47.495399,
+    "longitude": 8.58452,
+    "id": 379
+  },
+  {
+    "name": "Chimenhof",
+    "city": "Chimenhof",
+    "latitude": 47.501113,
+    "longitude": 8.579726,
+    "id": 380
+  },
+  {
+    "name": "Büliberg",
+    "identifier": "",
+    "streetAddress": "",
+    "addressCountry": "",
+    "postalCode": "",
+    "city": "Büliberg",
+    "latitude": 47.508912,
+    "longitude": 8.574025,
+    "id": 381
+  },
+  {
+    "name": "Berghof",
+    "city": "Bülach",
+    "latitude": 47.524473,
+    "longitude": 8.555687,
+    "id": 382
+  },
+  {
+    "name": "Kleiner Klausen",
+    "identifier": "",
+    "streetAddress": "",
+    "addressCountry": "",
+    "postalCode": "",
+    "city": "Rorbas",
+    "latitude": 47.532361,
+    "longitude": 8.562366,
+    "id": 383
+  },
+  {
+    "name": "Rorbas",
+    "city": "Rorbas",
+    "latitude": 47.530676,
+    "longitude": 8.574509,
+    "id": 384
+  },
+  {
+    "name": "Buch",
+    "city": "Buch bei Wiesendangen",
+    "latitude": 47.52078,
+    "longitude": 8.822135,
+    "id": 385
+  },
+  {
+    "name": "Elgg [Schloss]",
+    "city": "Elgg",
+    "latitude": 47.482665,
+    "longitude": 8.865416,
+    "id": 386
+  },
+  {
+    "name": "Sennhof",
+    "city": "Sennhof bei Elgg",
+    "latitude": 47.47657,
+    "longitude": 8.862385,
+    "id": 387
+  },
+  {
+    "name": "Oberschlatt",
+    "identifier": "",
+    "streetAddress": "",
+    "addressCountry": "",
+    "postalCode": "",
+    "city": "Oberschlatt (ZH)",
+    "latitude": 47.463315,
+    "longitude": 8.846483,
+    "id": 388
+  },
+  {
+    "name": "Gyrenbad",
+    "city": "Gyrenbad",
+    "latitude": 47.452406,
+    "longitude": 8.846441,
+    "id": 389
+  },
+  {
+    "name": "Wildberg",
+    "city": "Wildberg",
+    "latitude": 47.427868,
+    "longitude": 8.816279,
+    "id": 390
+  },
+  {
+    "name": "Ludetswil",
+    "identifier": "",
+    "streetAddress": "",
+    "addressCountry": "",
+    "postalCode": "",
+    "city": "Ludetswil",
+    "latitude": 47.419157,
+    "longitude": 8.800332,
+    "id": 391
+  },
+  {
+    "name": "Neschwil",
+    "city": "Neschwil",
+    "latitude": 47.429222,
+    "longitude": 8.789327,
+    "id": 392
+  },
+  {
+    "name": "Nussbaumen",
+    "city": "Nussbaumen bei Bülach",
+    "latitude": 47.531027,
+    "longitude": 8.556492,
+    "id": 393
+  },
+  {
+    "name": "Eschenmosen",
+    "city": "Eschenmosen",
+    "latitude": 47.519715,
+    "longitude": 8.567823,
+    "id": 394
+  },
+  {
+    "name": "Höhenweg",
+    "city": "Chimenhof",
+    "latitude": 47.509797,
+    "longitude": 8.574066,
+    "id": 395
+  },
+  {
+    "name": "Luckhausen",
+    "city": "Luckhausen",
+    "latitude": 47.424116,
+    "longitude": 8.724787,
+    "id": 396
+  },
+  {
+    "name": "Agasul",
+    "city": "Agasul",
+    "latitude": 47.425061,
+    "longitude": 8.743755,
+    "id": 397
+  },
+  {
+    "name": "Dettenried",
+    "city": "Dettenried",
+    "latitude": 47.440669,
+    "longitude": 8.776728,
+    "id": 398
+  },
+  {
+    "name": "Oberstammheim",
+    "city": "Oberstammheim",
+    "latitude": 47.631749,
+    "longitude": 8.801032,
+    "id": 399
+  },
+  {
+    "name": "Stadel",
+    "city": "Stadel bei Niederglatt",
+    "latitude": 47.527495,
+    "longitude": 8.467966,
+    "id": 400
+  },
+  {
+    "id": 401,
+    "name": "Bachs",
+    "city": "Bachs",
+    "latitude": 47.524918,
+    "longitude": 8.442383
+  },
+  {
+    "name": "Dielsdorf",
+    "city": "Dielsdorf",
+    "latitude": 47.483162,
+    "longitude": 8.464676,
+    "id": 402
+  },
+  {
+    "name": "Niederhasli",
+    "city": "Niederhasli",
+    "latitude": 47.480965,
+    "longitude": 8.491562,
+    "id": 403
+  },
+  {
+    "name": "Niederglatt",
+    "city": "Niederglatt",
+    "latitude": 47.490383,
+    "longitude": 8.503259,
+    "id": 404
+  },
+  {
+    "name": "Winkel",
+    "city": "Winkel",
+    "latitude": 47.492943,
+    "longitude": 8.552752,
+    "id": 405
+  },
+  {
+    "name": "Embrach",
+    "identifier": "Kreuzung Richtung Winkel",
+    "streetAddress": "",
+    "addressCountry": "",
+    "postalCode": "",
+    "city": "Embrach",
+    "latitude": 47.501153,
+    "longitude": 8.594357,
+    "id": 406
+  },
+  {
+    "name": "Hausen",
+    "identifier": "",
+    "streetAddress": "",
+    "addressCountry": "",
+    "postalCode": "",
+    "city": "Hausen",
+    "latitude": 47.606307,
+    "longitude": 8.713627,
+    "id": 407
+  },
+  {
+    "name": "Andelfingen",
+    "identifier": "Brücke",
+    "streetAddress": "",
+    "addressCountry": "",
+    "postalCode": "",
+    "city": "Andelfingen",
+    "latitude": 47.596666,
+    "longitude": 8.681077,
+    "id": 408
+  },
+  {
+    "name": "Schalchen",
+    "identifier": "",
+    "streetAddress": "",
+    "addressCountry": "",
+    "postalCode": "",
+    "city": "Schalchen",
+    "latitude": 47.406937,
+    "longitude": 8.826267,
+    "id": 409
+  },
+  {
+    "name": "Hermatswil",
+    "city": "Hermatswil",
+    "latitude": 47.394507,
+    "longitude": 8.826339,
+    "id": 410
+  },
+  {
+    "name": "Humbel",
+    "city": "Humbel",
+    "latitude": 47.381755,
+    "longitude": 8.798507,
+    "id": 411
+  },
+  {
+    "name": "Ottikon",
+    "city": "Ottikon",
+    "latitude": 47.436236,
+    "longitude": 8.715684,
+    "id": 412
+  },
+  {
+    "name": "Gasthaus Taube",
+    "streetAddress": "Dorfpl. 2",
+    "addressCountry": "CH",
+    "postalCode": "9107",
+    "city": "Urnäsch",
+    "latitude": 47.317256,
+    "longitude": 9.282997,
+    "id": 413
+  },
+  {
+    "name": "Fehraltorf",
+    "city": "Fehraltorf",
+    "latitude": 47.388494,
+    "longitude": 8.750819,
+    "id": 414
+  },
+  {
+    "name": "Freudwil",
+    "city": "Freudwil",
+    "latitude": 47.374424,
+    "longitude": 8.732578,
+    "id": 415
+  },
+  {
+    "name": "Uster",
+    "identifier": "",
+    "streetAddress": "",
+    "addressCountry": "",
+    "postalCode": "",
+    "city": "Uster",
+    "latitude": 47.348317,
+    "longitude": 8.717968,
+    "id": 416
+  },
+  {
+    "name": "Egg",
+    "city": "Egg",
+    "latitude": 47.304005,
+    "longitude": 8.690378,
+    "id": 417
+  },
+  {
+    "name": "Toggwil",
+    "city": "Toggwil",
+    "latitude": 47.288152,
+    "longitude": 8.65342,
+    "id": 418
+  },
+  {
+    "name": "Wetzwil",
+    "city": "Wetzwil",
+    "latitude": 47.294165,
+    "longitude": 8.630998,
+    "id": 419
+  },
+  {
+    "name": "Forch",
+    "city": "Forch",
+    "latitude": 47.325231,
+    "longitude": 8.65333,
+    "id": 420
+  },
+  {
+    "name": "Ebmatingen",
+    "city": "Ebmatingen",
+    "latitude": 47.351352,
+    "longitude": 8.640835,
+    "id": 421
+  },
+  {
+    "name": "Binz",
+    "city": "Binz",
+    "latitude": 47.35603,
+    "longitude": 8.630198,
+    "id": 422
+  },
+  {
+    "name": "Restaurant Hölloch",
+    "streetAddress": "Stalden 15",
+    "addressCountry": "CH",
+    "postalCode": "6436",
+    "city": "Muotathal",
+    "latitude": 46.97713,
+    "longitude": 8.783624,
+    "id": 423
+  },
+  {
+    "name": "Wald",
+    "city": "Wald",
+    "latitude": 47.27716,
+    "longitude": 8.915635,
+    "id": 424
+  },
+  {
+    "name": "Restaurant Rössli",
+    "streetAddress": "Hauptstrasse 58",
+    "addressCountry": "CH",
+    "postalCode": "9113",
+    "city": "Degersheim",
+    "latitude": 47.373885,
+    "longitude": 9.198937,
+    "id": 425
+  },
+  {
+    "name": "Uznach",
+    "identifier": "",
+    "streetAddress": "",
+    "addressCountry": "",
+    "postalCode": "",
+    "city": "Uznach",
+    "latitude": 47.224417,
+    "longitude": 8.984227,
+    "id": 426
+  },
+  {
+    "name": "Neuhaus",
+    "identifier": "",
+    "streetAddress": "",
+    "addressCountry": "",
+    "postalCode": "",
+    "city": "Neuhaus",
+    "latitude": 47.242973,
+    "longitude": 8.947042,
+    "id": 427
+  },
+  {
+    "name": "Reichenburg",
+    "city": "Reichenburg",
+    "latitude": 47.169852,
+    "longitude": 8.975072,
+    "id": 428
+  },
+  {
+    "name": "Ziegelbrücke",
+    "city": "Ziegelbrücke",
+    "latitude": 47.12864,
+    "longitude": 9.056582,
+    "id": 429
+  },
+  {
+    "name": "Netstal",
+    "city": "Netstal",
+    "latitude": 47.063371,
+    "longitude": 9.054745,
+    "id": 430
+  },
+  {
+    "name": "Klöntal",
+    "city": "Klöntal",
+    "latitude": 47.026106,
+    "longitude": 8.931054,
+    "id": 431
+  },
+  {
+    "name": "Pragelpass",
+    "city": "Pragelpass",
+    "latitude": 46.999118,
+    "longitude": 8.869459,
+    "id": 432
+  },
+  {
+    "name": "Restaurant Klostergarten",
+    "streetAddress": "Ilgenweidstrasse 14",
+    "addressCountry": "CH",
+    "postalCode": "8840",
+    "city": "Einsiedeln",
+    "latitude": 47.125446,
+    "longitude": 8.750015,
+    "id": 433
+  },
+  {
+    "name": "Schwyz",
+    "city": "Schwyz",
+    "latitude": 47.020179,
+    "longitude": 8.655431,
+    "id": 434
+  },
+  {
+    "name": "Biberbrugg",
+    "city": "Biberbrugg",
+    "latitude": 47.150835,
+    "longitude": 8.716388,
+    "id": 435
+  },
+  {
+    "name": "Pfäffikon",
+    "identifier": "",
+    "city": "Pfäffikon (SZ)",
+    "latitude": 47.204586,
+    "longitude": 8.791464,
+    "id": 436
+  },
+  {
+    "name": "Landgasthof Ochsen",
+    "streetAddress": "Sidwaldstrasse 9",
+    "addressCountry": "CH",
+    "postalCode": "9652",
+    "city": "Nesslau-Krummenau",
+    "latitude": 47.232195,
+    "longitude": 9.194177,
+    "id": 437
+  },
+  {
+    "id": 438,
+    "name": "Wetzikon",
+    "identifier": "",
+    "streetAddress": "",
+    "addressCountry": "",
+    "postalCode": "",
+    "city": "Wetzikon (ZH)",
+    "latitude": 47.315388,
+    "longitude": 8.795772
+  },
+  {
+    "name": "Restaurant Tannenmühle",
+    "streetAddress": "Tannenmühleweg 5",
+    "addressCountry": "D",
+    "postalCode": "79865",
+    "city": "Grafenhausen",
+    "latitude": 47.760013,
+    "longitude": 8.277971,
+    "id": 439
+  },
+  {
+    "name": "Kiesgrube",
+    "city": "Rafz",
+    "latitude": 47.595176,
+    "longitude": 8.525098,
+    "id": 440
+  },
+  {
+    "name": "Rüdlingen",
+    "city": "Rüdlingen",
+    "latitude": 47.57939,
+    "longitude": 8.576569,
+    "id": 441
+  },
+  {
+    "name": "Flaach",
+    "identifier": "Unterdorf",
+    "streetAddress": "",
+    "addressCountry": "",
+    "postalCode": "",
+    "city": "Flaach",
+    "latitude": 47.573982,
+    "longitude": 8.596388,
+    "id": 442
+  },
+  {
+    "name": "Steinenkreuz",
+    "identifier": "",
+    "streetAddress": "",
+    "addressCountry": "",
+    "postalCode": "",
+    "city": "Steinenkreuz",
+    "latitude": 47.581214,
+    "longitude": 8.562867,
+    "id": 443
+  },
+  {
+    "name": "Restaurant Berg",
+    "streetAddress": "Ghöchstrasse",
+    "addressCountry": "CH",
+    "postalCode": "8498",
+    "city": "Gibswil ",
+    "latitude": 47.326596,
+    "longitude": 8.899859,
+    "id": 444
   }
 ]
