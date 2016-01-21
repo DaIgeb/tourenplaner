@@ -54,8 +54,12 @@
 
 ## Score-Building
 * Shorter Tours at the beginning/end of the season
+ * Normal Distribution for evening tours https://en.wikipedia.org/wiki/Normal_distribution
+ * For Weekends slowly increase from 60km to 85km until the evening tour starts then keep 85km to 95km as desired tour length
+ * Calculate the evelation in with the distance 1km of climbin = 10km of distance ==> distance + evevation*10 = effectiveDistance
 * Number of matching locations for previous tour
 * Number of time used within the season
+* Is Restaurant available
 
 ## Print-layout
 * See [Season](http://rvwinterthur.ch/fileadmin/user_upload/Tourenfahren/2015/RVW_Tourenprogramm_2015.pdf) and [Tour-List](http://rvwinterthur.ch/fileadmin/user_upload/Tourenfahren/2015/RVW_Tourenbeschrieb_2015.pdf) for the final look
