@@ -28,9 +28,9 @@
 
 ## Maps
 * Integrate open-street-/google-map to show the point (call-out/separate page)
-  ** https://github.com/tomchentw/react-google-maps
-  ** http://react.rocks/tag/Map
-  ** https://github.com/PaulLeCam/react-leaflet
+  * https://github.com/tomchentw/react-google-maps
+  * http://react.rocks/tag/Map
+  * https://github.com/PaulLeCam/react-leaflet
 
 # Tours
 
@@ -54,9 +54,9 @@
 
 ## Score-Building
 * Shorter Tours at the beginning/end of the season
- * Normal Distribution for evening tours https://en.wikipedia.org/wiki/Normal_distribution
- * For Weekends slowly increase from 60km to 85km until the evening tour starts then keep 85km to 95km as desired tour length
- * Calculate the evelation in with the distance 1km of climbin = 10km of distance ==> distance + evevation*10 = effectiveDistance
+  * Normal Distribution for evening tours https://en.wikipedia.org/wiki/Normal_distribution
+  * For Weekends slowly increase from 60km to 85km until the evening tour starts then keep 85km to 95km as desired tour length
+  * Calculate the evelation in with the distance 1km of climbin = 10km of distance ==> distance + evevation*10 = effectiveDistance
 * Number of matching locations for previous tour
 * Number of time used within the season
 * Is Restaurant available
