@@ -2163,11 +2163,11 @@
     "id": 238
   },
   {
+    "id": 239,
     "name": "Neerach",
     "city": "Neerach",
-    "latitude": 47.512591,
-    "longitude": 8.473009,
-    "id": 239
+    "latitude": 47.513527,
+    "longitude": 8.474531
   },
   {
     "name": "Riedt bei Neerach",
@@ -2348,11 +2348,11 @@
     "id": 259
   },
   {
+    "id": 260,
     "name": "Matzingen",
     "city": "Matzingen",
-    "latitude": 47.503284,
-    "longitude": 8.921878,
-    "id": 260
+    "latitude": 47.519581,
+    "longitude": 8.92928
   },
   {
     "name": "Gündlikon",
@@ -2538,15 +2538,15 @@
     "id": 281
   },
   {
+    "id": 282,
     "name": "Eglisau",
-    "identifier": "",
+    "identifier": "Rheinbrücke",
     "streetAddress": "",
     "addressCountry": "",
     "postalCode": "",
     "city": "Eglisau",
     "latitude": 47.575318,
-    "longitude": 8.521827,
-    "id": 282
+    "longitude": 8.521827
   },
   {
     "name": "Eichmühle",
@@ -2918,14 +2918,14 @@
     "id": 326
   },
   {
+    "id": 327,
     "name": "Restaurant Alpenrösli",
     "streetAddress": "Hohenstrasse 7",
     "addressCountry": "CH",
     "postalCode": "8330",
-    "city": "Pfäffikon",
+    "city": "Pfäffikon ZH",
     "latitude": 47.378516,
-    "longitude": 8.805273,
-    "id": 327
+    "longitude": 8.805273
   },
   {
     "name": "Steckborn",
@@ -2952,15 +2952,15 @@
     "id": 330
   },
   {
+    "id": 331,
     "name": "Horben",
     "identifier": "",
     "streetAddress": "",
     "addressCountry": "",
     "postalCode": "",
-    "city": "Horben",
+    "city": "Horben bei Uesslingen",
     "latitude": 47.589304,
-    "longitude": 8.851669,
-    "id": 331
+    "longitude": 8.851669
   },
   {
     "name": "Tannholz",
@@ -3129,15 +3129,15 @@
     "id": 351
   },
   {
+    "id": 352,
     "name": "Pfäffikon",
-    "identifier": "ZH",
+    "identifier": "",
     "streetAddress": "",
     "addressCountry": "",
     "postalCode": "",
-    "city": "Pfäffikon",
+    "city": "Pfäffikon ZH",
     "latitude": 47.368497,
-    "longitude": 8.779457,
-    "id": 352
+    "longitude": 8.779457
   },
   {
     "name": "Seegräben",
@@ -3794,22 +3794,22 @@
     "id": 435
   },
   {
+    "id": 436,
     "name": "Pfäffikon",
     "identifier": "",
-    "city": "Pfäffikon (SZ)",
+    "city": "Pfäffikon SZ",
     "latitude": 47.204586,
-    "longitude": 8.791464,
-    "id": 436
+    "longitude": 8.791464
   },
   {
+    "id": 437,
     "name": "Landgasthof Ochsen",
     "streetAddress": "Sidwaldstrasse 9",
     "addressCountry": "CH",
     "postalCode": "9652",
-    "city": "Nesslau-Krummenau",
+    "city": "Neu St. Johann",
     "latitude": 47.232195,
-    "longitude": 9.194177,
-    "id": 437
+    "longitude": 9.194177
   },
   {
     "id": 438,
@@ -3887,5 +3887,610 @@
     "latitude": 47.064685,
     "longitude": 8.522659,
     "id": 445
+  },
+  {
+    "name": "Steinegg",
+    "city": "Steinegg",
+    "latitude": 47.619284,
+    "longitude": 8.857649,
+    "id": 446
+  },
+  {
+    "name": "Eschenz",
+    "city": "Eschenz",
+    "latitude": 47.645525,
+    "longitude": 8.874934,
+    "id": 447
+  },
+  {
+    "name": "Wagenhausen",
+    "city": "Wagenhausen",
+    "latitude": 47.66312,
+    "longitude": 8.837511,
+    "id": 448
+  },
+  {
+    "name": "Hemishofen",
+    "city": "Hemishofen",
+    "latitude": 47.678023,
+    "longitude": 8.831218,
+    "id": 449
+  },
+  {
+    "id": 450,
+    "name": "Gailingen",
+    "addressCountry": "D",
+    "city": "Gailingen",
+    "latitude": 47.696365,
+    "longitude": 8.756923
+  },
+  {
+    "name": "Nussbaumen",
+    "identifier": "bei Hüttwilen",
+    "streetAddress": "",
+    "addressCountry": "",
+    "postalCode": "",
+    "city": "Nussbaumen",
+    "latitude": 47.624757,
+    "longitude": 8.82754,
+    "id": 451
+  },
+  {
+    "name": "Atzmännig",
+    "city": "Atzmännig",
+    "latitude": 47.284492,
+    "longitude": 8.995756,
+    "id": 452
+  },
+  {
+    "name": "Walde",
+    "city": "Walde",
+    "latitude": 47.273225,
+    "longitude": 9.027714,
+    "id": 453
+  },
+  {
+    "name": "Wattwil",
+    "city": "Wattwil",
+    "latitude": 47.30496,
+    "longitude": 9.08782,
+    "id": 454
+  },
+  {
+    "name": "Wasserfluh",
+    "city": "Wasserfluh",
+    "latitude": 47.325943,
+    "longitude": 9.114091,
+    "id": 455
+  },
+  {
+    "name": "Brunnadern",
+    "city": "Brunnadern",
+    "latitude": 47.327319,
+    "longitude": 9.14517,
+    "id": 456
+  },
+  {
+    "id": 457,
+    "name": "St. Peterzell",
+    "identifier": "",
+    "streetAddress": "",
+    "addressCountry": "",
+    "postalCode": "",
+    "city": "Sankt Peterzell",
+    "latitude": 47.318628,
+    "longitude": 9.173644
+  },
+  {
+    "name": "Dicken",
+    "city": "Dicken bei Degersheim",
+    "latitude": 47.336463,
+    "longitude": 9.19039,
+    "id": 458
+  },
+  {
+    "name": "Schwellbrunn",
+    "city": "Schwellbrunn",
+    "latitude": 47.351728,
+    "longitude": 9.249197,
+    "id": 459
+  },
+  {
+    "name": "Mosnang",
+    "city": "Mosnang",
+    "latitude": 47.362703,
+    "longitude": 9.039953,
+    "id": 460
+  },
+  {
+    "name": "Madetswil",
+    "city": "Madetswil",
+    "latitude": 47.41102,
+    "longitude": 8.793373,
+    "id": 461
+  },
+  {
+    "name": "Rumlikon",
+    "city": "Rumlikon",
+    "latitude": 47.410507,
+    "longitude": 8.760013,
+    "id": 462
+  },
+  {
+    "name": "Horben",
+    "city": "Horben bei Illnau",
+    "latitude": 47.412731,
+    "longitude": 8.744591,
+    "id": 463
+  },
+  {
+    "name": "Kempten",
+    "city": "Kempten ZH",
+    "latitude": 47.332807,
+    "longitude": 8.811917,
+    "id": 464
+  },
+  {
+    "name": "Rüti",
+    "city": "Rüti ZH",
+    "latitude": 47.259962,
+    "longitude": 8.8515,
+    "id": 465
+  },
+  {
+    "name": "Schmerikon",
+    "city": "Schmerikon",
+    "latitude": 47.226126,
+    "longitude": 8.948316,
+    "id": 466
+  },
+  {
+    "name": "Grynau",
+    "identifier": "",
+    "streetAddress": "",
+    "addressCountry": "",
+    "postalCode": "",
+    "city": "Grynau",
+    "latitude": 47.215977,
+    "longitude": 8.969643,
+    "id": 467
+  },
+  {
+    "name": "Siebnen",
+    "city": "Siebnen",
+    "latitude": 47.17434,
+    "longitude": 8.896745,
+    "id": 468
+  },
+  {
+    "name": "Vorderthal",
+    "city": "Vorderthal",
+    "latitude": 47.120771,
+    "longitude": 8.900986,
+    "id": 469
+  },
+  {
+    "name": "Wilerzell",
+    "city": "Wilerzell",
+    "latitude": 47.129567,
+    "longitude": 8.793752,
+    "id": 470
+  },
+  {
+    "name": "Windlach",
+    "city": "Windlach",
+    "latitude": 47.541255,
+    "longitude": 8.475188,
+    "id": 471
+  },
+  {
+    "name": "Ganterschwil",
+    "city": "Ganterschwil",
+    "latitude": 47.381044,
+    "longitude": 9.08958,
+    "id": 472
+  },
+  {
+    "name": "Egetswil",
+    "identifier": "",
+    "city": "Egetswil",
+    "latitude": 47.469674,
+    "longitude": 8.584724,
+    "id": 473
+  },
+  {
+    "name": "Necker",
+    "city": "Necker",
+    "latitude": 47.348071,
+    "longitude": 9.130269,
+    "id": 474
+  },
+  {
+    "name": "Nürensdorf",
+    "identifier": "",
+    "streetAddress": "",
+    "addressCountry": "",
+    "postalCode": "",
+    "city": "Nürensdorf",
+    "latitude": 47.446931,
+    "longitude": 8.648748,
+    "id": 475
+  },
+  {
+    "name": "Bächli",
+    "identifier": "",
+    "city": "Bächli",
+    "latitude": 47.305465,
+    "longitude": 9.1951,
+    "id": 476
+  },
+  {
+    "name": "Tagelswangen",
+    "identifier": "",
+    "streetAddress": "",
+    "addressCountry": "",
+    "postalCode": "",
+    "city": "Tagelswangen",
+    "latitude": 47.432419,
+    "longitude": 8.676361,
+    "id": 477
+  },
+  {
+    "name": "Schwägalp",
+    "city": "Schwägalp",
+    "latitude": 47.253282,
+    "longitude": 9.303208,
+    "id": 478
+  },
+  {
+    "name": "Oetwil",
+    "city": "Oetwil",
+    "latitude": 47.410169,
+    "longitude": 8.996816,
+    "id": 479
+  },
+  {
+    "name": "Günzgen",
+    "identifier": "",
+    "streetAddress": "",
+    "addressCountry": "D",
+    "postalCode": "",
+    "city": "Günzgen",
+    "latitude": 47.585347,
+    "longitude": 8.46293,
+    "id": 480
+  },
+  {
+    "id": 481,
+    "name": "Zoll",
+    "addressCountry": "D",
+    "city": "Günzgen",
+    "latitude": 47.586672,
+    "longitude": 8.465521
+  },
+  {
+    "id": 482,
+    "name": "Lienheim",
+    "identifier": "",
+    "streetAddress": "",
+    "addressCountry": "D",
+    "postalCode": "",
+    "city": "Lienheim",
+    "latitude": 47.572672,
+    "longitude": 8.375396
+  },
+  {
+    "id": 483,
+    "name": "Reckingen",
+    "addressCountry": "D",
+    "city": "Reckingen",
+    "latitude": 47.574619,
+    "longitude": 8.331545
+  },
+  {
+    "name": "Kadelburg",
+    "addressCountry": "D",
+    "postalCode": "",
+    "city": "Kadelburg",
+    "latitude": 47.608506,
+    "longitude": 8.295544,
+    "id": 484
+  },
+  {
+    "name": "Tiengen",
+    "identifier": "",
+    "streetAddress": "",
+    "addressCountry": "D",
+    "postalCode": "",
+    "city": "Tiengen",
+    "latitude": 47.621254,
+    "longitude": 8.257338,
+    "id": 485
+  },
+  {
+    "name": "Gurtweil",
+    "identifier": "",
+    "streetAddress": "",
+    "addressCountry": "D",
+    "postalCode": "",
+    "city": "Gurtweil",
+    "latitude": 47.641353,
+    "longitude": 8.247318,
+    "id": 486
+  },
+  {
+    "name": "Brenden",
+    "addressCountry": "D",
+    "city": "Brenden",
+    "latitude": 47.728456,
+    "longitude": 8.226163,
+    "id": 487
+  },
+  {
+    "name": "Staufen",
+    "addressCountry": "D",
+    "city": "Staufen",
+    "latitude": 47.75627,
+    "longitude": 8.210503,
+    "id": 488
+  },
+  {
+    "name": "Schönbach",
+    "addressCountry": "D",
+    "city": "Schönbach",
+    "latitude": 47.767833,
+    "longitude": 8.210925,
+    "id": 489
+  },
+  {
+    "name": "P.1004",
+    "addressCountry": "D",
+    "city": "P.1004",
+    "latitude": 47.787274,
+    "longitude": 8.192076,
+    "id": 490
+  },
+  {
+    "name": "Seebrugg",
+    "identifier": "",
+    "streetAddress": "",
+    "addressCountry": "D",
+    "postalCode": "",
+    "city": "Seebrugg",
+    "latitude": 47.800334,
+    "longitude": 8.199597,
+    "id": 491
+  },
+  {
+    "name": "Rothaus",
+    "addressCountry": "D",
+    "city": "Rothaus",
+    "latitude": 47.795049,
+    "longitude": 8.245011,
+    "id": 492
+  },
+  {
+    "name": "Eberfingen",
+    "identifier": "",
+    "streetAddress": "",
+    "addressCountry": "D",
+    "postalCode": "",
+    "city": "Eberfingen",
+    "latitude": 47.720048,
+    "longitude": 8.426631,
+    "id": 493
+  },
+  {
+    "name": "Hallau",
+    "city": "Hallau",
+    "latitude": 47.696482,
+    "longitude": 8.45727,
+    "id": 494
+  },
+  {
+    "name": "Wilchingen",
+    "city": "Wilchingen",
+    "latitude": 47.667349,
+    "longitude": 8.469772,
+    "id": 495
+  },
+  {
+    "name": "Jestetten",
+    "addressCountry": "D",
+    "city": "Jestetten",
+    "latitude": 47.649629,
+    "longitude": 8.568034,
+    "id": 496
+  },
+  {
+    "name": "Niederglatt",
+    "identifier": "Kreuzung Grafschaftstrasse",
+    "streetAddress": "",
+    "addressCountry": "",
+    "postalCode": "",
+    "city": "Niederglatt",
+    "latitude": 47.493145,
+    "longitude": 8.50469,
+    "id": 497
+  },
+  {
+    "name": "Marthalen",
+    "identifier": "Dorf",
+    "streetAddress": "",
+    "addressCountry": "",
+    "postalCode": "",
+    "city": "Marthalen",
+    "latitude": 47.625637,
+    "longitude": 8.650225,
+    "id": 498
+  },
+  {
+    "name": "Schmidrüti",
+    "city": "Schmidrüti",
+    "latitude": 47.414887,
+    "longitude": 8.903433,
+    "id": 499
+  },
+  {
+    "name": "Tablat",
+    "city": "Tablat",
+    "latitude": 47.410178,
+    "longitude": 8.860792,
+    "id": 500
+  },
+  {
+    "name": "Wila",
+    "city": "Wila",
+    "latitude": 47.416928,
+    "longitude": 8.851393,
+    "id": 501
+  },
+  {
+    "name": "Steig",
+    "city": "Steig",
+    "latitude": 47.439883,
+    "longitude": 8.927573,
+    "id": 502
+  },
+  {
+    "name": "Chäfer",
+    "city": "Turbenthal",
+    "latitude": 47.415703,
+    "longitude": 8.874952,
+    "id": 503
+  },
+  {
+    "name": "Büel",
+    "identifier": "",
+    "streetAddress": "",
+    "addressCountry": "",
+    "postalCode": "",
+    "city": "Büel bei Turbenthal",
+    "latitude": 47.424058,
+    "longitude": 8.885885,
+    "id": 504
+  },
+  {
+    "name": "Wängi",
+    "city": "Wängi",
+    "latitude": 47.503443,
+    "longitude": 8.962175,
+    "id": 505
+  },
+  {
+    "name": "Lommis",
+    "city": "Lommis",
+    "latitude": 47.517562,
+    "longitude": 8.993995,
+    "id": 506
+  },
+  {
+    "name": "Affeltrangen",
+    "city": "Affeltrangen",
+    "latitude": 47.527153,
+    "longitude": 9.030674,
+    "id": 507
+  },
+  {
+    "name": "Zezikon",
+    "city": "Zezikon",
+    "latitude": 47.535166,
+    "longitude": 9.022563,
+    "id": 508
+  },
+  {
+    "name": "Eglisau",
+    "identifier": "Richtung Steinenkreuz",
+    "city": "Eglisau",
+    "latitude": 47.580196,
+    "longitude": 8.520225,
+    "id": 509
+  },
+  {
+    "name": "Riedern",
+    "city": "Riedern",
+    "latitude": 47.623094,
+    "longitude": 8.450949,
+    "id": 510
+  },
+  {
+    "name": "Frauenfeld",
+    "identifier": "Marktplatz",
+    "streetAddress": "",
+    "addressCountry": "",
+    "postalCode": "",
+    "city": "Frauenfeld",
+    "latitude": 47.553586,
+    "longitude": 8.899635,
+    "id": 511
+  },
+  {
+    "name": "Erzingen",
+    "identifier": "",
+    "streetAddress": "",
+    "addressCountry": "",
+    "postalCode": "",
+    "city": "Erzingen",
+    "latitude": 47.655316,
+    "longitude": 8.425028,
+    "id": 512
+  },
+  {
+    "name": "Wilchingen",
+    "identifier": "",
+    "streetAddress": "",
+    "addressCountry": "",
+    "postalCode": "",
+    "city": "Wilchingen",
+    "latitude": 47.667421,
+    "longitude": 8.469491,
+    "id": 513
+  },
+  {
+    "name": "Sirnach",
+    "city": "Sirnach",
+    "latitude": 47.461796,
+    "longitude": 8.996886,
+    "id": 514
+  },
+  {
+    "name": "Richtung Wil",
+    "city": "Sirnach",
+    "latitude": 47.463714,
+    "longitude": 9.00276,
+    "id": 515
+  },
+  {
+    "name": "Kreisel links",
+    "identifier": "",
+    "streetAddress": "",
+    "addressCountry": "",
+    "postalCode": "",
+    "city": "Sirnach",
+    "latitude": 47.463235,
+    "longitude": 9.021526,
+    "id": 516
+  },
+  {
+    "name": "St. Margarethen",
+    "identifier": "",
+    "streetAddress": "",
+    "addressCountry": "",
+    "postalCode": "",
+    "city": "St. Margarethen",
+    "latitude": 47.487519,
+    "longitude": 9.000516,
+    "id": 517
+  },
+  {
+    "name": "vor Stettfurt rechts",
+    "identifier": "",
+    "streetAddress": "",
+    "addressCountry": "",
+    "postalCode": "",
+    "city": "Stettfurt",
+    "latitude": 47.523416,
+    "longitude": 8.960183,
+    "id": 518
   }
 ]

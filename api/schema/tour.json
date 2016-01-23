@@ -35,7 +35,7 @@
             "type": "string",
             "format": "date-time"
           },
-          "to": {
+          "until": {
             "type": "string",
             "format": "date-time"
           },
@@ -75,7 +75,7 @@
         },
         "required": [
           "from",
-          "to",
+          "until",
           "restaurants",
           "distance",
           "elevation",
