@@ -138,9 +138,8 @@ export default class Tour extends Component {
     const date = moment(timelineDate, moment.ISO_8601. true);
     const timeline = tour.timelines ? tour.timelines.find(tl => timelineMatches(tl, date)) : null;
     const restaurantsInTour = timeline.restaurants.map(rest => restaurants.find(item => item.id === rest));
-    const renderLocation = (locationIdx, idx) => {
-      const restaurant = restaurantsInTour.find(item => item.location === locationIdx);
-      const location = locations.find(item => item.id === locationIdx);
+    const renderLocation = (location, idx) => {
+      const restaurant = restaurantsInTour.find(item => item.location === location.id);
       let primaryResult;
       if (restaurant) {
         const restTimeline = restaurant.timelines.find(tl => timelineMatches(tl, date));
@@ -155,7 +154,10 @@ export default class Tour extends Component {
 
       return [primaryResult, <span> - </span>];
     };
-
+    const locationsInTour = timeline.locations.map(loc => locations.find(item => item.id === loc));
+    const foreignCountry = locationsInTour.find(loc => loc.addressCountry && loc.addressCountry !== 'CH');
+    const startRoute = tours.find(item => item.id === timeline.startroute);
+    const startRouteLocations = startRoute.timelines.find(tl => timelineMatches(tl, date)).locations.map(loc => locations.find(item => item.id === loc));
     return (
       <div className={styles.restaurants + ' container'}>
         <h1>Tour: {tour.name}
@@ -180,7 +182,7 @@ export default class Tour extends Component {
           <div className="col-xs-4">{tour.types.map(type => type.label).join(', ')}</div>
           <div className="col-xs-4">{moment(timeline.from, moment.ISO_8601. true).format('L')}</div>
           <div className="col-xs-4">{moment(timeline.until, moment.ISO_8601. true).format('L')}</div>
-          <div className="col-xs-4">{tours.find(item => item.id === timeline.startroute).name}</div>
+          <div className="col-xs-4">{startRoute.name}</div>
           <div className="col-xs-4">{timeline.restaurants.map((rest, idx) => <span key={idx}>{locations.find(loc => loc.id === restaurants.find(item => item.id === rest).location).name}</span>)}</div>
           <div className="col-xs-4">{timeline.elevation}</div>
           <div className="col-xs-4">{timeline.difficulty.label}</div>
@@ -190,14 +192,13 @@ export default class Tour extends Component {
         </div>
         <div className="row">
           <div className="col-xs-1">
-            {timeline.distance} km
-            <br />
-            {timeline.elevation} hm</div>
+            <b>{tour.name} {foreignCountry && "(ID)"}</b><br/>
+            ca {timeline.distance} km<br />
+            ca {timeline.elevation} hm</div>
           <div className="col-xs-2">{tours.find(item => item.id === timeline.startroute).name}</div>
           <div className="col-xs-9">
-            {tours.find(item => item.id === timeline.startroute).timelines.find(tl => timelineMatches(tl, date)).locations.map(renderLocation)}
-            <br/>
-            {timeline.locations.map(renderLocation)}</div>
+            {startRouteLocations.map(renderLocation)}<br/>
+            {locationsInTour.map(renderLocation)}</div>
         </div>
         <div className="row">
           <button className="btn btn-primary" onClick={handleEditStart(id)}>
