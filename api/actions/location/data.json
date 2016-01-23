@@ -3877,5 +3877,15 @@
     "latitude": 47.326596,
     "longitude": 8.899859,
     "id": 444
+  },
+  {
+    "name": "Restaurant Gartenlaube",
+    "streetAddress": "Zugerstrasse 15",
+    "addressCountry": "CH",
+    "postalCode": "6415",
+    "city": "Arth",
+    "latitude": 47.064685,
+    "longitude": 8.522659,
+    "id": 445
   }
 ]
