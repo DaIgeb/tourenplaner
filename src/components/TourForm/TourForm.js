@@ -20,7 +20,7 @@ import {TourType, Difficulty} from 'models';
     'name',
     'types',
     'timelines[].from',
-    'timelines[].to',
+    'timelines[].until',
     'timelines[].startroute',
     'timelines[].difficulty',
     'timelines[].distance',
@@ -145,7 +145,7 @@ export default class TourForm extends Component {
             <div key={idx} className="form-group">
               <div className="col-xs-7">
                 {renderDate(timeline.from, 'Gültig Von')}
-                {renderDate(timeline.to, 'Gültig Bis')}
+                {renderDate(timeline.until, 'Gültig Bis')}
                 {renderInput(timeline.startroute, 'Start Route', <TourInput className="form-control"
                                                                             allowNull
                                                                             default={undefined}

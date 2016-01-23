@@ -76,11 +76,6 @@ export default class Tour extends Component {
     };
     const {id, tours, save, error, editing, restaurants, locations, timelineDate, setTimelineDate} = this.props;
 
-    const changeTimeline = (momentDate) => {
-      if (momentDate.isValid()) {
-        setTimelineDate(momentDate.format());
-      }
-    };
     if (!tours) {
       return <div>Loading</div>;
     }
@@ -89,9 +84,34 @@ export default class Tour extends Component {
     if (!tour) {
       return <div>Invalid tour</div>;
     }
+
+    const styles = require('./Tour.scss');
+    if (editing[id]) {
+      return (
+        <div className={styles.restaurants + ' container'}>
+        <h1>Tour: {tour.name}</h1>
+        <DocumentMeta title={config.app.title + ': Tour ' + tour.name}/>
+
+        {error &&
+        <div className="alert alert-danger" role="alert">
+          <span className="glyphicon glyphicon-exclamation-sign" aria-hidden="true" />
+          {' '}
+          {error}
+        </div>}
+
+        <TourForm formKey={id} initialValues={tour} locations={locations} restaurants={restaurants} onSubmit={values => save(values)}/>
+      </div>);
+    }
+
+    const changeTimeline = (momentDate) => {
+      if (momentDate.isValid()) {
+        setTimelineDate(momentDate.format());
+      }
+    };
+
     const timelineMatches = (timeline, date) => {
       const fromDate = moment(timeline.from, moment.ISO_8601, true);
-      const untilDate = moment(timeline.to, moment.ISO_8601, true);
+      const untilDate = moment(timeline.until, moment.ISO_8601, true);
 
       if (!date.isValid()) {
         return false;
@@ -114,26 +134,27 @@ export default class Tour extends Component {
 
       return true;
     };
+
     const date = moment(timelineDate, moment.ISO_8601. true);
     const timeline = tour.timelines ? tour.timelines.find(tl => timelineMatches(tl, date)) : null;
+    const restaurantsInTour = timeline.restaurants.map(rest => restaurants.find(item => item.id === rest));
+    const renderLocation = (locationIdx, idx) => {
+      const restaurant = restaurantsInTour.find(item => item.location === locationIdx);
+      const location = locations.find(item => item.id === locationIdx);
+      let primaryResult;
+      if (restaurant) {
+        const restTimeline = restaurant.timelines.find(tl => timelineMatches(tl, date));
+        primaryResult = <b key={idx}>{location.city} ({location.name}/{restTimeline && restTimeline.phone})</b>;
+      } else {
+        primaryResult = <span key={idx}>{location.name}</span>;
+      }
 
-    const styles = require('./Tour.scss');
-    if (editing[id]) {
-      return (
-        <div className={styles.restaurants + ' container'}>
-        <h1>Tour: {tour.name}</h1>
-        <DocumentMeta title={config.app.title + ': Tour ' + tour.name}/>
+      if (idx === timeline.locations.length - 1) {
+        return primaryResult;
+      }
 
-        {error &&
-        <div className="alert alert-danger" role="alert">
-          <span className="glyphicon glyphicon-exclamation-sign" aria-hidden="true" />
-          {' '}
-          {error}
-        </div>}
-
-        <TourForm formKey={id} initialValues={tour} locations={locations} restaurants={restaurants} onSubmit={values => save(values)}/>
-      </div>);
-    }
+      return [primaryResult, <span> - </span>];
+    };
 
     return (
       <div className={styles.restaurants + ' container'}>
@@ -155,10 +176,30 @@ export default class Tour extends Component {
 
         <Timeline date={this.props.timelineDate} onTimelineChanged={changeTimeline}/>
 
-        <div>
-          {!timeline && <div>No Timeline available</div>}
-          {timeline && <div>{timeline.from}</div>}
-          {tour.name}
+        <div className="row">
+          <div className="col-xs-4">{tour.types.map(type => type.label).join(', ')}</div>
+          <div className="col-xs-4">{moment(timeline.from, moment.ISO_8601. true).format('L')}</div>
+          <div className="col-xs-4">{moment(timeline.until, moment.ISO_8601. true).format('L')}</div>
+          <div className="col-xs-4">{tours.find(item => item.id === timeline.startroute).name}</div>
+          <div className="col-xs-4">{timeline.restaurants.map((rest, idx) => <span key={idx}>{locations.find(loc => loc.id === restaurants.find(item => item.id === rest).location).name}</span>)}</div>
+          <div className="col-xs-4">{timeline.elevation}</div>
+          <div className="col-xs-4">{timeline.difficulty.label}</div>
+        </div>
+        <div className="row">
+          <h4>Tourenbeschrieb</h4>
+        </div>
+        <div className="row">
+          <div className="col-xs-1">
+            {timeline.distance} km
+            <br />
+            {timeline.elevation} hm</div>
+          <div className="col-xs-2">{tours.find(item => item.id === timeline.startroute).name}</div>
+          <div className="col-xs-9">
+            {tours.find(item => item.id === timeline.startroute).timelines.find(tl => timelineMatches(tl, date)).locations.map(renderLocation)}
+            <br/>
+            {timeline.locations.map(renderLocation)}</div>
+        </div>
+        <div className="row">
           <button className="btn btn-primary" onClick={handleEditStart(id)}>
             <i className="fa fa-pencil"/> Edit
           </button>

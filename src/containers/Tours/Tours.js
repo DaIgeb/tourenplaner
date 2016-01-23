@@ -96,7 +96,7 @@ export default class Tours extends Component {
 
     const timelineMatches = (timeline, date) => {
       const fromDate = moment(timeline.from, moment.ISO_8601, true);
-      const untilDate = moment(timeline.to, moment.ISO_8601, true);
+      const untilDate = moment(timeline.until, moment.ISO_8601, true);
 
       if (!date.isValid()) {
         return false;
