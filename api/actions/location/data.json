@@ -32,10 +32,11 @@
   {
     "id": 4,
     "name": "Hünikon",
+    "identifier": "",
     "streetAddress": "",
     "addressCountry": "",
     "postalCode": "",
-    "city": "Hünikon",
+    "city": "Hünikon bei Neftenbach",
     "latitude": 47.551972,
     "longitude": 8.668238
   },
@@ -1073,12 +1074,12 @@
     "id": 113
   },
   {
+    "id": 114,
     "name": "Müllheim",
     "identifier": "",
     "city": "Müllheim",
-    "latitude": 47.602371,
-    "longitude": 9.001612,
-    "id": 114
+    "latitude": 47.601944,
+    "longitude": 9.002041
   },
   {
     "id": 115,
@@ -3516,11 +3517,12 @@
     "longitude": 8.442383
   },
   {
+    "id": 402,
     "name": "Dielsdorf",
+    "identifier": "Kreisel",
     "city": "Dielsdorf",
     "latitude": 47.483162,
-    "longitude": 8.464676,
-    "id": 402
+    "longitude": 8.464676
   },
   {
     "name": "Niederhasli",
@@ -4492,5 +4494,206 @@
     "latitude": 47.523416,
     "longitude": 8.960183,
     "id": 518
+  },
+  {
+    "name": "Dättnau",
+    "identifier": "",
+    "streetAddress": "",
+    "addressCountry": "",
+    "postalCode": "",
+    "city": "Dättnau",
+    "latitude": 47.480534,
+    "longitude": 8.696912,
+    "id": 519
+  },
+  {
+    "name": "Eich",
+    "city": "Eich",
+    "latitude": 47.484111,
+    "longitude": 8.658131,
+    "id": 520
+  },
+  {
+    "name": "Mülberg",
+    "identifier": "",
+    "streetAddress": "",
+    "addressCountry": "",
+    "postalCode": "",
+    "city": "Mülberg",
+    "latitude": 47.486212,
+    "longitude": 8.639246,
+    "id": 521
+  },
+  {
+    "name": "Moosbrunnen",
+    "city": "Moosbrunnen",
+    "latitude": 47.48566,
+    "longitude": 8.580925,
+    "id": 522
+  },
+  {
+    "name": "Oberrüti",
+    "city": "Oberrüti",
+    "latitude": 47.483066,
+    "longitude": 8.560944,
+    "id": 523
+  },
+  {
+    "name": "Panzerpiste",
+    "city": "Bülach",
+    "latitude": 47.48762,
+    "longitude": 8.539835,
+    "id": 524
+  },
+  {
+    "name": "Forbuck",
+    "city": "Oberglatt",
+    "latitude": 47.482604,
+    "longitude": 8.508347,
+    "id": 525
+  },
+  {
+    "id": 526,
+    "name": "Mettmenhasli",
+    "city": "Mettmenhasli",
+    "latitude": 47.471073,
+    "longitude": 8.48618
+  },
+  {
+    "name": "Hofstetten",
+    "city": "Oberglatt",
+    "latitude": 47.479332,
+    "longitude": 8.506893,
+    "id": 527
+  },
+  {
+    "name": "Nassenwil",
+    "city": "Nassenwil",
+    "latitude": 47.46497,
+    "longitude": 8.470307,
+    "id": 528
+  },
+  {
+    "name": "Eutenberg",
+    "identifier": "",
+    "streetAddress": "",
+    "addressCountry": "",
+    "postalCode": "",
+    "city": "Eutenberg",
+    "latitude": 47.545009,
+    "longitude": 9.03385,
+    "id": 529
+  },
+  {
+    "name": "Dielsdorf",
+    "identifier": "Südstrasse",
+    "streetAddress": "",
+    "addressCountry": "",
+    "postalCode": "",
+    "city": "Dielsdorf",
+    "latitude": 47.472453,
+    "longitude": 8.451757,
+    "id": 530
+  },
+  {
+    "name": "Regensberg",
+    "city": "Regensberg",
+    "latitude": 47.48228,
+    "longitude": 8.436548,
+    "id": 531
+  },
+  {
+    "name": "Schöfflisdorf",
+    "city": "Schöfflisdorf",
+    "latitude": 47.499724,
+    "longitude": 8.416156,
+    "id": 532
+  },
+  {
+    "name": "Bänikon",
+    "identifier": "",
+    "streetAddress": "",
+    "addressCountry": "",
+    "postalCode": "",
+    "city": "Bänikon",
+    "latitude": 47.555288,
+    "longitude": 9.042051,
+    "id": 533
+  },
+  {
+    "name": "Heitlig",
+    "identifier": "",
+    "streetAddress": "",
+    "addressCountry": "",
+    "postalCode": "",
+    "city": "Heitlig",
+    "latitude": 47.509098,
+    "longitude": 8.453964,
+    "id": 534
+  },
+  {
+    "name": "Holzhäusern",
+    "identifier": "",
+    "streetAddress": "",
+    "addressCountry": "",
+    "postalCode": "",
+    "city": "Holzhäusern",
+    "latitude": 47.553136,
+    "longitude": 9.049869,
+    "id": 535
+  },
+  {
+    "name": "Obersteinmaur",
+    "city": "Steinmaur",
+    "latitude": 47.50177,
+    "longitude": 8.455335,
+    "id": 536
+  },
+  {
+    "name": "Humlikon",
+    "city": "Humlikon",
+    "latitude": 47.560433,
+    "longitude": 9.062428,
+    "id": 537
+  },
+  {
+    "name": "Amlikon",
+    "identifier": "",
+    "streetAddress": "",
+    "addressCountry": "",
+    "postalCode": "",
+    "city": "Amlikon",
+    "latitude": 47.570181,
+    "longitude": 9.058412,
+    "id": 538
+  },
+  {
+    "name": "Märstetten",
+    "identifier": "",
+    "streetAddress": "",
+    "addressCountry": "",
+    "postalCode": "",
+    "city": "Märstetten",
+    "latitude": 47.583036,
+    "longitude": 9.060319,
+    "id": 539
+  },
+  {
+    "name": "Radweg 26",
+    "city": "Müllheim",
+    "latitude": 9.002041,
+    "longitude": 8.986563,
+    "id": 540
+  },
+  {
+    "name": "Felben",
+    "identifier": "",
+    "streetAddress": "",
+    "addressCountry": "",
+    "postalCode": "",
+    "city": "Felben",
+    "latitude": 47.579347,
+    "longitude": 8.937715,
+    "id": 541
   }
 ]
