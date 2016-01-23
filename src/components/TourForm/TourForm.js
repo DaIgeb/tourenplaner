@@ -99,12 +99,15 @@ export default class TourForm extends Component {
 
     const renderDate = (field, label, attributes = null) => renderInput(field, label, renderDateControl(field, attributes));
 
-    const findLocation = (locationId) => locations.find(loc => loc.id === locationId);
     const renderRestaurant = (restaurantsField, restaurant, restIdx) => {
-      const mapRestaurant = (option) => {
-        const loc = findLocation(option.location);
-        return <option key={option.id} value={JSON.stringify(option.id)}>{loc.city} - {loc.name}</option>;
-      };
+      const findLocation = (locationId) => locations.find(loc => loc.id === locationId);
+
+      const restaurantOptions = restaurants.map(rest => {
+        const loc = findLocation(rest.location);
+        return { id: rest.id, label: `${loc.city} - ${loc.name}`};
+      }).sort((option1, option2) => option1.label.localeCompare(option2.label))
+        .map(option => <option key={option.id} value={JSON.stringify(option.id)}>{option.label}</option>);
+
       return (
         <div key={restIdx} className="form-group">
           <div className="col-xs-10">
@@ -112,7 +115,7 @@ export default class TourForm extends Component {
               {...restaurant}
               onBlur={evt => restaurant.onBlur(parseInt(evt.target.value, 10))}
               onChange={evt => restaurant.onChange(parseInt(evt.target.value, 10))}>
-              {restaurants.map(mapRestaurant)}
+              {restaurantOptions}
             </select>
           </div>
           <div className="col-xs-2">

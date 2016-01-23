@@ -148,7 +148,7 @@ export default class Tour extends Component {
         primaryResult = <span key={idx}>{location.name}</span>;
       }
 
-      const mapsUrl =`http://www.google.com/maps/place/${location.latitude},${location.longitude}`;
+      const mapsUrl = `http://www.google.com/maps/place/${location.latitude},${location.longitude}`;
       primaryResult = <a href={mapsUrl} target="_blank">{primaryResult}</a>;
       if (idx === timeline.locations.length - 1) {
         return primaryResult;
@@ -194,7 +194,7 @@ export default class Tour extends Component {
         </div>
         <div className="row">
           <div className="col-xs-1">
-            <b>{tour.name} {foreignCountry && "(ID)"}</b><br/>
+            <b>{tour.name} {foreignCountry && '(ID)'}</b><br/>
             ca {timeline.distance} km<br />
             ca {timeline.elevation} hm</div>
           <div className="col-xs-2">{tours.find(item => item.id === timeline.startroute).name}</div>

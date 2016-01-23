@@ -24,31 +24,14 @@ export default class LocationInput extends Component {
   render() {
     const {locations, onBlur, onChange} = this.props;
     const bluring = onBlur || onChange;
-    const compareValue = (str1, str2) => {
-      if (str1 < str2) {
-        return -1;
-      }
-      if (str1 > str2) {
-        return 1;
-      }
 
-      return 0;
-    };
     const options = locations
-      .sort((loc1, loc2) => {
-        if (loc1.city !== loc2.city) {
-          return compareValue(loc1.city, loc2.city);
-        }
-        if (loc1.name !== loc2.name) {
-          return compareValue(loc1.name, loc2.name);
-        }
-
-        return compareValue(loc1.identifier, loc2.identifier);
+      .map(loc => {
+        const label = (loc.city && loc.city !== loc.name ? `${loc.city} - ` : '') + loc.name + (loc.identifier ? ` (${loc.identifier})` : '');
+        return { id: loc.id, label: label};
       })
-      .map(option => {
-        const label = (option.city && option.city !== option.name ? `${option.city} - ` : '') + option.name + (option.identifier ? ` (${option.identifier})` : '');
-        return <option key={option.id} value={JSON.stringify(option.id)}>{label}</option>;
-      });
+      .sort((loc1, loc2) => loc1.label.localeCompare(loc2.label))
+      .map(option => <option key={option.id} value={JSON.stringify(option.id)}>{option.label}</option>);
     return (
     <select
       {...this.props}
