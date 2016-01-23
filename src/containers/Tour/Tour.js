@@ -148,6 +148,8 @@ export default class Tour extends Component {
         primaryResult = <span key={idx}>{location.name}</span>;
       }
 
+      const mapsUrl =`http://www.google.com/maps/place/${location.latitude},${location.longitude}`;
+      primaryResult = <a href={mapsUrl} target="_blank">{primaryResult}</a>;
       if (idx === timeline.locations.length - 1) {
         return primaryResult;
       }
