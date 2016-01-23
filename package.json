@@ -25,6 +25,8 @@
   "main": "bin/server.js",
   "scripts": {
     "start": "concurrent --kill-others \"npm run start-prod\" \"npm run start-prod-api\"",
+    "start-local": "concurrent --kill-others \"npm run start-local-prod\" \"npm run start-prod-api\"",
+    "start-local-prod": "better-npm-run start-local-prod",
     "start-prod": "better-npm-run start-prod",
     "start-prod-api": "better-npm-run start-prod-api",
     "build": "webpack --verbose --colors --display-error-details --config webpack/prod.config.js",
@@ -45,6 +47,15 @@
         "NODE_PATH": "./src",
         "NODE_ENV": "production",
         "APIPORT": 3030
+      }
+    },
+    "start-local-prod": {
+      "command": "node ./bin/server.js",
+      "env": {
+        "NODE_PATH": "./src",
+        "NODE_ENV": "production",
+        "APIPORT": 3030,
+        "PORT": 8080
       }
     },
     "start-prod-api": {
