@@ -15,7 +15,7 @@
     "streetAddress": "",
     "addressCountry": "",
     "postalCode": "",
-    "city": "Riet",
+    "city": "Riet bei Neftenbach",
     "latitude": 47.536672,
     "longitude": 8.688084
   },
@@ -1656,11 +1656,12 @@
     "id": 181
   },
   {
+    "id": 182,
     "name": "Islikon",
+    "identifier": "Kreuzung Gachnang",
     "city": "Islikon",
     "latitude": 47.545467,
-    "longitude": 8.841917,
-    "id": 182
+    "longitude": 8.841917
   },
   {
     "name": "Grüt",
@@ -4695,5 +4696,406 @@
     "latitude": 47.579347,
     "longitude": 8.937715,
     "id": 541
+  },
+  {
+    "name": "Islikon",
+    "identifier": "Kreuzung Liebensberg",
+    "city": "Islikon",
+    "latitude": 47.544142,
+    "longitude": 8.839791,
+    "id": 542
+  },
+  {
+    "name": "Niederwil",
+    "city": "Niederwil TG",
+    "latitude": 47.544142,
+    "longitude": 8.839791,
+    "id": 543
+  },
+  {
+    "name": "Allmend",
+    "identifier": "",
+    "streetAddress": "",
+    "addressCountry": "",
+    "postalCode": "",
+    "city": "Frauenfeld",
+    "latitude": 47.570365,
+    "longitude": 8.903585,
+    "id": 544
+  },
+  {
+    "name": "Gähwil",
+    "city": "Gähwil",
+    "latitude": 47.397513,
+    "longitude": 9.001746,
+    "id": 545
+  },
+  {
+    "name": "Alten",
+    "city": "Alten",
+    "latitude": 47.598676,
+    "longitude": 8.648465,
+    "id": 546
+  },
+  {
+    "id": 547,
+    "name": "Baltersweil",
+    "addressCountry": "D",
+    "city": "Baltersweil",
+    "latitude": 47.635995,
+    "longitude": 8.514903
+  },
+  {
+    "name": "Berwangen",
+    "addressCountry": "D",
+    "city": "Berwangen",
+    "latitude": 47.628371,
+    "longitude": 8.501958,
+    "id": 548
+  },
+  {
+    "name": "Dettighofen",
+    "addressCountry": "D",
+    "city": "Dettighofen",
+    "latitude": 47.623772,
+    "longitude": 8.485828,
+    "id": 549
+  },
+  {
+    "name": "Buchenloo",
+    "city": "Buchenloo",
+    "latitude": 47.613424,
+    "longitude": 8.493009,
+    "id": 550
+  },
+  {
+    "name": "Hünikon",
+    "identifier": "",
+    "streetAddress": "",
+    "addressCountry": "",
+    "postalCode": "",
+    "city": "Hünikon bei Amlikon-Bissegg",
+    "latitude": 47.560428,
+    "longitude": 9.062408,
+    "id": 551
+  },
+  {
+    "name": "Esslingen",
+    "identifier": "",
+    "streetAddress": "",
+    "addressCountry": "",
+    "postalCode": "",
+    "city": "Esslingen",
+    "latitude": 47.287026,
+    "longitude": 8.710563,
+    "id": 552
+  },
+  {
+    "name": "Oberschneit",
+    "identifier": "",
+    "streetAddress": "",
+    "addressCountry": "",
+    "postalCode": "",
+    "city": "Oberschneit bei Hagenbuch",
+    "latitude": 47.520332,
+    "longitude": 8.863649,
+    "id": 553
+  },
+  {
+    "name": "Vollikon",
+    "city": "Vollikon",
+    "latitude": 47.282381,
+    "longitude": 8.697365,
+    "id": 554
+  },
+  {
+    "name": "Meilen [Fähre]",
+    "city": "Meilen",
+    "latitude": 47.268017,
+    "longitude": 8.638488,
+    "id": 555
+  },
+  {
+    "name": "Horgen",
+    "city": "Horgen",
+    "latitude": 47.254922,
+    "longitude": 8.61288,
+    "id": 556
+  },
+  {
+    "name": "Sihlbrugg",
+    "city": "Sihlbrugg",
+    "latitude": 47.217726,
+    "longitude": 8.577748,
+    "id": 557
+  },
+  {
+    "name": "Neuheim",
+    "identifier": "",
+    "city": "Neuheim",
+    "latitude": 47.203683,
+    "longitude": 8.582202,
+    "id": 558
+  },
+  {
+    "name": "Winzwilen",
+    "city": "Winzwilen",
+    "latitude": 47.186566,
+    "longitude": 8.599862,
+    "id": 559
+  },
+  {
+    "name": "Menzingen",
+    "city": "Menzingen",
+    "latitude": 47.17837,
+    "longitude": 8.588233,
+    "id": 560
+  },
+  {
+    "name": "Edlibach",
+    "city": "Edlibach",
+    "latitude": 47.181562,
+    "longitude": 8.572613,
+    "id": 561
+  },
+  {
+    "id": 562,
+    "name": "Neuägeri",
+    "city": "Neuägeri",
+    "latitude": 47.15432,
+    "longitude": 8.560853
+  },
+  {
+    "name": "Zugerberg",
+    "city": "Zugerberg",
+    "latitude": 47.14384,
+    "longitude": 8.533772,
+    "id": 563
+  },
+  {
+    "name": "Arth",
+    "city": "Arth",
+    "latitude": 47.052302,
+    "longitude": 8.554512,
+    "id": 564
+  },
+  {
+    "name": "Krillberg",
+    "identifier": "",
+    "streetAddress": "",
+    "addressCountry": "",
+    "city": "Krillbeg Wängi",
+    "latitude": 47.480109,
+    "longitude": 8.947594,
+    "id": 565
+  },
+  {
+    "name": "Steinerberg",
+    "city": "Steinerberg",
+    "latitude": 47.055418,
+    "longitude": 8.586659,
+    "id": 566
+  },
+  {
+    "name": "Sattel",
+    "city": "Sattel",
+    "latitude": 47.081555,
+    "longitude": 8.634756,
+    "id": 567
+  },
+  {
+    "name": "Morgartenberg",
+    "city": "Morgartenberg",
+    "latitude": 47.104056,
+    "longitude": 8.648365,
+    "id": 568
+  },
+  {
+    "name": "Raten",
+    "city": "Raten",
+    "latitude": 47.141752,
+    "longitude": 8.66383,
+    "id": 569
+  },
+  {
+    "name": "Biberbrugg",
+    "city": "Biberbrugg",
+    "latitude": 47.152202,
+    "longitude": 8.717713,
+    "id": 570
+  },
+  {
+    "name": "Schindellegi",
+    "city": "Schindellegi",
+    "latitude": 47.174518,
+    "longitude": 8.71215,
+    "id": 571
+  },
+  {
+    "name": "Rapperswil",
+    "city": "Rapperswil",
+    "latitude": 47.225118,
+    "longitude": 8.816351,
+    "id": 572
+  },
+  {
+    "name": "Lenggis",
+    "city": "Lenggis",
+    "latitude": 47.241924,
+    "longitude": 8.820336,
+    "id": 573
+  },
+  {
+    "name": "Bubikon",
+    "city": "Bubikon",
+    "latitude": 47.268399,
+    "longitude": 8.819177,
+    "id": 574
+  },
+  {
+    "name": "Adetswil",
+    "city": "Adetswil",
+    "latitude": 47.33938,
+    "longitude": 8.840257,
+    "id": 575
+  },
+  {
+    "name": "Sitzberg",
+    "identifier": "",
+    "streetAddress": "",
+    "addressCountry": "",
+    "postalCode": "",
+    "city": "Sitzberg",
+    "latitude": 47.424661,
+    "longitude": 8.911566,
+    "id": 576
+  },
+  {
+    "name": "Büel [links]",
+    "identifier": "",
+    "streetAddress": "",
+    "addressCountry": "",
+    "postalCode": "",
+    "city": "Büel bei Turbenthal",
+    "latitude": 47.424058,
+    "longitude": 8.885885,
+    "id": 577
+  },
+  {
+    "name": "Freudenberg",
+    "city": "Freudenberg",
+    "latitude": 47.428504,
+    "longitude": 8.825768,
+    "id": 578
+  },
+  {
+    "name": "Kamelbuckel",
+    "city": "Frauenfeld",
+    "latitude": 47.5346,
+    "longitude": 8.921509,
+    "id": 579
+  },
+  {
+    "name": "Menzengrüt",
+    "city": "Menzengrüt",
+    "latitude": 47.549073,
+    "longitude": 8.822104,
+    "id": 580
+  },
+  {
+    "name": "Bliggenswil",
+    "city": "Bliggenswil",
+    "latitude": 47.364121,
+    "longitude": 8.864285,
+    "id": 581
+  },
+  {
+    "name": "Neuthal",
+    "city": "Neuthal",
+    "latitude": 47.358737,
+    "longitude": 8.863813,
+    "id": 582
+  },
+  {
+    "name": "Dürstelen",
+    "city": "Dürstelen",
+    "latitude": 47.366753,
+    "longitude": 8.843314,
+    "id": 583
+  },
+  {
+    "name": "Hasel",
+    "city": "Hasel",
+    "latitude": 47.379481,
+    "longitude": 8.83612,
+    "id": 584
+  },
+  {
+    "name": "Schönau",
+    "city": "Schönau",
+    "latitude": 47.380408,
+    "longitude": 8.829783,
+    "id": 585
+  },
+  {
+    "name": "Isikon",
+    "city": "Isikon",
+    "latitude": 47.376782,
+    "longitude": 8.813897,
+    "id": 586
+  },
+  {
+    "id": 587,
+    "name": "Ried",
+    "identifier": "",
+    "streetAddress": "",
+    "addressCountry": "",
+    "postalCode": "",
+    "city": "Ried bei Gibswil",
+    "latitude": 47.308072,
+    "longitude": 8.912293
+  },
+  {
+    "id": 588,
+    "name": "Hueb",
+    "identifier": "",
+    "streetAddress": "",
+    "addressCountry": "",
+    "postalCode": "",
+    "city": "Hueb",
+    "latitude": 47.29309,
+    "longitude": 8.90655
+  },
+  {
+    "name": "Blattenbach",
+    "city": "Blattenbach",
+    "latitude": 47.276727,
+    "longitude": 8.898055,
+    "id": 589
+  },
+  {
+    "name": "Hasenstrick",
+    "city": "Hasenstrick",
+    "latitude": 47.281414,
+    "longitude": 8.878934,
+    "id": 590
+  },
+  {
+    "name": "Wernetshausen",
+    "city": "Wernetshausen",
+    "latitude": 47.299036,
+    "longitude": 8.867212,
+    "id": 591
+  },
+  {
+    "name": "Girenbad",
+    "identifier": "",
+    "streetAddress": "",
+    "addressCountry": "",
+    "postalCode": "",
+    "city": "Girenbad",
+    "latitude": 47.309434,
+    "longitude": 8.872284,
+    "id": 592
   }
 ]

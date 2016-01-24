@@ -2616,5 +2616,569 @@
       }
     ],
     "id": 58
+  },
+  {
+    "name": "Stammheim via Schlattingen",
+    "types": [
+      {
+        "id": 2,
+        "label": "Morgentour"
+      },
+      {
+        "id": 3,
+        "label": "Nachmittagstour"
+      }
+    ],
+    "timelines": [
+      {
+        "from": "2015-12-31T23:00:00.000Z",
+        "until": "2100-12-30T23:00:00.000Z",
+        "startroute": 3,
+        "difficulty": {
+          "id": 1,
+          "label": "Einfach"
+        },
+        "distance": 70,
+        "elevation": 0,
+        "restaurants": [
+          50
+        ],
+        "locations": [
+          99,
+          100,
+          542,
+          543,
+          310,
+          164,
+          63,
+          64,
+          288,
+          312,
+          129,
+          128,
+          127,
+          126,
+          158,
+          159,
+          160,
+          162,
+          116,
+          14
+        ]
+      }
+    ],
+    "id": 59
+  },
+  {
+    "name": "Stammheim via Wilen",
+    "types": [
+      {
+        "id": 4,
+        "label": "Abendtour"
+      }
+    ],
+    "timelines": [
+      {
+        "from": "2015-12-31T23:00:00.000Z",
+        "until": "2100-12-30T23:00:00.000Z",
+        "startroute": 3,
+        "difficulty": {
+          "id": 1,
+          "label": "Einfach"
+        },
+        "distance": 60,
+        "elevation": 0,
+        "restaurants": [
+          50
+        ],
+        "locations": [
+          99,
+          100,
+          542,
+          543,
+          310,
+          164,
+          63,
+          64,
+          288,
+          312,
+          149,
+          65,
+          66,
+          163,
+          68,
+          116,
+          14
+        ]
+      }
+    ],
+    "id": 60
+  },
+  {
+    "name": "Steg",
+    "types": [
+      {
+        "id": 3,
+        "label": "Nachmittagstour"
+      }
+    ],
+    "timelines": [
+      {
+        "from": "2015-12-31T23:00:00.000Z",
+        "until": "2100-12-30T23:00:00.000Z",
+        "startroute": 6,
+        "difficulty": {
+          "id": 3,
+          "label": "Schwierig"
+        },
+        "distance": 80,
+        "elevation": 0,
+        "restaurants": [
+          52
+        ],
+        "locations": [
+          177,
+          111,
+          110,
+          109,
+          373,
+          188,
+          189,
+          190,
+          545,
+          73,
+          229,
+          315,
+          223,
+          224,
+          14
+        ]
+      }
+    ],
+    "id": 61
+  },
+  {
+    "id": 62,
+    "name": "Warth",
+    "types": [
+      {
+        "id": 2,
+        "label": "Morgentour"
+      },
+      {
+        "id": 3,
+        "label": "Nachmittagstour"
+      }
+    ],
+    "timelines": [
+      {
+        "from": "2015-12-31T23:00:00.000Z",
+        "until": "2100-12-30T23:00:00.000Z",
+        "startroute": 4,
+        "difficulty": {
+          "id": 2,
+          "label": "Mittel"
+        },
+        "distance": 70,
+        "elevation": 725,
+        "restaurants": [
+          59
+        ],
+        "locations": [
+          14,
+          265,
+          262,
+          261,
+          102,
+          260,
+          348,
+          347,
+          508,
+          529,
+          533,
+          535,
+          551,
+          538,
+          539,
+          114,
+          540,
+          325,
+          541,
+          544,
+          335,
+          59,
+          58,
+          57,
+          14
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Steinenkreuz",
+    "types": [
+      {
+        "id": 3,
+        "label": "Nachmittagstour"
+      }
+    ],
+    "timelines": [
+      {
+        "from": "2015-12-31T23:00:00.000Z",
+        "until": "2100-12-30T23:00:00.000Z",
+        "startroute": 8,
+        "difficulty": {
+          "id": 1,
+          "label": "Einfach"
+        },
+        "distance": 75,
+        "elevation": 0,
+        "restaurants": [
+          53
+        ],
+        "locations": [
+          116,
+          13,
+          12,
+          10,
+          546,
+          98,
+          121,
+          496,
+          547,
+          548,
+          549,
+          550,
+          270,
+          509,
+          317,
+          7,
+          5,
+          4,
+          196,
+          14
+        ]
+      }
+    ],
+    "id": 63
+  },
+  {
+    "id": 64,
+    "name": "Wängi via Matzingen",
+    "types": [
+      {
+        "id": 2,
+        "label": "Morgentour"
+      }
+    ],
+    "timelines": [
+      {
+        "from": "2015-12-31T23:00:00.000Z",
+        "until": "2100-12-30T23:00:00.000Z",
+        "startroute": 3,
+        "difficulty": {
+          "id": 2,
+          "label": "Mittel"
+        },
+        "distance": 65,
+        "elevation": 750,
+        "restaurants": [
+          58
+        ],
+        "locations": [
+          99,
+          553,
+          102,
+          260,
+          348,
+          347,
+          508,
+          507,
+          506,
+          334,
+          565,
+          284,
+          179,
+          69,
+          14
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Zugerland",
+    "types": [
+      {
+        "id": 5,
+        "label": "Tagestour"
+      }
+    ],
+    "timelines": [
+      {
+        "from": "2015-12-31T23:00:00.000Z",
+        "until": "2100-12-30T23:00:00.000Z",
+        "startroute": 6,
+        "difficulty": {
+          "id": 3,
+          "label": "Schwierig"
+        },
+        "distance": 165,
+        "elevation": 3000,
+        "restaurants": [
+          63,
+          72
+        ],
+        "locations": [
+          209,
+          212,
+          414,
+          415,
+          416,
+          357,
+          552,
+          554,
+          555,
+          556,
+          345,
+          557,
+          558,
+          559,
+          560,
+          561,
+          562,
+          563,
+          445,
+          564,
+          566,
+          567,
+          568,
+          569,
+          570,
+          571,
+          436,
+          572,
+          573,
+          574,
+          438,
+          352,
+          14
+        ]
+      }
+    ],
+    "id": 65
+  },
+  {
+    "name": "Wolfensberg",
+    "types": [
+      {
+        "id": 3,
+        "label": "Nachmittagstour"
+      }
+    ],
+    "timelines": [
+      {
+        "from": "2015-12-31T23:00:00.000Z",
+        "until": "2100-12-30T23:00:00.000Z",
+        "startroute": 4,
+        "difficulty": {
+          "id": 3,
+          "label": "Schwierig"
+        },
+        "distance": 70,
+        "elevation": 850,
+        "restaurants": [
+          62
+        ],
+        "locations": [
+          209,
+          224,
+          223,
+          343,
+          219,
+          218,
+          575,
+          216,
+          215,
+          212,
+          209,
+          14
+        ]
+      }
+    ],
+    "id": 66
+  },
+  {
+    "id": 67,
+    "name": "Wildberg",
+    "types": [
+      {
+        "id": 4,
+        "label": "Abendtour"
+      }
+    ],
+    "timelines": [
+      {
+        "from": "2015-12-31T23:00:00.000Z",
+        "until": "2100-12-30T23:00:00.000Z",
+        "startroute": 6,
+        "difficulty": {
+          "id": 1,
+          "label": "Einfach"
+        },
+        "distance": 55,
+        "elevation": 0,
+        "restaurants": [
+          61
+        ],
+        "locations": [
+          209,
+          224,
+          109,
+          502,
+          576,
+          577,
+          501,
+          578,
+          339,
+          227,
+          14
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Wängi via Dussnang",
+    "types": [
+      {
+        "id": 2,
+        "label": "Morgentour"
+      }
+    ],
+    "timelines": [
+      {
+        "from": "2015-12-31T23:00:00.000Z",
+        "until": "2100-12-30T23:00:00.000Z",
+        "startroute": 6,
+        "difficulty": {
+          "id": 1,
+          "label": "Einfach"
+        },
+        "distance": 65,
+        "elevation": 0,
+        "restaurants": [
+          57
+        ],
+        "locations": [
+          209,
+          224,
+          109,
+          373,
+          514,
+          515,
+          516,
+          517,
+          330,
+          260,
+          579,
+          511,
+          175,
+          580,
+          203,
+          14
+        ]
+      }
+    ],
+    "id": 68
+  },
+  {
+    "name": "Wallikon via Bliggenswil",
+    "types": [
+      {
+        "id": 3,
+        "label": "Nachmittagstour"
+      }
+    ],
+    "timelines": [
+      {
+        "from": "2015-12-31T23:00:00.000Z",
+        "until": "2100-12-30T23:00:00.000Z",
+        "startroute": 4,
+        "difficulty": {
+          "id": 2,
+          "label": "Mittel"
+        },
+        "distance": 70,
+        "elevation": 0,
+        "restaurants": [
+          56
+        ],
+        "locations": [
+          69,
+          70,
+          71,
+          224,
+          500,
+          223,
+          581,
+          582,
+          218,
+          575,
+          583,
+          584,
+          585,
+          586,
+          327,
+          215,
+          212,
+          213,
+          14
+        ]
+      }
+    ],
+    "id": 69
+  },
+  {
+    "name": "Wallikon via Hasenstrick",
+    "types": [
+      {
+        "id": 3,
+        "label": "Nachmittagstour"
+      }
+    ],
+    "timelines": [
+      {
+        "from": "2015-12-31T23:00:00.000Z",
+        "until": "2100-12-30T23:00:00.000Z",
+        "startroute": 6,
+        "difficulty": {
+          "id": 2,
+          "label": "Mittel"
+        },
+        "distance": 75,
+        "elevation": 0,
+        "restaurants": [
+          56
+        ],
+        "locations": [
+          209,
+          224,
+          223,
+          225,
+          587,
+          588,
+          589,
+          590,
+          591,
+          592,
+          218,
+          216,
+          327,
+          215,
+          212,
+          14
+        ]
+      }
+    ],
+    "id": 70
   }
 ]
