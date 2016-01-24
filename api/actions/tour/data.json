@@ -3180,5 +3180,199 @@
       }
     ],
     "id": 70
+  },
+  {
+    "name": "Trüllikon",
+    "types": [
+      {
+        "id": 4,
+        "label": "Abendtour"
+      }
+    ],
+    "timelines": [
+      {
+        "from": "2015-12-31T23:00:00.000Z",
+        "until": "2100-12-30T23:00:00.000Z",
+        "startroute": 2,
+        "difficulty": {
+          "id": 1,
+          "label": "Einfach"
+        },
+        "distance": 50,
+        "elevation": 0,
+        "restaurants": [
+          55
+        ],
+        "locations": [
+          55,
+          56,
+          147,
+          58,
+          59,
+          132,
+          593,
+          324,
+          148,
+          134,
+          163,
+          116,
+          14
+        ]
+      }
+    ],
+    "id": 71
+  },
+  {
+    "name": "Sternenberg via Tablat",
+    "types": [
+      {
+        "id": 3,
+        "label": "Nachmittagstour"
+      }
+    ],
+    "timelines": [
+      {
+        "from": "2015-12-31T23:00:00.000Z",
+        "until": "2100-12-30T23:00:00.000Z",
+        "startroute": 6,
+        "difficulty": {
+          "id": 3,
+          "label": "Schwierig"
+        },
+        "distance": 65,
+        "elevation": 0,
+        "restaurants": [
+          54
+        ],
+        "locations": [
+          209,
+          224,
+          501,
+          500,
+          594,
+          323,
+          595,
+          72,
+          373,
+          186,
+          185,
+          107,
+          70,
+          14
+        ]
+      }
+    ],
+    "id": 72
+  },
+  {
+    "name": "Sternenberg via Dussnang",
+    "types": [
+      {
+        "id": 3,
+        "label": "Nachmittagstour"
+      }
+    ],
+    "timelines": [
+      {
+        "from": "2015-12-31T23:00:00.000Z",
+        "until": "2100-12-30T23:00:00.000Z",
+        "startroute": 4,
+        "difficulty": {
+          "id": 3,
+          "label": "Schwierig"
+        },
+        "distance": 65,
+        "elevation": 0,
+        "restaurants": [
+          54
+        ],
+        "locations": [
+          69,
+          70,
+          71,
+          109,
+          373,
+          597,
+          596,
+          323,
+          594,
+          500,
+          224,
+          14
+        ]
+      }
+    ],
+    "id": 73
+  },
+  {
+    "name": "Tösstal Classique",
+    "types": [
+      {
+        "id": 5,
+        "label": "Tagestour"
+      }
+    ],
+    "timelines": [
+      {
+        "from": "2015-12-31T23:00:00.000Z",
+        "until": "2100-12-30T23:00:00.000Z",
+        "startroute": 6,
+        "difficulty": {
+          "id": 3,
+          "label": "Schwierig"
+        },
+        "distance": 125,
+        "elevation": 0,
+        "restaurants": [
+          54,
+          71
+        ],
+        "locations": [
+          209,
+          227,
+          598,
+          599,
+          389,
+          224,
+          501,
+          503,
+          504,
+          576,
+          499,
+          500,
+          594,
+          323,
+          595,
+          596,
+          600,
+          601,
+          72,
+          73,
+          229,
+          228,
+          225,
+          444,
+          219,
+          218,
+          575,
+          583,
+          602,
+          584,
+          603,
+          604,
+          410,
+          409,
+          605,
+          390,
+          224,
+          606,
+          110,
+          111,
+          43,
+          14
+        ]
+      }
+    ],
+    "id": 74
   }
 ]

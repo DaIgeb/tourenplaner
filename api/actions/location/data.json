@@ -5097,5 +5097,112 @@
     "latitude": 47.309434,
     "longitude": 8.872284,
     "id": 592
+  },
+  {
+    "name": "Gisenhard",
+    "city": "Gisenhard",
+    "latitude": 47.622916,
+    "longitude": 8.740428,
+    "id": 593
+  },
+  {
+    "name": "Manzenhub",
+    "city": "Manzenhub",
+    "latitude": 47.394923,
+    "longitude": 8.87701,
+    "id": 594
+  },
+  {
+    "name": "Gfell",
+    "city": "Gfell",
+    "latitude": 47.382069,
+    "longitude": 8.933332,
+    "id": 595
+  },
+  {
+    "name": "Allenwinden",
+    "city": "Allenwinden",
+    "latitude": 47.38407,
+    "longitude": 8.949791,
+    "id": 596
+  },
+  {
+    "name": "Dingetschwil",
+    "city": "Dingetschwil",
+    "latitude": 47.402744,
+    "longitude": 8.927488,
+    "id": 597
+  },
+  {
+    "name": "Oberlangenhard",
+    "city": "Oberlangenhard",
+    "latitude": 47.455073,
+    "longitude": 8.810292,
+    "id": 598
+  },
+  {
+    "name": "Zell",
+    "identifier": "",
+    "city": "Zell",
+    "latitude": 47.44791,
+    "longitude": 8.823143,
+    "id": 599
+  },
+  {
+    "name": "Rothbüel",
+    "city": "Rothbüel",
+    "latitude": 47.398291,
+    "longitude": 8.938596,
+    "id": 600
+  },
+  {
+    "name": "Au",
+    "identifier": "",
+    "streetAddress": "",
+    "addressCountry": "",
+    "postalCode": "",
+    "city": "Au",
+    "latitude": 47.39737,
+    "longitude": 8.953476,
+    "id": 601
+  },
+  {
+    "name": "Oberhittnau",
+    "city": "Oberhittnau",
+    "latitude": 47.361264,
+    "longitude": 8.824117,
+    "id": 602
+  },
+  {
+    "name": "Saland",
+    "city": "Saland",
+    "latitude": 47.391005,
+    "longitude": 8.853324,
+    "id": 603
+  },
+  {
+    "name": "Ravensbühl",
+    "city": "Ravensbühl",
+    "latitude": 47.391886,
+    "longitude": 8.835542,
+    "id": 604
+  },
+  {
+    "id": 605,
+    "name": "Luegeten",
+    "identifier": "",
+    "streetAddress": "",
+    "addressCountry": "",
+    "postalCode": "",
+    "city": "Luegeten",
+    "latitude": 47.414036,
+    "longitude": 8.824563
+  },
+  {
+    "name": "Seelmatten",
+    "city": "Seelmatten",
+    "latitude": 47.454662,
+    "longitude": 8.895941,
+    "id": 606
   }
 ]
