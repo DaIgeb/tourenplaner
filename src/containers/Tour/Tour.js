@@ -160,7 +160,7 @@ export default class Tour extends Component {
     const foreignCountry = locationsInTour.find(loc => loc.addressCountry && loc.addressCountry !== 'CH');
     const startRoute = tours.find(item => item.id === timeline.startroute);
     const startRouteLocations = startRoute ? startRoute.timelines.find(tl => timelineMatches(tl, date)).locations.map(loc => locations.find(item => item.id === loc)) : [];
-    const mapsUrl = `https://maps.google.com?q=http://dev-tourenplaner.herokuapp.com/api/tour/kml/${tour.id}`;
+    const mapsUrl = `http://osm.quelltextlich.at/viewer-js.html?kml_url==http://rvw-tourenplaner.herokuapp.com/api/tour/kml/${tour.id}`;
     return (
       <div className={styles.restaurants + ' container'}>
         <h1>Tour: {tour.name}
