@@ -48,13 +48,25 @@ export function kml(req, params) {
       }
 
       import ejs from 'ejs';
+
+      const getDate = () => {
+        if (params.length > 1) {
+          const paramDate = moment(params[0]);
+          if (paramDate.isValid()){
+            return paramDate;
+          }
+        }
+
+        return moment();
+      };
+      const date = getDate();
       const getTimeline = (tourId) => {
-        const tour = dataHandler.getData().find(item => item.id === tour.startroute);
+        const tour = dataHandler.getData().find(item => item.id === tourId);
         if (!tour) {
           return [];
         }
 
-        return tour.timelines.find(item => timelineMatches(item, moment()));
+        return tour.timelines.find(item => timelineMatches(item, date));
       };
 
       const id = parseInt(params[0], 10);
