@@ -76,15 +76,16 @@ export function kml(req, params) {
         return;
       }
       const startRoute = getTimeline(tourTimeline.startroute);
-      if (!tourTimeline) {
+      if (!startRoute) {
         reject('No start-route available');
         return;
       }
 
       const locations = [
-        ...startRoute.locations,
+        ...startRoute,
         ...tourTimeline.locations
       ].map(loc => locationHandler.getData().find(item => item.id === loc));
+
       const fileContent = ejs.render(`
 <?xml version="1.0" encoding="UTF-8"?>
 <kml xmlns="http://www.opengis.net/kml/2.2">
