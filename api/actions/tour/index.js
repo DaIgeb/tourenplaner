@@ -82,7 +82,7 @@ export function kml(req, params) {
                   '</Placemark>' +
                 '<% }); %>' +
                 '<Placemark>' +
-                  '<name><%=location.name%></name>' +
+                  '<name>Route</name>' +
                   '<LineString>' +
                     '<coordinates>' +
                       '<% locations.forEach(function(location){%>' +
