@@ -99,7 +99,12 @@ export function kml(req, params) {
       <ListStyle>
         <ItemIcon><href>http://maps.google.com/mapfiles/kml/paddle/blu-stars-lv.png</href></ItemIcon>
       </ListStyle>
-    </Style><% locations.forEach(function(location){%>
+    </Style>
+    <LineStyle id="sn_blu">
+      <color>2e2efe</color>
+      <colorMode>normal</colorMode>
+      <width>1</width>
+    </LineStyle><% locations.forEach(function(location){%>
     <Placemark>
       <name><%=location.name%></name>
       <styleUrl>#sn_blu-stars5</styleUrl>
@@ -110,9 +115,10 @@ export function kml(req, params) {
     <Placemark>
       <name>Route</name>
       <LineString>
-      <coordinates><% locations.forEach(function(location){%>
+        <styleUrl>#sn_blu</styleUrl>
+        <coordinates><% locations.forEach(function(location){%>
           <%=location.longitude%>,<%=location.latitude%>,0 <% }); %>
-      </coordinates>
+        </coordinates>
       </LineString>
     </Placemark>
   </Document>
