@@ -96,21 +96,6 @@
             "type": "string",
             "format": "date-time"
           },
-          "type":  {
-            "type": "object",
-            "properties": {
-              "id": {
-                "type": "number"
-              },
-              "label": {
-                "type": "string"
-              }
-            },
-            "required": [
-              "id",
-              "label"
-            ]
-          },
           "action": {
             "type": "object",
             "properties": {
@@ -165,7 +150,6 @@
         },
         "required": [
           "date",
-          "type",
           "action"
         ]
       }

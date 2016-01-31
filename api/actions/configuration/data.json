@@ -1,2 +1,1133 @@
 [
+  {
+    "year": "2016",
+    "seasonStart": "2016-03-04T23:00:00.000Z",
+    "seasonEnd": "2016-10-27T22:00:00.000Z",
+    "eveningStart": "2016-04-04T22:00:00.000Z",
+    "eveningEnd": "2016-09-14T22:00:00.000Z",
+    "events": [
+      {
+        "from": "2016-04-29T22:00:00.000Z",
+        "to": "2016-05-14T22:00:00.000Z",
+        "name": "Schnupperwoche"
+      },
+      {
+        "from": "2016-07-08T22:00:00.000Z",
+        "to": "2016-07-15T22:00:00.000Z",
+        "name": "Ferientour"
+      },
+      {
+        "from": "2016-06-10T22:00:00.000Z",
+        "to": "2016-06-11T22:00:00.000Z",
+        "name": "2 Tagestour"
+      }
+    ],
+    "dates": [
+      {
+        "date": "2016-03-04T23:00:00.000Z",
+        "type": {
+          "id": 3,
+          "label": "Nachmittagstour"
+        }
+      },
+      {
+        "date": "2016-03-05T23:00:00.000Z",
+        "type": {
+          "id": 2,
+          "label": "Morgentour"
+        }
+      },
+      {
+        "date": "2016-03-11T23:00:00.000Z",
+        "type": {
+          "id": 3,
+          "label": "Nachmittagstour"
+        }
+      },
+      {
+        "date": "2016-03-12T23:00:00.000Z",
+        "type": {
+          "id": 2,
+          "label": "Morgentour"
+        }
+      },
+      {
+        "date": "2016-03-18T23:00:00.000Z",
+        "type": {
+          "id": 3,
+          "label": "Nachmittagstour"
+        }
+      },
+      {
+        "date": "2016-03-19T23:00:00.000Z",
+        "type": {
+          "id": 2,
+          "label": "Morgentour"
+        }
+      },
+      {
+        "date": "2016-03-25T23:00:00.000Z",
+        "type": {
+          "id": 3,
+          "label": "Nachmittagstour"
+        }
+      },
+      {
+        "date": "2016-03-26T23:00:00.000Z",
+        "type": {
+          "id": 2,
+          "label": "Morgentour"
+        }
+      },
+      {
+        "date": "2016-04-01T22:00:00.000Z",
+        "type": {
+          "id": 3,
+          "label": "Nachmittagstour"
+        }
+      },
+      {
+        "date": "2016-04-02T22:00:00.000Z",
+        "type": {
+          "id": 2,
+          "label": "Morgentour"
+        }
+      },
+      {
+        "date": "2016-04-04T22:00:00.000Z",
+        "type": {
+          "id": 4,
+          "label": "Abendtour"
+        }
+      },
+      {
+        "date": "2016-04-06T22:00:00.000Z",
+        "type": {
+          "id": 4,
+          "label": "Abendtour"
+        }
+      },
+      {
+        "date": "2016-04-08T22:00:00.000Z",
+        "type": {
+          "id": 3,
+          "label": "Nachmittagstour"
+        }
+      },
+      {
+        "date": "2016-04-09T22:00:00.000Z",
+        "type": {
+          "id": 2,
+          "label": "Morgentour"
+        }
+      },
+      {
+        "date": "2016-04-11T22:00:00.000Z",
+        "type": {
+          "id": 4,
+          "label": "Abendtour"
+        }
+      },
+      {
+        "date": "2016-04-13T22:00:00.000Z",
+        "type": {
+          "id": 4,
+          "label": "Abendtour"
+        }
+      },
+      {
+        "date": "2016-04-15T22:00:00.000Z",
+        "type": {
+          "id": 3,
+          "label": "Nachmittagstour"
+        }
+      },
+      {
+        "date": "2016-04-16T22:00:00.000Z",
+        "type": {
+          "id": 2,
+          "label": "Morgentour"
+        }
+      },
+      {
+        "date": "2016-04-18T22:00:00.000Z",
+        "type": {
+          "id": 4,
+          "label": "Abendtour"
+        }
+      },
+      {
+        "date": "2016-04-20T22:00:00.000Z",
+        "type": {
+          "id": 4,
+          "label": "Abendtour"
+        }
+      },
+      {
+        "date": "2016-04-22T22:00:00.000Z",
+        "type": {
+          "id": 3,
+          "label": "Nachmittagstour"
+        }
+      },
+      {
+        "date": "2016-04-23T22:00:00.000Z",
+        "type": {
+          "id": 2,
+          "label": "Morgentour"
+        }
+      },
+      {
+        "date": "2016-04-25T22:00:00.000Z",
+        "type": {
+          "id": 4,
+          "label": "Abendtour"
+        }
+      },
+      {
+        "date": "2016-04-27T22:00:00.000Z",
+        "type": {
+          "id": 4,
+          "label": "Abendtour"
+        }
+      },
+      {
+        "date": "2016-04-29T22:00:00.000Z",
+        "type": {
+          "id": 3,
+          "label": "Nachmittagstour"
+        }
+      },
+      {
+        "date": "2016-04-30T22:00:00.000Z",
+        "type": {
+          "id": 2,
+          "label": "Morgentour"
+        }
+      },
+      {
+        "date": "2016-05-02T22:00:00.000Z",
+        "type": {
+          "id": 4,
+          "label": "Abendtour"
+        }
+      },
+      {
+        "date": "2016-05-04T22:00:00.000Z",
+        "type": {
+          "id": 4,
+          "label": "Abendtour"
+        }
+      },
+      {
+        "date": "2016-05-06T22:00:00.000Z",
+        "type": {
+          "id": 3,
+          "label": "Nachmittagstour"
+        }
+      },
+      {
+        "date": "2016-05-07T22:00:00.000Z",
+        "type": {
+          "id": 2,
+          "label": "Morgentour"
+        }
+      },
+      {
+        "date": "2016-05-09T22:00:00.000Z",
+        "type": {
+          "id": 4,
+          "label": "Abendtour"
+        }
+      },
+      {
+        "date": "2016-05-11T22:00:00.000Z",
+        "type": {
+          "id": 4,
+          "label": "Abendtour"
+        }
+      },
+      {
+        "date": "2016-05-13T22:00:00.000Z",
+        "type": {
+          "id": 3,
+          "label": "Nachmittagstour"
+        }
+      },
+      {
+        "date": "2016-05-14T22:00:00.000Z",
+        "type": {
+          "id": 2,
+          "label": "Morgentour"
+        }
+      },
+      {
+        "date": "2016-05-16T22:00:00.000Z",
+        "type": {
+          "id": 4,
+          "label": "Abendtour"
+        }
+      },
+      {
+        "date": "2016-05-18T22:00:00.000Z",
+        "type": {
+          "id": 4,
+          "label": "Abendtour"
+        }
+      },
+      {
+        "date": "2016-05-20T22:00:00.000Z",
+        "type": {
+          "id": 3,
+          "label": "Nachmittagstour"
+        }
+      },
+      {
+        "date": "2016-05-21T22:00:00.000Z",
+        "type": {
+          "id": 2,
+          "label": "Morgentour"
+        }
+      },
+      {
+        "date": "2016-05-23T22:00:00.000Z",
+        "type": {
+          "id": 4,
+          "label": "Abendtour"
+        }
+      },
+      {
+        "date": "2016-05-25T22:00:00.000Z",
+        "type": {
+          "id": 4,
+          "label": "Abendtour"
+        }
+      },
+      {
+        "date": "2016-05-27T22:00:00.000Z",
+        "type": {
+          "id": 3,
+          "label": "Nachmittagstour"
+        }
+      },
+      {
+        "date": "2016-05-28T22:00:00.000Z",
+        "type": {
+          "id": 2,
+          "label": "Morgentour"
+        }
+      },
+      {
+        "date": "2016-05-30T22:00:00.000Z",
+        "type": {
+          "id": 4,
+          "label": "Abendtour"
+        }
+      },
+      {
+        "date": "2016-06-01T22:00:00.000Z",
+        "type": {
+          "id": 4,
+          "label": "Abendtour"
+        }
+      },
+      {
+        "date": "2016-06-03T22:00:00.000Z",
+        "type": {
+          "id": 3,
+          "label": "Nachmittagstour"
+        }
+      },
+      {
+        "date": "2016-06-04T22:00:00.000Z",
+        "type": {
+          "id": 2,
+          "label": "Morgentour"
+        }
+      },
+      {
+        "date": "2016-06-06T22:00:00.000Z",
+        "type": {
+          "id": 4,
+          "label": "Abendtour"
+        }
+      },
+      {
+        "date": "2016-06-08T22:00:00.000Z",
+        "type": {
+          "id": 4,
+          "label": "Abendtour"
+        }
+      },
+      {
+        "date": "2016-06-10T22:00:00.000Z",
+        "type": {
+          "id": 3,
+          "label": "Nachmittagstour"
+        }
+      },
+      {
+        "date": "2016-06-11T22:00:00.000Z",
+        "type": {
+          "id": 2,
+          "label": "Morgentour"
+        }
+      },
+      {
+        "date": "2016-06-13T22:00:00.000Z",
+        "type": {
+          "id": 4,
+          "label": "Abendtour"
+        }
+      },
+      {
+        "date": "2016-06-15T22:00:00.000Z",
+        "type": {
+          "id": 4,
+          "label": "Abendtour"
+        }
+      },
+      {
+        "date": "2016-06-17T22:00:00.000Z",
+        "type": {
+          "id": 3,
+          "label": "Nachmittagstour"
+        }
+      },
+      {
+        "date": "2016-06-18T22:00:00.000Z",
+        "type": {
+          "id": 2,
+          "label": "Morgentour"
+        }
+      },
+      {
+        "date": "2016-06-20T22:00:00.000Z",
+        "type": {
+          "id": 4,
+          "label": "Abendtour"
+        }
+      },
+      {
+        "date": "2016-06-22T22:00:00.000Z",
+        "type": {
+          "id": 4,
+          "label": "Abendtour"
+        }
+      },
+      {
+        "date": "2016-06-24T22:00:00.000Z",
+        "type": {
+          "id": 3,
+          "label": "Nachmittagstour"
+        }
+      },
+      {
+        "date": "2016-06-25T22:00:00.000Z",
+        "type": {
+          "id": 2,
+          "label": "Morgentour"
+        }
+      },
+      {
+        "date": "2016-06-27T22:00:00.000Z",
+        "type": {
+          "id": 4,
+          "label": "Abendtour"
+        }
+      },
+      {
+        "date": "2016-06-29T22:00:00.000Z",
+        "type": {
+          "id": 4,
+          "label": "Abendtour"
+        }
+      },
+      {
+        "date": "2016-07-01T22:00:00.000Z",
+        "type": {
+          "id": 3,
+          "label": "Nachmittagstour"
+        }
+      },
+      {
+        "date": "2016-07-02T22:00:00.000Z",
+        "type": {
+          "id": 2,
+          "label": "Morgentour"
+        }
+      },
+      {
+        "date": "2016-07-04T22:00:00.000Z",
+        "type": {
+          "id": 4,
+          "label": "Abendtour"
+        }
+      },
+      {
+        "date": "2016-07-06T22:00:00.000Z",
+        "type": {
+          "id": 4,
+          "label": "Abendtour"
+        }
+      },
+      {
+        "date": "2016-07-08T22:00:00.000Z",
+        "type": {
+          "id": 3,
+          "label": "Nachmittagstour"
+        }
+      },
+      {
+        "date": "2016-07-09T22:00:00.000Z",
+        "type": {
+          "id": 2,
+          "label": "Morgentour"
+        }
+      },
+      {
+        "date": "2016-07-11T22:00:00.000Z",
+        "type": {
+          "id": 4,
+          "label": "Abendtour"
+        }
+      },
+      {
+        "date": "2016-07-13T22:00:00.000Z",
+        "type": {
+          "id": 4,
+          "label": "Abendtour"
+        }
+      },
+      {
+        "date": "2016-07-15T22:00:00.000Z",
+        "type": {
+          "id": 3,
+          "label": "Nachmittagstour"
+        }
+      },
+      {
+        "date": "2016-07-16T22:00:00.000Z",
+        "type": {
+          "id": 2,
+          "label": "Morgentour"
+        }
+      },
+      {
+        "date": "2016-07-18T22:00:00.000Z",
+        "type": {
+          "id": 4,
+          "label": "Abendtour"
+        }
+      },
+      {
+        "date": "2016-07-20T22:00:00.000Z",
+        "type": {
+          "id": 4,
+          "label": "Abendtour"
+        }
+      },
+      {
+        "date": "2016-07-22T22:00:00.000Z",
+        "type": {
+          "id": 3,
+          "label": "Nachmittagstour"
+        }
+      },
+      {
+        "date": "2016-07-23T22:00:00.000Z",
+        "type": {
+          "id": 2,
+          "label": "Morgentour"
+        }
+      },
+      {
+        "date": "2016-07-25T22:00:00.000Z",
+        "type": {
+          "id": 4,
+          "label": "Abendtour"
+        }
+      },
+      {
+        "date": "2016-07-27T22:00:00.000Z",
+        "type": {
+          "id": 4,
+          "label": "Abendtour"
+        }
+      },
+      {
+        "date": "2016-07-29T22:00:00.000Z",
+        "type": {
+          "id": 3,
+          "label": "Nachmittagstour"
+        }
+      },
+      {
+        "date": "2016-07-30T22:00:00.000Z",
+        "type": {
+          "id": 2,
+          "label": "Morgentour"
+        }
+      },
+      {
+        "date": "2016-08-01T22:00:00.000Z",
+        "type": {
+          "id": 4,
+          "label": "Abendtour"
+        }
+      },
+      {
+        "date": "2016-08-03T22:00:00.000Z",
+        "type": {
+          "id": 4,
+          "label": "Abendtour"
+        }
+      },
+      {
+        "date": "2016-08-05T22:00:00.000Z",
+        "type": {
+          "id": 3,
+          "label": "Nachmittagstour"
+        }
+      },
+      {
+        "date": "2016-08-06T22:00:00.000Z",
+        "type": {
+          "id": 2,
+          "label": "Morgentour"
+        }
+      },
+      {
+        "date": "2016-08-08T22:00:00.000Z",
+        "type": {
+          "id": 4,
+          "label": "Abendtour"
+        }
+      },
+      {
+        "date": "2016-08-10T22:00:00.000Z",
+        "type": {
+          "id": 4,
+          "label": "Abendtour"
+        }
+      },
+      {
+        "date": "2016-08-12T22:00:00.000Z",
+        "type": {
+          "id": 3,
+          "label": "Nachmittagstour"
+        }
+      },
+      {
+        "date": "2016-08-13T22:00:00.000Z",
+        "type": {
+          "id": 2,
+          "label": "Morgentour"
+        }
+      },
+      {
+        "date": "2016-08-15T22:00:00.000Z",
+        "type": {
+          "id": 4,
+          "label": "Abendtour"
+        }
+      },
+      {
+        "date": "2016-08-17T22:00:00.000Z",
+        "type": {
+          "id": 4,
+          "label": "Abendtour"
+        }
+      },
+      {
+        "date": "2016-08-19T22:00:00.000Z",
+        "type": {
+          "id": 3,
+          "label": "Nachmittagstour"
+        }
+      },
+      {
+        "date": "2016-08-20T22:00:00.000Z",
+        "type": {
+          "id": 2,
+          "label": "Morgentour"
+        }
+      },
+      {
+        "date": "2016-08-22T22:00:00.000Z",
+        "type": {
+          "id": 4,
+          "label": "Abendtour"
+        }
+      },
+      {
+        "date": "2016-08-24T22:00:00.000Z",
+        "type": {
+          "id": 4,
+          "label": "Abendtour"
+        }
+      },
+      {
+        "date": "2016-08-26T22:00:00.000Z",
+        "type": {
+          "id": 3,
+          "label": "Nachmittagstour"
+        }
+      },
+      {
+        "date": "2016-08-27T22:00:00.000Z",
+        "type": {
+          "id": 2,
+          "label": "Morgentour"
+        }
+      },
+      {
+        "date": "2016-08-29T22:00:00.000Z",
+        "type": {
+          "id": 4,
+          "label": "Abendtour"
+        }
+      },
+      {
+        "date": "2016-08-31T22:00:00.000Z",
+        "type": {
+          "id": 4,
+          "label": "Abendtour"
+        }
+      },
+      {
+        "date": "2016-09-02T22:00:00.000Z",
+        "type": {
+          "id": 3,
+          "label": "Nachmittagstour"
+        }
+      },
+      {
+        "date": "2016-09-03T22:00:00.000Z",
+        "type": {
+          "id": 2,
+          "label": "Morgentour"
+        }
+      },
+      {
+        "date": "2016-09-05T22:00:00.000Z",
+        "type": {
+          "id": 4,
+          "label": "Abendtour"
+        }
+      },
+      {
+        "date": "2016-09-07T22:00:00.000Z",
+        "type": {
+          "id": 4,
+          "label": "Abendtour"
+        }
+      },
+      {
+        "date": "2016-09-09T22:00:00.000Z",
+        "type": {
+          "id": 3,
+          "label": "Nachmittagstour"
+        }
+      },
+      {
+        "date": "2016-09-10T22:00:00.000Z",
+        "type": {
+          "id": 2,
+          "label": "Morgentour"
+        }
+      },
+      {
+        "date": "2016-09-12T22:00:00.000Z",
+        "type": {
+          "id": 4,
+          "label": "Abendtour"
+        }
+      },
+      {
+        "date": "2016-09-14T22:00:00.000Z",
+        "type": {
+          "id": 4,
+          "label": "Abendtour"
+        }
+      },
+      {
+        "date": "2016-09-16T22:00:00.000Z",
+        "type": {
+          "id": 3,
+          "label": "Nachmittagstour"
+        }
+      },
+      {
+        "date": "2016-09-17T22:00:00.000Z",
+        "type": {
+          "id": 2,
+          "label": "Morgentour"
+        }
+      },
+      {
+        "date": "2016-09-23T22:00:00.000Z",
+        "type": {
+          "id": 3,
+          "label": "Nachmittagstour"
+        }
+      },
+      {
+        "date": "2016-09-24T22:00:00.000Z",
+        "type": {
+          "id": 2,
+          "label": "Morgentour"
+        }
+      },
+      {
+        "date": "2016-09-30T22:00:00.000Z",
+        "type": {
+          "id": 3,
+          "label": "Nachmittagstour"
+        }
+      },
+      {
+        "date": "2016-10-01T22:00:00.000Z",
+        "type": {
+          "id": 2,
+          "label": "Morgentour"
+        }
+      },
+      {
+        "date": "2016-10-07T22:00:00.000Z",
+        "type": {
+          "id": 3,
+          "label": "Nachmittagstour"
+        }
+      },
+      {
+        "date": "2016-10-08T22:00:00.000Z",
+        "type": {
+          "id": 2,
+          "label": "Morgentour"
+        }
+      },
+      {
+        "date": "2016-10-14T22:00:00.000Z",
+        "type": {
+          "id": 3,
+          "label": "Nachmittagstour"
+        }
+      },
+      {
+        "date": "2016-10-15T22:00:00.000Z",
+        "type": {
+          "id": 2,
+          "label": "Morgentour"
+        }
+      },
+      {
+        "date": "2016-10-21T22:00:00.000Z",
+        "type": {
+          "id": 3,
+          "label": "Nachmittagstour"
+        }
+      },
+      {
+        "date": "2016-10-22T22:00:00.000Z",
+        "type": {
+          "id": 2,
+          "label": "Morgentour"
+        }
+      }
+    ],
+    "specialDates": [
+      {
+        "date": "2016-03-26T23:00:00.000Z",
+        "name": "Ostern",
+        "action": {
+          "id": 1,
+          "label": "Tour entfernen"
+        },
+        "tours": []
+      },
+      {
+        "date": "2016-03-27T22:00:00.000Z",
+        "name": "Ostermontag",
+        "action": {
+          "id": 3,
+          "label": "Tour ersetzen"
+        },
+        "tours": [
+          {
+            "id": 16,
+            "type": {
+              "id": 2,
+              "label": "Morgentour"
+            }
+          }
+        ]
+      },
+      {
+        "date": "2016-04-30T22:00:00.000Z",
+        "name": "1. Mai",
+        "action": {
+          "id": 3,
+          "label": "Tour ersetzen"
+        },
+        "tours": [
+          {
+            "id": 32,
+            "type": {
+              "id": 2,
+              "label": "Morgentour"
+            }
+          }
+        ]
+      },
+      {
+        "date": "2016-05-04T22:00:00.000Z",
+        "name": "Auffahrt",
+        "action": {
+          "id": 3,
+          "label": "Tour ersetzen"
+        },
+        "tours": [
+          {
+            "id": 31,
+            "type": {
+              "id": 2,
+              "label": "Morgentour"
+            }
+          }
+        ]
+      },
+      {
+        "date": "2016-05-14T22:00:00.000Z",
+        "name": "Pfingstsontag",
+        "action": {
+          "id": 1,
+          "label": "Tour entfernen"
+        },
+        "tours": []
+      },
+      {
+        "date": "2016-05-15T22:00:00.000Z",
+        "name": "Pfingstmontag",
+        "action": {
+          "id": 3,
+          "label": "Tour ersetzen"
+        },
+        "tours": [
+          {
+            "id": 16,
+            "type": {
+              "id": 2,
+              "label": "Morgentour"
+            }
+          }
+        ]
+      },
+      {
+        "date": "2016-05-28T22:00:00.000Z",
+        "name": "Winti-Marathon",
+        "action": {
+          "id": 3,
+          "label": "Tour ersetzen"
+        },
+        "tours": [
+          {
+            "id": 75,
+            "type": {
+              "id": 5,
+              "label": "Tagestour"
+            }
+          }
+        ]
+      },
+      {
+        "date": "2016-07-31T22:00:00.000Z",
+        "name": "Nationalfeiertag",
+        "action": {
+          "id": 3,
+          "label": "Tour ersetzen"
+        },
+        "tours": [
+          {
+            "id": 32,
+            "type": {
+              "id": 2,
+              "label": "Morgentour"
+            }
+          }
+        ]
+      },
+      {
+        "date": "2016-08-10T22:00:00.000Z",
+        "name": "Überraschungstour",
+        "action": {
+          "id": 3,
+          "label": "Tour ersetzen"
+        },
+        "tours": [
+          {
+            "id": 77,
+            "type": {
+              "id": 4,
+              "label": "Abendtour"
+            }
+          }
+        ]
+      },
+      {
+        "date": "2016-09-17T22:00:00.000Z",
+        "name": "Bettag",
+        "action": {
+          "id": 3,
+          "label": "Tour ersetzen"
+        },
+        "tours": [
+          {
+            "id": 76,
+            "type": {
+              "id": 5,
+              "label": "Tagestour"
+            }
+          }
+        ]
+      },
+      {
+        "date": "2016-09-23T22:00:00.000Z",
+        "name": "Winti-Sola",
+        "action": {
+          "id": 2,
+          "label": "Tour hinzufügen"
+        },
+        "tours": [
+          {
+            "id": 78,
+            "type": {
+              "id": 5,
+              "label": "Tagestour"
+            }
+          }
+        ]
+      },
+      {
+        "date": "2016-05-13T22:00:00.000Z",
+        "name": "Ricken",
+        "action": {
+          "id": 2,
+          "label": "Tour hinzufügen"
+        },
+        "tours": [
+          {
+            "id": 46,
+            "type": {
+              "id": 5,
+              "label": "Tagestour"
+            }
+          }
+        ]
+      },
+      {
+        "date": "2016-05-27T22:00:00.000Z",
+        "name": "Schwarzwald",
+        "action": {
+          "id": 2,
+          "label": "Tour hinzufügen"
+        },
+        "tours": [
+          {
+            "id": 51,
+            "type": {
+              "id": 5,
+              "label": "Tagestour"
+            }
+          }
+        ]
+      },
+      {
+        "date": "2016-06-24T22:00:00.000Z",
+        "name": "Schwägalp",
+        "action": {
+          "id": 2,
+          "label": "Tour hinzufügen"
+        },
+        "tours": [
+          {
+            "id": 49,
+            "type": {
+              "id": 5,
+              "label": "Tagestour"
+            }
+          }
+        ]
+      },
+      {
+        "date": "2016-07-29T22:00:00.000Z",
+        "name": "Klingenzell",
+        "action": {
+          "id": 2,
+          "label": "Tour hinzufügen"
+        },
+        "tours": [
+          {
+            "id": 28,
+            "type": {
+              "id": 5,
+              "label": "Tagestour"
+            }
+          }
+        ]
+      },
+      {
+        "date": "2016-08-12T22:00:00.000Z",
+        "name": "Appenzell",
+        "action": {
+          "id": 2,
+          "label": "Tour hinzufügen"
+        },
+        "tours": [
+          {
+            "id": 10,
+            "type": {
+              "id": 5,
+              "label": "Tagestour"
+            }
+          }
+        ]
+      },
+      {
+        "date": "2016-08-26T22:00:00.000Z",
+        "name": "Zugerland",
+        "action": {
+          "id": 2,
+          "label": "Tour hinzufügen"
+        },
+        "tours": [
+          {
+            "id": 65,
+            "type": {
+              "id": 5,
+              "label": "Tagestour"
+            }
+          }
+        ]
+      },
+      {
+        "date": "2016-09-09T22:00:00.000Z",
+        "name": "Tösstal Classique",
+        "action": {
+          "id": 2,
+          "label": "Tour hinzufügen"
+        },
+        "tours": [
+          {
+            "id": 74,
+            "type": {
+              "id": 5,
+              "label": "Tagestour"
+            }
+          }
+        ]
+      }
+    ],
+    "id": 1
+  }
 ]

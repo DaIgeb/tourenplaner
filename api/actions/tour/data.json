@@ -3369,5 +3369,117 @@
       }
     ],
     "id": 74
+  },
+  {
+    "id": 75,
+    "name": "Winti-Marathon",
+    "types": [
+      {
+        "id": 5,
+        "label": "Tagestour"
+      }
+    ],
+    "timelines": [
+      {
+        "from": "2015-12-31T23:00:00.000Z",
+        "until": "2100-12-30T23:00:00.000Z",
+        "startroute": null,
+        "difficulty": {
+          "id": 1,
+          "label": "Einfach"
+        },
+        "distance": 0,
+        "elevation": 0,
+        "restaurants": [],
+        "locations": []
+      }
+    ]
+  },
+  {
+    "name": "Bettag",
+    "types": [
+      {
+        "id": 5,
+        "label": "Tagestour"
+      }
+    ],
+    "timelines": [
+      {
+        "from": "2015-12-31T23:00:00.000Z",
+        "until": "2100-12-30T23:00:00.000Z",
+        "startroute": null,
+        "difficulty": {
+          "id": 1,
+          "label": "Einfach"
+        },
+        "distance": 0,
+        "elevation": 0,
+        "restaurants": [],
+        "locations": []
+      }
+    ],
+    "id": 76
+  },
+  {
+    "id": 77,
+    "name": "Überraschungstour",
+    "types": [
+      {
+        "id": 2,
+        "label": "Morgentour"
+      },
+      {
+        "id": 3,
+        "label": "Nachmittagstour"
+      },
+      {
+        "id": 4,
+        "label": "Abendtour"
+      },
+      {
+        "id": 5,
+        "label": "Tagestour"
+      }
+    ],
+    "timelines": [
+      {
+        "from": "2015-12-31T23:00:00.000Z",
+        "until": "2100-12-30T23:00:00.000Z",
+        "startroute": null,
+        "difficulty": {
+          "id": 1,
+          "label": "Einfach"
+        },
+        "distance": 0,
+        "elevation": 0,
+        "restaurants": [],
+        "locations": []
+      }
+    ]
+  },
+  {
+    "name": "Winti-Sola",
+    "types": [
+      {
+        "id": 5,
+        "label": "Tagestour"
+      }
+    ],
+    "timelines": [
+      {
+        "from": "2015-12-31T23:00:00.000Z",
+        "until": "2100-12-30T23:00:00.000Z",
+        "startroute": null,
+        "difficulty": {
+          "id": 1,
+          "label": "Einfach"
+        },
+        "distance": 0,
+        "elevation": 0,
+        "restaurants": [],
+        "locations": []
+      }
+    ],
+    "id": 78
   }
 ]
