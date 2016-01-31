@@ -1,7 +1,7 @@
 import DataHandler from 'utils/DataHandler';
 import {validate} from './validator';
 
-const dataHandler = new DataHandler('./api/actions/location/data.json', validate);
+export const dataHandler = new DataHandler('./api/actions/location/data.json', validate);
 
 export function load() {
   return new Promise((resolve) => {
