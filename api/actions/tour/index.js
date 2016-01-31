@@ -42,8 +42,7 @@ export function kml(req, params) {
     if (!tour) {
       console.log('Not found', id);
       reject('Tour not found');
-    }
-    else {
+    } else {
       import tmp from 'tmp';
 
       tmp.file(function (err, path, fd, cleanupCallback) {
@@ -52,7 +51,14 @@ export function kml(req, params) {
         } else {
           import ejs from 'ejs';
 
-          const locations = tour.timelines[0].locations.map(loc => locationHandler.getData().find(item => item.id === loc));
+          const startRoute = dataHandler.getData().find(item => item.id === tour.startroute);
+          const locationIndexes =
+            [
+              ...(startRoute ? startRoute.timelines[0].locations : []),
+              ...tour.timelines[0].locations
+            ];
+
+          const locations = locationIndexes.map(loc => locationHandler.getData().find(item => item.id === loc));
           const fileContent = ejs.render(
             '<?xml version="1.0" encoding="UTF-8"?>' +
             '<kml xmlns="http://www.opengis.net/kml/2.2">' +
@@ -75,6 +81,16 @@ export function kml(req, params) {
                     '<Point><coordinates><%=location.longitude%>,<%=location.latitude%></coordinates></Point>' +
                   '</Placemark>' +
                 '<% }); %>' +
+                '<Placemark>' +
+                  '<name><%=location.name%></name>' +
+                  '<LineString>' +
+                    '<coordinates>' +
+                      '<% locations.forEach(function(location){%>' +
+                        '<%=location.longitude%>,<%=location.latitude%>\n' +
+                      '<% }); %>' +
+                    '</coordinates>' +
+                  '</LineString>' +
+                '</Placemark>' +
               '</Document>' +
             '</kml>', {name: tour.name, locations: locations});
 
