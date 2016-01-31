@@ -102,45 +102,41 @@ export default class Seasons extends Component {
         }} onSubmit={(values) => save(values)}/></div>);
       }
 
-      if (seasons && seasons.length) {
-        return (<table className="table table-striped table-hover table-condensed">
-          <thead>
-          <tr>
-            <th className={styles.yearCol}>ID</th>
-            <th className={styles.yearCol}>Bezeichnung</th>
-            <th className={styles.versionCol}>Version</th>
-            <th className={styles.configCol}>Konfiguration</th>
-            <th className={styles.buttonCol}/>
-          </tr>
-          </thead>
-          <tbody>
-          {seasons.map(season => (<tr key={`${season.year}/${season.version}`}>
-            <td className={styles.yearCol}>{season.id}</td>
-            <td className={styles.yearCol}>{season.year}</td>
-            <td className={styles.versionCol}>{season.version}</td>
-            <td className={styles.configCol}>{findConfiguration(season.configuration)}</td>
-            <td className={styles.buttonCol}>
-              <button className="btn btn-primary" onClick={handleEdit(season)}>
-                <i className="fa fa-pencil"/> Edit
-              </button>
-              <button className="btn btn-danger" onClick={handleDelete(season)}>
-                <i className="fa fa-trash"/> Löschen
-              </button>
-            </td>
-          </tr>))}
-          <tr>
-            <td colSpan={2}/>
-            <td>
-              <button className="btn btn-success" onClick={handleAdd()} disabled={adding}>
-                <i className="fa fa-plus"/> Add
-              </button>
-            </td>
-          </tr>
-          </tbody>
-        </table>);
-      }
-
-      return <div></div>;
+      return (seasons && <table className="table table-striped table-hover table-condensed">
+        <thead>
+        <tr>
+          <th className={styles.yearCol}>ID</th>
+          <th className={styles.yearCol}>Bezeichnung</th>
+          <th className={styles.versionCol}>Version</th>
+          <th className={styles.configCol}>Konfiguration</th>
+          <th className={styles.buttonCol}/>
+        </tr>
+        </thead>
+        <tbody>
+        {seasons.map(season => (<tr key={`${season.year}/${season.version}`}>
+          <td className={styles.yearCol}>{season.id}</td>
+          <td className={styles.yearCol}>{season.year}</td>
+          <td className={styles.versionCol}>{season.version}</td>
+          <td className={styles.configCol}>{findConfiguration(season.configuration)}</td>
+          <td className={styles.buttonCol}>
+            <button className="btn btn-primary" onClick={handleEdit(season)}>
+              <i className="fa fa-pencil"/> Edit
+            </button>
+            <button className="btn btn-danger" onClick={handleDelete(season)}>
+              <i className="fa fa-trash"/> Löschen
+            </button>
+          </td>
+        </tr>))}
+        <tr>
+          <td colSpan={2}/>
+          <td>
+            <button className="btn btn-success" onClick={handleAdd()} disabled={adding}>
+              <i className="fa fa-plus"/> Add
+            </button>
+          </td>
+        </tr>
+        </tbody>
+      </table>);
     };
 
     return (

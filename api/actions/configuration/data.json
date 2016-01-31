@@ -838,6 +838,23 @@
     ],
     "specialDates": [
       {
+        "date": "2016-03-04T23:00:00.000Z",
+        "name": "Erste Tour",
+        "action": {
+          "id": 1,
+          "label": "Tour entfernen"
+        },
+        "tours": [
+          {
+            "id": 44,
+            "type": {
+              "id": 3,
+              "label": "Nachmittagstour"
+            }
+          }
+        ]
+      },
+      {
         "date": "2016-03-26T23:00:00.000Z",
         "name": "Ostern",
         "action": {
@@ -1007,6 +1024,15 @@
             }
           }
         ]
+      },
+      {
+        "date": "2016-10-27T23:00:00.000Z",
+        "name": "Abschluss",
+        "action": {
+          "id": 1,
+          "label": "Tour entfernen"
+        },
+        "tours": []
       },
       {
         "date": "2016-05-13T22:00:00.000Z",
