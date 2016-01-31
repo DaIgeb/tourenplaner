@@ -385,7 +385,6 @@
       {
         "from": "2015-12-31T23:00:00.000Z",
         "until": "2100-12-30T23:00:00.000Z",
-        "notes": "Sonntag: durchgehend bis 19.00",
         "phone": "052 319 11 29",
         "businessHours": [
           {
@@ -2667,17 +2666,6 @@
           },
           {
             "weekday": "Saturday",
-            "from": {
-              "hour": 8,
-              "minute": 0
-            },
-            "until": {
-              "hour": 24,
-              "minute": 0
-            }
-          },
-          {
-            "weekday": "Sunday",
             "from": {
               "hour": 8,
               "minute": 0

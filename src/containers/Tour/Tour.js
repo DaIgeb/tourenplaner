@@ -159,7 +159,7 @@ export default class Tour extends Component {
     const locationsInTour = timeline.locations.map(loc => locations.find(item => item.id === loc));
     const foreignCountry = locationsInTour.find(loc => loc.addressCountry && loc.addressCountry !== 'CH');
     const startRoute = tours.find(item => item.id === timeline.startroute);
-    const startRouteLocations = startRoute.timelines.find(tl => timelineMatches(tl, date)).locations.map(loc => locations.find(item => item.id === loc));
+    const startRouteLocations = startRoute ? startRoute.timelines.find(tl => timelineMatches(tl, date)).locations.map(loc => locations.find(item => item.id === loc)) : [];
     return (
       <div className={styles.restaurants + ' container'}>
         <h1>Tour: {tour.name}
@@ -184,7 +184,7 @@ export default class Tour extends Component {
           <div className="col-xs-4">{tour.types.map(type => type.label).join(', ')}</div>
           <div className="col-xs-4">{moment(timeline.from, moment.ISO_8601. true).format('L')}</div>
           <div className="col-xs-4">{moment(timeline.until, moment.ISO_8601. true).format('L')}</div>
-          <div className="col-xs-4">{startRoute.name}</div>
+          {startRoute && <div className="col-xs-4">{startRoute.name}</div>}
           <div className="col-xs-4">{timeline.restaurants.map((rest, idx) => <span key={idx}>{locations.find(loc => loc.id === restaurants.find(item => item.id === rest).location).name}</span>)}</div>
           <div className="col-xs-4">{timeline.elevation}</div>
           <div className="col-xs-4">{timeline.difficulty.label}</div>
@@ -197,7 +197,7 @@ export default class Tour extends Component {
             <b>{tour.name} {foreignCountry && '(ID)'}</b><br/>
             ca {timeline.distance} km<br />
             ca {timeline.elevation} hm</div>
-          <div className="col-xs-2">{tours.find(item => item.id === timeline.startroute).name}</div>
+          {startRoute && <div className="col-xs-2">{startRoute.name}</div>}
           <div className="col-xs-9">
             {startRouteLocations.map(renderLocation)}<br/>
             {locationsInTour.map(renderLocation)}</div>
