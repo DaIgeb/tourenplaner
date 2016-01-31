@@ -116,7 +116,7 @@ export default function reducer(state = initialState, action = {}) {
             year: year,
             seasonStart: firstSaturdayInMarch.toISOString(),
             seasonEnd: lasFridayInOctober.toISOString(),
-            eveningStart: dstStartDate.day(dstStartDate.day() >= 2 ? -5 : 2).toISOString(),
+            eveningStart: moment([year, 3, 7]).day(2).toISOString(),
             eveningEnd: moment([year, 8, 13]).day(4).toISOString()
           }
         };
