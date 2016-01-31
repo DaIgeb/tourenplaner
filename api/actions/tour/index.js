@@ -61,7 +61,7 @@ export function kml(req, params) {
                 '<% locations.forEach(function(location){%>' +
                   '<Placemark>' +
                     '<name><%=location.name%></name>' +
-                    '<Point><coordinates><%=location.latitude%>,<%=location.longitude%></coordinates></Point>' +
+                    '<Point><coordinates><%=location.longitude%>,<%=location.latitude%></coordinates></Point>' +
                   '</Placemark>' +
                 '<% }); %>' +
               '</Document>' +
