@@ -1,4 +1,4 @@
-import {moment} from 'utils/moment';
+import {moment} from '../../../shared/utils/moment';
 
 const LOAD = 'tourenplaner/tours/LOAD';
 const LOAD_SUCCESS = 'tourenplaner/tours/LOAD_SUCCESS';

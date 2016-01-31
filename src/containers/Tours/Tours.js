@@ -8,7 +8,8 @@ import {isLoaded, load as loadTour} from 'redux/modules/tours';
 import {isLoaded as isRestaurantsLoaded, load as loadRest} from 'redux/modules/restaurants';
 import {isLoaded as isLocationsLoaded, load as loadLoc} from 'redux/modules/locations';
 import {Timeline, TourForm} from 'components';
-import {moment} from 'utils/moment';
+import {timelineMatches} from '../../../shared/utils/timeline';
+import {moment} from '../../../shared/utils/moment';
 import { LinkContainer } from 'react-router-bootstrap';
 
 function fetchDataDeferred(getState, dispatch) {
@@ -94,31 +95,6 @@ export default class Tours extends Component {
       }
     };
 
-    const timelineMatches = (timeline, date) => {
-      const fromDate = moment(timeline.from, moment.ISO_8601, true);
-      const untilDate = moment(timeline.until, moment.ISO_8601, true);
-
-      if (!date.isValid()) {
-        return false;
-      }
-
-      if (!fromDate.isValid() && timeline.from) {
-        return false;
-      }
-      if (!untilDate.isValid() && timeline.until) {
-        return false;
-      }
-
-      if (fromDate.isValid() && fromDate > date) {
-        return false;
-      }
-
-      if (untilDate.isValid() && untilDate < date) {
-        return false;
-      }
-
-      return true;
-    };
     const {timelineDate} = this.props;
     const date = moment(timelineDate, moment.ISO_8601. true);
 

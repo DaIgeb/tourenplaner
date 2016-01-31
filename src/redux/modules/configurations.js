@@ -1,4 +1,4 @@
-import {moment} from 'utils/moment';
+import {moment} from '../../../shared/utils/moment';
 import {TourType} from 'models';
 
 const LOAD = 'tourenplaner/configurations/LOAD';

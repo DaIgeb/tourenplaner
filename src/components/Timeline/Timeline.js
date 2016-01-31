@@ -1,5 +1,5 @@
 import React, {Component, PropTypes} from 'react';
-import {moment} from 'utils/moment';
+import {moment} from '../../../shared/utils/moment';
 import config from '../../config';
 
 export default class Timeline extends Component {

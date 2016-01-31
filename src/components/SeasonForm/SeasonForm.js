@@ -5,7 +5,7 @@ import {reduxForm} from 'redux-form';
 // import restaurantValidation from './restaurantValidation';
 import * as seasonActions from 'redux/modules/seasons';
 import {ConfigurationInput, NumberInput} from 'components';
-import {moment, defaultTimeZone} from 'utils/moment';
+import {moment, defaultTimeZone} from '../../../shared/utils/moment';
 import {SeasonState} from 'models';
 
 @connect(

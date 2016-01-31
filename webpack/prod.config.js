@@ -48,6 +48,7 @@ module.exports = {
   resolve: {
     modulesDirectories: [
       'src',
+      'shared',
       'node_modules'
     ],
     extensions: ['', '.json', '.js', '.jsx']

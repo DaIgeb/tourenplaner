@@ -1,5 +1,5 @@
 import React, {Component, PropTypes} from 'react';
-import {moment} from 'utils/moment';
+import {moment} from '../../../shared/utils/moment';
 
 /**
  * Serializes and deserializes complex values to and from JSON

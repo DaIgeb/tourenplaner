@@ -2,7 +2,8 @@ import React, {Component, PropTypes} from 'react';
 import {connect} from 'react-redux';
 import * as restaurantActions from 'redux/modules/restaurants';
 import {RestaurantForm} from 'components';
-import {moment} from 'utils/moment';
+import {timelineMatches} from '../../../shared/utils/timeline';
+import {moment} from '../../../shared/utils/moment';
 
 @connect(
   null,
@@ -28,32 +29,6 @@ export default class RestaurantRow extends Component {
     const handleDelete = (restaurant) => {
       const {del} = this.props; // eslint-disable-line no-shadow
       return () => del(String(restaurant.id));
-    };
-
-    const timelineMatches = (timeline, date) => {
-      const fromDate = moment(timeline.from, moment.ISO_8601, true);
-      const untilDate = moment(timeline.until, moment.ISO_8601, true);
-
-      if (!date.isValid()) {
-        return false;
-      }
-
-      if (!fromDate.isValid() && timeline.from) {
-        return false;
-      }
-      if (!untilDate.isValid() && timeline.until) {
-        return false;
-      }
-
-      if (fromDate.isValid() && fromDate > date) {
-        return false;
-      }
-
-      if (untilDate.isValid() && untilDate < date) {
-        return false;
-      }
-
-      return true;
     };
 
     const renderTime = (time) => {
