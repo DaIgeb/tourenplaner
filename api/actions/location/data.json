@@ -79,14 +79,14 @@
     "id": 8
   },
   {
+    "id": 9,
     "name": "Rest. Frohe Aussicht",
     "streetAddress": "Marthalerstrasse 17",
     "addressCountry": "CH",
     "postalCode": "8453",
     "city": "Alten",
-    "latitude": 47.604284,
-    "longitude": 8.600192,
-    "id": 9
+    "latitude": 47.600458,
+    "longitude": 8.647993
   },
   {
     "id": 10,
