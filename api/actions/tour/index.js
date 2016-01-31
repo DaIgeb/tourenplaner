@@ -61,12 +61,12 @@ export function kml(req, params) {
                 '<% locations.forEach(function(location){%>' +
                   '<Placemark>' +
                     '<name><%=location.name%></name>' +
-                    '<coordinates><%=location.latitude%>,<%=location.longitude%></coordinates>' +
+                    '<Point><coordinates><%=location.latitude%>,<%=location.longitude%></coordinates></Point>' +
                   '</Placemark>' +
                 '<% }); %>' +
               '</Document>' +
             '</kml>', {name: tour.name, locations: locations});
-          
+
           fs.write(fd, fileContent, 'utf8', (err, written, buffer) => {
             if (err) {
               reject(err);
