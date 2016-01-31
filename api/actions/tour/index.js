@@ -61,7 +61,7 @@ export function kml(req, params) {
       };
       const date = getDate();
       const getTimeline = (tourId) => {
-        const tour = dataHandler.getData().find(item => item.id === tourId);
+        const tour = typeof tourId !== 'object' ? dataHandler.getData().find(item => item.id === tourId) : tourId;
         if (!tour) {
           return [];
         }
@@ -69,21 +69,21 @@ export function kml(req, params) {
         return tour.timelines.find(item => timelineMatches(item, date));
       };
 
-      const id = parseInt(params[0], 10);
-      const tour = getTimeline(id);
-      if (!tour) {
+      const tour = dataHandler.getData().find(item => item.id === parseInt(params[0], 10));
+      const tourTimeline = getTimeline(tour);
+      if (!tourTimeline) {
         reject('No tour available');
         return;
       }
-      const startRoute = getTimeline(tour.startroute);
-      if (!tour) {
+      const startRoute = getTimeline(tourTimeline.startroute);
+      if (!tourTimeline) {
         reject('No start-route available');
         return;
       }
 
       const locations = [
         ...startRoute.locations,
-        ...tour.locations
+        ...tourTimeline.locations
       ].map(loc => locationHandler.getData().find(item => item.id === loc));
       const fileContent = ejs.render(`
         <?xml version="1.0" encoding="UTF-8"?>
@@ -114,7 +114,7 @@ export function kml(req, params) {
               <LineString>
               <coordinates>
                 <% locations.forEach(function(location){%>
-                  <%=location.longitude%>,<%=location.latitude%>\n
+                  <%=location.longitude%>,<%=location.latitude%>,0\n
                 <% }); %>
               </coordinates>
               </LineString>
@@ -127,7 +127,7 @@ export function kml(req, params) {
           reject(err);
         } else {
           resolve(res => {
-              res.download(path, `${tour.name}.kml`, (err) => {
+              res.download(path, `${tourTimeline.name}.kml`, (err) => {
                 // If we don't need the file anymore we could manually call the cleanupCallback
                 // But that is not necessary if we didn't pass the keep option because the library
                 // will clean after itself.

@@ -163,7 +163,7 @@ export default class Configurations extends Component {
           {error}
         </div>}
 
-        {configurations && configurations.length &&
+        {configurations &&
         <table className="table table-striped table-hover table-condensed">
           <thead>
           <tr>
