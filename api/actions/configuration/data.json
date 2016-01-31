@@ -834,6 +834,13 @@
           "id": 2,
           "label": "Morgentour"
         }
+      },
+      {
+        "date": "2016-10-27T22:00:00.000Z",
+        "type": {
+          "id": 1,
+          "label": "Keine"
+        }
       }
     ],
     "specialDates": [
@@ -841,8 +848,8 @@
         "date": "2016-03-04T23:00:00.000Z",
         "name": "Erste Tour",
         "action": {
-          "id": 1,
-          "label": "Tour entfernen"
+          "id": 3,
+          "label": "Tour ersetzen"
         },
         "tours": [
           {
@@ -1026,7 +1033,7 @@
         ]
       },
       {
-        "date": "2016-10-27T23:00:00.000Z",
+        "date": "2016-10-27T22:00:00.000Z",
         "name": "Abschluss",
         "action": {
           "id": 1,

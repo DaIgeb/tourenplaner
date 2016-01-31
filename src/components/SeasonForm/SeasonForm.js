@@ -26,6 +26,7 @@ import {SeasonState} from 'models';
     'configuration',
     'tours[].date',
     'tours[].type',
+    'tours[].description',
     'tours[].tour',
     'tours[].scores[].name',
     'tours[].scores[].score',
@@ -111,7 +112,7 @@ export default class SeasonForm extends Component {
 
     const renderTour = (tour, idx) => {
       const scores = tour.scores;
-      const tourObj = findTour(tour.tour.value);
+      const tourObj = tour.tour.value ? findTour(tour.tour.value) : {name: tour.description.value};
       const date = moment.tz(tour.date.value, moment.ISO_8601, true, defaultTimeZone);
       const dateString = date.isValid() ? date.format('L') : '-';
       const result = [(
@@ -172,7 +173,18 @@ export default class SeasonForm extends Component {
               <button className={styles.refreshBtn + ' btn btn-success'}>
                 <i className="fa fa-refresh fa-spin"/> {' '} Building Season
               </button>
-              {tours && tours.length && <table className="table table-striped table-hover table-condensed"><thead><tr><td>Datum</td><td>Tourart</td><td>Tour</td></tr></thead><tbody>{tours.map(renderTour)}</tbody></table>}
+              {tours && tours.length && <table className="table table-striped table-hover table-condensed">
+                <thead>
+                  <tr>
+                    <td>Datum</td>
+                    <td>Tourart</td>
+                    <td>Tour</td>
+                  </tr>
+                </thead>
+                <tbody>
+                  {tours.map(renderTour)}
+                </tbody>
+              </table>}
 
               <div style={{textAlign: 'center', margin: '10px'}}>
                 <button className="btn btn-default"

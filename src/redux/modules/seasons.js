@@ -1,6 +1,8 @@
 import {SeasonState} from 'models';
-import {isLoaded as isConfigurationLoaded, load as loadConfigurations} from './configurations';
+import {isLoaded as isConfigurationLoaded, load as loadConfigurations, SpecialDateAction} from './configurations';
 import {isLoaded as isTourLoaded, load as loadTours} from './tours';
+import {TourType} from 'models';
+import {moment} from '../../../shared/utils/moment';
 
 const LOAD = 'tourenplaner/seasons/LOAD';
 const LOAD_SUCCESS = 'tourenplaner/seasons/LOAD_SUCCESS';
@@ -286,18 +288,90 @@ function addNextTour(seasonId) {
         return Promise.reject('Season not found');
       }
       const currentConfiguration = configurations.find(item => item.id === currentSeason.configuration);
-      console.log(currentConfiguration.dates.length);
       const addTourPromises = [];
       currentConfiguration.dates.forEach((date, idx) => {
-        const newTour = {
-          date: date.date,
-          tour: idx,
-          type: date.type.label,
-          scores: [{name: 'UniqueLocations', score: idx, note: 'All locations are unique'}]
-        };
-        addTourPromises.push(dispatch(addTour(seasonId, newTour)));
+        const specialDate = currentConfiguration.specialDates.find(item => item.date === date.date);
+        if (specialDate) {
+          switch (specialDate.action.id) {
+            case SpecialDateAction.remove.id:
+              addTourPromises.push(dispatch(addTour(seasonId, {
+                date: date.date,
+                description: specialDate.name,
+                type: TourType.none.label,
+                scores: [{name: 'Special date override', score: 0, note: specialDate.name}]
+              })));
+              break;
+            case SpecialDateAction.add.id:
+            case SpecialDateAction.replace.id:
+              specialDate.tours.forEach(item => {
+                addTourPromises.push(dispatch(addTour(seasonId, {
+                  date: date.date,
+                  description: specialDate.name,
+                  tour: item.id,
+                  type: item.type.label,
+                  scores: [{name: 'Special date override', score: 0, note: specialDate.name}]
+                })));
+              });
+              break;
+            default:
+              console.error('Invalid special-date action');
+              break;
+          }
+        }
+        if (!specialDate || specialDate.action.id === SpecialDateAction.add.id) {
+          const newTour = {
+            date: date.date,
+            tour: idx,
+            type: date.type.label,
+            scores: [{name: 'UniqueLocations', score: idx, note: 'All locations are unique'}]
+          };
+          addTourPromises.push(dispatch(addTour(seasonId, newTour)));
+        }
       });
 
+      const filterdDates = currentConfiguration.specialDates.filter(date => {
+        try {
+          const momentDate = moment(date.date);
+          const notEqualToStart = !momentDate.isSame(currentConfiguration.seasonStart, 'day');
+          const notEqualtToEnd = !momentDate.isSame(currentConfiguration.seasonEnd, 'day');
+          const notBetweenStartAndEnd = !momentDate.isBetween(currentConfiguration.seasonStart, currentConfiguration.seasonEnd, 'day');
+          console.log(date.date, currentConfiguration.seasonStart, currentConfiguration.seasonEnd, notEqualToStart, notEqualtToEnd, notBetweenStartAndEnd);
+          return notEqualToStart &&
+            notEqualtToEnd &&
+            notBetweenStartAndEnd;
+        } catch (err) {
+          console.error(err);
+          return false;
+        }
+      });
+      console.log(currentConfiguration.specialDates, filterdDates);
+      filterdDates.forEach(specialDate => {
+        switch (specialDate.action.id) {
+          case SpecialDateAction.remove.id:
+            addTourPromises.push(dispatch(addTour(seasonId, {
+              date: specialDate.date,
+              description: specialDate.name,
+              type: TourType.none.label,
+              scores: [{name: 'Special date override', score: 0, note: specialDate.name}]
+            })));
+            break;
+          case SpecialDateAction.add.id:
+          case SpecialDateAction.replace.id:
+            specialDate.tours.forEach(item => {
+              addTourPromises.push(dispatch(addTour(seasonId, {
+                date: specialDate.date,
+                description: specialDate.name,
+                tour: item.id,
+                type: item.type.label,
+                scores: [{name: 'Special date override', score: 0, note: specialDate.name}]
+              })));
+            });
+            break;
+          default:
+            console.error('Invalid special-date action');
+            break;
+        }
+      });
       return Promise.all(addTourPromises)
         .then(result => dispatch({
           type: ADD_TOUR_LIST_DONE,
