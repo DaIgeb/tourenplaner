@@ -10,6 +10,9 @@ export default {
     location: {
       type: "integer"
     },
+    nameForTour: {
+      type: "string"
+    },
     timelines: {
       type: "array",
       items: {

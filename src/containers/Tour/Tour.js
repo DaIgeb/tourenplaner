@@ -117,7 +117,7 @@ export default class Tour extends Component {
       let primaryResult;
       if (restaurant) {
         const restTimeline = restaurant.timelines.find(tl => timelineMatches(tl, date));
-        primaryResult = <b key={idx}>{location.city} ({location.name}/{restTimeline && restTimeline.phone})</b>;
+        primaryResult = <b key={idx}>{restaurant.nameForTour ? restaurant.nameForTour : location.city} ({location.name}/{restTimeline && restTimeline.phone})</b>;
       } else {
         primaryResult = <span key={idx}>{location.name}</span>;
       }

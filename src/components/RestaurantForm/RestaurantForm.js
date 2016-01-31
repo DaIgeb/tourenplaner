@@ -17,6 +17,7 @@ import {LocationInput, DateInput, WeekdayInput, NumberInput} from 'components';
   fields: [
     'id',
     'location',
+    'nameForTour',
     'timelines[].from',
     'timelines[].until',
     'timelines[].notes',
@@ -42,7 +43,7 @@ export default class RestaurantForm extends Component {
   };
 
   render() {
-    const { fields: {id, location, timelines}, formKey, handleSubmit, invalid,
+    const { fields: {id, location, nameForTour, timelines}, formKey, handleSubmit, invalid,
       pristine, submitting, saveError: { [formKey]: saveError } } = this.props;
     const handleCancel = (restaurant) => {
       if (restaurant && restaurant !== 'new') {
@@ -128,7 +129,9 @@ export default class RestaurantForm extends Component {
       <tr className={submitting ? styles.saving : ''}>
         <td className={styles.idCol}>{id.value}</td>
         <td className={styles.addressCol}>
-          <LocationInput className="form-control" {...location} />
+          <LocationInput className="form-control" {...location} /><br />
+          <input type="text" className="form-control" {...nameForTour} placeholder="Ort im Tourenbeschrieb"/>
+          {nameForTour.error && nameForTour.touched && <div className="text-danger">{nameForTour.error}</div>}
         </td>
         <td className={styles.notesCol} colSpan={2}>
           {timelines && timelines.length && <table className="table table-condensed"><tbody>{timelines.map(renderTimeline)}</tbody></table>}

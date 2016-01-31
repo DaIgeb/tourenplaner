@@ -46,11 +46,12 @@ export default class RestaurantRow extends Component {
     const renderLocation = () => {
       if (locations && locations.length > 0) {
         const location = locations.find(loc => loc.id === restaurant.location);
+        const nameForTour = restaurant.nameForTour ? ` (${restaurant.nameForTour})` : '';
         if (location) {
           return (<td className={styles.addressCol}>
             {location.name}<br/>
             {location.streetAddress}<br/>
-            {location.addressCountry ? `${location.addressCountry}-` : ''}{location.postalCode} {location.city}
+            {location.addressCountry ? `${location.addressCountry}-` : ''}{location.postalCode} {location.city}{nameForTour}
           </td>);
         }
 

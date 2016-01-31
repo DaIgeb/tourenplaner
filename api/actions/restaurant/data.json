@@ -2,6 +2,7 @@
   {
     "id": 1,
     "location": 9,
+    "nameForTour": "",
     "timelines": [
       {
         "from": "2015-12-31T23:00:00.000Z",
@@ -2443,6 +2444,7 @@
   {
     "id": 34,
     "location": 232,
+    "nameForTour": "Pfannenstiel",
     "timelines": [
       {
         "from": "2015-12-31T23:00:00.000Z",
@@ -4064,7 +4066,9 @@
     "id": 55
   },
   {
+    "id": 56,
     "location": 327,
+    "nameForTour": "Wallikon",
     "timelines": [
       {
         "from": "2015-12-31T23:00:00.000Z",
@@ -4139,8 +4143,7 @@
           }
         ]
       }
-    ],
-    "id": 56
+    ]
   },
   {
     "location": 330,
@@ -5178,7 +5181,9 @@
     ]
   },
   {
+    "id": 73,
     "location": 291,
+    "nameForTour": "Stadel",
     "timelines": [
       {
         "from": "2015-12-31T23:00:00.000Z",
@@ -5186,7 +5191,6 @@
         "phone": "043 211 08 80",
         "businessHours": []
       }
-    ],
-    "id": 73
+    ]
   }
 ]
