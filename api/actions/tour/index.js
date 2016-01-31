@@ -63,7 +63,7 @@ export function kml(req, params) {
       const getTimeline = (tourId) => {
         const tour = typeof tourId !== 'object' ? dataHandler.getData().find(item => item.id === tourId) : tourId;
         if (!tour) {
-          return [];
+          return null;
         }
 
         return tour.timelines.find(item => timelineMatches(item, date));
@@ -76,16 +76,13 @@ export function kml(req, params) {
         return;
       }
       const startRoute = getTimeline(tourTimeline.startroute);
-      if (!startRoute) {
-        reject('No start-route available');
-        return;
-      }
 
       const locations = [
-        ...startRoute,
+        ...(startRoute ? startRoute.locations : []),
         ...tourTimeline.locations
       ].map(loc => locationHandler.getData().find(item => item.id === loc));
 
+      try {
       const fileContent = ejs.render(`
 <?xml version="1.0" encoding="UTF-8"?>
 <kml xmlns="http://www.opengis.net/kml/2.2">
@@ -125,21 +122,24 @@ export function kml(req, params) {
   </Document>
 </kml>`, {name: tour.name, locations: locations});
 
-      fs.write(fd, fileContent, 'utf8', (err, written, buffer) => {
-        if (err) {
-          reject(err);
-        } else {
-          resolve(res => {
-              res.download(path, `${tour.name}.kml`, (err) => {
-                // If we don't need the file anymore we could manually call the cleanupCallback
-                // But that is not necessary if we didn't pass the keep option because the library
-                // will clean after itself.
-                cleanupCallback();
-              });
-            }
-          );
-        }
-      });
+        fs.write(fd, fileContent, 'utf8', (err, written, buffer) => {
+          if (err) {
+            reject(err);
+          } else {
+            resolve(res => {
+                res.download(path, `${tour.name}.kml`, (err) => {
+                  // If we don't need the file anymore we could manually call the cleanupCallback
+                  // But that is not necessary if we didn't pass the keep option because the library
+                  // will clean after itself.
+                  cleanupCallback();
+                });
+              }
+            );
+          }
+        });
+      } catch (err) {
+        reject(err);
+      }
     });
   });
 }
