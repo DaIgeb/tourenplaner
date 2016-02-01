@@ -98,11 +98,13 @@ export function kml(req, params) {
         <ItemIcon><href>http://maps.google.com/mapfiles/kml/paddle/blu-stars-lv.png</href></ItemIcon>
       </ListStyle>
     </Style>
-    <LineStyle id="sn_blu">
-      <color>2e2efe</color>
-      <colorMode>normal</colorMode>
-      <width>1</width>
-    </LineStyle><% locations.forEach(function(location){%>
+    <Style id="sn_blu">
+      <LineStyle>
+        <color>2e2efe</color>
+        <colorMode>normal</colorMode>
+        <width>1</width>
+      </LineStyle>
+    </Style><% locations.forEach(function(location){%>
     <Placemark>
       <name><%=location.name%></name>
       <styleUrl>#sn_blu-stars5</styleUrl>
