@@ -234,19 +234,19 @@ function addSeason(season) {
 }
 
 export function editStart(id) {
-  return { type: EDIT_START, id };
+  return {type: EDIT_START, id};
 }
 
 export function editStop(id) {
-  return { type: EDIT_STOP, id };
+  return {type: EDIT_STOP, id};
 }
 
 export function addStart() {
-  return { type: ADD_START };
+  return {type: ADD_START};
 }
 
 export function addStop() {
-  return { type: ADD_STOP };
+  return {type: ADD_STOP};
 }
 
 function addTour(season, tour) {
@@ -368,7 +368,6 @@ function addNextTour(seasonId) {
           const locationComparison = previousTours.map(prevTour => countMatchingLocations(timeline, prevTour.tour));
           const maximumMatchingLocations = locationComparison.reduce((sum, newCount) => sum + newCount, 0);
           const distanceViolation = Math.round(Math.abs(expectedDistance - timeline.distance) / 5);
-          const tourHasBeenUsed = usedTours.filter(seasonTour => seasonTour === item.id).length;
           const scores = [
             {
               name: 'Tour-Type matching',
@@ -377,7 +376,7 @@ function addNextTour(seasonId) {
             },
             {
               name: 'Tour-Usage check',
-              score: 10 - tourHasBeenUsed * 5,
+              score: 10 - usedTours.filter(seasonTour => seasonTour === item.id).length * 3,
               note: `Counting usages for tour`
             },
             {
@@ -386,9 +385,19 @@ function addNextTour(seasonId) {
               note: `Distance expected ${expectedDistance} got ${timeline.distance}`
             },
             {
+              name: 'Difficulty check',
+              score: 10,
+              note: `Elevation got ${timeline.elevation}`
+            },
+            {
               name: 'Locations check',
               score: 10 - locationComparison.reduce((sum, newCount) => sum + newCount, 0),
               note: `Locations expected 0 matches got ${maximumMatchingLocations}`
+            },
+            {
+              name: 'Restaurant check',
+              score: 10,
+              note: `Restaurant must be open`
             }
           ];
           return {
@@ -413,7 +422,6 @@ function addNextTour(seasonId) {
                 const specialDate = currentConfiguration.specialDates.find(item => item.date === date.date);
                 const newTours = handleSpecialDate(specialDate, assignedTours);
                 if (!specialDate || specialDate.action.id === SpecialDateAction.add.id) {
-                  console.log(assignedTours.length);
                   const bestTours = createScores(currentConfiguration, date, previousTours, assignedTours);
                   bestTours.forEach(bestTour => {
                     assignedTours.push(bestTour.tourId);
