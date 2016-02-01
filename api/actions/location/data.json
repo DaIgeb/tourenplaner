@@ -68,8 +68,8 @@
     "addressCountry": "",
     "postalCode": "",
     "city": "Flaach",
-    "latitude": 47.559366,
-    "longitude": 8.616986
+    "latitude": 47.575321,
+    "longitude": 8.615671
   },
   {
     "name": "Ellikon am Rhein",
@@ -915,15 +915,15 @@
     "id": 95
   },
   {
+    "id": 96,
     "name": "Eschlikon",
     "identifier": "",
     "streetAddress": "",
     "addressCountry": "",
     "postalCode": "",
-    "city": "Eschlikon",
+    "city": "Eschlikon bei Sirnach",
     "latitude": 47.46189,
-    "longitude": 8.956723,
-    "id": 96
+    "longitude": 8.956723
   },
   {
     "name": "Tufertswil",
@@ -2558,11 +2558,11 @@
     "id": 283
   },
   {
+    "id": 284,
     "name": "Eschlikon",
-    "city": "Eschlikon",
+    "city": "Eschlikon bei Thalheim",
     "latitude": 47.56585,
-    "longitude": 8.753477,
-    "id": 284
+    "longitude": 8.753477
   },
   {
     "name": "Restaurant Sternen",
@@ -2606,11 +2606,11 @@
     "id": 289
   },
   {
+    "id": 290,
     "name": "Thurhof",
     "city": "Thurhof",
-    "latitude": 47.601804,
-    "longitude": 8.707346,
-    "id": 290
+    "latitude": 47.593921,
+    "longitude": 8.723108
   },
   {
     "name": "Restaurant Brauerei",
@@ -4680,11 +4680,11 @@
     "id": 539
   },
   {
+    "id": 540,
     "name": "Radweg 26",
     "city": "Müllheim",
-    "latitude": 9.002041,
-    "longitude": 8.986563,
-    "id": 540
+    "latitude": 47.601802,
+    "longitude": 8.98655
   },
   {
     "name": "Felben",

@@ -290,15 +290,14 @@ function addNextTour(seasonId) {
       }
       const currentConfiguration = configurations.find(item => item.id === currentSeason.configuration);
       const addTourPromises = [];
-      const assignedTours = [];
-      // TODO rewrite to make it a: more readable and b: iterate instead of using promises
-      currentConfiguration.dates.forEach((date) => {
-        const specialDate = currentConfiguration.specialDates.find(item => item.date === date.date);
+
+      const handleSpecialDate = (specialDate, assignedTours) => {
+        const newTours = [];
         if (specialDate) {
           switch (specialDate.action.id) {
             case SpecialDateAction.remove.id:
               addTourPromises.push(dispatch(addTour(seasonId, {
-                date: date.date,
+                date: specialDate.date,
                 description: specialDate.name,
                 type: TourType.none.label,
                 scores: [{name: 'Special date override', score: 0, note: specialDate.name}]
@@ -308,13 +307,15 @@ function addNextTour(seasonId) {
             case SpecialDateAction.replace.id:
               specialDate.tours.forEach(item => {
                 assignedTours.push(item.id);
-                addTourPromises.push(dispatch(addTour(seasonId, {
-                  date: date.date,
+                const newTour = {
+                  date: specialDate.date,
                   description: specialDate.name,
                   tour: item.id,
                   type: item.type.label,
                   scores: [{name: 'Special date override', score: 0, note: specialDate.name}]
-                })));
+                };
+                newTours.push(newTour);
+                addTourPromises.push(dispatch(addTour(seasonId, newTour)));
               });
               break;
             default:
@@ -322,61 +323,128 @@ function addNextTour(seasonId) {
               break;
           }
         }
-        if (!specialDate || specialDate.action.id === SpecialDateAction.add.id) {
-          const momentDate = moment(date.date);
-          const seasonStartDate = moment(currentConfiguration.seasonStart).dayOfYear();
-          const eveningStartDate = moment(currentConfiguration.eveningStart).dayOfYear();
-          const distance = eveningStartDate - seasonStartDate;
-          const distanceFactor = momentDate.dayOfYear() > eveningStartDate ? 1 : (((momentDate.dayOfYear() - seasonStartDate) / distance) / 10 + 0.9);
-          const baseDistance = (() => {
-            switch (date.type.id) {
-              case TourType.morning.id:
-                return 75;
-              case TourType.evening.id:
-                return 55;
-              case TourType.afternoon.id:
-                return 90;
-              default:
-                return 100;
+
+        return newTours;
+      };
+
+      const createScores = (configuration, date, previousTours, usedTours) => {
+        const momentDate = moment(date.date);
+        const seasonStartDate = moment(configuration.seasonStart).dayOfYear();
+        const eveningStartDate = moment(configuration.eveningStart).dayOfYear();
+        const distance = eveningStartDate - seasonStartDate;
+        const distanceFactor = momentDate.dayOfYear() > eveningStartDate ? 1 : (((momentDate.dayOfYear() - seasonStartDate) / distance) / 10 + 0.9);
+        const baseDistance = (() => {
+          switch (date.type.id) {
+            case TourType.morning.id:
+              return 75;
+            case TourType.evening.id:
+              return 55;
+            case TourType.afternoon.id:
+              return 90;
+            default:
+              return 100;
+          }
+        })();
+        const countMatchingLocations = (timeline, tourId) => {
+          if (!tourId) {
+            return 0;
+          }
+          const tourToCompare = tours.find(item => item.id === tourId);
+          if (!tourToCompare) {
+            return 0;
+          }
+
+          const timelineToCompare = tourToCompare.timelines.find(tl => timelineMatches(tl, momentDate));
+          if (!timelineToCompare) {
+            return 0;
+          }
+
+          return timeline.locations.filter(locId => timelineToCompare.locations.find(item => item === locId)).length - 1; // Winterthur is always matching once
+        };
+
+        const expectedDistance = distanceFactor * baseDistance;
+        const scoresByTour = tours.map(item => {
+          const timeline = item.timelines.find(tl => timelineMatches(tl, momentDate));
+          const locationComparison = previousTours.map(prevTour => countMatchingLocations(timeline, prevTour.tour));
+          const maximumMatchingLocations = locationComparison.reduce((sum, newCount) => sum + newCount, 0);
+          const distanceViolation = Math.round(Math.abs(expectedDistance - timeline.distance) / 5);
+          const tourHasBeenUsed = usedTours.filter(seasonTour => seasonTour === item.id).length;
+          const scores = [
+            {
+              name: 'Tour-Type matching',
+              score: item.types.find(type => date.type.id === type.id) ? 10 : 0,
+              note: `Checking for type ${date.type.label}`
+            },
+            {
+              name: 'Tour-Usage check',
+              score: 10 - tourHasBeenUsed * 5,
+              note: `Counting usages for tour`
+            },
+            {
+              name: 'Distance check',
+              score: 10 - (distanceViolation ? distanceViolation - 1 : 0),
+              note: `Distance expected ${expectedDistance} got ${timeline.distance}`
+            },
+            {
+              name: 'Locations check',
+              score: 10 - locationComparison.reduce((sum, newCount) => sum + newCount, 0),
+              note: `Locations expected 0 matches got ${maximumMatchingLocations}`
             }
-          })();
-          const expectedDistance = distanceFactor * baseDistance;
-          const scoresByTour = tours.map(item => {
-            const timeline = item.timelines.find(tl => timelineMatches(tl, momentDate));
-            const scores = [
-              {
-                name: 'Tour-Type matching',
-                score: item.types.find(type => date.type.id === type.id) ? 10 : 0,
-                note: `Checking for type ${date.type.label}`
-              },
-              {
-                name: 'Tour-Usage check',
-                score: 10 - assignedTours.filter(seasonTour => seasonTour.tour === item.id).length,
-                note: `Counting usages for tour`
-              },
-              {
-                name: 'Distance check',
-                score: 10 - Math.abs(expectedDistance - timeline.distance),
-                note: `Distance expected ${expectedDistance} got ${timeline.distance}`
-              }
-            ];
-            return {
-              tourId: item.id,
-              totalScore: scores.reduce((sum, score) => sum + score.score, 0),
-              scores: scores
-            };
-          });
-          const bestTour = scoresByTour.sort((item1, item2) => item2.totalScore - item1.totalScore)[0];
-          assignedTours.push(bestTour.tourId);
-          const newTour = {
-            date: date.date,
-            tour: bestTour.tourId,
-            type: date.type.label,
-            scores: bestTour.scores
+          ];
+          return {
+            tourId: item.id,
+            totalScore: scores.reduce((sum, score) => sum + score.score, 0),
+            scores: scores
           };
-          addTourPromises.push(dispatch(addTour(seasonId, newTour)));
-        }
+        });
+        return scoresByTour.sort((item1, item2) => item2.totalScore - item1.totalScore).slice(0, 1);
+      };
+
+      let action = () => {
+        return Promise.resolve([]);
+      };
+
+      const createAction = (date, previousAction, assignedTours) => {
+        return () => {
+          return new Promise((resolve, reject) => {
+            const previousTourPromise = previousAction();
+            previousTourPromise
+              .then(previousTours => {
+                const specialDate = currentConfiguration.specialDates.find(item => item.date === date.date);
+                const newTours = handleSpecialDate(specialDate, assignedTours);
+                if (!specialDate || specialDate.action.id === SpecialDateAction.add.id) {
+                  console.log(assignedTours.length);
+                  const bestTours = createScores(currentConfiguration, date, previousTours, assignedTours);
+                  bestTours.forEach(bestTour => {
+                    assignedTours.push(bestTour.tourId);
+                    const newTour = {
+                      date: date.date,
+                      tour: bestTour.tourId,
+                      type: date.type.label,
+                      scores: bestTour.scores
+                    };
+                    newTours.push(newTour);
+                    addTourPromises.push(dispatch(addTour(seasonId, newTour)));
+                  });
+                }
+
+                resolve(newTours);
+              })
+              .catch(err => reject(err));
+          });
+        };
+      };
+
+      // TODO rewrite to make it a: more readable and b: iterate instead of using promises
+      const assignedTours = [];
+      currentConfiguration.dates.forEach(date => {
+        const currentAction = action;
+        const currentDate = date;
+        const currentAssignedTours = assignedTours;
+        action = createAction(currentDate, currentAction, currentAssignedTours);
       });
+
+      action();
 
       currentConfiguration.specialDates.filter(date => {
         const momentDate = moment(date.date);
@@ -388,31 +456,7 @@ function addNextTour(seasonId) {
           notEqualtToEnd &&
           notBetweenStartAndEnd;
       }).forEach(specialDate => {
-        switch (specialDate.action.id) {
-          case SpecialDateAction.remove.id:
-            addTourPromises.push(dispatch(addTour(seasonId, {
-              date: specialDate.date,
-              description: specialDate.name,
-              type: TourType.none.label,
-              scores: [{name: 'Special date override', score: 0, note: specialDate.name}]
-            })));
-            break;
-          case SpecialDateAction.add.id:
-          case SpecialDateAction.replace.id:
-            specialDate.tours.forEach(item => {
-              addTourPromises.push(dispatch(addTour(seasonId, {
-                date: specialDate.date,
-                description: specialDate.name,
-                tour: item.id,
-                type: item.type.label,
-                scores: [{name: 'Special date override', score: 0, note: specialDate.name}]
-              })));
-            });
-            break;
-          default:
-            console.error('Invalid special-date action');
-            break;
-        }
+        handleSpecialDate(specialDate);
       });
       return Promise.all(addTourPromises)
         .then(result => dispatch({
