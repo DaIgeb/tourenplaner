@@ -227,7 +227,74 @@
         "until": "2100-12-30T23:00:00.000Z",
         "notes": "TODO",
         "phone": "071 787 11 22",
-        "businessHours": []
+        "businessHours": [
+          {
+            "weekday": "Monday",
+            "from": {
+              "hour": 9,
+              "minute": 0
+            },
+            "until": {
+              "hour": 19,
+              "minute": 0
+            }
+          },
+          {
+            "weekday": "Tuesday",
+            "from": {
+              "hour": 9,
+              "minute": 0
+            },
+            "until": {
+              "hour": 19,
+              "minute": 0
+            }
+          },
+          {
+            "weekday": "Wednesday",
+            "from": {
+              "hour": 9,
+              "minute": 0
+            },
+            "until": {
+              "hour": 19,
+              "minute": 0
+            }
+          },
+          {
+            "weekday": "Thursday",
+            "from": {
+              "hour": 9,
+              "minute": 0
+            },
+            "until": {
+              "hour": 19,
+              "minute": 0
+            }
+          },
+          {
+            "weekday": "Saturday",
+            "from": {
+              "hour": 9,
+              "minute": 0
+            },
+            "until": {
+              "hour": 21,
+              "minute": 0
+            }
+          },
+          {
+            "weekday": "Sunday",
+            "from": {
+              "hour": 9,
+              "minute": 0
+            },
+            "until": {
+              "hour": 21,
+              "minute": 0
+            }
+          }
+        ]
       }
     ]
   },
@@ -685,6 +752,7 @@
   {
     "id": 10,
     "location": 140,
+    "nameForTour": "Dingenhart",
     "timelines": [
       {
         "from": "2015-12-31T23:00:00.000Z",
@@ -953,12 +1021,13 @@
     ]
   },
   {
+    "id": 12,
     "location": 151,
     "timelines": [
       {
         "from": "2015-12-31T23:00:00.000Z",
         "until": "2100-12-30T23:00:00.000Z",
-        "notes": "Mittwoch; bis 17.00 geschlossen",
+        "notes": "",
         "phone": "071 977 15 01",
         "businessHours": [
           {
@@ -966,6 +1035,17 @@
             "from": {
               "hour": 8,
               "minute": 30
+            },
+            "until": {
+              "hour": 24,
+              "minute": 0
+            }
+          },
+          {
+            "weekday": "Wednesday",
+            "from": {
+              "hour": 17,
+              "minute": 0
             },
             "until": {
               "hour": 24,
@@ -1018,8 +1098,7 @@
           }
         ]
       }
-    ],
-    "id": 12
+    ]
   },
   {
     "id": 13,
@@ -1543,9 +1622,42 @@
       {
         "from": "2015-12-31T23:00:00.000Z",
         "until": "2100-12-30T23:00:00.000Z",
-        "notes": "Di - Do ab 17.00",
+        "notes": "",
         "phone": "+49 7736 92470",
         "businessHours": [
+          {
+            "weekday": "Tuesday",
+            "from": {
+              "hour": 17,
+              "minute": 0
+            },
+            "until": {
+              "hour": 21,
+              "minute": 30
+            }
+          },
+          {
+            "weekday": "Wednesday",
+            "from": {
+              "hour": 17,
+              "minute": 0
+            },
+            "until": {
+              "hour": 21,
+              "minute": 30
+            }
+          },
+          {
+            "weekday": "Thursday",
+            "from": {
+              "hour": 17,
+              "minute": 0
+            },
+            "until": {
+              "hour": 21,
+              "minute": 30
+            }
+          },
           {
             "weekday": "Friday",
             "from": {
@@ -3341,7 +3453,9 @@
     "id": 45
   },
   {
+    "id": 46,
     "location": 285,
+    "nameForTour": "Sitzberg",
     "timelines": [
       {
         "from": "2015-12-31T23:00:00.000Z",
@@ -3416,11 +3530,12 @@
           }
         ]
       }
-    ],
-    "id": 46
+    ]
   },
   {
+    "id": 47,
     "location": 289,
+    "nameForTour": "Sonnenberg",
     "timelines": [
       {
         "from": "2015-12-31T23:00:00.000Z",
@@ -3484,8 +3599,7 @@
           }
         ]
       }
-    ],
-    "id": 47
+    ]
   },
   {
     "location": 297,
@@ -3851,7 +3965,9 @@
     ]
   },
   {
+    "id": 53,
     "location": 317,
+    "nameForTour": "Steinenkreuz",
     "timelines": [
       {
         "from": "2015-12-31T23:00:00.000Z",
@@ -3915,8 +4031,7 @@
           }
         ]
       }
-    ],
-    "id": 53
+    ]
   },
   {
     "location": 323,
@@ -4589,6 +4704,7 @@
   {
     "id": 62,
     "location": 343,
+    "nameForTour": "Wolfensberg",
     "timelines": [
       {
         "from": "2015-12-31T23:00:00.000Z",
@@ -4600,7 +4716,9 @@
     ]
   },
   {
+    "id": 63,
     "location": 345,
+    "nameForTour": "Wührenbach",
     "timelines": [
       {
         "from": "2015-12-31T23:00:00.000Z",
@@ -4665,8 +4783,7 @@
           }
         ]
       }
-    ],
-    "id": 63
+    ]
   },
   {
     "location": 350,
@@ -5079,7 +5196,9 @@
     "id": 70
   },
   {
+    "id": 71,
     "location": 444,
+    "nameForTour": "Ghöch",
     "timelines": [
       {
         "from": "2015-12-31T23:00:00.000Z",
@@ -5087,8 +5206,7 @@
         "phone": "044 939 16 86",
         "businessHours": []
       }
-    ],
-    "id": 71
+    ]
   },
   {
     "id": 72,

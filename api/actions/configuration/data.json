@@ -982,7 +982,7 @@
         ]
       },
       {
-        "date": "2016-08-10T22:00:00.000Z",
+        "date": "2016-08-12T22:00:00.000Z",
         "name": "Überraschungstour",
         "action": {
           "id": 3,
@@ -992,8 +992,8 @@
           {
             "id": 77,
             "type": {
-              "id": 4,
-              "label": "Abendtour"
+              "id": 3,
+              "label": "Nachmittagstour"
             }
           }
         ]
