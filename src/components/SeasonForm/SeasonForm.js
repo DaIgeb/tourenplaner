@@ -24,13 +24,14 @@ import {SeasonState} from 'models';
     'version',
     'state',
     'configuration',
-    'tours[].date',
-    'tours[].type',
-    'tours[].description',
-    'tours[].tour',
-    'tours[].scores[].name',
-    'tours[].scores[].score',
-    'tours[].scores[].note'
+    'dates[].date',
+    'dates[].description',
+    'dates[].tours[].tour',
+    'dates[].tours[].type',
+    'dates[].tours[].candidates[].tour',
+    'dates[].tours[].candidates[].scores[].name',
+    'dates[].tours[].candidates[].scores[].score',
+    'dates[].tours[].candidates[].scores[].note'
   ],
   // validate: restaurantValidation
 })
@@ -68,7 +69,7 @@ export default class SeasonForm extends Component {
   }
 
   render() {
-    const { fields: {id, configuration, state, version, year, tours}, formKey, handleSubmit, invalid,
+    const { fields: {id, configuration, state, version, year, dates}, formKey, handleSubmit, invalid,
       submitting, saveError: { [formKey]: saveError } } = this.props;
 
     const handleCancel = (seasonId) => {
@@ -100,7 +101,7 @@ export default class SeasonForm extends Component {
 
       return tours.find(tourObj => tourObj.id === tourId);
     };
-
+/*
     const renderScore = (score, idx) => {
       return (
         <tr key={idx}>
@@ -108,25 +109,41 @@ export default class SeasonForm extends Component {
           <td>{score.score.value}</td>
           <td>{score.note.value}</td>
         </tr>);
+    };*/
+
+    const renderTour = (dateIdx) => {
+      return (tour, idx) => {
+        const tourObj = !isNaN(tour.tour.value) && tour.tour.value >= 0 ? findTour(tour.candidates[tour.tour.value].tour.value) : null;
+        // TODO render candidates
+        // TODO render scores
+
+        return (
+          <tr key={dateIdx + '/tour/' + idx}>
+            <td></td>
+            <td>{tour.type.value.label}</td>
+            <td>{tourObj ? tourObj.name : 'Unkown tour'}</td>
+          </tr>);
+      };
     };
 
-    const renderTour = (tour, idx) => {
-      const scores = tour.scores;
-      const tourObj = tour.tour.value ? findTour(tour.tour.value) : {name: tour.description.value};
-      const date = moment.tz(tour.date.value, moment.ISO_8601, true, defaultTimeZone);
-      const dateString = date.isValid() ? date.format('L') : '-';
+    const renderDates = (date, idx) => {
+      const momentDate = moment.tz(date.date.value, moment.ISO_8601, true, defaultTimeZone);
+      const dateString = momentDate.isValid() ? momentDate.format('L') : '-';
       const result = [(
         <tr key={idx + '/tour'} onClick={() => this.toggleDetails(idx)}>
           <td>{dateString}</td>
-          <td>{tour.type.value}</td>
-          <td>{tourObj ? tourObj.name : 'Unkown tour'}</td>
+          <td colSpan={2}>{date.description.value}</td>
         </tr>)];
+      result.push.apply(result, date.tours.map(renderTour(idx)));
       if (this.state.details[idx]) {
-        result.push((
-          <tr key={idx + '/score'}>
-            <td colSpan={3}>{scores && scores.length && <table className="table table-striped table-hover table-condensed"><thead><tr><td>Bezeichnung</td><td>Score</td><td>Notiz</td></tr></thead><tbody>{tour.scores.map(renderScore)}</tbody></table>}</td>
-          </tr>)
-        );
+        // NOP
+        /*
+         result.push((
+         <tr key={idx + '/score'}>
+         <td colSpan={3}>{scores && scores.length && <table className="table table-striped table-hover table-condensed"><thead><tr><td>Bezeichnung</td><td>Score</td><td>Notiz</td></tr></thead><tbody>{date.scores.map(renderScore)}</tbody></table>}</td>
+         </tr>)
+         );
+         */
       }
 
       return result;
@@ -143,7 +160,7 @@ export default class SeasonForm extends Component {
               {renderInput(year, 'Jahr', <NumberInput className="form-control" {...year} readOnly/>)}
               {renderInput(version, 'Version', <NumberInput className="form-control" {...version} readOnly type="hidden"/>)}
               {renderInput(configuration, 'Konfiguration', <ConfigurationInput {...configuration} readOnly/>)}
-              {tours && tours.length && <table className="table table-striped table-hover table-condensed"><thead><tr><td>Datum</td><td>Tourart</td><td>Tour</td></tr></thead><tbody>{tours.map(renderTour)}</tbody></table>}
+              {dates && dates.length && <table className="table table-striped table-hover table-condensed"><thead><tr><td>Datum</td><td>Tourart</td><td>Tour</td></tr></thead><tbody>{dates.map(renderDates)}</tbody></table>}
 
               <div style={{textAlign: 'center', margin: '10px'}}>
                 <button className="btn btn-default"
@@ -173,7 +190,7 @@ export default class SeasonForm extends Component {
               <button className={styles.refreshBtn + ' btn btn-success'}>
                 <i className="fa fa-refresh fa-spin"/> {' '} Building Season
               </button>
-              {tours && tours.length && <table className="table table-striped table-hover table-condensed">
+              {dates && dates.length && <table className="table table-striped table-hover table-condensed">
                 <thead>
                   <tr>
                     <td>Datum</td>
@@ -182,7 +199,7 @@ export default class SeasonForm extends Component {
                   </tr>
                 </thead>
                 <tbody>
-                  {tours.map(renderTour)}
+                  {dates.map(renderDates)}
                 </tbody>
               </table>}
 

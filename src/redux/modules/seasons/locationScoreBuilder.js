@@ -10,17 +10,12 @@ const countMatchingLocations = (locations1, locations2) => {
   return 0;
 };
 
-const findTimeline = (tourObject, tours) => {
-  const tourId = tourObject.tourId;
-  if (!tourId) {
-    return 0;
-  }
-  const tourToCompare = tours.find(item => item.id === tourId);
+const findTimeline = (tourToCompare, date) => {
   if (!tourToCompare) {
     return 0;
   }
 
-  const timelineToCompare = tourToCompare.timelines.find(tl => timelineMatches(tl, tourObject.date));
+  const timelineToCompare = tourToCompare.timelines.find(tl => timelineMatches(tl, date));
   if (!timelineToCompare) {
     return 0;
   }
@@ -28,8 +23,28 @@ const findTimeline = (tourObject, tours) => {
   return timelineToCompare;
 };
 
-export function createScore(allTours, currentTourTimeline, previousTours) {
-  const previousTourTimelines = previousTours.map(tour => findTimeline(tour, allTours));
+const getTours = (allTours, previousTours) => {
+  if (!previousTours) {
+    return 0;
+  }
+
+  return previousTours.tours.map(prevTour => {
+    if (isNaN(prevTour.tour)) {
+      console.error(prevTour);
+      return null;
+    }
+
+    const relevantCandidate = prevTour.candidates[prevTour.tour];
+    if (!relevantCandidate) {
+      console.error(prevTour);
+    }
+
+    return allTours.find(tour => tour.id === relevantCandidate.tour);
+  });
+};
+
+export function createScore(allTours, currentTourTimeline, date, previousTours) {
+  const previousTourTimelines = getTours(allTours, previousTours).map(tour => findTimeline(tour, date));
   const locationComparison = previousTourTimelines.map(prevTour => countMatchingLocations(currentTourTimeline.locations, prevTour.locations));
   const maximumMatchingLocations = locationComparison.reduce((sum, newCount) => sum + newCount, 0);
 

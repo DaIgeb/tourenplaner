@@ -46,13 +46,35 @@ const getPoints = (previousTourDifficulty, currentDifficulty)=>{
 
 const getMaximalDifficulty = (allTours, tourId, tourDate)=>{
   const tour = allTours.find(to => to.id === tourId);
+  if (!tour) {
+    return 0;
+  }
   const timeline = tour.timelines.find(tl => timelineMatches(tl, moment(tourDate)));
 
   return calculateDifficulty(timeline.distance, timeline.elevation);
 };
 
+const getMaxDifficulty = (allTours, previousTours) => {
+  if (!previousTours) {
+    return 0;
+  }
+
+  return previousTours.tours.map(prevTour => {
+    if (isNaN(prevTour.tour)) {
+      return 0;
+    }
+
+    const relevantCandidate = prevTour.candidates[prevTour.tour];
+    if (!relevantCandidate) {
+      console.error(prevTour);
+    }
+
+    return getMaximalDifficulty(allTours, relevantCandidate.tour, previousTours.date);
+  }).sort().reverse();
+};
+
 export function createScore(allTours, currentTourTimeline, previousTours) {
-  const previousTourDifficulties = previousTours.map(prevTour => getMaximalDifficulty(allTours, prevTour.tour, prevTour.date)).sort().reverse();
+  const previousTourDifficulties = getMaxDifficulty(allTours, previousTours);
   const previousTourDifficulty = previousTourDifficulties[0];
 
   const currentDifficulty = calculateDifficulty(currentTourTimeline.distance, currentTourTimeline.elevation);

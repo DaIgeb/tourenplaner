@@ -1,5 +1,5 @@
 import {SeasonState} from 'models';
-import {isLoaded as isConfigurationLoaded, load as loadConfigurations, SpecialDateAction} from './configurations';
+import {isLoaded as isConfigurationLoaded, load as loadConfigurations} from './configurations';
 import {isLoaded as isTourLoaded, load as loadTours} from './tours';
 // import {TourType} from 'models';
 import {moment} from '../../../shared/utils/moment';
@@ -109,6 +109,7 @@ export default function reducer(state = initialState, action = {}) {
         ...state,
         adding: {
           ...state.adding,
+          dates: action.data,
           state: SeasonState.confirm
         }
       };
@@ -253,6 +254,7 @@ export function addStop() {
   return {type: ADD_STOP};
 }
 
+/*
 function addTour(season, tour) {
   return {
     types: [ADD_ADD_TOUR, ADD_ADD_TOUR_SUCCESS, ADD_ADD_TOUR_FAIL],
@@ -264,6 +266,7 @@ function addTour(season, tour) {
     })
   };
 }
+*/
 
 function addNextTour(seasonId) {
   return (dispatch, getState) => {
@@ -294,7 +297,7 @@ function addNextTour(seasonId) {
       }
       const currentConfiguration = configurations.find(item => item.id === currentSeason.configuration);
 
-      const createScores = (configuration, date, previousTours, usedTours) => {
+      const createScores = (configuration, date, tour, previousTour, usedTours) => {
         const momentDate = moment(date.date);
 
         const scoresByTour = tours.map(item => {
@@ -303,8 +306,8 @@ function addNextTour(seasonId) {
           const scores = [
             {
               name: 'Tour-Type matching',
-              score: item.types.find(type => date.type.id === type.id) ? 10 : 0,
-              note: `Checking for type ${date.type.label}`
+              score: item.types.find(type => tour.type.id === type.id) ? 10 : 0,
+              note: `Checking for type ${tour.type.label}`
             },
             {
               name: 'Tour-Usage check',
@@ -317,135 +320,59 @@ function addNextTour(seasonId) {
               note: `Restaurant must be open`
             }
           ];
-          try {
-            scores.push(createDistanceScore(configuration, date.date, date.type, timeline.distance, timeline.elevation));
-          } catch (err) {
-            console.error(err);
-          }
-          try {
-            scores.push(createDifficultyScore(tours, timeline, previousTours));
-          } catch (err) {
-            console.error(err);
-          }
-          try {
-            scores.push(createLocationScore(tours, timeline, previousTours));
-          } catch (err) {
-            console.error(err);
-          }
+          scores.push(createDistanceScore(configuration, date.date, tour.type, timeline.distance, timeline.elevation));
+          scores.push(createDifficultyScore(tours, timeline, previousTour));
+          scores.push(createLocationScore(tours, timeline, momentDate, previousTour));
 
           return {
-            tourId: item.id,
+            tour: item.id,
             totalScore: scores.reduce((sum, score) => sum + score.score, 0),
             scores: scores
           };
         }).sort((item1, item2) => item2.totalScore - item1.totalScore);
-        const bestScore = scoresByTour[0].totalScore;
-        const relevantScores = scoresByTour.filter(score => score.totalScore === bestScore);
 
-        const chosenItem = Math.floor(Math.random() * relevantScores.length);
-        return relevantScores.slice(chosenItem, 1);
-      };
-
-      // TODO don't use promises and add all tours at once
-      let action = () => {
-        return Promise.resolve([]);
+        return scoresByTour;
       };
 
       const assignedTours = [];
       const datesForTours = createDates(currentConfiguration);
       datesForTours.forEach((tourDate, idx) => {
-        const previousTour = idx ? datesForTours[idx - 1] : null;
-        if (tourDate.tours && tourDate.tours.length) {
-          tourDate.tours.forEach(tour => {
-            if (tour.tour !== null) {
-              const candidate = tour.candidates[tour.tour];
-              if (candidate.tour !== null) {
-                assignedTours.push(candidate.tour);
-              }
-            } else {
-              try {
-                const scores = createScores(currentConfiguration, tourDate, previousTour, assignedTours);
-
-                try {
-                  const bestScore = scores[0].totalScore;
-                  const relevantScores = scores.filter(score => score.totalScore === bestScore);
-
-                  const chosenItem = Math.floor(Math.random() * relevantScores.length);
-                  tour.candidates.push.apply(scores.slice(0, relevantScores.length > 5 ? 5 : relevantScores.length));
-                  tour.tour = tour.candidates.indexOf(relevantScores[chosenItem]);
-                } catch (err) {
-                  console.error(err);
+        try {
+          const previousTour = idx ? datesForTours[idx - 1] : null;
+          if (tourDate.tours && tourDate.tours.length) {
+            tourDate.tours.forEach(tour => {
+              if (tour.tour !== null) {
+                const candidate = tour.candidates[tour.tour];
+                if (candidate.tour !== null) {
+                  assignedTours.push(candidate.tour);
                 }
-              } catch (err) {
-                console.error(err);
+              } else {
+                const scores = createScores(currentConfiguration, tourDate, tour, previousTour, assignedTours);
+
+                const bestScore = scores[0].totalScore;
+                const relevantScores = scores.filter(score => score.totalScore === bestScore);
+
+                const chosenItem = Math.floor(Math.random() * Math.min(relevantScores.length, 5));
+                const candidates = scores.slice(0, relevantScores.length > 5 ? 5 : relevantScores.length);
+                tour.candidates.push.apply(tour.candidates, candidates);
+                const tourIndex = tour.candidates.indexOf(relevantScores[chosenItem]);
+                if (tourIndex < 0) {
+                  console.error('No tour found');
+                }
+                tour.tour = tourIndex;
               }
-            }
-          });
-        } else {
-          console.error('Tours not configured', tourDate.date, JSON.stringify(tourDate));
+            });
+          } else {
+            console.error('Tours not configured', tourDate.date, JSON.stringify(tourDate));
+          }
+        } catch (err) {
+          console.log(err);
         }
       });
 
-      // console.log(JSON.stringify(datesForTours));
-      console.log(datesForTours);
-
-      const createAction = (date, previousAction, usedTours) => {
-        return () => {
-          return new Promise((resolve, reject) => {
-            const previousTourPromise = previousAction();
-            previousTourPromise
-              .then(previousTours => {
-                const specialDate = currentConfiguration.specialDates.find(item => item.date === date.date);
-                const newTours = []; // handleSpecialDate(specialDate, usedTours);
-                if (!specialDate || specialDate.action.id === SpecialDateAction.add.id) {
-                  const bestTours = createScores(currentConfiguration, date, previousTours, usedTours);
-                  bestTours.forEach(bestTour => {
-                    usedTours.push(bestTour.tourId);
-                    const newTour = {
-                      date: date.date,
-                      tour: bestTour.tourId,
-                      type: date.type.label,
-                      scores: bestTour.scores
-                    };
-                    newTours.push(newTour);
-                    dispatch(addTour(seasonId, newTour));
-                  });
-                }
-
-                setTimeout(() => resolve(newTours), 200);
-              })
-              .catch(err => reject(err));
-          });
-        };
-      };
-
-      // TODO rewrite to make it a: more readable and b: iterate instead of using promises
-      currentConfiguration.dates.forEach(date => {
-        const currentAction = action;
-        const currentDate = date;
-        const currentAssignedTours = assignedTours;
-        action = createAction(currentDate, currentAction, currentAssignedTours);
-      });
-
-      action().then(result => {
-        currentConfiguration.specialDates.filter(date => {
-          const momentDate = moment(date.date);
-          const notEqualToStart = !momentDate.isSame(currentConfiguration.seasonStart, 'day');
-          const notEqualtToEnd = !momentDate.isSame(currentConfiguration.seasonEnd, 'day');
-          const notBetweenStartAndEnd = !momentDate.isBetween(currentConfiguration.seasonStart, currentConfiguration.seasonEnd, 'day');
-
-          return notEqualToStart &&
-            notEqualtToEnd &&
-            notBetweenStartAndEnd;
-        }).forEach(specialDate => {
-          // handleSpecialDate(specialDate);
-          console.log(specialDate);
-        });
-
-        dispatch({
-          type: ADD_TOUR_LIST_DONE,
-          data: result
-        });
+      dispatch({
+        type: ADD_TOUR_LIST_DONE,
+        data: datesForTours
       });
     });
   };

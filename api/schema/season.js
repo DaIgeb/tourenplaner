@@ -11,7 +11,7 @@ export default {
     configurationId: {
       $ref: "#configuration"
     },
-    tours: {
+    dates: {
       type: "array",
         items: {
           type: "object"
@@ -21,6 +21,6 @@ export default {
   required: [
     "year",
     "version",
-    "tours"
+    "dates"
   ]
 }
