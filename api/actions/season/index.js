@@ -42,10 +42,10 @@ export function add(req) {
   });
 }
 
-export function addTour(req) {
+export function addDates(req) {
   return new Promise((resolve, reject) => {
     const season = req.body.season;
-    const tour = req.body.tour;
+    const dates = req.body.dates;
     const chosenSeason = dataHandler.getData().find(item => item.id === season);
     if (!chosenSeason) {
       reject('Season not found');
@@ -53,10 +53,7 @@ export function addTour(req) {
 
     const updatedSeason = {
       ...chosenSeason,
-      tours: [
-        ...chosenSeason.tours,
-        tour
-          ]
+      dates: dates
       };
     const result = dataHandler.update(updatedSeason);
     if (result.errors) {

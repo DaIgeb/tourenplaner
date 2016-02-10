@@ -6,7 +6,7 @@ function handleSpecialDate(specialDate) {
   switch (specialDate.action.id) {
     case SpecialDateAction.remove.id:
       return [{
-        type: TourType.none.label,
+        type: TourType.none,
         tour: 0,
         candidates: [
           {
@@ -25,7 +25,7 @@ function handleSpecialDate(specialDate) {
     case SpecialDateAction.replace.id:
       return specialDate.tours.map(item => {
         return {
-          type: item.type.label,
+          type: item.type,
           tour: 0,
           candidates: [
             {
@@ -129,43 +129,3 @@ export function createDates(configuration) {
 
   return dates;
 }
-/*
- const createScores = (configuration, date, previousTours, usedTours) => {
- const momentDate = moment(date.date);
-
- const scoresByTour = tours.map(item => {
- const timeline = item.timelines.find(tl => timelineMatches(tl, momentDate));
-
- const scores = [
- {
- name: 'Tour-Type matching',
- score: item.types.find(type => date.type.id === type.id) ? 10 : 0,
- note: `Checking for type ${date.type.label}`
- },
- {
- name: 'Tour-Usage check',
- score: 10 - usedTours.filter(seasonTour => seasonTour === item.id).length * 3,
- note: `Counting usages for tour`
- },
- createDistanceScore(configuration, date.date, date.type, timeline.distance, timeline.elevation),
- createDifficultyScore(tours, timeline, previousTours),
- createLocationScore(tours, timeline, previousTours),
- {
- name: 'Restaurant check',
- score: 10,
- note: `Restaurant must be open`
- }
- ];
- return {
- tourId: item.id,
- totalScore: scores.reduce((sum, score) => sum + score.score, 0),
- scores: scores
- };
- }).sort((item1, item2) => item2.totalScore - item1.totalScore);
- const bestScore = scoresByTour[0].totalScore;
- const relevantScores = scoresByTour.filter(score => score.totalScore === bestScore);
-
- const chosenItem = Math.floor(Math.random() * relevantScores.length);
- return relevantScores.slice(chosenItem, 1);
- };
- */

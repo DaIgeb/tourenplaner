@@ -26,6 +26,8 @@ import {SeasonState} from 'models';
     'configuration',
     'dates[].date',
     'dates[].description',
+    'dates[].locked',
+    'dates[].tours[]',
     'dates[].tours[].tour',
     'dates[].tours[].type',
     'dates[].tours[].candidates[].tour',
@@ -53,17 +55,35 @@ export default class SeasonForm extends Component {
     super(props);
 
     this.state = {
-      details: []
+      details: [],
+      page: {
+        size: 10,
+        current: 0
+      }
     };
   }
 
-  toggleDetails(idx) {
-    const currentValue = this.state.details[idx] ? true : false;
+  toggleDetails(dateIdx, tourIdx) {
+    const dateValues = this.state.details[dateIdx];
+    const currentValue = dateValues && dateValues[tourIdx] ? true : false;
     this.setState({
       ...this.state,
       details: {
         ...this.state.details,
-        [idx]: !currentValue
+        [dateIdx]: {
+          ...this.state.details[dateIdx],
+          [tourIdx]: !currentValue
+        }
+      }
+    });
+  }
+
+  selectPage(pageNumber) {
+    this.setState({
+      ...this.state,
+      page: {
+        ...this.state.page,
+        current: pageNumber
       }
     });
   }
@@ -101,6 +121,66 @@ export default class SeasonForm extends Component {
 
       return tours.find(tourObj => tourObj.id === tourId);
     };
+
+    const renderPagination = (current, size) => {
+      const numberOfPages = Math.ceil(dates.length / size);
+      const renderPrevious = () => {
+        if (current === 0) {
+          return (<li className="disabled">
+                  <span>
+                    <span aria-hidden="true">&laquo;</span>
+                  </span>
+            </li>
+          );
+        }
+
+        return (
+          <li>
+            <a href="#" aria-label="Previous" onClick={() => this.selectPage(current - 1)}>
+              <span aria-hidden="true">&laquo;</span>
+            </a>
+          </li>
+        );
+      };
+      const renderNext = () => {
+        if (current >= numberOfPages - 1) {
+          return (<li className="disabled">
+                  <span>
+                    <span aria-hidden="true">&raquo;</span>
+                  </span>
+            </li>
+          );
+        }
+
+        return (
+          <li>
+            <a href="#" aria-label="Next" onClick={() => this.selectPage(current + 1)}>
+              <span aria-hidden="true">&raquo;</span>
+            </a>
+          </li>
+        );
+      };
+      return (<nav>
+        <ul className="pagination">
+          {renderPrevious()}
+          {Array
+            .apply(null, {length: numberOfPages})
+            .map(Number.call, Number)
+            .map(number => {
+              if (current === number) {
+                return (
+                  <li key={number} className="active">
+                    <span>{number + 1} <span className="sr-only">(current)</span></span>
+                  </li>
+                );
+              }
+
+              return <li key={number}><a href="#" onClick={() => this.selectPage(number)}>{number + 1}</a></li>;
+            })}
+          {renderNext()}
+        </ul>
+      </nav>);
+    };
 /*
     const renderScore = (score, idx) => {
       return (
@@ -111,31 +191,43 @@ export default class SeasonForm extends Component {
         </tr>);
     };*/
 
-    const renderTour = (dateIdx) => {
-      return (tour, idx) => {
-        const tourObj = !isNaN(tour.tour.value) && tour.tour.value >= 0 ? findTour(tour.candidates[tour.tour.value].tour.value) : null;
-        // TODO render candidates
-        // TODO render scores
+    const renderTour = (tour, idx) => {
+      const tourObj = !isNaN(tour.tour.value) && tour.tour.value >= 0 ? findTour(tour.candidates[tour.tour.value].tour.value) : null;
+      // TODO render candidates
+      // TODO render scores
+      if (idx === 0) {
+        return [
+          <td key="type">{tour.type.value.label}</td>,
+          <td key="name">{tourObj ? tourObj.name : ''}</td>
+        ];
+      }
 
-        return (
-          <tr key={dateIdx + '/tour/' + idx}>
-            <td></td>
-            <td>{tour.type.value.label}</td>
-            <td>{tourObj ? tourObj.name : 'Unkown tour'}</td>
-          </tr>);
-      };
+      return [
+        <td>{tour.type.value.label}</td>,
+        <td>{tourObj ? tourObj.name : 'Unkown tour'}</td>
+      ];
     };
 
-    const renderDates = (date, idx) => {
-      const momentDate = moment.tz(date.date.value, moment.ISO_8601, true, defaultTimeZone);
-      const dateString = momentDate.isValid() ? momentDate.format('L') : '-';
-      const result = [(
-        <tr key={idx + '/tour'} onClick={() => this.toggleDetails(idx)}>
-          <td>{dateString}</td>
-          <td colSpan={2}>{date.description.value}</td>
-        </tr>)];
-      result.push.apply(result, date.tours.map(renderTour(idx)));
-      if (this.state.details[idx]) {
+    const renderDetails = (dateIdx, tourIdx, tour) => {
+      if (this.state.details[dateIdx] && this.state.details[dateIdx][tourIdx]) {
+        return (<tr>
+          <td colSpan={2}>
+            <table className="table table-striped table-hover table-condensed">
+              <thead>
+              <tr>
+                <td className="col-md-8">Bezeichnung</td>
+                <td className="col-md-4">Punkte</td>
+              </tr>
+              </thead>
+              <tbody>
+                {tour.candidates.map((candidate, idx) => (<tr key={idx}>
+                  <td>{findTour(candidate.tour.value).name}</td>
+                  <td>{candidate.scores.reduce((sum, score) => sum + score.score.value, 0)}</td>
+                </tr>))}
+              </tbody>
+            </table>
+          </td>
+        </tr>);
         // NOP
         /*
          result.push((
@@ -146,11 +238,51 @@ export default class SeasonForm extends Component {
          */
       }
 
-      return result;
+      return null;
+    };
+
+    const renderDates = (date, idx) => {
+      const momentDate = moment.tz(date.date.value, moment.ISO_8601, true, defaultTimeZone);
+      const dateString = momentDate.isValid() ? momentDate.format('L') : '-';
+      const dateAndDescription = date.description.value ? dateString + ` (${date.description.value})` : dateString;
+      const dateDetails = this.state.details[idx];
+      const rowSpan = date.tours.length + (dateDetails ? Object.keys(dateDetails).reduce((sum, value) => {
+        if (dateDetails.hasOwnProperty(value) && dateDetails[value]) {
+          return sum + 1;
+        }
+
+        return sum;
+      }, 0) : 0);
+      const result = [(
+        <tr key={idx + '/0'} onClick={() => this.toggleDetails(idx, 0)}>
+          <td rowSpan={rowSpan}>{dateAndDescription}</td>
+          <td rowSpan={rowSpan}><input type="checkbox" {...date.locked} onClick={evt => evt.stopPropagation()}/></td>
+          {renderTour(date.tours[0], 0)}
+        </tr>),
+        renderDetails(idx, 0, date.tours[0])
+      ];
+
+      date.tours
+        .forEach((tour, index) => {
+          if (index > 0) {
+            result.push((
+              <tr key={idx + '/' + (index)} onClick={() => this.toggleDetails(idx, index)}>
+                {renderTour(tour, index)}
+              </tr>)
+            );
+            result.push(renderDetails(idx, index, tour));
+          }
+        });
+      return result.filter(item => item);
     };
 
     switch (state.value) {
       case SeasonState.confirm:
+        const {current, size} = this.state.page;
+        const lowerBound = current * size;
+        const upperBound = lowerBound + size;
+
+        const datesToRender = dates.filter((date, idx) => idx >= lowerBound && idx < upperBound);
         return (
           <div>
             {saveError && <div className="text-danger">{saveError}</div>}
@@ -160,8 +292,22 @@ export default class SeasonForm extends Component {
               {renderInput(year, 'Jahr', <NumberInput className="form-control" {...year} readOnly/>)}
               {renderInput(version, 'Version', <NumberInput className="form-control" {...version} readOnly type="hidden"/>)}
               {renderInput(configuration, 'Konfiguration', <ConfigurationInput {...configuration} readOnly/>)}
-              {dates && dates.length && <table className="table table-striped table-hover table-condensed"><thead><tr><td>Datum</td><td>Tourart</td><td>Tour</td></tr></thead><tbody>{dates.map(renderDates)}</tbody></table>}
-
+              {renderPagination(current, size)}
+              {dates && dates.length && (
+                <table className="table table-striped table-hover table-condensed">
+                  <thead>
+                    <tr>
+                      <td className="col-md-2">Datum</td>
+                      <td className="col-md-1"/>
+                      <td className="col-md-4">Tourart</td>
+                      <td className="col-md-4">Tour</td>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {datesToRender.map((date, idx) => renderDates(date, idx + lowerBound))}
+                  </tbody>
+                </table>)}
+              {renderPagination(current, size)}
               <div style={{textAlign: 'center', margin: '10px'}}>
                 <button className="btn btn-default"
                         onClick={handleCancel(formKey)}

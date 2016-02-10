@@ -25,10 +25,9 @@ const DELETE_FAIL = 'tourenplaner/seasons/DELETE_FAIL';
 const NEW = 'tourenplaner/seasons/NEW';
 const NEW_SUCCESS = 'tourenplaner/seasons/NEW_SUCCESS';
 const NEW_FAIL = 'tourenplaner/seasons/NEW_FAIL';
-const ADD_ADD_TOUR = 'tourenplaner/seasons/ADD_ADD_TOUR';
-const ADD_ADD_TOUR_SUCCESS = 'tourenplaner/seasons/ADD_ADD_TOUR_SUCCESS';
-const ADD_ADD_TOUR_FAIL = 'tourenplaner/seasons/ADD_ADD_TOUR_FAIL';
-const ADD_TOUR_LIST_DONE = 'tourenplaner/seasons/ADD_TOUR_LIST_DONE';
+const ADD_TOUR_LIST = 'tourenplaner/seasons/ADD_TOUR_LIST';
+const ADD_TOUR_LIST_SUCCCESS = 'tourenplaner/seasons/ADD_TOUR_LIST_DONE';
+const ADD_TOUR_LIST_FAIL = 'tourenplaner/seasons/ADD_TOUR_LIST_FAIL';
 
 const initialState = {
   loaded: false,
@@ -104,43 +103,27 @@ export default function reducer(state = initialState, action = {}) {
           [action.id]: action.error
         }
       } : state;
-    case ADD_TOUR_LIST_DONE:
+    case ADD_TOUR_LIST:
+      return state;
+    case ADD_TOUR_LIST_SUCCCESS:
       return {
         ...state,
-        adding: {
-          ...state.adding,
-          dates: action.data,
-          state: SeasonState.confirm
-        }
-      };
-    case ADD_ADD_TOUR:
-      return state; // 'saving' flag handled by redux-form
-    case ADD_ADD_TOUR_SUCCESS:
-      const items = [...state.data];
-      items[items.findIndex(rest => rest.id === action.result.id)] = action.result;
-      return {
-        ...state,
-        data: items,
-        editing: {
-          ...state.editing,
-          [action.id]: false
+        data: {
+          ...state.data,
+          [state.data.findIndex(item => item.id === action.result.id)]: action.result
         },
         adding: {
           ...state.adding,
           ...action.result,
-          state: state.adding.state
-        },
-        saveError: {
-          ...state.saveError,
-          [action.id]: null
+          state: SeasonState.confirm
         }
       };
-    case ADD_ADD_TOUR_FAIL:
+    case ADD_TOUR_LIST_FAIL:
       return typeof action.error === 'string' ? {
         ...state,
-        saveError: {
-          ...state.saveError,
-          [action.id]: action.error
+        addding: {
+          ...state.adding,
+          saveError: action.error
         }
       } : state;
     case DELETE:
@@ -254,20 +237,6 @@ export function addStop() {
   return {type: ADD_STOP};
 }
 
-/*
-function addTour(season, tour) {
-  return {
-    types: [ADD_ADD_TOUR, ADD_ADD_TOUR_SUCCESS, ADD_ADD_TOUR_FAIL],
-    promise: (client) => client.put('/season/addTour', {
-      data: {
-        season: season,
-        tour: tour
-      }
-    })
-  };
-}
-*/
-
 function addNextTour(seasonId) {
   return (dispatch, getState) => {
     const globalState = getState();
@@ -353,7 +322,7 @@ function addNextTour(seasonId) {
                 const relevantScores = scores.filter(score => score.totalScore === bestScore);
 
                 const chosenItem = Math.floor(Math.random() * Math.min(relevantScores.length, 5));
-                const candidates = scores.slice(0, relevantScores.length > 5 ? 5 : relevantScores.length);
+                const candidates = scores.slice(0, 5);
                 tour.candidates.push.apply(tour.candidates, candidates);
                 const tourIndex = tour.candidates.indexOf(relevantScores[chosenItem]);
                 if (tourIndex < 0) {
@@ -369,10 +338,14 @@ function addNextTour(seasonId) {
           console.log(err);
         }
       });
-
       dispatch({
-        type: ADD_TOUR_LIST_DONE,
-        data: datesForTours
+        types: [ADD_TOUR_LIST, ADD_TOUR_LIST_SUCCCESS, ADD_TOUR_LIST_FAIL],
+        promise: (client) => client.put('/season/addDates', {
+          data: {
+            season: seasonId,
+            dates: datesForTours
+          }
+        })
       });
     });
   };
