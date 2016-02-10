@@ -85,7 +85,7 @@ export function createDates(configuration) {
   const dates = [];
   const findSpecialDate = (dateToCheck) => configuration.specialDates.find(sd => sd.date === dateToCheck);
 
-  while (date.isBefore(end, 'day')) {
+  while (date.isBefore(end, 'day') || date.isSame(end, 'day')) {
     const specialDate = findSpecialDate(date.toISOString());
     const newDateEntry = {
       date: date.toISOString(),
@@ -111,8 +111,8 @@ export function createDates(configuration) {
   // TODO handle special dates outside of range
   configuration.specialDates.filter(specialDate => {
     const momentDate = moment(specialDate.date);
-    const notEqualToStart = !momentDate.isSame(configuration.seasonStart, 'day');
-    const notEqualtToEnd = !momentDate.isSame(configuration.seasonEnd, 'day');
+    const notEqualToStart = momentDate.isSame(configuration.seasonStart, 'day');
+    const notEqualtToEnd = momentDate.isSame(configuration.seasonEnd, 'day');
     const notBetweenStartAndEnd = !momentDate.isBetween(configuration.seasonStart, configuration.seasonEnd, 'day');
 
     return notEqualToStart &&

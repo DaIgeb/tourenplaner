@@ -208,7 +208,7 @@ export default class SeasonForm extends Component {
       ];
     };
 
-    const renderDetails = (dateIdx, tourIdx, tour) => {
+    const renderDetails = (dateIdx, tourIdx, seasonTour) => {
       if (this.state.details[dateIdx] && this.state.details[dateIdx][tourIdx]) {
         return (<tr>
           <td colSpan={2}>
@@ -220,10 +220,14 @@ export default class SeasonForm extends Component {
               </tr>
               </thead>
               <tbody>
-                {tour.candidates.map((candidate, idx) => (<tr key={idx}>
-                  <td>{findTour(candidate.tour.value).name}</td>
-                  <td>{candidate.scores.reduce((sum, score) => sum + score.score.value, 0)}</td>
-                </tr>))}
+                {seasonTour.candidates.map((candidate, idx) => {
+                  const tour = findTour(candidate.tour.value);
+
+                  return (<tr key={idx}>
+                    <td>{tour ? tour.name : ''}</td>
+                    <td>{candidate.scores.reduce((sum, score) => sum + score.score.value, 0)}</td>
+                  </tr>);
+                })}
               </tbody>
             </table>
           </td>

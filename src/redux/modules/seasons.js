@@ -305,37 +305,39 @@ function addNextTour(seasonId) {
 
       const assignedTours = [];
       const datesForTours = createDates(currentConfiguration);
-      datesForTours.forEach((tourDate, idx) => {
-        try {
-          const previousTour = idx ? datesForTours[idx - 1] : null;
-          if (tourDate.tours && tourDate.tours.length) {
-            tourDate.tours.forEach(tour => {
-              if (tour.tour !== null) {
-                const candidate = tour.candidates[tour.tour];
-                if (candidate.tour !== null) {
-                  assignedTours.push(candidate.tour);
-                }
-              } else {
-                const scores = createScores(currentConfiguration, tourDate, tour, previousTour, assignedTours);
-
-                const bestScore = scores[0].totalScore;
-                const relevantScores = scores.filter(score => score.totalScore === bestScore);
-
-                const chosenItem = Math.floor(Math.random() * Math.min(relevantScores.length, 5));
-                const candidates = scores.slice(0, 5);
-                tour.candidates.push.apply(tour.candidates, candidates);
-                const tourIndex = tour.candidates.indexOf(relevantScores[chosenItem]);
-                if (tourIndex < 0) {
-                  console.error('No tour found');
-                }
-                tour.tour = tourIndex;
+      datesForTours.forEach(tourDate => {
+        if (tourDate.tours && tourDate.tours.length) {
+          tourDate.tours.forEach(tour => {
+            if (tour.tour !== null) {
+              const candidate = tour.candidates[tour.tour];
+              if (candidate.tour !== null) {
+                assignedTours.push(candidate.tour);
               }
-            });
-          } else {
-            console.error('Tours not configured', tourDate.date, JSON.stringify(tourDate));
-          }
-        } catch (err) {
-          console.log(err);
+            }
+          });
+        }
+      });
+      datesForTours.forEach((tourDate, idx) => {
+        const previousTour = idx ? datesForTours[idx - 1] : null;
+        if (tourDate.tours && tourDate.tours.length) {
+          tourDate.tours.forEach(tour => {
+            if (tour.tour === null) {
+              const scores = createScores(currentConfiguration, tourDate, tour, previousTour, assignedTours);
+
+              const bestScore = scores[0].totalScore;
+              const relevantScores = scores.filter(score => score.totalScore === bestScore);
+
+              const chosenItem = Math.floor(Math.random() * Math.min(relevantScores.length, 5));
+              const candidates = scores.slice(0, 5);
+              tour.candidates.push.apply(tour.candidates, candidates);
+              const tourIndex = tour.candidates.indexOf(relevantScores[chosenItem]);
+              assignedTours.push(relevantScores[chosenItem].tour);
+              if (tourIndex < 0) {
+                console.error('No tour found');
+              }
+              tour.tour = tourIndex;
+            }
+          });
         }
       });
       dispatch({
