@@ -10,7 +10,9 @@ import {isLoaded as isLocationsLoaded, load as loadLoc} from 'redux/modules/loca
 import {Timeline, TourForm} from 'components';
 import {timelineMatches} from '../../../shared/utils/timeline';
 import {moment} from '../../../shared/utils/moment';
-import { LinkContainer } from 'react-router-bootstrap';
+import {LinkContainer} from 'react-router-bootstrap';
+import {calculateGradient} from 'redux/modules/seasons/difficultyScoreBuilder';
+import {sort, renderSortDirection} from 'utils/sorting';
 
 function fetchDataDeferred(getState, dispatch) {
   const promise = new Promise((resolve, reject) => {
@@ -46,6 +48,7 @@ function getActions() {
   state => ({
     tours: state.tours.data,
     editing: state.tours.editing,
+    sorting: state.tours.sorting,
     error: state.tours.error,
     adding: state.tours.adding,
     loading: state.tours.loading,
@@ -57,6 +60,7 @@ function getActions() {
 export default class Tours extends Component {
   static propTypes = {
     tours: PropTypes.array,
+    sorting: PropTypes.array,
     restaurants: PropTypes.array,
     locations: PropTypes.array,
     error: PropTypes.string,
@@ -67,11 +71,12 @@ export default class Tours extends Component {
     editStart: PropTypes.func.isRequired,
     del: PropTypes.func.isRequired,
     add: PropTypes.func.isRequired,
+    sort: PropTypes.func.isRequired,
     loadLocations: PropTypes.func.isRequired,
     loadRestaurants: PropTypes.func.isRequired,
     addStart: PropTypes.func.isRequired,
     setTimelineDate: PropTypes.func.isRequired,
-    timelineDate: PropTypes.string.isRequired,
+    timelineDate: PropTypes.string.isRequired
   };
 
   render() {
@@ -84,7 +89,7 @@ export default class Tours extends Component {
       return () => del(String(tour.id));
     };
 
-    const {tours, locations, restaurants, loadLocations, loadRestaurants, error, loading, add, load, adding, setTimelineDate} = this.props;
+    const {tours, locations, restaurants, loadLocations, loadRestaurants, error, loading, add, load, adding, setTimelineDate, sort: addSort, sorting} = this.props;
     let refreshClassName = 'fa fa-refresh';
     if (loading) {
       refreshClassName += ' fa-spin';
@@ -113,31 +118,64 @@ export default class Tours extends Component {
         </td>);
     };
 
-    const renderTour = (tour) => {
-      const timeline = tour.timelines.find(time => timelineMatches(time, date));
-      if (timeline) {
-        const types = tour.types.map(type => type.label).join(',');
+    const renderTour = (tourViewModel) => {
+      if (!isNaN(tourViewModel.distance)) {
         return (
-          <tr key={tour.id}>
-            <td className={styles.idCol}>{tour.id}</td>
-            <td className={styles.nameCol}>{tour.name}</td>
-            <td className={styles.typesCol}>{types}</td>
-            <td className={styles.difficultyCol}>{timeline.difficulty.label}</td>
-            <td className={styles.distanceCol}>{timeline.distance}</td>
-            <td className={styles.elevationCol}>{timeline.elevation}</td>
-            {renderButtonCell(tour.id)}
+          <tr key={tourViewModel.id}>
+            <td className={styles.idCol}>{tourViewModel.id}</td>
+            <td className={styles.nameCol}>{tourViewModel.name}</td>
+            <td className={styles.typesCol}>{tourViewModel.types}</td>
+            <td className={styles.difficultyCol}>{tourViewModel.difficulty}</td>
+            <td className={styles.distanceCol}>{tourViewModel.distance}</td>
+            <td className={styles.elevationCol}>{tourViewModel.elevation}</td>
+            <td className={styles.gradientCol}>{`${tourViewModel.gradient.toFixed(2)} %`}</td>
+            {renderButtonCell(tourViewModel.id)}
           </tr>);
       }
 
       return (
-        <tr key={tour.id}>
-          <td className={styles.idCol}>{tour.id}</td>
-          <td className={styles.idCol}>{tour.name}</td>
-          <td colSpan={4}/>
-          {renderButtonCell(tour.id)}
+        <tr key={tourViewModel.id}>
+          <td className={styles.idCol}>{tourViewModel.id}</td>
+          <td className={styles.idCol}>{tourViewModel.name}</td>
+          <td colSpan={5}/>
+          {renderButtonCell(tourViewModel.id)}
         </tr>);
     };
 
+    const createViewModel = (tour) => {
+      const types = tour.types.map(type => type.label).join(',');
+      const timeline = tour.timelines.find(time => timelineMatches(time, date));
+      if (timeline) {
+        return {
+          id: tour.id,
+          name: tour.name,
+          types: types,
+          difficulty: timeline.difficulty.label,
+          distance: timeline.distance,
+          elevation: timeline.elevation,
+          gradient: calculateGradient(timeline.distance, timeline.elevation)
+        };
+      }
+
+      return {
+        id: tour.id,
+        name: tour.name,
+        types: types,
+        difficulty: null,
+        distance: null,
+        elevation: null,
+        gradient: null
+      };
+    };
+    const renderColumnTitle = (id, name, className) => {
+      return (
+        <th className={className}>
+          <a href="#" onClick={() => addSort(id)}>{name} {renderSortDirection(id, sorting)}</a>
+        </th>
+      );
+    };
+
+    const viewModels = tours ? sort(tours.map(createViewModel), sorting) : [];
     return (
       <div className={styles.restaurants + ' container'}>
         <h1>Touren
@@ -165,17 +203,18 @@ export default class Tours extends Component {
         <table className="table table-striped table-hover table-condensed">
           <thead>
           <tr>
-            <th className={styles.idCol}>ID</th>
-            <th className={styles.nameCol}>Name</th>
-            <th className={styles.typesCol}>Type</th>
-            <th className={styles.difficultyCol}>Schwierigkeit</th>
-            <th className={styles.distanceCol}>Distanz</th>
-            <th className={styles.elevationCol}>Höhenmeter</th>
+            {renderColumnTitle('id', 'ID', styles.idCol)}
+            {renderColumnTitle('name', 'Name', styles.nameCol)}
+            {renderColumnTitle('types', 'Type', styles.typesCol)}
+            {renderColumnTitle('difficulty', 'Schwierigkeit', styles.difficultyCol)}
+            {renderColumnTitle('distance', 'Distanz', styles.distanceCol)}
+            {renderColumnTitle('elevation', 'Höhenmeter', styles.elevationCol)}
+            {renderColumnTitle('gradient', 'Anstieg', styles.gradientCol)}
             <th className={styles.buttonCol} />
           </tr>
           </thead>
           <tbody>
-            {tours && tours.map(tour => renderTour(tour))}
+            {viewModels.map(renderTour)}
             {adding ?
               <tr><td colSpan={5}><TourForm formKey="new" locations={locations} restaurants={restaurants} onSubmit={values => add(values)}/></td></tr> :
               <tr>

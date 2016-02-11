@@ -17,10 +17,12 @@ const ADD_FAIL = 'tourenplaner/tours/ADD_FAIL';
 const DELETE = 'tourenplaner/tours/DELETE';
 const DELETE_SUCCESS = 'tourenplaner/tours/DELETE_SUCCESS';
 const DELETE_FAIL = 'tourenplaner/tours/DELETE_FAIL';
+const ADD_SORT = 'tourenplaner/tours/ADD_SORT';
 
 
 const initialState = {
   loaded: false,
+  sorting: [{ column: 'name', ascending: true}],
   editing: {},
   saveError: {},
   currentDate: moment().format()
@@ -28,6 +30,18 @@ const initialState = {
 
 export default function reducer(state = initialState, action = {}) {
   switch (action.type) {
+    case ADD_SORT:
+      const previousState = state.sorting.find(sortOption => sortOption.column === action.column);
+      return {
+        ...state,
+        sorting: [
+          ...state.sorting.filter(sortOption => sortOption.column !== action.column),
+          {
+            column: action.column,
+            ascending: previousState ? !previousState.ascending : true
+          }
+        ]
+      };
     case LOAD:
       return {
         ...state,
@@ -248,5 +262,12 @@ export function del(tour) {
     promise: (client) => client.del('/tour/del', {
       data: tour
     })
+  };
+}
+
+export function sort(column) {
+  return {
+    type: ADD_SORT,
+    column: column
   };
 }

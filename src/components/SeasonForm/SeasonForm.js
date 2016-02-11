@@ -7,6 +7,7 @@ import * as seasonActions from 'redux/modules/seasons';
 import {ConfigurationInput, NumberInput} from 'components';
 import {moment, defaultTimeZone} from '../../../shared/utils/moment';
 import {SeasonState} from 'models';
+import {renderPagedContent} from 'utils/pagination';
 
 @connect(
   state => ({
@@ -122,65 +123,6 @@ export default class SeasonForm extends Component {
       return tours.find(tourObj => tourObj.id === tourId);
     };
 
-    const renderPagination = (current, size) => {
-      const numberOfPages = Math.ceil(dates.length / size);
-      const renderPrevious = () => {
-        if (current === 0) {
-          return (<li className="disabled">
-                  <span>
-                    <span aria-hidden="true">&laquo;</span>
-                  </span>
-            </li>
-          );
-        }
-
-        return (
-          <li>
-            <a href="#" aria-label="Previous" onClick={() => this.selectPage(current - 1)}>
-              <span aria-hidden="true">&laquo;</span>
-            </a>
-          </li>
-        );
-      };
-      const renderNext = () => {
-        if (current >= numberOfPages - 1) {
-          return (<li className="disabled">
-                  <span>
-                    <span aria-hidden="true">&raquo;</span>
-                  </span>
-            </li>
-          );
-        }
-
-        return (
-          <li>
-            <a href="#" aria-label="Next" onClick={() => this.selectPage(current + 1)}>
-              <span aria-hidden="true">&raquo;</span>
-            </a>
-          </li>
-        );
-      };
-      return (<nav>
-        <ul className="pagination">
-          {renderPrevious()}
-          {Array
-            .apply(null, {length: numberOfPages})
-            .map(Number.call, Number)
-            .map(number => {
-              if (current === number) {
-                return (
-                  <li key={number} className="active">
-                    <span>{number + 1} <span className="sr-only">(current)</span></span>
-                  </li>
-                );
-              }
-
-              return <li key={number}><a href="#" onClick={() => this.selectPage(number)}>{number + 1}</a></li>;
-            })}
-          {renderNext()}
-        </ul>
-      </nav>);
-    };
 /*
     const renderScore = (score, idx) => {
       return (
@@ -286,7 +228,7 @@ export default class SeasonForm extends Component {
         const lowerBound = current * size;
         const upperBound = lowerBound + size;
 
-        const datesToRender = dates.filter((date, idx) => idx >= lowerBound && idx < upperBound);
+        const datesToRender = dates ? dates.filter((date, idx) => idx >= lowerBound && idx < upperBound) : [];
         return (
           <div>
             {saveError && <div className="text-danger">{saveError}</div>}
@@ -296,22 +238,23 @@ export default class SeasonForm extends Component {
               {renderInput(year, 'Jahr', <NumberInput className="form-control" {...year} readOnly/>)}
               {renderInput(version, 'Version', <NumberInput className="form-control" {...version} readOnly type="hidden"/>)}
               {renderInput(configuration, 'Konfiguration', <ConfigurationInput {...configuration} readOnly/>)}
-              {renderPagination(current, size)}
-              {dates && dates.length && (
-                <table className="table table-striped table-hover table-condensed">
-                  <thead>
+              {renderPagedContent(current, size, Math.ceil((dates ? dates.length : 0 ) / size), (number) => this.selectPage(number), () => {
+                return (
+                  <table className="table table-striped table-hover table-condensed">
+                    <thead>
                     <tr>
                       <td className="col-md-2">Datum</td>
                       <td className="col-md-1"/>
                       <td className="col-md-4">Tourart</td>
                       <td className="col-md-4">Tour</td>
                     </tr>
-                  </thead>
-                  <tbody>
+                    </thead>
+                    <tbody>
                     {datesToRender.map((date, idx) => renderDates(date, idx + lowerBound))}
-                  </tbody>
-                </table>)}
-              {renderPagination(current, size)}
+                    </tbody>
+                  </table>
+                );
+              })}
               <div style={{textAlign: 'center', margin: '10px'}}>
                 <button className="btn btn-default"
                         onClick={handleCancel(formKey)}
@@ -340,7 +283,7 @@ export default class SeasonForm extends Component {
               <button className={styles.refreshBtn + ' btn btn-success'}>
                 <i className="fa fa-refresh fa-spin"/> {' '} Building Season
               </button>
-              {dates && dates.length && <table className="table table-striped table-hover table-condensed">
+              {dates && <table className="table table-striped table-hover table-condensed">
                 <thead>
                   <tr>
                     <td>Datum</td>

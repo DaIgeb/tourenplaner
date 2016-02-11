@@ -1,9 +1,9 @@
 import {moment} from '../../../../shared/utils/moment';
 import {timelineMatches} from '../../../../shared/utils/timeline';
 
-const calculateDifficulty = (distance, elevation) => {
+export const calculateGradient = (distance, elevation) => {
   if (!distance) {
-    return 1;
+    return 0;
   }
 
   return elevation / distance / 10;
@@ -51,7 +51,7 @@ const getMaximalDifficulty = (allTours, tourId, tourDate)=>{
   }
   const timeline = tour.timelines.find(tl => timelineMatches(tl, moment(tourDate)));
 
-  return calculateDifficulty(timeline.distance, timeline.elevation);
+  return calculateGradient(timeline.distance, timeline.elevation);
 };
 
 const getMaxDifficulty = (allTours, previousTours) => {
@@ -77,7 +77,7 @@ export function createScore(allTours, currentTourTimeline, previousTours) {
   const previousTourDifficulties = getMaxDifficulty(allTours, previousTours);
   const previousTourDifficulty = previousTourDifficulties[0];
 
-  const currentDifficulty = calculateDifficulty(currentTourTimeline.distance, currentTourTimeline.elevation);
+  const currentDifficulty = calculateGradient(currentTourTimeline.distance, currentTourTimeline.elevation);
   const difficultyPoints = getPoints(previousTourDifficulty, currentDifficulty);
 
   return {
