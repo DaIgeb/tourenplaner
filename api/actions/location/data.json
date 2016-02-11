@@ -5204,5 +5204,30 @@
     "latitude": 47.454662,
     "longitude": 8.895941,
     "id": 606
+  },
+  {
+    "name": "Tägerschen",
+    "city": "Tägerschen",
+    "latitude": 47.50893,
+    "longitude": 9.030264,
+    "id": 607
+  },
+  {
+    "name": "Münchwilen",
+    "city": "Münchwilen",
+    "latitude": 47.478529,
+    "longitude": 8.996037,
+    "id": 608
+  },
+  {
+    "name": "Turbenthal",
+    "identifier": "Kreuzung Bichelsee",
+    "streetAddress": "",
+    "addressCountry": "",
+    "postalCode": "",
+    "city": "Turbenthal",
+    "latitude": 47.435372,
+    "longitude": 8.847538,
+    "id": 609
   }
 ]

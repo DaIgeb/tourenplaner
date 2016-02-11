@@ -429,6 +429,7 @@
     "id": 11
   },
   {
+    "id": 12,
     "name": "Bänikon",
     "types": [
       {
@@ -450,10 +451,27 @@
         "restaurants": [
           6
         ],
-        "locations": []
+        "locations": [
+          55,
+          56,
+          57,
+          58,
+          59,
+          60,
+          61,
+          112,
+          113,
+          114,
+          115,
+          507,
+          607,
+          608,
+          96,
+          70,
+          14
+        ]
       }
-    ],
-    "id": 12
+    ]
   },
   {
     "id": 13,
@@ -509,6 +527,7 @@
     ]
   },
   {
+    "id": 14,
     "name": "Brütten",
     "types": [
       {
@@ -526,7 +545,7 @@
           "label": "Schwierig"
         },
         "distance": 45,
-        "elevation": 700,
+        "elevation": 670,
         "restaurants": [
           8
         ],
@@ -544,8 +563,7 @@
           14
         ]
       }
-    ],
-    "id": 14
+    ]
   },
   {
     "id": 15,
@@ -902,6 +920,7 @@
     ]
   },
   {
+    "id": 23,
     "name": "Fisibach",
     "types": [
       {
@@ -919,7 +938,7 @@
           "label": "Mittel"
         },
         "distance": 85,
-        "elevation": 900,
+        "elevation": 700,
         "restaurants": [
           17
         ],
@@ -951,8 +970,7 @@
           14
         ]
       }
-    ],
-    "id": 23
+    ]
   },
   {
     "id": 24,
@@ -973,7 +991,7 @@
           "label": "Mittel"
         },
         "distance": 45,
-        "elevation": 700,
+        "elevation": 750,
         "restaurants": [
           39
         ],
@@ -1019,7 +1037,7 @@
           "label": "Einfach"
         },
         "distance": 55,
-        "elevation": 630,
+        "elevation": 570,
         "restaurants": [
           19
         ],
@@ -1062,7 +1080,7 @@
           "label": "Mittel"
         },
         "distance": 85,
-        "elevation": 1000,
+        "elevation": 900,
         "restaurants": [
           20
         ],
@@ -1160,7 +1178,7 @@
           "label": "Mittel"
         },
         "distance": 145,
-        "elevation": 2000,
+        "elevation": 1800,
         "restaurants": [
           22,
           49
@@ -1202,6 +1220,7 @@
     ]
   },
   {
+    "id": 29,
     "name": "Kollbrunn",
     "types": [
       {
@@ -1219,7 +1238,7 @@
           "label": "Einfach"
         },
         "distance": 55,
-        "elevation": 500,
+        "elevation": 700,
         "restaurants": [
           23
         ],
@@ -1241,8 +1260,7 @@
           14
         ]
       }
-    ],
-    "id": 29
+    ]
   },
   {
     "name": "Mammern",
@@ -1317,7 +1335,7 @@
           "label": "Mittel"
         },
         "distance": 65,
-        "elevation": 900,
+        "elevation": 700,
         "restaurants": [
           25
         ],
@@ -1448,7 +1466,7 @@
   },
   {
     "id": 34,
-    "name": "Mossnang",
+    "name": "Mosnang",
     "types": [
       {
         "id": 3,
@@ -1465,7 +1483,7 @@
           "label": "Mittel"
         },
         "distance": 85,
-        "elevation": 0,
+        "elevation": 1080,
         "restaurants": [
           3
         ],
@@ -1491,6 +1509,7 @@
     ]
   },
   {
+    "id": 35,
     "name": "Neftenbach",
     "types": [
       {
@@ -1508,7 +1527,7 @@
           "label": "Schwierig"
         },
         "distance": 55,
-        "elevation": 0,
+        "elevation": 800,
         "restaurants": [
           28
         ],
@@ -1535,8 +1554,7 @@
           14
         ]
       }
-    ],
-    "id": 35
+    ]
   },
   {
     "id": 36,
@@ -1598,7 +1616,7 @@
           "label": "Einfach"
         },
         "distance": 70,
-        "elevation": 0,
+        "elevation": 970,
         "restaurants": [
           30
         ],
@@ -1648,7 +1666,7 @@
           "label": "Einfach"
         },
         "distance": 55,
-        "elevation": 1000,
+        "elevation": 500,
         "restaurants": [
           31
         ],
@@ -1695,7 +1713,7 @@
           "label": "Mittel"
         },
         "distance": 70,
-        "elevation": 1330,
+        "elevation": 1000,
         "restaurants": [
           32
         ],
@@ -1742,7 +1760,7 @@
           "label": "Einfach"
         },
         "distance": 55,
-        "elevation": 600,
+        "elevation": 550,
         "restaurants": [
           21
         ],
@@ -1791,7 +1809,7 @@
           "label": "Einfach"
         },
         "distance": 50,
-        "elevation": 740,
+        "elevation": 800,
         "restaurants": [
           33
         ],
@@ -1812,6 +1830,7 @@
     ]
   },
   {
+    "id": 42,
     "name": "Pfannenstiel",
     "types": [
       {
@@ -1829,7 +1848,7 @@
           "label": "Mittel"
         },
         "distance": 70,
-        "elevation": 0,
+        "elevation": 1200,
         "restaurants": [
           34
         ],
@@ -1854,8 +1873,7 @@
           14
         ]
       }
-    ],
-    "id": 42
+    ]
   },
   {
     "id": 43,
@@ -1876,7 +1894,7 @@
           "label": "Schwierig"
         },
         "distance": 200,
-        "elevation": 0,
+        "elevation": 2500,
         "restaurants": [
           35,
           66
@@ -1926,7 +1944,7 @@
           "label": "Einfach"
         },
         "distance": 60,
-        "elevation": 680,
+        "elevation": 750,
         "restaurants": [
           36
         ],
@@ -1968,7 +1986,7 @@
           "label": "Einfach"
         },
         "distance": 80,
-        "elevation": 1300,
+        "elevation": 950,
         "restaurants": [
           37
         ],
@@ -2089,6 +2107,7 @@
     "id": 47
   },
   {
+    "id": 48,
     "name": "Sattelegg",
     "types": [
       {
@@ -2106,7 +2125,7 @@
           "label": "Mittel"
         },
         "distance": 150,
-        "elevation": 0,
+        "elevation": 2500,
         "restaurants": [
           42,
           68
@@ -2132,8 +2151,7 @@
           14
         ]
       }
-    ],
-    "id": 48
+    ]
   },
   {
     "name": "Schwägalp",
@@ -2210,7 +2228,7 @@
           "label": "Einfach"
         },
         "distance": 85,
-        "elevation": 800,
+        "elevation": 850,
         "restaurants": [
           64
         ],
@@ -2304,6 +2322,7 @@
     ]
   },
   {
+    "id": 52,
     "name": "Seuzach",
     "types": [
       {
@@ -2321,7 +2340,7 @@
           "label": "Einfach"
         },
         "distance": 50,
-        "elevation": 0,
+        "elevation": 450,
         "restaurants": [
           45
         ],
@@ -2338,10 +2357,10 @@
           14
         ]
       }
-    ],
-    "id": 52
+    ]
   },
   {
+    "id": 53,
     "name": "Sitzberg via Tablat",
     "types": [
       {
@@ -2359,7 +2378,7 @@
           "label": "Mittel"
         },
         "distance": 55,
-        "elevation": 0,
+        "elevation": 700,
         "restaurants": [
           46
         ],
@@ -2377,10 +2396,10 @@
           14
         ]
       }
-    ],
-    "id": 53
+    ]
   },
   {
+    "id": 54,
     "name": "Sitzberg via Wila",
     "types": [
       {
@@ -2398,7 +2417,7 @@
           "label": "Mittel"
         },
         "distance": 55,
-        "elevation": 0,
+        "elevation": 650,
         "restaurants": [
           46
         ],
@@ -2416,8 +2435,7 @@
           14
         ]
       }
-    ],
-    "id": 54
+    ]
   },
   {
     "id": 55,
@@ -2463,6 +2481,7 @@
     ]
   },
   {
+    "id": 56,
     "name": "Wilchingen",
     "types": [
       {
@@ -2484,7 +2503,7 @@
           "label": "Einfach"
         },
         "distance": 90,
-        "elevation": 823,
+        "elevation": 830,
         "restaurants": [
           60
         ],
@@ -2510,8 +2529,7 @@
           14
         ]
       }
-    ],
-    "id": 56
+    ]
   },
   {
     "id": 57,
@@ -2532,7 +2550,7 @@
           "label": "Einfach"
         },
         "distance": 70,
-        "elevation": 670,
+        "elevation": 700,
         "restaurants": [
           47
         ],
@@ -2636,7 +2654,7 @@
           "label": "Einfach"
         },
         "distance": 70,
-        "elevation": 680,
+        "elevation": 720,
         "restaurants": [
           50
         ],
@@ -2684,7 +2702,7 @@
           "label": "Einfach"
         },
         "distance": 60,
-        "elevation": 530,
+        "elevation": 560,
         "restaurants": [
           50
         ],
@@ -2776,7 +2794,7 @@
           "label": "Mittel"
         },
         "distance": 70,
-        "elevation": 725,
+        "elevation": 780,
         "restaurants": [
           59
         ],
@@ -2829,7 +2847,7 @@
           "label": "Einfach"
         },
         "distance": 75,
-        "elevation": 750,
+        "elevation": 850,
         "restaurants": [
           53
         ],
@@ -3021,7 +3039,7 @@
           "label": "Einfach"
         },
         "distance": 55,
-        "elevation": 0,
+        "elevation": 800,
         "restaurants": [
           61
         ],
@@ -3042,6 +3060,7 @@
     ]
   },
   {
+    "id": 68,
     "name": "Wängi via Dussnang",
     "types": [
       {
@@ -3059,7 +3078,7 @@
           "label": "Einfach"
         },
         "distance": 65,
-        "elevation": 0,
+        "elevation": 760,
         "restaurants": [
           57
         ],
@@ -3082,10 +3101,10 @@
           14
         ]
       }
-    ],
-    "id": 68
+    ]
   },
   {
+    "id": 69,
     "name": "Wallikon via Bliggenswil",
     "types": [
       {
@@ -3103,7 +3122,7 @@
           "label": "Mittel"
         },
         "distance": 70,
-        "elevation": 0,
+        "elevation": 1000,
         "restaurants": [
           56
         ],
@@ -3111,7 +3130,7 @@
           69,
           70,
           71,
-          224,
+          609,
           500,
           223,
           581,
@@ -3129,8 +3148,7 @@
           14
         ]
       }
-    ],
-    "id": 69
+    ]
   },
   {
     "id": 70,
@@ -3151,7 +3169,7 @@
           "label": "Mittel"
         },
         "distance": 75,
-        "elevation": 1000,
+        "elevation": 900,
         "restaurants": [
           56
         ],
@@ -3195,7 +3213,7 @@
           "label": "Einfach"
         },
         "distance": 50,
-        "elevation": 0,
+        "elevation": 570,
         "restaurants": [
           55
         ],
@@ -3218,6 +3236,7 @@
     ]
   },
   {
+    "id": 72,
     "name": "Sternenberg via Tablat",
     "types": [
       {
@@ -3235,7 +3254,7 @@
           "label": "Schwierig"
         },
         "distance": 65,
-        "elevation": 0,
+        "elevation": 970,
         "restaurants": [
           54
         ],
@@ -3256,10 +3275,10 @@
           14
         ]
       }
-    ],
-    "id": 72
+    ]
   },
   {
+    "id": 73,
     "name": "Sternenberg via Dussnang",
     "types": [
       {
@@ -3277,7 +3296,7 @@
           "label": "Schwierig"
         },
         "distance": 65,
-        "elevation": 0,
+        "elevation": 800,
         "restaurants": [
           54
         ],
@@ -3296,8 +3315,7 @@
           14
         ]
       }
-    ],
-    "id": 73
+    ]
   },
   {
     "id": 74,
@@ -3318,7 +3336,7 @@
           "label": "Schwierig"
         },
         "distance": 125,
-        "elevation": 23002300,
+        "elevation": 2000,
         "restaurants": [
           54,
           71
