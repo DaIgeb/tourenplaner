@@ -1,7 +1,7 @@
 [
   {
     "year": "2016",
-    "seasonStart": "2016-03-04T23:00:00.000Z",
+    "seasonStart": "2016-03-02T23:00:00.000Z",
     "seasonEnd": "2016-10-27T22:00:00.000Z",
     "eveningStart": "2016-04-04T22:00:00.000Z",
     "eveningEnd": "2016-09-14T22:00:00.000Z",
@@ -9,17 +9,20 @@
       {
         "from": "2016-04-29T22:00:00.000Z",
         "to": "2016-05-14T22:00:00.000Z",
-        "name": "Schnupperwoche"
+        "name": "Schnupperwoche",
+        "location": "Raum Winterthur"
       },
       {
         "from": "2016-07-08T22:00:00.000Z",
         "to": "2016-07-15T22:00:00.000Z",
-        "name": "Ferientour"
+        "name": "Ferientour",
+        "location": "Valdobbiadene"
       },
       {
         "from": "2016-06-10T22:00:00.000Z",
         "to": "2016-06-11T22:00:00.000Z",
-        "name": "2 Tagestour"
+        "name": "2 Tagestour",
+        "location": "Langnau BE"
       }
     ],
     "dates": [
@@ -845,6 +848,16 @@
     ],
     "specialDates": [
       {
+        "date": "2016-03-03T23:00:00.000Z",
+        "name": "GV",
+        "points": 20,
+        "action": {
+          "id": 1,
+          "label": "Tour entfernen"
+        },
+        "tours": []
+      },
+      {
         "date": "2016-03-04T23:00:00.000Z",
         "name": "Erste Tour",
         "action": {
@@ -950,19 +963,12 @@
       {
         "date": "2016-05-28T22:00:00.000Z",
         "name": "Winti-Marathon",
+        "points": 40,
         "action": {
           "id": 3,
           "label": "Tour ersetzen"
         },
-        "tours": [
-          {
-            "id": 75,
-            "type": {
-              "id": 5,
-              "label": "Tagestour"
-            }
-          }
-        ]
+        "tours": []
       },
       {
         "date": "2016-07-31T22:00:00.000Z",
@@ -988,49 +994,28 @@
           "id": 3,
           "label": "Tour ersetzen"
         },
-        "tours": [
-          {
-            "id": 77,
-            "type": {
-              "id": 3,
-              "label": "Nachmittagstour"
-            }
-          }
-        ]
+        "points": 20,
+        "tours": []
       },
       {
         "date": "2016-09-17T22:00:00.000Z",
         "name": "Bettag",
+        "points": 40,
         "action": {
           "id": 3,
           "label": "Tour ersetzen"
         },
-        "tours": [
-          {
-            "id": 76,
-            "type": {
-              "id": 5,
-              "label": "Tagestour"
-            }
-          }
-        ]
+        "tours": []
       },
       {
         "date": "2016-09-23T22:00:00.000Z",
         "name": "Winti-Sola",
+        "points": 40,
         "action": {
           "id": 2,
           "label": "Tour hinzufügen"
         },
-        "tours": [
-          {
-            "id": 78,
-            "type": {
-              "id": 5,
-              "label": "Tagestour"
-            }
-          }
-        ]
+        "tours": []
       },
       {
         "date": "2016-10-27T22:00:00.000Z",

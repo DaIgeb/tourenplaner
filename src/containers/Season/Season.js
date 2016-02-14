@@ -195,6 +195,8 @@ export default class Season extends Component {
       </div>);
     }
 
+    const configuration = configs.find(item => item.id === season.configuration);
+
     const findTour = (tourId) => {
       const {tours} = this.props; // eslint-disable-line no-shadow
 
@@ -299,7 +301,7 @@ export default class Season extends Component {
       return (
         <div className="row">
           <div className="col-md-3">{season.year} ({season.version})</div>
-          <div className="col-md-2">{configs.find(item => item.id === season.configuration).year}</div>
+          <div className="col-md-2">{configuration.year}</div>
           <div className="col-md-12">
             {renderPagedContent(current, size, Math.ceil((season.dates ? season.dates.length : 0 ) / size), (number) => this.selectPlanPage(number), () => {
               return (
@@ -460,7 +462,7 @@ export default class Season extends Component {
               tour: mappedTour ? getTourName(mappedTour, parsedDate, tour.type) : null,
               tourId: mappedTour && mappedTour.distance > 0 ? mappedTour.id : null,
               description: date.description,
-              points: getPointsByType(tour.type),
+              points: tour.points ? tour.points : getPointsByType(tour.type),
               date: idx === 0 ? `${parsedDate.format('dd')} ${parsedDate.format('L')}` : null,
               day: idx === 0 ? parsedDate.format('dd') : null
             };
@@ -471,8 +473,8 @@ export default class Season extends Component {
 
       usedTours.sort((item1, item2) => item1.name.localeCompare(item2.name));
       startRoutes.sort((item1, item2) => item1.id - item2.id);
-      const eveningStart = '4. April';
-      const eveningEnd = '15. September';
+      const eveningStart = moment(configuration.eveningStart).format('D. MMMM');
+      const eveningEnd = moment(configuration.eveningEnd).format('D. MMMM');
       const logo = require('./RVW-Logo.png');
       const renderTourName = (tour) => {
         if (tour.tour) {
@@ -483,13 +485,26 @@ export default class Season extends Component {
           return tour.tour;
         }
 
+        if (tour.points) {
+          return tour.description;
+        }
+
         return `${tour.description} (Keine Tour)`;
       };
 
       return (
         <div className={styles.print + ' container'}>
+
           <div className="row">
             <h1 className={styles.title}>RVW Tourenplan {season.year} <img src={logo} className={styles.logo}/></h1>
+            <h2 className={styles.title}> Events</h2>
+            {configuration.events.map((event, idx) => (
+              <div key={idx} className="row">
+                <div className="col-xs-6">{event.name} in {event.location}</div>
+                <div className="col-xs-6">{moment(event.from).format('L')} &mdash; {moment(event.to).format('L')}</div>
+              </div>
+            ))}
+            <h2 className={styles.title}> Touren</h2>
             {datesByMonth.map(month => (
               <div className={'col-xs-12 ' + styles.noPageBreak}>
                 <div className="row">
@@ -569,9 +584,9 @@ export default class Season extends Component {
           </div>
           <div className="row">
             <h1 className={styles.title}>RVW Tourenbeschrieb {season.year} <img src={logo} className={styles.logo}/></h1>
-            <table className="table table-striped table-hover table-condensed">
+            <table className={'table table-striped table-hover table-condensed ' + styles.description}>
               <tbody>
-              {usedTours.filter(tour => tour.distance > 0).map((tour, idx) => (<tr className={styles.listItem + ' row ' + styles.description} key={idx}>
+              {usedTours.filter(tour => tour.distance > 0).map((tour, idx) => (<tr className={styles.listItem} key={idx}>
                 <td id={`tour-${tour.id}`} className="col-xs-2">
                   <b>{tour.name}</b><br/>
                   ca {tour.distance} km<br />
@@ -588,7 +603,7 @@ export default class Season extends Component {
             <h2>Start-Routen</h2>
           <table className="table table-striped table-hover table-condensed">
             <tbody>
-            {startRoutes.map((tour, idx) => (<tr className={styles.listItem + ' row ' + styles.description} key={idx}>
+            {startRoutes.map((tour, idx) => (<tr className={styles.listItem + ' ' + styles.description} key={idx}>
               <td id={`start-route-${tour.id}`} className="col-xs-3">
                 <b>{tour.name}</b>
               </td>
