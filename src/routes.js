@@ -64,7 +64,10 @@ export default (store) => {
       </Route>
       <Route path="seasons" >
         <IndexRoute component={Seasons} />
-        <Route path=":id" component={Season} />
+        <Route path=":id">
+          <IndexRoute component={Season} />
+          <Route path=":tab" component={Season} />
+        </Route>
       </Route>
       <Route path="locations" component={Locations} />
       <Route path="configurations" component={Configurations}/>

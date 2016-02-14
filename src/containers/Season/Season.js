@@ -56,6 +56,7 @@ function getActions() {
 @connect(
   state => ({
     id: state.router.params.id,
+    tab: state.router.params.tab,
     seasons: state.seasons.data,
     tours: state.tours.data,
     locations: state.locations.data,
@@ -70,6 +71,7 @@ function getActions() {
 export default class Season extends Component {
   static propTypes = {
     id: PropTypes.string.isRequired,
+    tab: PropTypes.string,
     seasons: PropTypes.array,
     tours: PropTypes.array,
     locations: PropTypes.array,
@@ -105,7 +107,7 @@ export default class Season extends Component {
         },
         sorting: []
       },
-      tab: 'plan'
+      tab: props.tab || 'plan'
     };
   }
 
