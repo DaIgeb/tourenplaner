@@ -10,12 +10,12 @@ import {isLoaded as isTourLoaded, load as loadTours} from 'redux/modules/tours';
 import {isLoaded as isLocLoaded, load as loadLocs} from 'redux/modules/locations';
 import {isLoaded as isRestLoaded, load as loadRests} from 'redux/modules/restaurants';
 import {SeasonForm} from 'components';
-import {moment, defaultTimeZone} from '../../../shared/utils/moment';
+import {moment} from '../../../shared/utils/moment';
 import {LinkContainer} from 'react-router-bootstrap';
 import {renderPagedContent} from 'utils/pagination';
 import {sort, renderSortDirection} from 'utils/sorting';
-import {TourType} from 'models';
-import {timelineMatches} from '../../../shared/utils/timeline';
+import {PrintTab} from './PrintTab';
+import {PlanTab} from './PlanTab';
 
 function fetchDataDeferred(getState, dispatch) {
   const loadPromise = new Promise((resolve, reject) => {
@@ -111,7 +111,7 @@ export default class Season extends Component {
     };
   }
 
-  selectPlanPage(pageNumber) {
+  selectPlanPage = (pageNumber) => {
     this.setState({
       ...this.state,
       plan: {
@@ -122,7 +122,7 @@ export default class Season extends Component {
         }
       }
     });
-  }
+  };
 
   selectToursPage(pageNumber) {
     this.setState({
@@ -197,92 +197,6 @@ export default class Season extends Component {
 
     const configuration = configs.find(item => item.id === season.configuration);
 
-    const findTour = (tourId) => {
-      const {tours} = this.props; // eslint-disable-line no-shadow
-
-      return tours.find(tourObj => tourObj.id === tourId);
-    };
-
-    const renderTour = (tour, idx) => {
-      const tourObj = !isNaN(tour.tour) && tour.tour >= 0 ? findTour(tour.candidates[tour.tour].tour) : null;
-      // TODO render candidates
-      // TODO render scores
-      if (idx === 0) {
-        return [
-          <td key="type">{tour.type.label}</td>,
-          <td key="name">{tourObj ? tourObj.name : ''}</td>
-        ];
-      }
-
-      return [
-        <td>{tour.type.label}</td>,
-        <td>{tourObj ? tourObj.name : 'Unkown tour'}</td>
-      ];
-    };
-
-    const renderDetails = (dateIdx, tourIdx, seasonTour) => {
-      if (this.state.details[dateIdx] && this.state.details[dateIdx][tourIdx]) {
-        return (<tr>
-          <td colSpan={2}>
-            <table className="table table-striped table-hover table-condensed">
-              <thead>
-              <tr>
-                <td className="col-md-8">Bezeichnung</td>
-                <td className="col-md-4">Punkte</td>
-              </tr>
-              </thead>
-              <tbody>
-              {seasonTour.candidates.map((candidate, idx) => {
-                const tour = findTour(candidate.tour);
-
-                return (<tr key={idx}>
-                  <td>{tour ? tour.name : ''}</td>
-                  <td>{candidate.scores.reduce((sum, score) => sum + score.score, 0)}</td>
-                </tr>);
-              })}
-              </tbody>
-            </table>
-          </td>
-        </tr>);
-      }
-
-      return null;
-    };
-    const renderDates = (date, idx) => {
-      const momentDate = moment.tz(date.date, moment.ISO_8601, true, defaultTimeZone);
-      const dateString = momentDate.isValid() ? momentDate.format('L') : '-';
-      const dateAndDescription = date.description ? dateString + ` (${date.description})` : dateString;
-      const dateDetails = this.state.details[idx];
-      const rowSpan = date.tours.length + (dateDetails ? Object.keys(dateDetails).reduce((sum, value) => {
-        if (dateDetails.hasOwnProperty(value) && dateDetails[value]) {
-          return sum + 1;
-        }
-
-        return sum;
-      }, 0) : 0);
-      const result = [(
-        <tr key={idx + '/0'} onClick={() => this.toggleDetails(idx, 0)}>
-          <td rowSpan={rowSpan}>{dateAndDescription}</td>
-          <td rowSpan={rowSpan}><input type="checkbox" {...date.locked} onClick={evt => evt.stopPropagation()}/></td>
-          {renderTour(date.tours[0], 0)}
-        </tr>),
-        renderDetails(idx, 0, date.tours[0])
-      ];
-
-      date.tours
-        .forEach((tour, index) => {
-          if (index > 0) {
-            result.push((
-              <tr key={idx + '/' + (index)} onClick={() => this.toggleDetails(idx, index)}>
-                {renderTour(tour, index)}
-              </tr>)
-            );
-            result.push(renderDetails(idx, index, tour));
-          }
-        });
-      return result.filter(item => item);
-    };
-
     const renderTab = (tabId, name) => {
       const currentTab = this.state.tab;
       return (
@@ -291,331 +205,6 @@ export default class Season extends Component {
         </li>);
     };
 
-    const renderPlanTabConent = () => {
-      const {current, size} = this.state.plan.page;
-      const lowerBound = current * size;
-      const upperBound = lowerBound + size;
-
-      const datesToRender = season.dates ? season.dates.filter((date, idx) => idx >= lowerBound && idx < upperBound) : [];
-
-      return (
-        <div className="row">
-          <div className="col-md-3">{season.year} ({season.version})</div>
-          <div className="col-md-2">{configuration.year}</div>
-          <div className="col-md-12">
-            {renderPagedContent(current, size, Math.ceil((season.dates ? season.dates.length : 0 ) / size), (number) => this.selectPlanPage(number), () => {
-              return (
-                <table className="table table-striped table-hover table-condensed">
-                  <thead>
-                  <tr>
-                    <td className="col-md-2">Datum</td>
-                    <td className="col-md-1"/>
-                    <td className="col-md-4">Tourart</td>
-                    <td className="col-md-4">Tour</td>
-                  </tr>
-                  </thead>
-                  <tbody>
-                  {datesToRender.map((date, idx) => renderDates(date, idx + lowerBound))}
-                  </tbody>
-                </table>
-              );
-            })}
-          </div>
-        </div>);
-    };
-    const getPointsByType = (type) => {
-      switch (type ? type.id : null) {
-        case TourType.fullday.id:
-          return 40;
-        case TourType.morning.id:
-        case TourType.afternoon.id:
-          return 20;
-        case TourType.evening.id:
-          return 15;
-        default:
-          return 0;
-      }
-    };
-
-    const getTourName = (tour, date, type) => {
-      if (!tour) {
-        return null;
-      }
-
-      const tourName = tour.name;
-
-      if (type.id !== TourType.fullday.id) {
-        switch (date.day()) {
-          case 0: // Sunday
-            if (type.id !== TourType.morning.id) {
-              return tourName + ` (${type.label})`;
-            }
-            break;
-          case 2:
-          case 4:
-            if (type.id !== TourType.evening.id) {
-              return tourName + ` (${type.label})`;
-            }
-            break;
-          case 6:
-            if (type.id !== TourType.afternoon.id && type.id !== TourType.fullday.id) {
-              return tourName + ` (${type.label})`;
-            }
-            break;
-          default:
-            return tourName + ` (${type.label})`;
-        }
-      }
-
-      return tourName;
-    };
-
-    const createTourViewModel = (tourObj, date) =>{
-      const {locations, restaurants} = this.props;
-      const timeline = tourObj.timelines.find(tl => timelineMatches(tl, date));
-      const startRoute = tours.find(to => to.id === timeline.startroute);
-      const locationsInTour = timeline.locations.map(loc => locations.find(item => item.id === loc));
-      const restaurantsInTour = timeline.restaurants.map(rest => {
-        const restaurant = restaurants.find(re => re.id === rest);
-        const restTl = restaurant.timelines.find(tl => timelineMatches(tl, date));
-        return {
-          location: restaurant.location,
-          nameForTour: restaurant.nameForTour,
-          ...restTl
-        };
-      });
-      const foreignCountry = locationsInTour.find(loc => loc.addressCountry && loc.addressCountry !== 'CH');
-
-      return {
-        id: tourObj.id,
-        name: `${tourObj.name}${foreignCountry ? ' (ID)' : ''}`,
-        startrouteId: startRoute ? startRoute.id : null,
-        startroute: startRoute ? startRoute.name : null,
-        locations: locationsInTour.map(loc => {
-          const restaurant = restaurantsInTour.find(rest => rest.location === loc.id);
-          if (restaurant) {
-            const name = `${restaurant.nameForTour ? restaurant.nameForTour : loc.city} (${loc.name}/${restaurant.phone})`;
-            return {
-              restaurant: true,
-              name: name,
-              maps: `http://www.google.com/maps/place/${loc.latitude},${loc.longitude}`
-            };
-          }
-
-          return {
-            restaurant: false,
-            name: loc.name,
-            maps: `http://www.google.com/maps/place/${loc.latitude},${loc.longitude}`
-          };
-        }),
-        distance: timeline.distance,
-        elevation: timeline.elevation
-      };
-    };
-
-    const createRouteViewModel = (candidate, date) => {
-      const tourObj = tours.find(item => item.id === candidate.tour);
-
-      if (tourObj) {
-        return createTourViewModel(tourObj, date);
-      }
-
-      return null;
-    };
-
-    const renderPrintTabContent = () => {
-      const datesByMonth = [];
-      const usedTours = [];
-      const startRoutes = [];
-      season.dates
-        .forEach(date => {
-          const parsedDate = moment(date.date);
-          const monthId = parsedDate.month();
-          let month = datesByMonth.find(mon => mon.month === monthId);
-          if (!month) {
-            month = {
-              month: monthId,
-              monthName: parsedDate.format('MMMM'),
-              dates: []
-            };
-
-            datesByMonth.push(month);
-          }
-
-          const tourViewModels = date.tours.map((tour, idx) => {
-            const candidate = tour.candidates[tour.tour];
-            let mappedTour = usedTours.find(ut => ut.id === candidate.tour);
-            if (!mappedTour) {
-              mappedTour = createRouteViewModel(candidate, parsedDate);
-              if (mappedTour) {
-                const startRoute = startRoutes.find(item => item.name === mappedTour.startroute);
-                if (!startRoute && mappedTour.startroute) {
-                  const tourObj = tours.find(st => st.name === mappedTour.startroute);
-                  startRoutes.push(createTourViewModel(tourObj, parsedDate));
-                }
-
-                usedTours.push(mappedTour);
-              }
-            }
-
-            return {
-              tour: mappedTour ? getTourName(mappedTour, parsedDate, tour.type) : null,
-              tourId: mappedTour && mappedTour.distance > 0 ? mappedTour.id : null,
-              description: date.description,
-              points: tour.points ? tour.points : getPointsByType(tour.type),
-              date: idx === 0 ? `${parsedDate.format('dd')} ${parsedDate.format('L')}` : null,
-              day: idx === 0 ? parsedDate.format('dd') : null
-            };
-          });
-
-          month.dates = month.dates.concat(tourViewModels);
-        });
-
-      usedTours.sort((item1, item2) => item1.name.localeCompare(item2.name));
-      startRoutes.sort((item1, item2) => item1.id - item2.id);
-      const eveningStart = moment(configuration.eveningStart).format('D. MMMM');
-      const eveningEnd = moment(configuration.eveningEnd).format('D. MMMM');
-      const logo = require('./RVW-Logo.png');
-      const renderTourName = (tour) => {
-        if (tour.tour) {
-          if (tour.tourId) {
-            return <a href={`#tour-${tour.tourId}`}>{tour.tour}</a>;
-          }
-
-          return tour.tour;
-        }
-
-        if (tour.points) {
-          return tour.description;
-        }
-
-        return `${tour.description} (Keine Tour)`;
-      };
-
-      return (
-        <div className={styles.print + ' container'}>
-
-          <div className="row">
-            <h1 className={styles.title}>RVW Tourenplan {season.year} <img src={logo} className={styles.logo}/></h1>
-            <h2 className={styles.title}> Events</h2>
-            {configuration.events.map((event, idx) => (
-              <div key={idx} className="row">
-                <div className="col-xs-6">{event.name} in {event.location}</div>
-                <div className="col-xs-6">{moment(event.from).format('L')} &mdash; {moment(event.to).format('L')}</div>
-              </div>
-            ))}
-            <h2 className={styles.title}> Touren</h2>
-            {datesByMonth.map(month => (
-              <div className={'col-xs-12 ' + styles.noPageBreak}>
-                <div className="row">
-                  <div className="col-xs-12">
-                    <h3>{month.monthName}</h3>
-                  </div>
-                </div>
-                <div className={styles.list}>
-                  {month.dates.map(date => (
-                    <div className={styles.listItem + ' row ' + (date.points === 40 ? styles.fullday : '')}>
-                      <div className="col-xs-3">{date.date}&nbsp;</div>
-                      <div className={styles.tourNameCol + ' col-xs-8'}>{renderTourName(date)}&nbsp;</div>
-                      <div className="col-xs-1">{date.points}&nbsp;</div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            ))}
-            <div className={'col-xs-12 ' + styles.noPageBreak}>
-              <div className="row">
-                <div className="col-xs-12"><strong>Treffpunkt <a href="https://goo.gl/maps/wJMuPAPSpTn">Museumsplatz</a></strong></div>
-              </div>
-              <div className="row">
-                <div className="col-xs-5"><strong>Blüemli - Gruppe</strong></div>
-                <div className="col-xs-6 col-xs-offset-1">gemütliches Tempo / Einsteigergruppe</div>
-
-                <div className="col-xs-3 col-xs-offset-1">Abendtouren:</div>
-                <div className="col-xs-2">17:50 Uhr</div>
-                <div className="col-xs-6">Durchschnitt 22 -26 km/h</div>
-
-                <div className="col-xs-3 col-xs-offset-1">Samstagstouren:</div>
-                <div className="col-xs-8">13:20 Uhr</div>
-
-                <div className="col-xs-3 col-xs-offset-1">Sonntagstouren:</div>
-                <div className="col-xs-2">08:20 Uhr</div>
-                <div className="col-xs-6">(bis {eveningStart} und ab {eveningEnd} 08.50 Uhr)</div>
-
-                <div className="col-xs-3 col-xs-offset-1">Tagestouren:</div>
-                <div className="col-xs-8">07:45 Uhr</div>
-              </div>
-              <div className="row">
-                <div className="col-xs-5"><strong>Fitness - Gruppe</strong></div>
-                <div className="col-xs-6 col-xs-offset-1">flottes Tempo / Routinierte Fahrer</div>
-
-                <div className="col-xs-3 col-xs-offset-1">Abendtouren:</div>
-                <div className="col-xs-2">18:00 Uhr</div>
-                <div className="col-xs-6">Durchschnitt 24 -28 km/h</div>
-
-                <div className="col-xs-3 col-xs-offset-1">Samstagstouren:</div>
-                <div className="col-xs-8">13:30 Uhr</div>
-
-                <div className="col-xs-3 col-xs-offset-1">Sonntagstouren:</div>
-                <div className="col-xs-2">08:30 Uhr</div>
-                <div className="col-xs-6">(bis {eveningStart} und ab {eveningEnd} 09.00 Uhr)</div>
-
-                <div className="col-xs-3 col-xs-offset-1">Tagestouren:</div>
-                <div className="col-xs-8">08:00 Uhr</div>
-              </div>
-              <div className="row">
-                <div className="col-xs-6"><strong>Speed - Gruppe ab {eveningStart}</strong></div>
-                <div className="col-xs-6">zügiges Tempo / gut trainierte Fahrer</div>
-
-                <div className="col-xs-3 col-xs-offset-1">Abendtouren:</div>
-                <div className="col-xs-2">18:10 Uhr</div>
-                <div className="col-xs-6">Durchschnitt 26 -30 km/h</div>
-
-                <div className="col-xs-3 col-xs-offset-1">Samstagstouren:</div>
-                <div className="col-xs-8">13:40 Uhr</div>
-
-                <div className="col-xs-3 col-xs-offset-1">Sonntagstouren:</div>
-                <div className="col-xs-8">08:40 Uhr</div>
-
-                <div className="col-xs-3 col-xs-offset-1">Tagestouren:</div>
-                <div className="col-xs-8">08:15 Uhr</div>
-              </div>
-            </div>
-          </div>
-          <div className="row">
-            <h1 className={styles.title}>RVW Tourenbeschrieb {season.year} <img src={logo} className={styles.logo}/></h1>
-            <table className={'table table-striped table-hover table-condensed ' + styles.description}>
-              <tbody>
-              {usedTours.filter(tour => tour.distance > 0).map((tour, idx) => (<tr className={styles.listItem} key={idx}>
-                <td id={`tour-${tour.id}`} className="col-xs-2">
-                  <b>{tour.name}</b><br/>
-                  ca {tour.distance} km<br />
-                  ca {tour.elevation} hm</td>
-                <td className="col-xs-2"><a href={`#start-route-${tour.startrouteId}`}>{tour.startroute}</a></td>
-                <td className="col-xs-8">
-                  {tour.locations.map((loc, locIdx) => <span key={locIdx}>{locIdx ? ' - ' : ''}<a href={loc.maps}>{loc.restaurant ? <b>{loc.name}</b> : loc.name}</a></span>)}
-                </td>
-              </tr>))}
-              </tbody>
-            </table>
-          </div>
-          <div className="row">
-            <h2>Start-Routen</h2>
-          <table className="table table-striped table-hover table-condensed">
-            <tbody>
-            {startRoutes.map((tour, idx) => (<tr className={styles.listItem + ' ' + styles.description} key={idx}>
-              <td id={`start-route-${tour.id}`} className="col-xs-3">
-                <b>{tour.name}</b>
-              </td>
-              <td className="col-xs-9">
-                {tour.locations.map((loc, locIdx) => <span key={locIdx}>{locIdx ? ' - ' : ''}<a href={loc.maps}>{loc.name}</a></span>)}
-              </td>
-            </tr>))}
-            </tbody>
-          </table>
-          </div>
-        </div>);
-    };
     const renderToursTabContent = () => {
       const {page: {current, size}, sorting} = this.state.tours;
       const lowerBound = current * size;
@@ -626,7 +215,7 @@ export default class Season extends Component {
           const candidate = tour.candidates[tour.tour];
           return {
             tour: candidate.tour,
-            type: candidate.type,
+            type: tour.type ? tour.type.label : null,
             score: candidate.totalScore,
             date: date.date
           };
@@ -664,19 +253,22 @@ export default class Season extends Component {
                   </thead>
                   <tbody>
                   {toursToDisplay.map((tour, idx) =>
-                    (<tr key={`${idx}/main`}><td>
-                      {tour.name}
-                    </td><td className={tour.occurences.length ? styles.tooltip : ''}>
-                      {tour.occurences.length}
-                      {tour.occurences.length > 0 && (
-                        <span>
-                          {tour.occurences.map((occ, occIdx) => (
-                            <div key={`${idx}/${occIdx}`}>
-                              {`${moment(occ.date).format('L')} ${occ.type}`}
-                            </div>))}
-                        </span>
-                      )}
-                    </td></tr>))}
+                    (<tr key={`${idx}/main`}>
+                      <td>
+                        {tour.name}
+                      </td>
+                      <td className={tour.occurences.length ? styles.tooltip : ''}>
+                        {tour.occurences.length}
+                        {tour.occurences.length > 0 && (
+                          <span>
+                            {tour.occurences.map((occ, occIdx) => (
+                              <div key={`${idx}/${occIdx}`}>
+                                {`${moment(occ.date).format('L')} ${occ.type}`}
+                              </div>))}
+                          </span>
+                        )}
+                      </td>
+                    </tr>))}
                   </tbody>
                 </table>
               );
@@ -693,12 +285,15 @@ export default class Season extends Component {
       );
     };
 
+    const printTab = new PrintTab(season, configuration, tours, this.props.locations, this.props.restaurants);
+    const planTab = new PlanTab(season, tours, this.props.restaurants, this.state.plan.page.current, this.state.plan.page.size, this.selectPlanPage);
+
     const renderTabs = () => {
       const tabs = [
         {
           id: 'plan',
           name: 'Plan',
-          render: renderPlanTabConent
+          render: planTab.render
         },
         {
           id: 'tours',
@@ -708,7 +303,7 @@ export default class Season extends Component {
         {
           id: 'print',
           name: 'Druck',
-          render: renderPrintTabContent
+          render: printTab.render
         }
       ];
 

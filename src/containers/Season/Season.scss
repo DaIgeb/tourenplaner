@@ -45,7 +45,8 @@
 .tooltip:hover {
   text-decoration:none;
 }
-.tooltip span + span{
+.tooltip > span + span
+{
   z-index:10;
   display:none;
   padding:14px 20px;
@@ -54,22 +55,47 @@
   width:300px;
   line-height:16px;
 }
-.tooltip:hover span + span{
+.tooltip:hover > span + span{
   display:block;
   position:absolute;
   border:2px solid #FFF;  color:#EEE;
   background:#333; // url(cssttp/css-tooltip-gradient-bg.png) repeat-x 0 0;
 }
-.callout {
-  z-index:20;
+
+/*CSS3 extras*/
+.tooltip > span + span
+{
+  border-radius:2px;
+  box-shadow: 0px 0px 8px 4px #666;
+  /*opacity: 0.8;*/
+}
+.scoretip {
+  outline:none; }
+.scoretip strong {
+  line-height:30px;
+}
+.scoretip:hover {
+  text-decoration:none;
+}
+.scoretip > span + span
+{
+  z-index:10;
+  display:none;
+  padding:14px 20px;
+  margin-top:25px;
+  margin-left:-50px;
+  width:600px;
+  line-height:16px;
+}
+.scoretip:hover > span + span{
+  display:block;
   position:absolute;
-  border:0;
-  top:-14px;
-  left:120px;
+  border:2px solid #FFF;  color:#EEE;
+  background:#333; // url(cssttp/css-scoretip-gradient-bg.png) repeat-x 0 0;
 }
 
 /*CSS3 extras*/
-.tooltip span + span
+.scoretip > span + span
 {
   border-radius:2px;
   box-shadow: 0px 0px 8px 4px #666;

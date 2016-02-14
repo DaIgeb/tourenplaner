@@ -26,12 +26,11 @@ import {ObjectSelect, DateInput, TourInput} from 'components';
     'events[].from',
     'events[].to',
     'events[].name',
-    'dates[].date',
-    'dates[].type',
-    'dates[].description',
+    'events[].location',
     'specialDates[].date',
     'specialDates[].name',
     'specialDates[].action',
+    'specialDates[].points',
     'specialDates[].tours[].id',
     'specialDates[].tours[].name',
     'specialDates[].tours[].type'
@@ -58,7 +57,7 @@ export default class SeasonConfigurationDatesForm extends Component {
 
   render() {
     const {
-      fields: {year, specialDates, dates},
+      fields: {year, specialDates},
       handleSubmit,
       resetForm,
       invalid,
@@ -83,12 +82,6 @@ export default class SeasonConfigurationDatesForm extends Component {
         <label htmlFor={field.name} className="col-sm-2">{label}</label>
         {renderField(field, showAsyncValidating, type, 'col-sm-4 ' + styles.inputGroup, attributes)}
       </div>;
-    const renderOption = (field, label, options, labelClass, valueClass) => <div className={(field.error && field.touched ? ' has-error' : '')}>
-      <label htmlFor={field.name} className={labelClass}>{label}</label>
-      <div className={valueClass + ' ' + styles.inputGroup}>
-        <ObjectSelect {...field} options={options} />
-      </div>
-    </div>;
     const renderDate = (field, label, showAsyncValidating, type = 'text', attributes = null) =>
       <div className={(field.error && field.touched ? ' has-error' : '')}>
         <label htmlFor={field.name} className="col-sm-1">{label}</label>
@@ -106,25 +99,10 @@ export default class SeasonConfigurationDatesForm extends Component {
       TourType.fullday
     ];
 
-    const renderDateInput = (date, field, label, showAsyncValidating, type = 'text', attributes = null) =>
-      <div>
-        {renderDate(field, 'Datum', showAsyncValidating, type, 'col-sm-2 ' + styles.inputGroup, attributes)}
-        <div className={(date.type.error && date.type.touched ? ' has-error' : '')}>
-          {renderOption(date.type, 'Type', tourTypeOptions, 'col-sm-1', 'col-sm-3')}
-        </div>
-        <div className={(date.description.error && date.description.type.touched ? ' has-error' : '')}>
-          <label htmlFor={date.description.name} className="col-sm-2">Bezeichnung</label>
-          {renderField(date.description, null, 'text', 'col-sm-3 ' + styles.inputGroup)}
-        </div>
-      </div>;
-
     return (
       <div>
         <form className="form-horizontal" onSubmit={handleSubmit}>
           {renderInput(year, 'Jahr', null, 'number', {readOnly: true})}
-          <div style={{maxHeight: '500px', overflowY: 'scroll'}}>
-            {dates.map((date, index) => <div key={index} className="col-xs-11">{renderDateInput(date, date.date, 'Datum')}</div>)}
-          </div>
           <div style={{textAlign: 'center', margin: '10px'}}>
             <button className="btn btn-success" onClick={event => {
               event.preventDefault(); // prevent form submission
@@ -137,19 +115,22 @@ export default class SeasonConfigurationDatesForm extends Component {
             <div className="form-group">
               {renderDate(child.date, null, 'text', 'col-xs-3', {placeholder: 'Datum'})}
               {renderField(child.name, null, 'text', 'col-xs-3', {placeholder: 'Bezeichnung'})}
-              <div className="col-xs-2">
-                <button className="btn btn-success" onClick={event => {
-                  event.preventDefault(); // prevent form submission
-                  child.tours.addField();    // pushes empty child field onto the end of the array
-                }}><i className="fa fa-plus"/> Tour hinzufügen
-                </button>
-              </div>
+              {renderField(child.points, null, 'number', 'col-xs-2', {placeholder: 'Punkte', min: 0, max: 100, step: 5})}
               {renderOptionField(child.action, [SpecialDateAction.add, SpecialDateAction.remove, SpecialDateAction.replace], null, 'text', 'col-xs-2', {placeholder: 'Action'})}
               <div className="col-xs-1">
                 <button className="btn btn-danger" onClick={event => {
                   event.preventDefault();       // prevent form submission
                   specialDates.removeField(index);  // remove from index
                 }}><i className="fa fa-trash"/> Löschen
+                </button>
+              </div>
+            </div>
+            <div className="form-group">
+              <div className="col-xs-2 col-xs-offset-5">
+                <button className="btn btn-success" onClick={event => {
+                  event.preventDefault(); // prevent form submission
+                  child.tours.addField();    // pushes empty child field onto the end of the array
+                }}><i className="fa fa-plus"/> Tour hinzufügen
                 </button>
               </div>
             </div>

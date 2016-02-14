@@ -22,11 +22,10 @@ import {DateInput} from 'components';
     'events[].from',
     'events[].to',
     'events[].name',
-    'dates[].date',
-    'dates[].type',
-    'dates[].description',
+    'events[].location',
     'specialDates[].date',
     'specialDates[].name',
+    'specialDates[].points',
     'specialDates[].action',
     'specialDates[].tours[].id',
     'specialDates[].tours[].name',
@@ -102,6 +101,7 @@ export default class SeasonConfigurationForm extends Component {
               {renderDate(child.from, null, 'text', 'col-xs-3', {placeholder: 'Von'})}
               {renderDate(child.to, null, 'text', 'col-xs-3', {placeholder: 'Bis'})}
               {renderInput(child.name, null, 'text', 'col-xs-3', {placeholder: 'Name'})}
+              {renderInput(child.location, null, 'text', 'col-xs-3', {placeholder: 'Ort'})}
               <div className="col-xs-1">
                 <button className="btn btn-danger" onClick={event => {
                   event.preventDefault();       // prevent form submission

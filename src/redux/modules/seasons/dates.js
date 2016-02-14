@@ -17,7 +17,8 @@ function handleSpecialDate(specialDate) {
                 score: 0,
                 note: specialDate.name
               }
-            ]
+            ],
+            points: specialDate.points
           }
         ]
       }];
@@ -38,7 +39,8 @@ function handleSpecialDate(specialDate) {
                 }
               ]
             }
-          ]
+          ],
+          points: specialDate.points
         };
       });
     default:

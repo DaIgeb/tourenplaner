@@ -7,7 +7,7 @@
       {
         "from": "2015-12-31T23:00:00.000Z",
         "until": "2016-12-30T23:00:00.000Z",
-        "notes": "TODO",
+        "notes": "",
         "phone": "052 317 10 09",
         "businessHours": [
           {
@@ -76,7 +76,7 @@
       {
         "from": "2015-12-31T23:00:00.000Z",
         "until": "2100-12-30T23:00:00.000Z",
-        "notes": "TODO",
+        "notes": "",
         "phone": "052 336 11 80",
         "businessHours": [
           {
@@ -156,7 +156,7 @@
       {
         "from": "2015-12-31T23:00:00.000Z",
         "until": "2100-12-30T23:00:00.000Z",
-        "notes": "TODO",
+        "notes": "",
         "phone": "071 983 28 47",
         "businessHours": [
           {
@@ -225,7 +225,7 @@
       {
         "from": "2015-12-31T23:00:00.000Z",
         "until": "2100-12-30T23:00:00.000Z",
-        "notes": "TODO",
+        "notes": "",
         "phone": "071 787 11 22",
         "businessHours": [
           {
@@ -305,7 +305,7 @@
       {
         "from": "2015-12-31T23:00:00.000Z",
         "until": "2100-12-30T23:00:00.000Z",
-        "notes": "TODO",
+        "notes": "",
         "phone": "071 971 16 85",
         "businessHours": [
           {
@@ -385,7 +385,7 @@
       {
         "from": "2015-12-31T23:00:00.000Z",
         "until": "2100-12-30T23:00:00.000Z",
-        "notes": "TODO",
+        "notes": "",
         "phone": "071 651 14 26",
         "businessHours": [
           {
@@ -1107,9 +1107,76 @@
       {
         "from": "2015-12-31T23:00:00.000Z",
         "until": "2100-12-30T23:00:00.000Z",
-        "notes": "Oktober - April\nMi - Mo 08.30 - 23.00\nDi geschlossen\n\nMai - September\nMo - So 08.30 - 23.00",
+        "notes": "Mai - September Dienstags ebenfalls offen 08.30 - 23.00",
         "phone": "044 867 01 14",
-        "businessHours": []
+        "businessHours": [
+          {
+            "weekday": "Sunday",
+            "from": {
+              "hour": 8,
+              "minute": 30
+            },
+            "until": {
+              "hour": 23,
+              "minute": 0
+            }
+          },
+          {
+            "weekday": "Monday",
+            "from": {
+              "hour": 8,
+              "minute": 30
+            },
+            "until": {
+              "hour": 23,
+              "minute": 0
+            }
+          },
+          {
+            "weekday": "Wednesday",
+            "from": {
+              "hour": 8,
+              "minute": 30
+            },
+            "until": {
+              "hour": 23,
+              "minute": 0
+            }
+          },
+          {
+            "weekday": "Thursday",
+            "from": {
+              "hour": 8,
+              "minute": 30
+            },
+            "until": {
+              "hour": 23,
+              "minute": 0
+            }
+          },
+          {
+            "weekday": "Friday",
+            "from": {
+              "hour": 8,
+              "minute": 30
+            },
+            "until": {
+              "hour": 23,
+              "minute": 0
+            }
+          },
+          {
+            "weekday": "Saturday",
+            "from": {
+              "hour": 8,
+              "minute": 30
+            },
+            "until": {
+              "hour": 23,
+              "minute": 0
+            }
+          }
+        ]
       }
     ]
   },
@@ -2361,17 +2428,73 @@
     ]
   },
   {
+    "id": 31,
     "location": 221,
     "timelines": [
       {
         "from": "2015-12-31T23:00:00.000Z",
         "until": "2100-12-30T23:00:00.000Z",
-        "notes": "Mi/Do geschlossen",
+        "notes": "",
         "phone": "052 745 12 62",
-        "businessHours": []
+        "businessHours": [
+          {
+            "weekday": "Sunday",
+            "from": {
+              "hour": 12,
+              "minute": 0
+            },
+            "until": {
+              "hour": 23,
+              "minute": 0
+            }
+          },
+          {
+            "weekday": "Monday",
+            "from": {
+              "hour": 12,
+              "minute": 0
+            },
+            "until": {
+              "hour": 23,
+              "minute": 0
+            }
+          },
+          {
+            "weekday": "Tuesday",
+            "from": {
+              "hour": 12,
+              "minute": 0
+            },
+            "until": {
+              "hour": 23,
+              "minute": 0
+            }
+          },
+          {
+            "weekday": "Friday",
+            "from": {
+              "hour": 12,
+              "minute": 0
+            },
+            "until": {
+              "hour": 23,
+              "minute": 0
+            }
+          },
+          {
+            "weekday": "Saturday",
+            "from": {
+              "hour": 12,
+              "minute": null
+            },
+            "until": {
+              "hour": 23,
+              "minute": 0
+            }
+          }
+        ]
       }
-    ],
-    "id": 31
+    ]
   },
   {
     "location": 226,
@@ -4261,12 +4384,13 @@
     ]
   },
   {
+    "id": 57,
     "location": 330,
     "timelines": [
       {
         "from": "2015-12-31T23:00:00.000Z",
         "until": "2100-12-30T23:00:00.000Z",
-        "notes": "Juni bis August: So 08.00 - 12.00",
+        "notes": "",
         "phone": "052 378 11 52",
         "businessHours": [
           {
@@ -4342,14 +4466,13 @@
               "minute": 0
             },
             "until": {
-              "hour": 17,
+              "hour": 12,
               "minute": 0
             }
           }
         ]
       }
-    ],
-    "id": 57
+    ]
   },
   {
     "location": 334,
@@ -4709,9 +4832,76 @@
       {
         "from": "2015-12-31T23:00:00.000Z",
         "until": "2100-12-30T23:00:00.000Z",
-        "notes": "Mi geschlossen",
+        "notes": "",
         "phone": "044 939 12 79",
-        "businessHours": []
+        "businessHours": [
+          {
+            "weekday": "Sunday",
+            "from": {
+              "hour": 12,
+              "minute": 0
+            },
+            "until": {
+              "hour": 23,
+              "minute": 0
+            }
+          },
+          {
+            "weekday": "Monday",
+            "from": {
+              "hour": 12,
+              "minute": 0
+            },
+            "until": {
+              "hour": 23,
+              "minute": 0
+            }
+          },
+          {
+            "weekday": "Tuesday",
+            "from": {
+              "hour": 12,
+              "minute": 0
+            },
+            "until": {
+              "hour": 23,
+              "minute": 0
+            }
+          },
+          {
+            "weekday": "Thursday",
+            "from": {
+              "hour": 12,
+              "minute": 0
+            },
+            "until": {
+              "hour": 23,
+              "minute": 0
+            }
+          },
+          {
+            "weekday": "Friday",
+            "from": {
+              "hour": 12,
+              "minute": 0
+            },
+            "until": {
+              "hour": 23,
+              "minute": 0
+            }
+          },
+          {
+            "weekday": "Saturday",
+            "from": {
+              "hour": 12,
+              "minute": 0
+            },
+            "until": {
+              "hour": 23,
+              "minute": 0
+            }
+          }
+        ]
       }
     ]
   },
@@ -4928,9 +5118,65 @@
       {
         "from": "2015-12-31T23:00:00.000Z",
         "until": "2100-12-30T23:00:00.000Z",
-        "notes": "So/Mo geschlossen\n",
+        "notes": "",
         "phone": "041 830 12 08",
-        "businessHours": []
+        "businessHours": [
+          {
+            "weekday": "Tuesday",
+            "from": {
+              "hour": 12,
+              "minute": 0
+            },
+            "until": {
+              "hour": 23,
+              "minute": 0
+            }
+          },
+          {
+            "weekday": "Wednesday",
+            "from": {
+              "hour": 12,
+              "minute": 0
+            },
+            "until": {
+              "hour": 23,
+              "minute": 0
+            }
+          },
+          {
+            "weekday": "Thursday",
+            "from": {
+              "hour": 12,
+              "minute": 0
+            },
+            "until": {
+              "hour": 23,
+              "minute": 0
+            }
+          },
+          {
+            "weekday": "Friday",
+            "from": {
+              "hour": 12,
+              "minute": 0
+            },
+            "until": {
+              "hour": 23,
+              "minute": 0
+            }
+          },
+          {
+            "weekday": "Saturday",
+            "from": {
+              "hour": 12,
+              "minute": 0
+            },
+            "until": {
+              "hour": 23,
+              "minute": 0
+            }
+          }
+        ]
       }
     ]
   },
