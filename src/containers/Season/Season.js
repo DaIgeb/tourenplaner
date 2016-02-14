@@ -8,6 +8,7 @@ import {isLoaded, load as loadSeasons} from 'redux/modules/seasons';
 import {isLoaded as isConfigLoaded, load as loadConfigs} from 'redux/modules/configurations';
 import {isLoaded as isTourLoaded, load as loadTours} from 'redux/modules/tours';
 import {isLoaded as isLocLoaded, load as loadLocs} from 'redux/modules/locations';
+import {isLoaded as isRestLoaded, load as loadRests} from 'redux/modules/restaurants';
 import {SeasonForm} from 'components';
 import {moment, defaultTimeZone} from '../../../shared/utils/moment';
 import {LinkContainer} from 'react-router-bootstrap';
@@ -35,6 +36,10 @@ function fetchDataDeferred(getState, dispatch) {
       promises.push(dispatch(loadLocs()));
     }
 
+    if (!isRestLoaded(getState())) {
+      promises.push(dispatch(loadRests()));
+    }
+
     Promise.all(promises).then(values => resolve(values)).catch(error => reject(error));
   });
 
@@ -54,6 +59,7 @@ function getActions() {
     seasons: state.seasons.data,
     tours: state.tours.data,
     locations: state.locations.data,
+    restaurants: state.restaurants.data,
     configs: state.configurations.data,
     error: state.seasons.error,
     adding: state.seasons.adding,
@@ -67,6 +73,7 @@ export default class Season extends Component {
     seasons: PropTypes.array,
     tours: PropTypes.array,
     locations: PropTypes.array,
+    restaurants: PropTypes.array,
     configs: PropTypes.array,
     editing: PropTypes.number,
     error: PropTypes.string,
@@ -331,15 +338,7 @@ export default class Season extends Component {
         return null;
       }
 
-      let tourName = tour.name;
-      const locations = this.props.locations;
-      const timeline = tour.timelines.find(tl => timelineMatches(tl, date));
-      const locationsInTour = timeline.locations.map(loc => locations.find(item => item.id === loc));
-      const foreignCountry = locationsInTour.find(loc => loc.addressCountry && loc.addressCountry !== 'CH');
-
-      if (foreignCountry) {
-        tourName += ' (ID)';
-      }
+      const tourName = tour.name;
 
       if (type.id !== TourType.fullday.id) {
         switch (date.day()) {
@@ -367,8 +366,63 @@ export default class Season extends Component {
       return tourName;
     };
 
+    const createTourViewModel = (tourObj, date) =>{
+      const {locations, restaurants} = this.props;
+      const timeline = tourObj.timelines.find(tl => timelineMatches(tl, date));
+      const startRoute = tours.find(to => to.id === timeline.startroute);
+      const locationsInTour = timeline.locations.map(loc => locations.find(item => item.id === loc));
+      const restaurantsInTour = timeline.restaurants.map(rest => {
+        const restaurant = restaurants.find(re => re.id === rest);
+        const restTl = restaurant.timelines.find(tl => timelineMatches(tl, date));
+        return {
+          location: restaurant.location,
+          nameForTour: restaurant.nameForTour,
+          ...restTl
+        };
+      });
+      const foreignCountry = locationsInTour.find(loc => loc.addressCountry && loc.addressCountry !== 'CH');
+
+      return {
+        id: tourObj.id,
+        name: `${tourObj.name}${foreignCountry ? ' (ID)' : ''}`,
+        startrouteId: startRoute ? startRoute.id : null,
+        startroute: startRoute ? startRoute.name : null,
+        locations: locationsInTour.map(loc => {
+          const restaurant = restaurantsInTour.find(rest => rest.location === loc.id);
+          if (restaurant) {
+            const name = `${restaurant.nameForTour ? restaurant.nameForTour : loc.city} (${loc.name}/${restaurant.phone})`;
+            return {
+              restaurant: true,
+              name: name,
+              maps: `http://www.google.com/maps/place/${loc.latitude},${loc.longitude}`
+            };
+          }
+
+          return {
+            restaurant: false,
+            name: loc.name,
+            maps: `http://www.google.com/maps/place/${loc.latitude},${loc.longitude}`
+          };
+        }),
+        distance: timeline.distance,
+        elevation: timeline.elevation
+      };
+    };
+
+    const createRouteViewModel = (candidate, date) => {
+      const tourObj = tours.find(item => item.id === candidate.tour);
+
+      if (tourObj) {
+        return createTourViewModel(tourObj, date);
+      }
+
+      return null;
+    };
+
     const renderPrintTabContent = () => {
       const datesByMonth = [];
+      const usedTours = [];
+      const startRoutes = [];
       season.dates
         .forEach(date => {
           const parsedDate = moment(date.date);
@@ -386,99 +440,162 @@ export default class Season extends Component {
 
           const tourViewModels = date.tours.map((tour, idx) => {
             const candidate = tour.candidates[tour.tour];
-            const tourObj = tours.find(item => item.id === candidate.tour);
+            let mappedTour = usedTours.find(ut => ut.id === candidate.tour);
+            if (!mappedTour) {
+              mappedTour = createRouteViewModel(candidate, parsedDate);
+              if (mappedTour) {
+                const startRoute = startRoutes.find(item => item.name === mappedTour.startroute);
+                if (!startRoute && mappedTour.startroute) {
+                  const tourObj = tours.find(st => st.name === mappedTour.startroute);
+                  startRoutes.push(createTourViewModel(tourObj, parsedDate));
+                }
+
+                usedTours.push(mappedTour);
+              }
+            }
 
             return {
-              tour: tourObj ? getTourName(tourObj, parsedDate, tour.type) : null,
+              tour: mappedTour ? getTourName(mappedTour, parsedDate, tour.type) : null,
+              tourId: mappedTour && mappedTour.distance > 0 ? mappedTour.id : null,
               description: date.description,
               points: getPointsByType(tour.type),
-              date: idx === 0 ? parsedDate.format('L') : null,
+              date: idx === 0 ? `${parsedDate.format('dd')} ${parsedDate.format('L')}` : null,
               day: idx === 0 ? parsedDate.format('dd') : null
             };
           });
 
           month.dates = month.dates.concat(tourViewModels);
         });
+
+      usedTours.sort((item1, item2) => item1.name.localeCompare(item2.name));
+      startRoutes.sort((item1, item2) => item1.id - item2.id);
       const eveningStart = '4. April';
       const eveningEnd = '15. September';
+      const logo = require('./RVW-Logo.png');
+      const renderTourName = (tour) => {
+        if (tour.tour) {
+          if (tour.tourId) {
+            return <a href={`#tour-${tour.tourId}`}>{tour.tour}</a>;
+          }
+
+          return tour.tour;
+        }
+
+        return `${tour.description} (Keine Tour)`;
+      };
 
       return (
         <div className={styles.print + ' container'}>
-          {datesByMonth.map(month => (
-            <div className="col-xs-12">
-              <div className="row">
-                <div className="col-xs-12">
-                  <h3>{month.monthName}</h3>
+          <div className="row">
+            <h1 className={styles.title}>RVW Tourenplan {season.year} <img src={logo} className={styles.logo}/></h1>
+            {datesByMonth.map(month => (
+              <div className={'col-xs-12 ' + styles.noPageBreak}>
+                <div className="row">
+                  <div className="col-xs-12">
+                    <h3>{month.monthName}</h3>
+                  </div>
+                </div>
+                <div className={styles.list}>
+                  {month.dates.map(date => (
+                    <div className={styles.listItem + ' row ' + (date.points === 40 ? styles.fullday : '')}>
+                      <div className="col-xs-3">{date.date}&nbsp;</div>
+                      <div className={styles.tourNameCol + ' col-xs-8'}>{renderTourName(date)}&nbsp;</div>
+                      <div className="col-xs-1">{date.points}&nbsp;</div>
+                    </div>
+                  ))}
                 </div>
               </div>
-              <div className={styles.list}>
-                {month.dates.map(date => (
-                  <div className={styles.listItem + ' row ' + (date.points === 40 ? styles.fullday : '')}>
-                    <div className="col-xs-1">{date.day}&nbsp;</div>
-                    <div className="col-xs-2">{date.date}&nbsp;</div>
-                    <div className={styles.tourNameCol + ' col-xs-8'}>{date.tour ? date.tour : `${date.description} (Keine Tour)`}&nbsp;</div>
-                    <div className="col-xs-1">{date.points}&nbsp;</div>
-                  </div>
-                ))}
+            ))}
+            <div className={'col-xs-12 ' + styles.noPageBreak}>
+              <div className="row">
+                <div className="col-xs-12"><strong>Treffpunkt <a href="https://goo.gl/maps/wJMuPAPSpTn">Museumsplatz</a></strong></div>
+              </div>
+              <div className="row">
+                <div className="col-xs-5"><strong>Blüemli - Gruppe</strong></div>
+                <div className="col-xs-6 col-xs-offset-1">gemütliches Tempo / Einsteigergruppe</div>
+
+                <div className="col-xs-3 col-xs-offset-1">Abendtouren:</div>
+                <div className="col-xs-2">17:50 Uhr</div>
+                <div className="col-xs-6">Durchschnitt 22 -26 km/h</div>
+
+                <div className="col-xs-3 col-xs-offset-1">Samstagstouren:</div>
+                <div className="col-xs-8">13:20 Uhr</div>
+
+                <div className="col-xs-3 col-xs-offset-1">Sonntagstouren:</div>
+                <div className="col-xs-2">08:20 Uhr</div>
+                <div className="col-xs-6">(bis {eveningStart} und ab {eveningEnd} 08.50 Uhr)</div>
+
+                <div className="col-xs-3 col-xs-offset-1">Tagestouren:</div>
+                <div className="col-xs-8">07:45 Uhr</div>
+              </div>
+              <div className="row">
+                <div className="col-xs-5"><strong>Fitness - Gruppe</strong></div>
+                <div className="col-xs-6 col-xs-offset-1">flottes Tempo / Routinierte Fahrer</div>
+
+                <div className="col-xs-3 col-xs-offset-1">Abendtouren:</div>
+                <div className="col-xs-2">18:00 Uhr</div>
+                <div className="col-xs-6">Durchschnitt 24 -28 km/h</div>
+
+                <div className="col-xs-3 col-xs-offset-1">Samstagstouren:</div>
+                <div className="col-xs-8">13:30 Uhr</div>
+
+                <div className="col-xs-3 col-xs-offset-1">Sonntagstouren:</div>
+                <div className="col-xs-2">08:30 Uhr</div>
+                <div className="col-xs-6">(bis {eveningStart} und ab {eveningEnd} 09.00 Uhr)</div>
+
+                <div className="col-xs-3 col-xs-offset-1">Tagestouren:</div>
+                <div className="col-xs-8">08:00 Uhr</div>
+              </div>
+              <div className="row">
+                <div className="col-xs-6"><strong>Speed - Gruppe ab {eveningStart}</strong></div>
+                <div className="col-xs-6">zügiges Tempo / gut trainierte Fahrer</div>
+
+                <div className="col-xs-3 col-xs-offset-1">Abendtouren:</div>
+                <div className="col-xs-2">18:10 Uhr</div>
+                <div className="col-xs-6">Durchschnitt 26 -30 km/h</div>
+
+                <div className="col-xs-3 col-xs-offset-1">Samstagstouren:</div>
+                <div className="col-xs-8">13:40 Uhr</div>
+
+                <div className="col-xs-3 col-xs-offset-1">Sonntagstouren:</div>
+                <div className="col-xs-8">08:40 Uhr</div>
+
+                <div className="col-xs-3 col-xs-offset-1">Tagestouren:</div>
+                <div className="col-xs-8">08:15 Uhr</div>
               </div>
             </div>
-          ))}
-          <div className="col-xs-12">
-            <div className="row">
-              <div className="col-xs-12"><h3>Treffpunkt Museumsplatz</h3></div>
-              <div className="col-xs-5 col-xs-offset-1"><strong>Abfahrtszeiten: "Blüemli - Gruppe"</strong></div>
-              <div className="col-xs-5 col-xs-offset-1">gemütliches Tempo / Einsteigergruppe</div>
-
-              <div className="col-xs-3 col-xs-offset-1">Abendtouren:</div>
-              <div className="col-xs-2">17:50 Uhr</div>
-              <div className="col-xs-5 col-xs-offset-1">Durchschnitt 22 -26 km/h</div>
-
-              <div className="col-xs-3 col-xs-offset-1">Samstagstouren:</div>
-              <div className="col-xs-8">13:20 Uhr</div>
-
-              <div className="col-xs-3 col-xs-offset-1">Sonntagstouren:</div>
-              <div className="col-xs-3">08:20 Uhr</div>
-              <div className="col-xs-5">(bis {eveningStart} und ab {eveningEnd} 08.50 Uhr)</div>
-
-              <div className="col-xs-3 col-xs-offset-1">Tagestouren:</div>
-              <div className="col-xs-8">07:45 Uhr</div>
-            </div>
-            <div className="row">
-              <div className="col-xs-5 col-xs-offset-1"><strong>Abfahrtszeiten: "Fitness - Gruppe"</strong></div>
-              <div className="col-xs-5 col-xs-offset-1">flottes Tempo / Routinierte Fahrer</div>
-
-              <div className="col-xs-3 col-xs-offset-1">Abendtouren:</div>
-              <div className="col-xs-2">18:00 Uhr</div>
-              <div className="col-xs-5 col-xs-offset-1">Durchschnitt 24 -28 km/h</div>
-
-              <div className="col-xs-3 col-xs-offset-1">Samstagstouren:</div>
-              <div className="col-xs-8">13:30 Uhr</div>
-
-              <div className="col-xs-3 col-xs-offset-1">Sonntagstouren:</div>
-              <div className="col-xs-3">08:30 Uhr</div>
-              <div className="col-xs-5">(bis {eveningStart} und ab {eveningEnd} 09.00 Uhr)</div>
-
-              <div className="col-xs-3 col-xs-offset-1">Tagestouren:</div>
-              <div className="col-xs-8">08:00 Uhr</div>
-            </div>
-            <div className="row">
-              <div className="col-xs-4 col-xs-offset-1"><strong>Abfahrtszeiten: "Fitness - Gruppe"</strong></div>
-              <div className="col-xs-2">ab {eveningStart}</div>
-              <div className="col-xs-5">zügiges Tempo / gut trainierte Fahrer</div>
-
-              <div className="col-xs-3 col-xs-offset-1">Abendtouren:</div>
-              <div className="col-xs-2">18:10 Uhr</div>
-              <div className="col-xs-5 col-xs-offset-1">Durchschnitt 24 -28 km/h</div>
-
-              <div className="col-xs-3 col-xs-offset-1">Samstagstouren:</div>
-              <div className="col-xs-8">13:40 Uhr</div>
-
-              <div className="col-xs-3 col-xs-offset-1">Sonntagstouren:</div>
-              <div className="col-xs-8">08:40 Uhr</div>
-
-              <div className="col-xs-3 col-xs-offset-1">Tagestouren:</div>
-              <div className="col-xs-8">08:15 Uhr</div>
-            </div>
+          </div>
+          <div className="row">
+            <h1 className={styles.title}>RVW Tourenbeschrieb {season.year} <img src={logo} className={styles.logo}/></h1>
+            <table className="table table-striped table-hover table-condensed">
+              <tbody>
+              {usedTours.filter(tour => tour.distance > 0).map((tour, idx) => (<tr className={styles.listItem + ' row ' + styles.description} key={idx}>
+                <td id={`tour-${tour.id}`} className="col-xs-2">
+                  <b>{tour.name}</b><br/>
+                  ca {tour.distance} km<br />
+                  ca {tour.elevation} hm</td>
+                <td className="col-xs-2"><a href={`#start-route-${tour.startrouteId}`}>{tour.startroute}</a></td>
+                <td className="col-xs-8">
+                  {tour.locations.map((loc, locIdx) => <span key={locIdx}>{locIdx ? ' - ' : ''}<a href={loc.maps}>{loc.restaurant ? <b>{loc.name}</b> : loc.name}</a></span>)}
+                </td>
+              </tr>))}
+              </tbody>
+            </table>
+          </div>
+          <div className="row">
+            <h2>Start-Routen</h2>
+          <table className="table table-striped table-hover table-condensed">
+            <tbody>
+            {startRoutes.map((tour, idx) => (<tr className={styles.listItem + ' row ' + styles.description} key={idx}>
+              <td id={`start-route-${tour.id}`} className="col-xs-3">
+                <b>{tour.name}</b>
+              </td>
+              <td className="col-xs-9">
+                {tour.locations.map((loc, locIdx) => <span key={locIdx}>{locIdx ? ' - ' : ''}<a href={loc.maps}>{loc.name}</a></span>)}
+              </td>
+            </tr>))}
+            </tbody>
+          </table>
           </div>
         </div>);
     };
@@ -592,14 +709,14 @@ export default class Season extends Component {
 
     return (
       <div className={styles.restaurants + ' container'}>
-        <h1 className="hidden-print">Tour: {season.year}
+        <h1 className="hidden-print">Saison: {season.year}
           <LinkContainer to="/seasons">
-            <button className="btn btn-primary">
+            <button className="btn btn-primary hidden-print">
               <i className="fa fa-pencil"/> Zurück
             </button>
           </LinkContainer>
         </h1>
-        <DocumentMeta title={config.app.title + ': Tour ' + season.year}/>
+        <DocumentMeta title={config.app.title + ': Saison ' + season.year}/>
 
         {error && <div className="text-danger">{error}</div>}
 

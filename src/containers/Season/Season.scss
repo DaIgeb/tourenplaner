@@ -76,9 +76,38 @@
   /*opacity: 0.8;*/
 }
 
+.logo {
+  float: right;
+  width: 75px;
+}
+
+.title {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.printLogo {
+  background: #2d2d2d url('../Home/RVW-Logo.png') no-repeat right top;
+}
+
+.noPageBreak {
+  page-break-inside: avoid;
+}
+
+.description {
+  a[href^=http\:\/\/www\.google\.com\/maps]:after {
+    content: ''
+  }
+}
+
 .print {
+  > div {
+    page-break-after: always;
+  }
+
   .list {
     text-align: center;
+    page-break-inside: avoid;
 
     .tourNameCol {
       text-align: left;

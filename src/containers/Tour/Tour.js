@@ -175,7 +175,8 @@ export default class Tour extends Component {
           {startRoute && <div className="col-xs-2">{startRoute.name}</div>}
           <div className="col-xs-9">
             {startRouteLocations.map(renderLocation)}<br/>
-            {locationsInTour.map(renderLocation)}</div>
+            {locationsInTour.map(renderLocation)}
+          </div>
         </div>
         <div className="row">
           <a className="btn btn-primary" target="blank" href={mapsUrl}>Karte anzeigen</a>
