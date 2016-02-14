@@ -68,34 +68,40 @@ export class PlanTab {
     const relevantBusinesHour = candidateRestaurants.map(rest => {
       return {
         ...rest,
-        businesHour: rest.timeline.businessHours.find(hours => hours.weekday === weekday)
+        businessHours: rest.timeline.businessHours.filter(hours => hours.weekday === weekday)
       };
     });
-    if (relevantBusinesHour.filter(hour => !hour.businesHour).length) {
-      console.log(relevantBusinesHour);
+    if (relevantBusinesHour.filter(hour => !hour.businessHours.length).length) {
       return <span className="bg-danger">Geschlossen - {relevantBusinesHour.map(hour => hour.timeline.notes).join(' - ')}</span>;
     }
 
+    const hasOpenBusinessHours = (businessHours, from, to) => {
+      return businessHours.filter(hour => hour.until < from || hour.from > to).length > 0;
+    };
+
     switch (tour.type.id) {
       case TourType.afternoon.id:
-        if (relevantBusinesHour.filter(hour => hour.businesHour.until < 15 || hour.businesHour.from > 16).length) {
-          return relevantBusinesHour.map((hours, idx) => (<span className="bg-danger"
-                                                               key={idx}>Offen von {hours.businesHour.from.hour}
-            bis {hours.businesHour.until.hour}</span>));
+        if (relevantBusinesHour.filter(hour => hasOpenBusinessHours(hour.businessHours, 15, 16)).length) {
+          return relevantBusinesHour.map((hours, idx) => (
+            <span className="bg-danger" key={idx}>
+              Offen {hours.businessHours.map(hour => `von ${hour.from.hour} bis ${hour.until.hour}`).join(', ')}
+            </span>));
         }
         break;
       case TourType.evening.id:
-        if (relevantBusinesHour.filter(hour => hour.businesHour.until < 18 || hour.businesHour.from > 19).length) {
-          return relevantBusinesHour.map((hours, idx) => (<span className="bg-danger"
-                                                               key={idx}>Offen von {hours.businesHour.from.hour}
-            bis {hours.businesHour.until.hour}</span>));
+        if (relevantBusinesHour.filter(hour => hasOpenBusinessHours(hour.businessHours, 18, 19)).length) {
+          return relevantBusinesHour.map((hours, idx) => (
+            <span className="bg-danger" key={idx}>
+              Offen {hours.businessHours.map(hour => `von ${hour.from.hour} bis ${hour.until.hour}`).join(', ')}
+            </span>));
         }
         break;
       case TourType.morning.id:
-        if (relevantBusinesHour.filter(hour => hour.businesHour.until < 9 || hour.businesHour.from > 10).length) {
-          return relevantBusinesHour.map((hours, idx) => (<span className="bg-danger"
-                                                               key={idx}>Offen von {hours.businesHour.from.hour}
-            bis {hours.businesHour.until.hour}</span>));
+        if (relevantBusinesHour.filter(hour => hasOpenBusinessHours(hour.businessHours, 9, 10)).length) {
+          return relevantBusinesHour.map((hours, idx) => (
+            <span className="bg-danger" key={idx}>
+              Offen {hours.businessHours.map(hour => `von ${hour.from.hour} bis ${hour.until.hour}`).join(', ')}
+            </span>));
         }
         break;
       default:
@@ -106,7 +112,7 @@ export class PlanTab {
       return <span className="bg-warning">{relevantBusinesHour.map(hour => hour.timeline.notes).join(' - ')}</span>;
     }
 
-    return relevantBusinesHour.map((hours, idx) => <span key={idx}>Von {hours.businesHour.from.hour} bis {hours.businesHour.until.hour}</span>);
+    return relevantBusinesHour.map(hours => `Offen ${hours.businessHours.map(hour => `von ${hour.from.hour} bis ${hour.until.hour}`).join(', ')}`).join('. ');
   };
 
   renderTour = (date, tour, idx) => {
@@ -128,7 +134,7 @@ export class PlanTab {
     }
 
     return [
-      (<td key="warn"></td>),
+      (<td key="warn">{restaurantCheck}</td>),
       (<td key="type" className={tooltip.candidates ? styles.scoretip : ''}>
         {tour.type.label}
         {tooltip.tooltip}
@@ -181,10 +187,10 @@ export class PlanTab {
               <table className="table table-striped table-hover table-condensed">
                 <thead>
                 <tr>
-                  <td className="col-md-1"></td>
                   <td className="col-md-2">Datum</td>
                   <td className="col-md-1"/>
-                  <td className="col-md-4">Tourart</td>
+                  <td className="col-md-3"/>
+                  <td className="col-md-2">Tourart</td>
                   <td className="col-md-4">Tour</td>
                 </tr>
                 </thead>

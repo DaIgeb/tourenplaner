@@ -195,8 +195,6 @@ export default class Season extends Component {
       </div>);
     }
 
-    const configuration = configs.find(item => item.id === season.configuration);
-
     const renderTab = (tabId, name) => {
       const currentTab = this.state.tab;
       return (
@@ -285,8 +283,9 @@ export default class Season extends Component {
       );
     };
 
-    const printTab = new PrintTab(season, configuration, tours, this.props.locations, this.props.restaurants);
+    //  const printTab = new PrintTab(season, configuration, tours, this.props.locations, this.props.restaurants);
     const planTab = new PlanTab(season, tours, this.props.restaurants, this.state.plan.page.current, this.state.plan.page.size, this.selectPlanPage);
+    const configuration = configs.find(item => item.id === season.configuration);
 
     const renderTabs = () => {
       const tabs = [
@@ -303,7 +302,7 @@ export default class Season extends Component {
         {
           id: 'print',
           name: 'Druck',
-          render: printTab.render
+          render: () => <PrintTab season={season} configuration={configuration} tours={tours} locations={this.props.locations} restaurants={this.props.restaurants}/>
         }
       ];
 
@@ -323,7 +322,7 @@ export default class Season extends Component {
       <div className={styles.restaurants + ' container'}>
         <h1 className="hidden-print">Saison: {season.year}
           <LinkContainer to="/seasons">
-            <button className="btn btn-primary hidden-print">
+            <button className="btn btn-primary">
               <i className="fa fa-pencil"/> Zurück
             </button>
           </LinkContainer>

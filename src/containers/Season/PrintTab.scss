@@ -1,0 +1,66 @@
+.logo {
+  float: right;
+  width: 75px;
+}
+
+.description {
+  page-break-inside: avoid;
+
+  > div:first-of-type {
+
+  }
+  > div {
+    page-break-after: auto;
+    page-break-inside: avoid;
+
+    border: 1px solid;
+
+    > div {
+      font-size: smaller;
+    }
+
+    > div:nth-of-type(n+2) {
+      border-left: 1px solid;
+
+      a[href^=http\:\/\/www\.google\.com\/maps]:after {
+        content: ''
+      }
+    }
+  }
+}
+
+.noPageBreak {
+  page-break-inside: avoid;
+}
+
+.print {
+  h1, h2 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  .list {
+    text-align: center;
+    page-break-inside: avoid;
+
+    .tourNameCol {
+      text-align: left;
+    }
+
+    .fullday {
+      font-weight: bold;
+    }
+
+    > div:first-child {
+      border-top: 1px solid;
+    }
+
+    .listItem {
+      > div {
+        border-left: 1px solid;
+      }
+      border-bottom: 1px solid;
+      border-right: 1px solid;
+    }
+  }
+}

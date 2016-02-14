@@ -1,70 +1,19 @@
-import React from 'react';
+import React, {Component, PropTypes} from 'react';
 import {timelineMatches} from '../../../shared/utils/timeline';
 import {TourType} from 'models';
 import {moment} from '../../../shared/utils/moment';
 
-export class PrintTab {
-  constructor(season, configuration, tours, locations, restaurants) {
-    this.season = season;
-    this.configuration = configuration;
-    this.tours = tours;
-    this.locations = locations;
-    this.restaurants = restaurants;
+export class PrintTab extends Component {
+  static propTypes = {
+    season: PropTypes.object.isRequired,
+    configuration: PropTypes.object.isRequired,
+    tours: PropTypes.array.isRequired,
+    locations: PropTypes.array.isRequired,
+    restaurants: PropTypes.array.isRequired
+  };
+  constructor(props) {
+    super(props);
   }
-
-  createTourViewModel = (tourObj, date) => {
-    const {tours, locations, restaurants} = this;
-    const timeline = tourObj.timelines.find(tl => timelineMatches(tl, date));
-    const startRoute = tours.find(to => to.id === timeline.startroute);
-    const locationsInTour = timeline.locations.map(loc => locations.find(item => item.id === loc));
-    const restaurantsInTour = timeline.restaurants.map(rest => {
-      const restaurant = restaurants.find(re => re.id === rest);
-      const restTl = restaurant.timelines.find(tl => timelineMatches(tl, date));
-      return {
-        location: restaurant.location,
-        nameForTour: restaurant.nameForTour,
-        ...restTl
-      };
-    });
-    const foreignCountry = locationsInTour.find(loc => loc.addressCountry && loc.addressCountry !== 'CH');
-
-    return {
-      id: tourObj.id,
-      name: `${tourObj.name}${foreignCountry ? ' (ID)' : ''}`,
-      startrouteId: startRoute ? startRoute.id : null,
-      startroute: startRoute ? startRoute.name : null,
-      locations: locationsInTour.map(loc => {
-        const restaurant = restaurantsInTour.find(rest => rest.location === loc.id);
-        if (restaurant) {
-          const name = `${restaurant.nameForTour ? restaurant.nameForTour : loc.city} (${loc.name}/${restaurant.phone})`;
-          return {
-            restaurant: true,
-            name: name,
-            maps: `http://www.google.com/maps/place/${loc.latitude},${loc.longitude}`
-          };
-        }
-
-        return {
-          restaurant: false,
-          name: loc.name,
-          maps: `http://www.google.com/maps/place/${loc.latitude},${loc.longitude}`
-        };
-      }),
-      distance: timeline.distance,
-      elevation: timeline.elevation
-    };
-  };
-
-  createRouteViewModel = (candidate, date) => {
-    const {tours} = this;
-    const tourObj = tours.find(item => item.id === candidate.tour);
-
-    if (tourObj) {
-      return this.createTourViewModel(tourObj, date);
-    }
-
-    return null;
-  };
 
   getPointsByType = (type) => {
     switch (type ? type.id : null) {
@@ -113,8 +62,62 @@ export class PrintTab {
     return tourName;
   };
 
-  render = () => {
-    const {tours, season, configuration} = this;
+  createRouteViewModel = (candidate, date) => {
+    const {tours} = this.props;
+    const tourObj = tours.find(item => item.id === candidate.tour);
+
+    if (tourObj) {
+      return this.createTourViewModel(tourObj, date);
+    }
+
+    return null;
+  };
+
+  createTourViewModel = (tourObj, date) => {
+    const {tours, locations, restaurants} = this.props;
+    const timeline = tourObj.timelines.find(tl => timelineMatches(tl, date));
+    const startRoute = tours.find(to => to.id === timeline.startroute);
+    const locationsInTour = timeline.locations.map(loc => locations.find(item => item.id === loc));
+    const restaurantsInTour = timeline.restaurants.map(rest => {
+      const restaurant = restaurants.find(re => re.id === rest);
+      const restTl = restaurant.timelines.find(tl => timelineMatches(tl, date));
+      return {
+        location: restaurant.location,
+        nameForTour: restaurant.nameForTour,
+        ...restTl
+      };
+    });
+    const foreignCountry = locationsInTour.find(loc => loc.addressCountry && loc.addressCountry !== 'CH');
+
+    return {
+      id: tourObj.id,
+      name: `${tourObj.name}${foreignCountry ? ' (ID)' : ''}`,
+      startrouteId: startRoute ? startRoute.id : null,
+      startroute: startRoute ? startRoute.name : null,
+      locations: locationsInTour.map(loc => {
+        const restaurant = restaurantsInTour.find(rest => rest.location === loc.id);
+        if (restaurant) {
+          const name = `${restaurant.nameForTour ? restaurant.nameForTour : loc.city} (${loc.name}/${restaurant.phone})`;
+          return {
+            restaurant: true,
+            name: name,
+            maps: `http://www.google.com/maps/place/${loc.latitude},${loc.longitude}`
+          };
+        }
+
+        return {
+          restaurant: false,
+          name: loc.name,
+          maps: `http://www.google.com/maps/place/${loc.latitude},${loc.longitude}`
+        };
+      }),
+      distance: timeline.distance,
+      elevation: timeline.elevation
+    };
+  };
+
+  render() {
+    const {tours, season, configuration} = this.props;
     const datesByMonth = [];
     const usedTours = [];
     const startRoutes = [];
@@ -183,20 +186,19 @@ export class PrintTab {
       return `${tour.description} (Keine Tour)`;
     };
 
-    const styles = require('./Season.scss');
+    const styles = require('./PrintTab.scss');
     return (
-      <div className={styles.print + ' container'}>
-
+      <div className={styles.print + ' container' }>
         <div className="row">
-          <h1 className={styles.title}>RVW Tourenplan {season.year} <img src={logo} className={styles.logo}/></h1>
-          <h2 className={styles.title}> Events</h2>
+          <h1>RVW Tourenplan {season.year} <img src={logo} className={styles.logo}/></h1>
+          <h2> Events</h2>
           {configuration.events.map((event, idx) => (
             <div key={idx} className="row">
               <div className="col-xs-6">{event.name} in {event.location}</div>
               <div className="col-xs-6">{moment(event.from).format('L')} &mdash; {moment(event.to).format('L')}</div>
             </div>
           ))}
-          <h2 className={styles.title}> Touren</h2>
+          <h2> Touren</h2>
           {datesByMonth.map(month => (
             <div className={'col-xs-12 ' + styles.noPageBreak}>
               <div className="row">
@@ -275,40 +277,42 @@ export class PrintTab {
             </div>
           </div>
         </div>
-        <div className="row">
-          <h1 className={styles.title}>RVW Tourenbeschrieb {season.year} <img src={logo} className={styles.logo}/></h1>
-          <table className={'table table-striped table-hover table-condensed ' + styles.description}>
-            <tbody>
-            {usedTours.filter(tour => tour.distance > 0).map((tour, idx) => (<tr className={styles.listItem} key={idx}>
-              <td id={`tour-${tour.id}`} className="col-xs-2">
+        <div className={styles.description}>
+          <h1>RVW Tourenbeschrieb {season.year} <img src={logo} className={styles.logo}/></h1>
+          {usedTours.filter(tour => tour.distance > 0).map((tour, idx) => (
+            <div className="row" key={idx}>
+              <div className="col-xs-2">
                 <b>{tour.name}</b><br/>
                 ca {tour.distance} km<br />
                 ca {tour.elevation} hm
-              </td>
-              <td className="col-xs-2"><a href={`#start-route-${tour.startrouteId}`}>{tour.startroute}</a></td>
-              <td className="col-xs-8">
-                {tour.locations.map((loc, locIdx) => <span key={locIdx}>{locIdx ? ' - ' : ''}<a
-                  href={loc.maps}>{loc.restaurant ? <b>{loc.name}</b> : loc.name}</a></span>)}
-              </td>
-            </tr>))}
-            </tbody>
-          </table>
+              </div>
+              <div className="col-xs-2">
+                <a href={`#start-route-${tour.startrouteId}`}>{tour.startroute}</a>
+              </div>
+              <div className="col-xs-8">
+                {tour.locations.map((loc, locIdx) => (
+                  <span key={locIdx}>{locIdx ? ' - ' : ''}
+                    <a href={loc.maps}>
+                      {loc.restaurant ? <b>{loc.name}</b> : loc.name}
+                    </a>
+                  </span>))}
+              </div>
+            </div>))}
         </div>
-        <div className="row">
+        <div className={styles.description}>
           <h2>Start-Routen</h2>
-          <table className="table table-striped table-hover table-condensed">
-            <tbody>
-            {startRoutes.map((tour, idx) => (<tr className={styles.listItem + ' ' + styles.description} key={idx}>
-              <td id={`start-route-${tour.id}`} className="col-xs-3">
+          {startRoutes.map((tour, idx) => (
+            <div className="row" key={idx}>
+              <div className="col-xs-3">
                 <b>{tour.name}</b>
-              </td>
-              <td className="col-xs-9">
-                {tour.locations.map((loc, locIdx) => <span key={locIdx}>{locIdx ? ' - ' : ''}<a
-                  href={loc.maps}>{loc.name}</a></span>)}
-              </td>
-            </tr>))}
-            </tbody>
-          </table>
+              </div>
+              <div className="col-xs-9">
+                {tour.locations.map((loc, locIdx) => (
+                  <span key={locIdx}>{locIdx ? ' - ' : ''}
+                    <a href={loc.maps}>{loc.name}</a>
+                  </span>))}
+              </div>
+            </div>))}
         </div>
       </div>);
   }
