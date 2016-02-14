@@ -405,79 +405,79 @@ export default class Season extends Component {
       return (
         <div className={styles.print + ' container'}>
           {datesByMonth.map(month => (
-            <div className="col-md-12">
+            <div className="col-xs-12">
               <div className="row">
-                <div className="col-md-12">
+                <div className="col-xs-12">
                   <h3>{month.monthName}</h3>
                 </div>
               </div>
               <div className={styles.list}>
                 {month.dates.map(date => (
                   <div className={styles.listItem + ' row ' + (date.points === 40 ? styles.fullday : '')}>
-                    <div className="col-md-1">{date.day}&nbsp;</div>
-                    <div className="col-md-2">{date.date}&nbsp;</div>
-                    <div className={styles.tourNameCol + ' col-md-8'}>{date.tour ? date.tour : `${date.description} (Keine Tour)`}&nbsp;</div>
-                    <div className="col-md-1">{date.points}&nbsp;</div>
+                    <div className="col-xs-1">{date.day}&nbsp;</div>
+                    <div className="col-xs-2">{date.date}&nbsp;</div>
+                    <div className={styles.tourNameCol + ' col-xs-8'}>{date.tour ? date.tour : `${date.description} (Keine Tour)`}&nbsp;</div>
+                    <div className="col-xs-1">{date.points}&nbsp;</div>
                   </div>
                 ))}
               </div>
             </div>
           ))}
-          <div className="col-md-12">
+          <div className="col-xs-12">
             <div className="row">
-              <div className="col-md-12"><h3>Treffpunkt Museumsplatz</h3></div>
-              <div className="col-md-5 col-md-offset-1"><strong>Abfahrtszeiten: "Blüemli - Gruppe"</strong></div>
-              <div className="col-md-5 col-md-offset-1">gemütliches Tempo / Einsteigergruppe</div>
+              <div className="col-xs-12"><h3>Treffpunkt Museumsplatz</h3></div>
+              <div className="col-xs-5 col-xs-offset-1"><strong>Abfahrtszeiten: "Blüemli - Gruppe"</strong></div>
+              <div className="col-xs-5 col-xs-offset-1">gemütliches Tempo / Einsteigergruppe</div>
 
-              <div className="col-md-3 col-md-offset-1">Abendtouren:</div>
-              <div className="col-md-2">17:50 Uhr</div>
-              <div className="col-md-5 col-md-offset-1">Durchschnitt 22 -26 km/h</div>
+              <div className="col-xs-3 col-xs-offset-1">Abendtouren:</div>
+              <div className="col-xs-2">17:50 Uhr</div>
+              <div className="col-xs-5 col-xs-offset-1">Durchschnitt 22 -26 km/h</div>
 
-              <div className="col-md-3 col-md-offset-1">Samstagstouren:</div>
-              <div className="col-md-8">13:20 Uhr</div>
+              <div className="col-xs-3 col-xs-offset-1">Samstagstouren:</div>
+              <div className="col-xs-8">13:20 Uhr</div>
 
-              <div className="col-md-3 col-md-offset-1">Sonntagstouren:</div>
-              <div className="col-md-3">08:20 Uhr</div>
-              <div className="col-md-5">(bis {eveningStart} und ab {eveningEnd} 08.50 Uhr)</div>
+              <div className="col-xs-3 col-xs-offset-1">Sonntagstouren:</div>
+              <div className="col-xs-3">08:20 Uhr</div>
+              <div className="col-xs-5">(bis {eveningStart} und ab {eveningEnd} 08.50 Uhr)</div>
 
-              <div className="col-md-3 col-md-offset-1">Tagestouren:</div>
-              <div className="col-md-8">07:45 Uhr</div>
+              <div className="col-xs-3 col-xs-offset-1">Tagestouren:</div>
+              <div className="col-xs-8">07:45 Uhr</div>
             </div>
             <div className="row">
-              <div className="col-md-5 col-md-offset-1"><strong>Abfahrtszeiten: "Fitness - Gruppe"</strong></div>
-              <div className="col-md-5 col-md-offset-1">flottes Tempo / Routinierte Fahrer</div>
+              <div className="col-xs-5 col-xs-offset-1"><strong>Abfahrtszeiten: "Fitness - Gruppe"</strong></div>
+              <div className="col-xs-5 col-xs-offset-1">flottes Tempo / Routinierte Fahrer</div>
 
-              <div className="col-md-3 col-md-offset-1">Abendtouren:</div>
-              <div className="col-md-2">18:00 Uhr</div>
-              <div className="col-md-5 col-md-offset-1">Durchschnitt 24 -28 km/h</div>
+              <div className="col-xs-3 col-xs-offset-1">Abendtouren:</div>
+              <div className="col-xs-2">18:00 Uhr</div>
+              <div className="col-xs-5 col-xs-offset-1">Durchschnitt 24 -28 km/h</div>
 
-              <div className="col-md-3 col-md-offset-1">Samstagstouren:</div>
-              <div className="col-md-8">13:30 Uhr</div>
+              <div className="col-xs-3 col-xs-offset-1">Samstagstouren:</div>
+              <div className="col-xs-8">13:30 Uhr</div>
 
-              <div className="col-md-3 col-md-offset-1">Sonntagstouren:</div>
-              <div className="col-md-3">08:30 Uhr</div>
-              <div className="col-md-5">(bis {eveningStart} und ab {eveningEnd} 09.00 Uhr)</div>
+              <div className="col-xs-3 col-xs-offset-1">Sonntagstouren:</div>
+              <div className="col-xs-3">08:30 Uhr</div>
+              <div className="col-xs-5">(bis {eveningStart} und ab {eveningEnd} 09.00 Uhr)</div>
 
-              <div className="col-md-3 col-md-offset-1">Tagestouren:</div>
-              <div className="col-md-8">08:00 Uhr</div>
+              <div className="col-xs-3 col-xs-offset-1">Tagestouren:</div>
+              <div className="col-xs-8">08:00 Uhr</div>
             </div>
             <div className="row">
-              <div className="col-md-4 col-md-offset-1"><strong>Abfahrtszeiten: "Fitness - Gruppe"</strong></div>
-              <div className="col-md-2">ab {eveningStart}</div>
-              <div className="col-md-5">zügiges Tempo / gut trainierte Fahrer</div>
+              <div className="col-xs-4 col-xs-offset-1"><strong>Abfahrtszeiten: "Fitness - Gruppe"</strong></div>
+              <div className="col-xs-2">ab {eveningStart}</div>
+              <div className="col-xs-5">zügiges Tempo / gut trainierte Fahrer</div>
 
-              <div className="col-md-3 col-md-offset-1">Abendtouren:</div>
-              <div className="col-md-2">18:10 Uhr</div>
-              <div className="col-md-5 col-md-offset-1">Durchschnitt 24 -28 km/h</div>
+              <div className="col-xs-3 col-xs-offset-1">Abendtouren:</div>
+              <div className="col-xs-2">18:10 Uhr</div>
+              <div className="col-xs-5 col-xs-offset-1">Durchschnitt 24 -28 km/h</div>
 
-              <div className="col-md-3 col-md-offset-1">Samstagstouren:</div>
-              <div className="col-md-8">13:40 Uhr</div>
+              <div className="col-xs-3 col-xs-offset-1">Samstagstouren:</div>
+              <div className="col-xs-8">13:40 Uhr</div>
 
-              <div className="col-md-3 col-md-offset-1">Sonntagstouren:</div>
-              <div className="col-md-8">08:40 Uhr</div>
+              <div className="col-xs-3 col-xs-offset-1">Sonntagstouren:</div>
+              <div className="col-xs-8">08:40 Uhr</div>
 
-              <div className="col-md-3 col-md-offset-1">Tagestouren:</div>
-              <div className="col-md-8">08:15 Uhr</div>
+              <div className="col-xs-3 col-xs-offset-1">Tagestouren:</div>
+              <div className="col-xs-8">08:15 Uhr</div>
             </div>
           </div>
         </div>);
@@ -580,7 +580,7 @@ export default class Season extends Component {
 
       return (
         <div>
-          <ul className="nav nav-tabs">
+          <ul className="nav nav-tabs hidden-print">
             {tabs.map(tab => renderTab(tab.id, tab.name))}
           </ul>
           <div className="tab-content">
@@ -592,7 +592,7 @@ export default class Season extends Component {
 
     return (
       <div className={styles.restaurants + ' container'}>
-        <h1>Tour: {season.year}
+        <h1 className="hidden-print">Tour: {season.year}
           <LinkContainer to="/seasons">
             <button className="btn btn-primary">
               <i className="fa fa-pencil"/> Zurück
@@ -605,7 +605,7 @@ export default class Season extends Component {
 
         {renderTabs()}
 
-        <div className="row">
+        <div className="row hidden-print">
           <button className="btn btn-primary" onClick={handleEditStart(id)}>
             <i className="fa fa-pencil"/> Edit
           </button>

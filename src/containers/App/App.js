@@ -58,70 +58,72 @@ export default class App extends Component {
     const styles = require('./App.scss');
     return (
       <div className={styles.app}>
-        <DocumentMeta {...config.app}/>
-        <Navbar fixedTop>
-          <Navbar.Header>
-            <Navbar.Brand>
-              <IndexLink to="/" activeStyle={{color: '#33e0ff'}}>
-                <div className={styles.brand}/>
-                <span>{config.app.title}</span>
-              </IndexLink>
-            </Navbar.Brand>
-            <Navbar.Toggle/>
-          </Navbar.Header>
+        <div className="hidden-print">
+          <DocumentMeta {...config.app}/>
+          <Navbar fixedTop>
+            <Navbar.Header>
+              <Navbar.Brand>
+                <IndexLink to="/" activeStyle={{color: '#33e0ff'}}>
+                  <div className={styles.brand}/>
+                  <span>{config.app.title}</span>
+                </IndexLink>
+              </Navbar.Brand>
+              <Navbar.Toggle/>
+            </Navbar.Header>
 
-          <Navbar.Collapse eventKey={0}>
-            <Nav navbar>
-              {user && <LinkContainer to="/chat">
-                <NavItem eventKey={1}>Chat</NavItem>
-              </LinkContainer>}
+            <Navbar.Collapse eventKey={0}>
+              <Nav navbar>
+                {user && <LinkContainer to="/chat">
+                  <NavItem eventKey={1}>Chat</NavItem>
+                </LinkContainer>}
 
-              <LinkContainer to="/locations">
-                <NavItem eventKey={10}>Locations</NavItem>
-              </LinkContainer>
-              <LinkContainer to="/restaurants">
-                <NavItem eventKey={7}>Restaurants</NavItem>
-              </LinkContainer>
-              <LinkContainer to="/tours">
-                <NavItem eventKey={11}>Touren</NavItem>
-              </LinkContainer>
-              <LinkContainer to="/configurations">
-                <NavItem eventKey={9}>Konfigurationen</NavItem>
-              </LinkContainer>
-              <LinkContainer to="/seasons">
-                <NavItem eventKey={8}>Tourenpläne</NavItem>
-              </LinkContainer>
-              <LinkContainer to="/about">
-                <NavItem eventKey={4}>About Us</NavItem>
-              </LinkContainer>
+                <LinkContainer to="/locations">
+                  <NavItem eventKey={10}>Locations</NavItem>
+                </LinkContainer>
+                <LinkContainer to="/restaurants">
+                  <NavItem eventKey={7}>Restaurants</NavItem>
+                </LinkContainer>
+                <LinkContainer to="/tours">
+                  <NavItem eventKey={11}>Touren</NavItem>
+                </LinkContainer>
+                <LinkContainer to="/configurations">
+                  <NavItem eventKey={9}>Konfigurationen</NavItem>
+                </LinkContainer>
+                <LinkContainer to="/seasons">
+                  <NavItem eventKey={8}>Tourenpläne</NavItem>
+                </LinkContainer>
+                <LinkContainer to="/about">
+                  <NavItem eventKey={4}>About Us</NavItem>
+                </LinkContainer>
 
-              {!user &&
-              <LinkContainer to="/login">
-                <NavItem eventKey={5}>Login</NavItem>
-              </LinkContainer>}
+                {!user &&
+                <LinkContainer to="/login">
+                  <NavItem eventKey={5}>Login</NavItem>
+                </LinkContainer>}
+                {user &&
+                <LinkContainer to="/logout">
+                  <NavItem eventKey={6} className="logout-link" onClick={this.handleLogout}>
+                    Logout
+                  </NavItem>
+                </LinkContainer>}
+              </Nav>
               {user &&
-              <LinkContainer to="/logout">
-                <NavItem eventKey={6} className="logout-link" onClick={this.handleLogout}>
-                  Logout
+              <p className={styles.loggedInMessage + ' navbar-text'}>Logged in as <strong>{user.name}</strong>.</p>}
+              <Nav navbar pullRight>
+                <NavItem eventKey={1} target="_blank" title="View on Github" href="https://github.com/erikras/react-redux-universal-hot-example">
+                  <i className="fa fa-github"/>
                 </NavItem>
-              </LinkContainer>}
-            </Nav>
-            {user &&
-            <p className={styles.loggedInMessage + ' navbar-text'}>Logged in as <strong>{user.name}</strong>.</p>}
-            <Nav navbar pullRight>
-              <NavItem eventKey={1} target="_blank" title="View on Github" href="https://github.com/erikras/react-redux-universal-hot-example">
-                <i className="fa fa-github"/>
-              </NavItem>
-            </Nav>
-          </Navbar.Collapse>
-        </Navbar>
+              </Nav>
+            </Navbar.Collapse>
+          </Navbar>
+        </div>
 
         <div className={styles.appContent}>
           {this.props.children}
         </div>
         <InfoBar/>
 
-        <div className="well text-center">
+        <div className="well text-center hidden-print">
           Have questions? Ask for help <a
           href="https://github.com/erikras/react-redux-universal-hot-example/issues"
           target="_blank">on Github</a> or in the <a
