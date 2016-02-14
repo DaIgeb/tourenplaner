@@ -8,6 +8,7 @@ export LoginSuccess from './LoginSuccess/LoginSuccess';
 export Survey from './Survey/Survey';
 export Restaurants from './Restaurants/Restaurants';
 export Seasons from './Seasons/Seasons';
+export Season from './Season/Season';
 export Tours from './Tours/Tours';
 export Tour from './Tour/Tour';
 export Locations from './Locations/Locations';

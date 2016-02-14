@@ -9,6 +9,7 @@ import {isLoaded as isConfigLoaded, load as loadConfigs} from 'redux/modules/con
 import {isLoaded as isTourLoaded, load as loadTours} from 'redux/modules/tours';
 import {SeasonForm} from 'components';
 import {SeasonState} from 'models';
+import {LinkContainer} from 'react-router-bootstrap';
 
 function fetchDataDeferred(getState, dispatch) {
   const loadPromise = new Promise((resolve, reject) => {
@@ -119,6 +120,11 @@ export default class Seasons extends Component {
           <td className={styles.versionCol}>{season.version}</td>
           <td className={styles.configCol}>{findConfiguration(season.configuration)}</td>
           <td className={styles.buttonCol}>
+            <LinkContainer to={'/seasons/' + season.id}>
+              <a className="btn btn-default">
+                <i className="fa fa-trash"/> Details
+              </a>
+            </LinkContainer>
             <button className="btn btn-primary" onClick={handleEdit(season)}>
               <i className="fa fa-pencil"/> Edit
             </button>

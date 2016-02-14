@@ -283,18 +283,6 @@ export default class SeasonForm extends Component {
               <button className={styles.refreshBtn + ' btn btn-success'}>
                 <i className="fa fa-refresh fa-spin"/> {' '} Building Season
               </button>
-              {dates && <table className="table table-striped table-hover table-condensed">
-                <thead>
-                  <tr>
-                    <td>Datum</td>
-                    <td>Tourart</td>
-                    <td>Tour</td>
-                  </tr>
-                </thead>
-                <tbody>
-                  {dates.map(renderDates)}
-                </tbody>
-              </table>}
 
               <div style={{textAlign: 'center', margin: '10px'}}>
                 <button className="btn btn-default"

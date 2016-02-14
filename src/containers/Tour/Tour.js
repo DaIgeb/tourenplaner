@@ -10,7 +10,7 @@ import {isLoaded as isLocationsLoaded, load as loadLoc} from 'redux/modules/loca
 import {Timeline, TourForm} from 'components';
 import {timelineMatches} from '../../../shared/utils/timeline';
 import {moment} from '../../../shared/utils/moment';
-import { LinkContainer } from 'react-router-bootstrap';
+import {LinkContainer} from 'react-router-bootstrap';
 
 function fetchDataDeferred(getState, dispatch) {
   const promise = new Promise((resolve, reject) => {

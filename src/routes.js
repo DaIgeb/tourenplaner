@@ -14,6 +14,7 @@ import {
     Restaurants,
     Configurations,
     Seasons,
+    Season,
     Tours,
     Tour,
     Locations
@@ -61,7 +62,10 @@ export default (store) => {
         <IndexRoute component={Tours} />
         <Route path=":id" component={Tour} />
       </Route>
-      <Route path="seasons" component={Seasons} />
+      <Route path="seasons" >
+        <IndexRoute component={Seasons} />
+        <Route path=":id" component={Season} />
+      </Route>
       <Route path="locations" component={Locations} />
       <Route path="configurations" component={Configurations}/>
       <Route path="widgets" component={Widgets}/>

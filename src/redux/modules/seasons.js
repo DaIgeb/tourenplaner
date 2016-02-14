@@ -355,6 +355,10 @@ function addNextTour(seasonId) {
 
 export function add(season) {
   return (dispatch) => {
-    return dispatch(addSeason(season)).then((result) => dispatch(addNextTour(result.result.id)));
+    return dispatch(addSeason(season))
+      .then(result =>
+        dispatch(addNextTour(result.result.id)
+        )
+      );
   };
 }

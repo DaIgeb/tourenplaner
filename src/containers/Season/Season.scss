@@ -1,0 +1,103 @@
+.restaurants {
+  .refreshBtn {
+    margin-left: 20px;
+  }
+  .idCol {
+    width: 5%;
+  }
+  .nameCol {
+    width: 10%;
+  }
+  .addressCol {
+    width: 20%;
+    text-align: left;
+    input {
+      text-align: left;
+    }
+  }
+  .notesCol {
+    width: 25%;
+  }
+  .businessHours {
+    width: 25%;
+  }
+  .buttonCol {
+    width: 20%;
+    :global(.btn) {
+      margin: 0 5px;
+    }
+  }
+  tr.saving {
+    opacity: 0.8;
+    :global(.btn) {
+      &[disabled] {
+        opacity: 1;
+      }
+    }
+  }
+}
+
+.tooltip {
+  outline:none; }
+.tooltip strong {
+  line-height:30px;
+}
+.tooltip:hover {
+  text-decoration:none;
+}
+.tooltip span + span{
+  z-index:10;
+  display:none;
+  padding:14px 20px;
+  margin-top:25px;
+  margin-left:-50px;
+  width:300px;
+  line-height:16px;
+}
+.tooltip:hover span + span{
+  display:block;
+  position:absolute;
+  border:2px solid #FFF;  color:#EEE;
+  background:#333; // url(cssttp/css-tooltip-gradient-bg.png) repeat-x 0 0;
+}
+.callout {
+  z-index:20;
+  position:absolute;
+  border:0;
+  top:-14px;
+  left:120px;
+}
+
+/*CSS3 extras*/
+.tooltip span + span
+{
+  border-radius:2px;
+  box-shadow: 0px 0px 8px 4px #666;
+  /*opacity: 0.8;*/
+}
+
+.print {
+  .list {
+    text-align: center;
+
+    .tourNameCol {
+      text-align: left;
+    }
+
+    .fullday {
+      font-weight: bold;
+    }
+
+    > div:first-child {
+      border-top: 1px solid;
+    }
+
+    .listItem {
+      > div {
+        border-left: 1px solid;
+      }
+      border-bottom: 1px solid;
+      border-right: 1px solid;
+    }
+  }
+}
