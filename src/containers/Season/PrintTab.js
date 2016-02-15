@@ -280,7 +280,7 @@ export class PrintTab extends Component {
         <div className={styles.description}>
           <h1>RVW Tourenbeschrieb {season.year} <img src={logo} className={styles.logo}/></h1>
           {usedTours.filter(tour => tour.distance > 0).map((tour, idx) => (
-            <div className="row" key={idx}>
+            <div className="row" key={idx} id={`tour-${tour.id}`}>
               <div className="col-xs-2">
                 <b>{tour.name}</b><br/>
                 ca {tour.distance} km<br />
@@ -302,7 +302,7 @@ export class PrintTab extends Component {
         <div className={styles.description}>
           <h2>Start-Routen</h2>
           {startRoutes.map((tour, idx) => (
-            <div className="row" key={idx}>
+            <div className="row" key={idx} id={`start-route-${tour.id}`>
               <div className="col-xs-3">
                 <b>{tour.name}</b>
               </div>
