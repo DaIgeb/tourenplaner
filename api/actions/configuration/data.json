@@ -10,37 +10,37 @@
         "from": "2016-04-29T22:00:00.000Z",
         "to": "2016-05-14T22:00:00.000Z",
         "name": "Schnupperwoche",
-        "location": "Raum Winterthur"
+        "location": "Winterthur"
       },
       {
         "from": "2016-06-03T22:00:00.000Z",
         "to": "2016-06-03T22:00:00.000Z",
-        "name": "Säntis-Classic (Antoine)",
-        "location": "Weinfelden"
+        "name": "Säntis-Classic",
+        "location": "Weinfelden (Antoine)"
       },
       {
         "from": "2016-06-10T22:00:00.000Z",
         "to": "2016-06-11T22:00:00.000Z",
-        "name": "2 Tagestour (René)",
-        "location": "Langnau im Emmental"
+        "name": "2 Tagestour",
+        "location": "Langnau im Emmental (René)"
       },
       {
         "from": "2016-07-08T22:00:00.000Z",
         "to": "2016-07-15T22:00:00.000Z",
-        "name": "Ferientour (Flavio)",
-        "location": "Valdobbiadene"
+        "name": "Ferientour",
+        "location": "Valdobbiadene (Flavio)"
       },
       {
         "from": "2016-08-26T22:00:00.000Z",
         "to": "2016-08-26T22:00:00.000Z",
-        "name": "Alpenbrevet (Antoine)",
-        "location": "Meiringen"
+        "name": "Alpenbrevet",
+        "location": "Meiringen (Antoine)"
       },
       {
         "from": "2016-09-09T22:00:00.000Z",
         "to": "2016-09-09T22:00:00.000Z",
-        "name": "Bodensee Radmarathon (Antoine)",
-        "location": "Altenrhein"
+        "name": "Bodensee Radmarathon",
+        "location": "Altenrhein (Antoine)"
       }
     ],
     "specialDates": [
