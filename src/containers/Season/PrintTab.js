@@ -165,7 +165,7 @@ export class PrintTab extends Component {
         month.dates = month.dates.concat(tourViewModels);
       });
 
-    usedTours.sort((item1, item2) => item1.name.localeCompare(item2.name));
+    usedTours.sort((item1, item2) => item1.name.localeCompare(item2.name)).filter(tour => tour.distance > 0);
     startRoutes.sort((item1, item2) => item1.id - item2.id);
     const eveningStart = moment(configuration.eveningStart).format('D. MMMM');
     const eveningEnd = moment(configuration.eveningEnd).format('D. MMMM');
@@ -185,7 +185,7 @@ export class PrintTab extends Component {
 
       return `${tour.description} (Keine Tour)`;
     };
-    const mapEevent = (event) => {
+    const mapEvent = (event) => {
       return {
         ...event,
         from: moment(event.from),
@@ -204,7 +204,7 @@ export class PrintTab extends Component {
       );
     };
 
-    const mappedEvents = configuration.events.map(mapEevent).sort((evt1, evt2) => {
+    const mappedEvents = configuration.events.map(mapEvent).sort((evt1, evt2) => {
       const diff = evt1.from.diff(evt2.from, 'days');
       if (diff === 0) {
         const evt1Length = evt1.from.diff(evt1.to, 'days');
@@ -217,6 +217,104 @@ export class PrintTab extends Component {
     });
 
     const styles = require('./PrintTab.scss');
+    const renderInfo = () => {
+      return (
+        <div className={'col-xs-12 ' + styles.noPageBreak}>
+          <div className="row">
+            <div className="col-xs-12"><strong>Treffpunkt <a
+              href="https://goo.gl/maps/wJMuPAPSpTn">Museumsplatz</a></strong></div>
+          </div>
+          <div className="row">
+            <div className="col-xs-5"><strong>Blüemli - Gruppe</strong></div>
+            <div className="col-xs-6 col-xs-offset-1">gemütliches Tempo / Einsteigergruppe</div>
+
+            <div className="col-xs-3 col-xs-offset-1">Abendtouren:</div>
+            <div className="col-xs-2">17:50 Uhr</div>
+            <div className="col-xs-6">Durchschnitt 22 -26 km/h</div>
+
+            <div className="col-xs-3 col-xs-offset-1">Samstagstouren:</div>
+            <div className="col-xs-8">13:20 Uhr</div>
+
+            <div className="col-xs-3 col-xs-offset-1">Sonntagstouren:</div>
+            <div className="col-xs-2">08:20 Uhr</div>
+            <div className="col-xs-6">(bis {eveningStart} und ab {eveningEnd} 08.50 Uhr)</div>
+
+            <div className="col-xs-3 col-xs-offset-1">Tagestouren:</div>
+            <div className="col-xs-8">07:45 Uhr</div>
+          </div>
+          <div className="row">
+            <div className="col-xs-5"><strong>Fitness - Gruppe</strong></div>
+            <div className="col-xs-6 col-xs-offset-1">flottes Tempo / Routinierte Fahrer</div>
+
+            <div className="col-xs-3 col-xs-offset-1">Abendtouren:</div>
+            <div className="col-xs-2">18:00 Uhr</div>
+            <div className="col-xs-6">Durchschnitt 24 -28 km/h</div>
+
+            <div className="col-xs-3 col-xs-offset-1">Samstagstouren:</div>
+            <div className="col-xs-8">13:30 Uhr</div>
+
+            <div className="col-xs-3 col-xs-offset-1">Sonntagstouren:</div>
+            <div className="col-xs-2">08:30 Uhr</div>
+            <div className="col-xs-6">(bis {eveningStart} und ab {eveningEnd} 09.00 Uhr)</div>
+
+            <div className="col-xs-3 col-xs-offset-1">Tagestouren:</div>
+            <div className="col-xs-8">08:00 Uhr</div>
+          </div>
+          <div className="row">
+            <div className="col-xs-6"><strong>Speed - Gruppe ab {eveningStart}</strong></div>
+            <div className="col-xs-6">zügiges Tempo / gut trainierte Fahrer</div>
+
+            <div className="col-xs-3 col-xs-offset-1">Abendtouren:</div>
+            <div className="col-xs-2">18:10 Uhr</div>
+            <div className="col-xs-6">Durchschnitt 26 -30 km/h</div>
+
+            <div className="col-xs-3 col-xs-offset-1">Samstagstouren:</div>
+            <div className="col-xs-8">13:40 Uhr</div>
+
+            <div className="col-xs-3 col-xs-offset-1">Sonntagstouren:</div>
+            <div className="col-xs-8">08:40 Uhr</div>
+
+            <div className="col-xs-3 col-xs-offset-1">Tagestouren:</div>
+            <div className="col-xs-8">08:15 Uhr</div>
+          </div>
+        </div>);
+    };
+    const renderLocation = (location, idx) => {
+      return (
+        <span key={idx}>{idx ? ' - ' : ''}
+          <a href={location.maps}>
+            {location.restaurant ? <b>{location.name}</b> : location.name}
+          </a>
+        </span>);
+    };
+    const renderDescription = (tour, idx) => {
+      return (
+        <div className="row" key={idx} id={`tour-${tour.id}`}>
+          <div className="col-xs-2">
+            <b>{tour.name}</b><br/>
+            ca {tour.distance} km<br />
+            ca {tour.elevation} hm
+          </div>
+          <div className="col-xs-2">
+            <a href={`#start-route-${tour.startrouteId}`}>{tour.startroute}</a>
+          </div>
+          <div className="col-xs-8">
+            {tour.locations.map(renderLocation)}
+          </div>
+        </div>);
+    };
+    const renderStartRoute = (tour, idx) => {
+      return (
+        <div className="row" key={idx} id={`start-route-${tour.id}`}>
+          <div className="col-xs-3">
+            <b>{tour.name}</b>
+          </div>
+          <div className="col-xs-9">
+            {tour.locations.map(renderLocation)}
+          </div>
+        </div>);
+    };
+
     return (
       <div className={styles.print + ' container' }>
         <div className="row">
@@ -242,102 +340,15 @@ export class PrintTab extends Component {
               </div>
             </div>
           ))}
-          <div className={'col-xs-12 ' + styles.noPageBreak}>
-            <div className="row">
-              <div className="col-xs-12"><strong>Treffpunkt <a
-                href="https://goo.gl/maps/wJMuPAPSpTn">Museumsplatz</a></strong></div>
-            </div>
-            <div className="row">
-              <div className="col-xs-5"><strong>Blüemli - Gruppe</strong></div>
-              <div className="col-xs-6 col-xs-offset-1">gemütliches Tempo / Einsteigergruppe</div>
-
-              <div className="col-xs-3 col-xs-offset-1">Abendtouren:</div>
-              <div className="col-xs-2">17:50 Uhr</div>
-              <div className="col-xs-6">Durchschnitt 22 -26 km/h</div>
-
-              <div className="col-xs-3 col-xs-offset-1">Samstagstouren:</div>
-              <div className="col-xs-8">13:20 Uhr</div>
-
-              <div className="col-xs-3 col-xs-offset-1">Sonntagstouren:</div>
-              <div className="col-xs-2">08:20 Uhr</div>
-              <div className="col-xs-6">(bis {eveningStart} und ab {eveningEnd} 08.50 Uhr)</div>
-
-              <div className="col-xs-3 col-xs-offset-1">Tagestouren:</div>
-              <div className="col-xs-8">07:45 Uhr</div>
-            </div>
-            <div className="row">
-              <div className="col-xs-5"><strong>Fitness - Gruppe</strong></div>
-              <div className="col-xs-6 col-xs-offset-1">flottes Tempo / Routinierte Fahrer</div>
-
-              <div className="col-xs-3 col-xs-offset-1">Abendtouren:</div>
-              <div className="col-xs-2">18:00 Uhr</div>
-              <div className="col-xs-6">Durchschnitt 24 -28 km/h</div>
-
-              <div className="col-xs-3 col-xs-offset-1">Samstagstouren:</div>
-              <div className="col-xs-8">13:30 Uhr</div>
-
-              <div className="col-xs-3 col-xs-offset-1">Sonntagstouren:</div>
-              <div className="col-xs-2">08:30 Uhr</div>
-              <div className="col-xs-6">(bis {eveningStart} und ab {eveningEnd} 09.00 Uhr)</div>
-
-              <div className="col-xs-3 col-xs-offset-1">Tagestouren:</div>
-              <div className="col-xs-8">08:00 Uhr</div>
-            </div>
-            <div className="row">
-              <div className="col-xs-6"><strong>Speed - Gruppe ab {eveningStart}</strong></div>
-              <div className="col-xs-6">zügiges Tempo / gut trainierte Fahrer</div>
-
-              <div className="col-xs-3 col-xs-offset-1">Abendtouren:</div>
-              <div className="col-xs-2">18:10 Uhr</div>
-              <div className="col-xs-6">Durchschnitt 26 -30 km/h</div>
-
-              <div className="col-xs-3 col-xs-offset-1">Samstagstouren:</div>
-              <div className="col-xs-8">13:40 Uhr</div>
-
-              <div className="col-xs-3 col-xs-offset-1">Sonntagstouren:</div>
-              <div className="col-xs-8">08:40 Uhr</div>
-
-              <div className="col-xs-3 col-xs-offset-1">Tagestouren:</div>
-              <div className="col-xs-8">08:15 Uhr</div>
-            </div>
-          </div>
+          {renderInfo()}
         </div>
         <div className={styles.description}>
           <h1>RVW Tourenbeschrieb {season.year} <img src={logo} className={styles.logo}/></h1>
-          {usedTours.filter(tour => tour.distance > 0).map((tour, idx) => (
-            <div className="row" key={idx} id={`tour-${tour.id}`}>
-              <div className="col-xs-2">
-                <b>{tour.name}</b><br/>
-                ca {tour.distance} km<br />
-                ca {tour.elevation} hm
-              </div>
-              <div className="col-xs-2">
-                <a href={`#start-route-${tour.startrouteId}`}>{tour.startroute}</a>
-              </div>
-              <div className="col-xs-8">
-                {tour.locations.map((loc, locIdx) => (
-                  <span key={locIdx}>{locIdx ? ' - ' : ''}
-                    <a href={loc.maps}>
-                      {loc.restaurant ? <b>{loc.name}</b> : loc.name}
-                    </a>
-                  </span>))}
-              </div>
-            </div>))}
+          {usedTours.map(renderDescription)}
         </div>
         <div className={styles.description}>
           <h2>Start-Routen</h2>
-          {startRoutes.map((tour, idx) => (
-            <div className="row" key={idx} id={`start-route-${tour.id}`}>
-              <div className="col-xs-3">
-                <b>{tour.name}</b>
-              </div>
-              <div className="col-xs-9">
-                {tour.locations.map((loc, locIdx) => (
-                  <span key={locIdx}>{locIdx ? ' - ' : ''}
-                    <a href={loc.maps}>{loc.name}</a>
-                  </span>))}
-              </div>
-            </div>))}
+          {startRoutes.map(renderStartRoute)}
         </div>
       </div>);
   }
