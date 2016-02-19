@@ -185,6 +185,36 @@ export class PrintTab extends Component {
 
       return `${tour.description} (Keine Tour)`;
     };
+    const mapEevent = (event) => {
+      return {
+        ...event,
+        from: moment(event.from),
+        to: moment(event.to)
+      };
+    };
+    const renderEvent = (event, idx) => {
+      const dateFrom = event.from.format('L');
+      const dateTo = event.to.isValid() && !event.from.isSame(event.to, 'day') ? event.to.format('L') : null;
+
+      return (
+        <div key={idx} className="row">
+          <div className="col-xs-6">{event.name} in {event.location}</div>
+          <div className="col-xs-6">{dateFrom} {dateTo ? (<span>&mdash; {dateTo}</span>) : ''}</div>
+        </div>
+      );
+    };
+
+    const mappedEvents = configuration.events.map(mapEevent).sort((evt1, evt2) => {
+      const diff = evt1.from.diff(evt2.from, 'days');
+      if (diff === 0) {
+        const evt1Length = evt1.from.diff(evt1.to, 'days');
+        const evt2Length = evt2.from.diff(evt2.to, 'days');
+
+        return evt2Length - evt1Length;
+      }
+
+      return diff;
+    });
 
     const styles = require('./PrintTab.scss');
     return (
@@ -192,12 +222,7 @@ export class PrintTab extends Component {
         <div className="row">
           <h1>RVW Tourenplan {season.year} <img src={logo} className={styles.logo}/></h1>
           <h2> Events</h2>
-          {configuration.events.map((event, idx) => (
-            <div key={idx} className="row">
-              <div className="col-xs-6">{event.name} in {event.location}</div>
-              <div className="col-xs-6">{moment(event.from).format('L')} &mdash; {moment(event.to).format('L')}</div>
-            </div>
-          ))}
+          {mappedEvents.map(renderEvent)}
           <h2> Touren</h2>
           {datesByMonth.map(month => (
             <div className={'col-xs-12 ' + styles.noPageBreak}>
