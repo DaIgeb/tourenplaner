@@ -305,11 +305,11 @@ export class PrintTab extends Component {
     };
     const renderStartRoute = (tour, idx) => {
       return (
-        <div className="row" key={idx} id={`start-route-${tour.id}`}>
-          <div className="col-xs-3">
+        <div className={styles.row} key={idx} id={`start-route-${tour.id}`}>
+          <div className={styles.cell30}>
             <b>{tour.name}</b>
           </div>
-          <div className="col-xs-9">
+          <div className={styles.cell70}>
             {tour.locations.map(renderLocation)}
           </div>
         </div>);
@@ -346,7 +346,7 @@ export class PrintTab extends Component {
           <h1>RVW Tourenbeschrieb {season.year} <img src={logo} className={styles.logo}/></h1>
           {usedTours.map(renderDescription)}
         </div>
-        <div className={styles.description}>
+        <div className={styles.table + ' row'}>
           <h2>Start-Routen</h2>
           {startRoutes.map(renderStartRoute)}
         </div>

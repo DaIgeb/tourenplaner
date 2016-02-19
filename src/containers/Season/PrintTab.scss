@@ -64,3 +64,32 @@
     }
   }
 }
+
+// TODO flexbox
+.table{
+  display:table;
+  width:auto;
+  border:1px solid  #666666;
+  border-spacing:5px;/*cellspacing:poor IE support for  this*/
+}
+
+.row {
+  display:table-row;
+  width:auto;
+  clear:both;
+}
+
+.cell30 {
+  float:left;/*fix for  buggy browsers*/
+  display:table-column;
+  width:30%;
+  border: 1px solid;
+  height: 100%;
+}
+.cell70 {
+  float:left;/*fix for  buggy browsers*/
+  display:table-column;
+  width:70%;
+  border: 1px solid;
+  height: 100%;
+}
