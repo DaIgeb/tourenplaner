@@ -9208,188 +9208,20 @@
             "tour": 0,
             "candidates": [
               {
-                "tour": 61,
-                "totalScore": 61,
+                "tour": null,
                 "scores": [
                   {
-                    "name": "Tour-Type matching",
-                    "score": 10,
-                    "note": "Checking for type Nachmittagstour"
-                  },
-                  {
-                    "name": "Tour-Usage check",
-                    "score": 10,
-                    "note": "Counting usages for tour"
-                  },
-                  {
-                    "name": "Restaurant check",
-                    "score": 10,
-                    "note": "Restaurant must be open"
-                  },
-                  {
-                    "name": "Distance check",
-                    "score": 10,
-                    "note": "Distance expected 90 got 93"
-                  },
-                  {
-                    "name": "Difficulty check",
-                    "score": 10,
-                    "note": "Elevation is 1.625 %, previous tour had 1 %"
-                  },
-                  {
-                    "name": "Locations check",
-                    "score": 11,
-                    "note": "Locations expected 0 matches got -1"
-                  }
-                ]
-              },
-              {
-                "tour": 69,
-                "totalScore": 60,
-                "scores": [
-                  {
-                    "name": "Tour-Type matching",
-                    "score": 10,
-                    "note": "Checking for type Nachmittagstour"
-                  },
-                  {
-                    "name": "Tour-Usage check",
-                    "score": 10,
-                    "note": "Counting usages for tour"
-                  },
-                  {
-                    "name": "Restaurant check",
-                    "score": 10,
-                    "note": "Restaurant must be open"
-                  },
-                  {
-                    "name": "Distance check",
-                    "score": 9,
-                    "note": "Distance expected 90 got 80"
-                  },
-                  {
-                    "name": "Difficulty check",
-                    "score": 10,
-                    "note": "Elevation is 1.4285714285714286 %, previous tour had 1 %"
-                  },
-                  {
-                    "name": "Locations check",
-                    "score": 11,
-                    "note": "Locations expected 0 matches got -1"
-                  }
-                ]
-              },
-              {
-                "tour": 72,
-                "totalScore": 59,
-                "scores": [
-                  {
-                    "name": "Tour-Type matching",
-                    "score": 10,
-                    "note": "Checking for type Nachmittagstour"
-                  },
-                  {
-                    "name": "Tour-Usage check",
-                    "score": 10,
-                    "note": "Counting usages for tour"
-                  },
-                  {
-                    "name": "Restaurant check",
-                    "score": 10,
-                    "note": "Restaurant must be open"
-                  },
-                  {
-                    "name": "Distance check",
-                    "score": 8,
-                    "note": "Distance expected 90 got 74.7"
-                  },
-                  {
-                    "name": "Difficulty check",
-                    "score": 10,
-                    "note": "Elevation is 1.4923076923076923 %, previous tour had 1 %"
-                  },
-                  {
-                    "name": "Locations check",
-                    "score": 11,
-                    "note": "Locations expected 0 matches got -1"
-                  }
-                ]
-              },
-              {
-                "tour": 58,
-                "totalScore": 58,
-                "scores": [
-                  {
-                    "name": "Tour-Type matching",
-                    "score": 10,
-                    "note": "Checking for type Nachmittagstour"
-                  },
-                  {
-                    "name": "Tour-Usage check",
-                    "score": 7,
-                    "note": "Counting usages for tour"
-                  },
-                  {
-                    "name": "Restaurant check",
-                    "score": 10,
-                    "note": "Restaurant must be open"
-                  },
-                  {
-                    "name": "Distance check",
-                    "score": 10,
-                    "note": "Distance expected 90 got 91.4"
-                  },
-                  {
-                    "name": "Difficulty check",
-                    "score": 10,
-                    "note": "Elevation is 1.425 %, previous tour had 1 %"
-                  },
-                  {
-                    "name": "Locations check",
-                    "score": 11,
-                    "note": "Locations expected 0 matches got -1"
-                  }
-                ]
-              },
-              {
-                "tour": 18,
-                "totalScore": 58,
-                "scores": [
-                  {
-                    "name": "Tour-Type matching",
-                    "score": 10,
-                    "note": "Checking for type Nachmittagstour"
-                  },
-                  {
-                    "name": "Tour-Usage check",
-                    "score": 7,
-                    "note": "Counting usages for tour"
-                  },
-                  {
-                    "name": "Restaurant check",
-                    "score": 10,
-                    "note": "Restaurant must be open"
-                  },
-                  {
-                    "name": "Distance check",
-                    "score": 10,
-                    "note": "Distance expected 90 got 87"
-                  },
-                  {
-                    "name": "Difficulty check",
-                    "score": 10,
-                    "note": "Elevation is 1.6 %, previous tour had 1 %"
-                  },
-                  {
-                    "name": "Locations check",
-                    "score": 11,
-                    "note": "Locations expected 0 matches got -1"
+                    "name": "Special date override",
+                    "score": 0,
+                    "note": "Überraschungstour"
                   }
                 ]
               }
-            ]
+            ],
+            "points": 20
           }
-        ]
+        ],
+        "description": "Überraschungstour"
       },
       {
         "date": "2016-06-18T22:00:00.000Z",

@@ -185,6 +185,16 @@
         ]
       },
       {
+        "date": "2016-06-17T22:00:00.000Z",
+        "name": "Überraschungstour",
+        "action": {
+          "id": 3,
+          "label": "Tour ersetzen"
+        },
+        "points": 20,
+        "tours": []
+      },
+      {
         "date": "2016-08-12T22:00:00.000Z",
         "name": "Überraschungstour",
         "action": {
