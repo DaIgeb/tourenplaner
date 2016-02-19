@@ -1,59 +1,33 @@
-import React from 'react';
+import React, {Component, PropTypes} from 'react';
 import {renderPagedContent} from 'utils/pagination';
 import {moment, defaultTimeZone, defaultLocale} from '../../../shared/utils/moment';
 import {timelineMatches} from '../../../shared/utils/timeline';
 import {TourType} from 'models';
 
-export class PlanTab {
-  constructor(season, tours, restaurants, currentPage, size, selectPage) {
-    this.currentPage = currentPage;
-    this.season = season;
-    this.restaurants = restaurants;
-    this.size = size;
-    this.tours = tours;
-    this.selectPage = selectPage;
+export class PlanTab extends Component {
+  static propTypes = {
+    currentPage: PropTypes.number.isRequired,
+    season: PropTypes.object.isRequired,
+    restaurants: PropTypes.array.isRequired,
+    tours: PropTypes.array.isRequired,
+    size: PropTypes.number.isRequired,
+    selectPage: PropTypes.func.isRequired
+  };
+  constructor(props) {
+    super(props);
   }
 
   findTour = (tourId) => {
-    const {tours} = this; // eslint-disable-line no-shadow
+    const {tours} = this.props; // eslint-disable-line no-shadow
 
     return tours.find(tourObj => tourObj.id === tourId);
-  };
-
-  renderTooltip = (tour) => {
-    const scoreNames = tour.candidates
-      .map(candidate => candidate.scores.map(score => score.name))
-      .reduce((item1, item2) => item1.concat(item2), [])
-      .reduce((item1, item2) => item1.indexOf(item2) < 0 ? item1.concat([item2]) : item1, []);
-    const candidates = tour.candidates.map(candidate => this.findTour(candidate.tour)).map(canTour => canTour ? canTour.name : 'Unbekannte Tour');
-    return {
-      candidates: candidates.length,
-      tooltip: (
-        <span>
-          <table>
-            <thead>
-            <tr>
-              <th>Wertung</th>
-              {candidates.map((candidate, canIdx) => <th key={canIdx}>{candidate}</th>)}
-            </tr>
-            </thead>
-            <tbody>
-            {scoreNames.map((score, scoreIdx) => (
-              <tr key={scoreIdx}>
-                <td>{score}</td>
-                {tour.candidates.map((candidate, canIdx) => <td key={canIdx}>{candidate.scores.find(canScore => canScore.name === score).score}</td>)}
-              </tr>))}
-            </tbody>
-          </table>
-        </span>)
-    };
   };
 
   checkRestaurant = (date, tour, tourObj) => {
     if (!tourObj) {
       return null;
     }
-    const {restaurants} = this;
+    const {restaurants} = this.props;
     const momentDate = moment(date.date);
     const tourTl = tourObj.timelines.find(tl => timelineMatches(tl, momentDate));
     const tourRestaurants = tourTl.restaurants.map(rest => restaurants.find(item => item.id === rest));
@@ -115,6 +89,35 @@ export class PlanTab {
     return relevantBusinesHour.map(hours => `Offen ${hours.businessHours.map(hour => `von ${hour.from.hour} bis ${hour.until.hour}`).join(', ')}`).join('. ');
   };
 
+  renderTooltip = (tour) => {
+    const scoreNames = tour.candidates
+      .map(candidate => candidate.scores.map(score => score.name))
+      .reduce((item1, item2) => item1.concat(item2), [])
+      .reduce((item1, item2) => item1.indexOf(item2) < 0 ? item1.concat([item2]) : item1, []);
+    const candidates = tour.candidates.map(candidate => this.findTour(candidate.tour)).map(canTour => canTour ? canTour.name : 'Unbekannte Tour');
+    return {
+      candidates: candidates.length,
+      tooltip: (
+        <span>
+          <table>
+            <thead>
+            <tr>
+              <th>Wertung</th>
+              {candidates.map((candidate, canIdx) => <th key={canIdx}>{candidate}</th>)}
+            </tr>
+            </thead>
+            <tbody>
+            {scoreNames.map((score, scoreIdx) => (
+              <tr key={scoreIdx}>
+                <td>{score}</td>
+                {tour.candidates.map((candidate, canIdx) => <td key={canIdx}>{candidate.scores.find(canScore => canScore.name === score).score}</td>)}
+              </tr>))}
+            </tbody>
+          </table>
+        </span>)
+    };
+  };
+
   renderTour = (date, tour, idx) => {
     const styles = require('./Season.scss');
     const tourObj = !isNaN(tour.tour) && tour.tour >= 0 ? this.findTour(tour.candidates[tour.tour].tour) : null;
@@ -172,8 +175,8 @@ export class PlanTab {
     return result.filter(item => item);
   };
 
-  render = () => {
-    const {season, currentPage, size, selectPage} = this;
+  render() {
+    const {season, currentPage, size, selectPage} = this.props;
     const lowerBound = currentPage * size;
     const upperBound = lowerBound + size;
 

@@ -278,13 +278,11 @@ export default class Season extends Component {
       const currentTab = this.state.tab;
       return (
         <div role="tabpanel" className={'tab-pane ' + (currentTab === tabId ? 'active' : '')} id={tabId}>
-          {render()}
+          {currentTab === tabId ? render() : undefined}
         </div>
       );
     };
 
-    //  const printTab = new PrintTab(season, configuration, tours, this.props.locations, this.props.restaurants);
-    const planTab = new PlanTab(season, tours, this.props.restaurants, this.state.plan.page.current, this.state.plan.page.size, this.selectPlanPage);
     const configuration = configs.find(item => item.id === season.configuration);
 
     const renderTabs = () => {
@@ -292,7 +290,7 @@ export default class Season extends Component {
         {
           id: 'plan',
           name: 'Plan',
-          render: planTab.render
+          render: () => <PlanTab season={season} currentPage={this.state.plan.page.current} tours={tours} size={this.state.plan.page.size} restaurants={this.props.restaurants} selectPage={this.selectPlanPage}/>
         },
         {
           id: 'tours',
