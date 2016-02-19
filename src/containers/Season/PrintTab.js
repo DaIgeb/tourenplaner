@@ -327,7 +327,7 @@ export class PrintTab extends Component {
         <div className={styles.description}>
           <h2>Start-Routen</h2>
           {startRoutes.map((tour, idx) => (
-            <div className="row" key={idx} id={`start-route-${tour.id}`>
+            <div className="row" key={idx} id={`start-route-${tour.id}`}>
               <div className="col-xs-3">
                 <b>{tour.name}</b>
               </div>
