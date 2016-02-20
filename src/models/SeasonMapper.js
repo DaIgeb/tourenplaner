@@ -28,8 +28,8 @@ export class SeasonMapper {
         return diff;
       }),
       tours: tours,
-      routes: usedTours,
-      starts: startRoutes
+      routes: usedTours.sort((item1, item2) => item1.name.localeCompare(item2.name)).filter(tour => tour.distance > 0),
+      starts: startRoutes.sort((item1, item2) => item1.id - item2.id)
     };
   };
 
@@ -44,38 +44,33 @@ export class SeasonMapper {
   mapDate = (dateObj, usedTours, startRoutes) => {
     const date = moment(dateObj.date, moment.ISO_8601, true);
 
-    return dateObj.tours.map(tour => this.mapTour(date, tour, usedTours, startRoutes));
+    return dateObj.tours.map(tour => this.mapTour(dateObj, date, tour, usedTours, startRoutes));
   };
 
-  mapTour = (date, tour, usedTours, startRoutes) => {
-    try {
-      const candidate = tour.candidates[tour.tour];
-      let mappedTour = usedTours.find(ut => ut.id === candidate.tour);
-      if (!mappedTour) {
-        mappedTour = this.createRouteViewModel(candidate, date);
-        if (mappedTour) {
-          if (mappedTour.startroute) {
-            const startRoute = startRoutes.find(item => item.id === mappedTour.startroute.id);
-            if (!startRoute) {
-              startRoutes.push(mappedTour.startroute);
-            }
+  mapTour = (dateObj, date, tour, usedTours, startRoutes) => {
+    const candidate = tour.candidates[tour.tour];
+    let mappedTour = usedTours.find(ut => ut.id === candidate.tour);
+    if (!mappedTour) {
+      mappedTour = this.createRouteViewModel(candidate, date);
+      if (mappedTour) {
+        if (mappedTour.startroute) {
+          const startRoute = startRoutes.find(item => item.id === mappedTour.startroute.id);
+          if (!startRoute) {
+            startRoutes.push(mappedTour.startroute);
           }
-
-          usedTours.push(mappedTour);
         }
-      }
 
-      return {
-        id: mappedTour && mappedTour.distance > 0 ? mappedTour.id : null,
-        date: date,
-        tour: mappedTour ? this.getTourName(mappedTour, date, tour.type) : null,
-        description: date.description,
-        points: tour.points ? tour.points : this.getPointsByType(tour.type)
-      };
-    } catch (err) {
-      console.log(err, tour);
-      console.error(err, tour);
+        usedTours.push(mappedTour);
+      }
     }
+
+    return {
+      id: mappedTour && mappedTour.distance > 0 ? mappedTour.id : null,
+      date: date,
+      tour: mappedTour ? this.getTourName(mappedTour, date, tour.type) : null,
+      description: dateObj.description,
+      points: tour.points ? tour.points : this.getPointsByType(tour.type)
+    };
   };
 
   createRouteViewModel = (candidate, date) => {

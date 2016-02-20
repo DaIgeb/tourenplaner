@@ -123,61 +123,33 @@ export class PrintTab extends Component {
     const mapper = new SeasonMapper(configurations, tours, restaurants, locations);
     const mappedSeason = mapper.map(season);
     const datesByMonth = [];
-    const usedTours = [];
-    const startRoutes = [];
-    season.dates
-      .forEach(date => {
-        const parsedDate = moment(date.date);
-        const monthId = parsedDate.month();
-        let month = datesByMonth.find(mon => mon.month === monthId);
-        if (!month) {
-          month = {
-            month: monthId,
-            monthName: parsedDate.format('MMMM'),
-            dates: []
-          };
+    mappedSeason.tours.forEach(tour => {
+      const monthId = tour.date.month();
+      let month = datesByMonth.find(mon => mon.month === monthId);
+      if (!month) {
+        month = {
+          month: monthId,
+          monthName: tour.date.format('MMMM'),
+          dates: []
+        };
 
-          datesByMonth.push(month);
-        }
-
-        const tourViewModels = date.tours.map((tour, idx) => {
-          const candidate = tour.candidates[tour.tour];
-          let mappedTour = usedTours.find(ut => ut.id === candidate.tour);
-          if (!mappedTour) {
-            mappedTour = this.createRouteViewModel(candidate, parsedDate);
-            if (mappedTour) {
-              const startRoute = startRoutes.find(item => item.name === mappedTour.startroute);
-              if (!startRoute && mappedTour.startroute) {
-                const tourObj = tours.find(st => st.name === mappedTour.startroute);
-                startRoutes.push(this.createTourViewModel(tourObj, parsedDate));
-              }
-
-              usedTours.push(mappedTour);
-            }
-          }
-
-          return {
-            tour: mappedTour ? this.getTourName(mappedTour, parsedDate, tour.type) : null,
-            tourId: mappedTour && mappedTour.distance > 0 ? mappedTour.id : null,
-            description: date.description,
-            points: tour.points ? tour.points : this.getPointsByType(tour.type),
-            date: idx === 0 ? `${parsedDate.format('dd')} ${parsedDate.format('L')}` : null,
-            day: idx === 0 ? parsedDate.format('dd') : null
-          };
-        });
-
-        month.dates = month.dates.concat(tourViewModels);
+        datesByMonth.push(month);
+      }
+      const formattedDate = `${tour.date.format('dd')} ${tour.date.format('L')}`;
+      const lastEntryDate = month.dates.length ? month.dates[month.dates.length - 1].date : null;
+      month.dates.push({
+        ...tour,
+        date: lastEntryDate === formattedDate ? null : formattedDate
       });
+    });
 
-    usedTours.sort((item1, item2) => item1.name.localeCompare(item2.name)).filter(tour => tour.distance > 0);
-    startRoutes.sort((item1, item2) => item1.id - item2.id);
     const eveningStart = moment(configuration.eveningStart).format('D. MMMM');
     const eveningEnd = moment(configuration.eveningEnd).format('D. MMMM');
     const logo = require('./RVW-Logo.png');
     const renderTourName = (tour) => {
       if (tour.tour) {
-        if (tour.tourId) {
-          return <a href={`#tour-${tour.tourId}`}>{tour.tour}</a>;
+        if (tour.id) {
+          return <a href={`#tour-${tour.id}`}>{tour.tour}</a>;
         }
 
         return tour.tour;
@@ -280,7 +252,7 @@ export class PrintTab extends Component {
             ca {tour.elevation} hm
           </div>
           <div className={styles.cell2}>
-            <a href={`#start-route-${tour.startrouteId}`}>{tour.startroute}</a>
+            <a href={`#start-route-${tour.startroute.id}`}>{tour.startroute.name}</a>
           </div>
           <div className={styles.cell7}>
             {tour.locations.map(renderLocation)}
@@ -330,11 +302,11 @@ export class PrintTab extends Component {
         </div>
         <div className={styles.table}>
           <h1>RVW Tourenbeschrieb {season.year} <img src={logo} className={styles.logo}/></h1>
-          {usedTours.map(renderDescription)}
+          {mappedSeason.routes.map(renderDescription)}
         </div>
         <div className={styles.table}>
           <h2>Start-Routen</h2>
-          {startRoutes.map(renderStartRoute)}
+          {mappedSeason.starts.map(renderStartRoute)}
         </div>
       </div>);
   }
