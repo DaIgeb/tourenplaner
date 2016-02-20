@@ -300,7 +300,7 @@ export default class Season extends Component {
         {
           id: 'print',
           name: 'Druck',
-          render: () => <PrintTab season={season} configuration={configuration} tours={tours} locations={this.props.locations} restaurants={this.props.restaurants}/>
+          render: () => <PrintTab season={season} configuration={configuration} configurations={configs} tours={tours} locations={this.props.locations} restaurants={this.props.restaurants}/>
         }
       ];
 

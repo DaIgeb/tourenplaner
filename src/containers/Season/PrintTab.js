@@ -1,6 +1,6 @@
 import React, {Component, PropTypes} from 'react';
 import {timelineMatches} from '../../../shared/utils/timeline';
-import {TourType} from 'models';
+import {TourType, SeasonMapper} from 'models';
 import {moment} from '../../../shared/utils/moment';
 
 export class PrintTab extends Component {
@@ -8,6 +8,7 @@ export class PrintTab extends Component {
     season: PropTypes.object.isRequired,
     configuration: PropTypes.object.isRequired,
     tours: PropTypes.array.isRequired,
+    configurations: PropTypes.array.isRequired,
     locations: PropTypes.array.isRequired,
     restaurants: PropTypes.array.isRequired
   };
@@ -118,7 +119,9 @@ export class PrintTab extends Component {
   };
 
   render() {
-    const {tours, season, configuration} = this.props;
+    const {tours, season, configuration, configurations, restaurants, locations} = this.props;
+    const mapper = new SeasonMapper(configurations, tours, restaurants, locations);
+    const mappedSeason = mapper.map(season);
     const datesByMonth = [];
     const usedTours = [];
     const startRoutes = [];
@@ -186,13 +189,6 @@ export class PrintTab extends Component {
 
       return `${tour.description} (Keine Tour)`;
     };
-    const mapEvent = (event) => {
-      return {
-        ...event,
-        from: moment(event.from),
-        to: moment(event.to)
-      };
-    };
     const renderEvent = (event, idx) => {
       const dateFrom = event.from.format('L');
       const dateTo = event.to.isValid() && !event.from.isSame(event.to, 'day') ? event.to.format('L') : null;
@@ -204,19 +200,6 @@ export class PrintTab extends Component {
         </div>
       );
     };
-
-    const mappedEvents = configuration.events.map(mapEvent).sort((evt1, evt2) => {
-      const diff = evt1.from.diff(evt2.from, 'days');
-      if (diff === 0) {
-        const evt1Length = evt1.from.diff(evt1.to, 'days');
-        const evt2Length = evt2.from.diff(evt2.to, 'days');
-
-        return evt2Length - evt1Length;
-      }
-
-      return diff;
-    });
-
     const styles = require('./PrintTab.scss');
     const renderInfo = () => {
       return (
@@ -323,7 +306,7 @@ export class PrintTab extends Component {
         <div className="row">
           <h1>RVW Tourenplan {season.year} <img src={logo} className={styles.logo}/></h1>
           <h2> Events</h2>
-          {mappedEvents.map(renderEvent)}
+          {mappedSeason.events.map(renderEvent)}
           <h2> Touren</h2>
           {datesByMonth.map(month => (
             <div className={'col-xs-12 ' + styles.noPageBreak}>
