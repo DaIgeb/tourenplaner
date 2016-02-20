@@ -11,6 +11,7 @@ export class PrintTab extends Component {
     locations: PropTypes.array.isRequired,
     restaurants: PropTypes.array.isRequired
   };
+
   constructor(props) {
     super(props);
   }
@@ -288,31 +289,33 @@ export class PrintTab extends Component {
         </span>);
     };
     const renderDescription = (tour, idx) => {
-      return (
-        <div className="row" key={idx} id={`tour-${tour.id}`}>
-          <div className="col-xs-2">
+      return [(
+        <div className={styles.row} key={idx} id={`tour-${tour.id}`}>
+          <div className={styles.cell2}>
             <b>{tour.name}</b><br/>
             ca {tour.distance} km<br />
             ca {tour.elevation} hm
           </div>
-          <div className="col-xs-2">
+          <div className={styles.cell2}>
             <a href={`#start-route-${tour.startrouteId}`}>{tour.startroute}</a>
           </div>
-          <div className="col-xs-8">
+          <div className={styles.cell7}>
             {tour.locations.map(renderLocation)}
           </div>
-        </div>);
+        </div>),
+        <div className={styles.row} key={`${idx}/pagebreak`}></div>];
     };
     const renderStartRoute = (tour, idx) => {
-      return (
+      return [(
         <div className={styles.row} key={idx} id={`start-route-${tour.id}`}>
-          <div className={styles.cell30}>
+          <div className={styles.cell2}>
             <b>{tour.name}</b>
           </div>
-          <div className={styles.cell70}>
+          <div className={styles.cell7}>
             {tour.locations.map(renderLocation)}
           </div>
-        </div>);
+        </div>),
+        <div className={styles.row} key={`${idx}/pagebreak`}></div>];
     };
 
     return (
@@ -342,11 +345,11 @@ export class PrintTab extends Component {
           ))}
           {renderInfo()}
         </div>
-        <div className={styles.description}>
+        <div className={styles.table}>
           <h1>RVW Tourenbeschrieb {season.year} <img src={logo} className={styles.logo}/></h1>
           {usedTours.map(renderDescription)}
         </div>
-        <div className={styles.table + ' row'}>
+        <div className={styles.table}>
           <h2>Start-Routen</h2>
           {startRoutes.map(renderStartRoute)}
         </div>
