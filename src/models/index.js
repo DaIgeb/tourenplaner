@@ -1,7 +1,6 @@
 import DifficultyEnum from './Difficulty';
-import TourTypeEnum from './TourType';
 import SeasonStateEnum from './SeasonState';
-import {SeasonMapper as SeasonMapperClass} from './SeasonMapper';
+import {SeasonMapper as SeasonMapperClass, TourType as TourTypeEnum} from '../../shared';
 
 export const Difficulty = DifficultyEnum;
 export const TourType = TourTypeEnum;

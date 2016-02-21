@@ -1,5 +1,15 @@
+import json2csv from 'json2csv';
 import DataHandler from 'utils/DataHandler';
 import {validate} from './validator';
+import * as location from '../location/index';
+const locationHandler = location.dataHandler;
+import * as restaurant from '../restaurant/index';
+const restaurantHandler = restaurant.dataHandler;
+import * as tour from '../tour/index';
+const tourHandler = tour.dataHandler;
+import * as configuration from '../configuration/index';
+const configurationHandler = configuration.dataHandler;
+import {SeasonMapper} from '../../../shared/SeasonMapper';
 
 const dataHandler = new DataHandler('./api/actions/season/data.json', validate);
 
@@ -63,6 +73,109 @@ export function addDates(req) {
     resolve(result);
   });
 }
+const writeEvents = (mappedSeason, zipFile) => {
+  const fields = [{
+    label: 'Von',
+    value: row => row.from.format('L')
+  }, {
+    label: 'Bis',
+    value: row => row.from.isSame(row.to, 'day') ? '' : row.to.format('L')
+  }, {
+    label: 'Bezeichnung',
+    value: 'name'
+  }, {
+    label: 'Ort',
+    value: 'location'
+  }, {
+    label: 'Organisator',
+    value: 'organizer'
+  }];
+
+  return new Promise((resolve, reject) => {
+    json2csv({ data: mappedSeason.events, fields: fields }, function(err, csv) {
+      if (err) {
+        reject(err);
+      } else {
+        zipFile.file('events.csv', csv);
+        resolve(true);
+      }
+    });
+  });
+};
+const writeTours = (mappedSeason, zipFile) => {
+  const fields = [{
+    label: 'Datum',
+    value: row => row.date.format('L'),
+    defaultValue: ''
+  }, {
+    label: 'Tour',
+    value: row => row.tour ? row.tour : row.description
+  }, {
+    label: 'Punkte',
+    value: 'points',
+    defaultValue: '0'
+  }];
+
+  return new Promise((resolve, reject) => {
+    json2csv({ data: mappedSeason.tours, fields: fields }, function(err, csv) {
+      if (err) {
+        reject(err);
+      } else {
+        zipFile.file('tours.csv', csv);
+        resolve(true);
+      }
+    });
+  });
+};
+const writeRoutes = (mappedSeason, zipFile) => {
+  const fields = [{
+    label: 'Bezeichnung',
+    value: 'name'
+  }, {
+    label: 'Start',
+    value: 'startroute.name'
+  }, {
+    label: 'Ortschaften',
+    value: row => row.locations.map(loc => loc.name).join(' - ')
+  }, {
+    label: 'Distanz',
+    value: 'distance'
+  }, {
+    label: 'Höhenmeter',
+    value: 'elevation'
+  }];
+
+  return new Promise((resolve, reject) => {
+    json2csv({ data: mappedSeason.routes, fields: fields }, function(err, csv) {
+      if (err) {
+        reject(err);
+      } else {
+        zipFile.file('routes.csv', csv);
+        resolve(true);
+      }
+    });
+  });
+};
+const writeStartRoutes = (mappedSeason, zipFile) => {
+  const fields = [{
+    label: 'Bezeichnung',
+    value: 'name'
+  }, {
+    label: 'Ortschaften',
+    value: row => row.locations.map(loc => loc.name).join(' - ')
+  }];
+
+  return new Promise((resolve, reject) => {
+    json2csv({ data: mappedSeason.starts, fields: fields }, function(err, csv) {
+      if (err) {
+        reject(err);
+      } else {
+        zipFile.file('starts.csv', csv);
+        resolve(true);
+      }
+    });
+  });
+};
 
 export function csv(req, params) {
   return new Promise((resolve, reject) => {
@@ -74,87 +187,39 @@ export function csv(req, params) {
         return;
       }
 
-      import ejs from 'ejs';
-
-      const getTimeline = (tourId) => {
-        const tour = typeof tourId !== 'object' ? dataHandler.getData().find(item => item.id === tourId) : tourId;
-        if (!tour) {
-          return null;
-        }
-
-        return tour.timelines.find(item => timelineMatches(item, date));
-      };
-
-      const tour = dataHandler.getData().find(item => item.id === parseInt(params[0], 10));
-      const tourTimeline = getTimeline(tour);
-      if (!tourTimeline) {
-        reject('No tour available');
+      const season = dataHandler.getData().find(item => item.id === parseInt(params[0], 10));
+      if (!season) {
+        reject('No season available');
         return;
       }
-      const startRoute = getTimeline(tourTimeline.startroute);
-
-      const locations = [
-        ...(startRoute ? startRoute.locations : []),
-        ...tourTimeline.locations
-      ].map(loc => locationHandler.getData().find(item => item.id === loc));
-
+      const seasonMapper = new SeasonMapper(configurationHandler.getData(), tourHandler.getData(), restaurantHandler.getData(), locationHandler.getData());
+      const mappedSeason = seasonMapper.map(season);
+      var Zip = require('node-zip');
+      var zip = new Zip();
       try {
-        const fileContent = ejs.render(`
-<?xml version="1.0" encoding="UTF-8"?>
-<kml xmlns="http://www.opengis.net/kml/2.2">
-  <Document>
-    <name><%=name%></name>
-    <Style id="sn_blu-stars5">
-      <IconStyle>
-        <scale>1.1</scale>
-        <Icon><href>http://maps.google.com/mapfiles/kml/paddle/blu-stars.png</href></Icon>
-        <hotSpot x="32" y="1" xunits="pixels" yunits="pixels"/>
-      </IconStyle>
-      <ListStyle>
-        <ItemIcon><href>http://maps.google.com/mapfiles/kml/paddle/blu-stars-lv.png</href></ItemIcon>
-      </ListStyle>
-    </Style>
-    <Style id="sn_blu">
-      <LineStyle>
-        <color>2e2efe</color>
-        <colorMode>normal</colorMode>
-        <width>1</width>
-      </LineStyle>
-    </Style><% locations.forEach(function(location){%>
-    <Placemark>
-      <name><%=location.name%></name>
-      <styleUrl>#sn_blu-stars5</styleUrl>
-      <Point>
-        <coordinates><%=location.longitude%>,<%=location.latitude%></coordinates>
-      </Point>
-    </Placemark><% }); %>
-    <Placemark>
-      <name>Route</name>
-      <LineString>
-        <styleUrl>#sn_blu</styleUrl>
-        <coordinates><% locations.forEach(function(location){%>
-          <%=location.longitude%>,<%=location.latitude%>,0 <% }); %>
-        </coordinates>
-      </LineString>
-    </Placemark>
-  </Document>
-</kml>`, {name: tour.name, locations: locations});
-
-        fs.write(fd, fileContent, 'utf8', (err, written, buffer) => {
-          if (err) {
-            reject(err);
-          } else {
-            resolve(res => {
-                res.download(path, `${tour.name}.kml`, (err) => {
+        Promise.all([
+          writeEvents(mappedSeason, zip),
+          writeTours(mappedSeason, zip),
+          writeRoutes(mappedSeason, zip),
+          writeStartRoutes(mappedSeason, zip)
+        ]).then(data => {
+          var options = {base64: false, compression:'DEFLATE'};
+          import fs from 'fs';
+          fs.writeFile(path, zip.generate(options), 'binary', function (error) {
+            if (error) {
+              reject(error);
+            } else {
+              resolve(res => {
+                res.download(path, `season.zip`, (err) => {
                   // If we don't need the file anymore we could manually call the cleanupCallback
                   // But that is not necessary if we didn't pass the keep option because the library
                   // will clean after itself.
                   cleanupCallback();
                 });
-              }
-            );
-          }
-        });
+              });
+            }
+          });
+        }).catch(err => reject(err));
       } catch (err) {
         reject(err);
       }

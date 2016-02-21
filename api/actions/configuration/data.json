@@ -16,31 +16,36 @@
         "from": "2016-06-03T22:00:00.000Z",
         "to": "2016-06-03T22:00:00.000Z",
         "name": "Säntis-Classic",
-        "location": "Weinfelden (Antoine)"
+        "location": "Weinfelden",
+        "organizer": "Antoine"
       },
       {
         "from": "2016-06-10T22:00:00.000Z",
         "to": "2016-06-11T22:00:00.000Z",
         "name": "2 Tagestour",
-        "location": "Langnau im Emmental (René)"
+        "location": "Langnau im Emmental",
+        "organizer": "René"
       },
       {
         "from": "2016-07-08T22:00:00.000Z",
         "to": "2016-07-15T22:00:00.000Z",
         "name": "Ferientour",
-        "location": "Valdobbiadene (Flavio)"
+        "location": "Valdobbiadene",
+        "organizer": "Flavio"
       },
       {
         "from": "2016-08-26T22:00:00.000Z",
         "to": "2016-08-26T22:00:00.000Z",
         "name": "Alpenbrevet",
-        "location": "Meiringen (Antoine)"
+        "location": "Meiringen",
+        "organizer": "Antoine"
       },
       {
         "from": "2016-09-09T22:00:00.000Z",
         "to": "2016-09-09T22:00:00.000Z",
         "name": "Bodensee Radmarathon",
-        "location": "Altenrhein (Antoine)"
+        "location": "Altenrhein",
+        "organizer": "Antoine"
       }
     ],
     "specialDates": [
@@ -133,7 +138,7 @@
       },
       {
         "date": "2016-05-14T22:00:00.000Z",
-        "name": "Pfingstsontag",
+        "name": "Pfingstsonntag",
         "action": {
           "id": 1,
           "label": "Tour entfernen"

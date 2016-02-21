@@ -1,6 +1,6 @@
 import {TourType} from './';
-import {moment} from '../../shared/utils/moment';
-import {timelineMatches} from '../../shared/utils/timeline';
+import {moment} from './utils/moment';
+import {timelineMatches} from './utils/timeline';
 
 export class SeasonMapper {
   constructor(configurations, tours, restaurants, locations) {

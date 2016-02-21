@@ -5,7 +5,7 @@ import {timelineMatches} from '../../../shared/utils/timeline';
 import {moment} from '../../../shared/utils/moment';
 import * as location from '../location/index';
 const locationHandler = location.dataHandler;
-const dataHandler = new DataHandler('./api/actions/tour/data.json', validate);
+export const dataHandler = new DataHandler('./api/actions/tour/data.json', validate);
 
 export function load() {
   return new Promise((resolve) => {
