@@ -9,7 +9,7 @@ import * as tour from '../tour/index';
 const tourHandler = tour.dataHandler;
 import * as configuration from '../configuration/index';
 const configurationHandler = configuration.dataHandler;
-import {SeasonMapper} from '../../../shared/SeasonMapper';
+import {SeasonMapper} from '../../../shared';
 
 const dataHandler = new DataHandler('./api/actions/season/data.json', validate);
 
