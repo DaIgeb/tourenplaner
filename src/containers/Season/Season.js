@@ -198,7 +198,7 @@ export default class Season extends Component {
     const renderTab = (tabId, name) => {
       const currentTab = this.state.tab;
       return (
-        <li role="presentation" className={currentTab === tabId ? 'active' : ''}>
+        <li key={tabId} role="presentation" className={currentTab === tabId ? 'active' : ''}>
           <a href="#" onClick={() => this.selectTab(tabId)}>{name}</a>
         </li>);
     };
@@ -277,7 +277,7 @@ export default class Season extends Component {
     const renderTabContent = (tabId, render) => {
       const currentTab = this.state.tab;
       return (
-        <div role="tabpanel" className={'tab-pane ' + (currentTab === tabId ? 'active' : '')} id={tabId}>
+        <div key={tabId} role="tabpanel" className={'tab-pane ' + (currentTab === tabId ? 'active' : '')} id={tabId}>
           {currentTab === tabId ? render() : undefined}
         </div>
       );
@@ -335,6 +335,9 @@ export default class Season extends Component {
           <button className="btn btn-primary" onClick={handleEditStart(id)}>
             <i className="fa fa-pencil"/> Edit
           </button>
+          <a className="btn btn-success" href={`/api/season/csv/${season.id}`}>
+            <i className="fa fa-download"/> Download
+          </a>
         </div>
       </div>
     );

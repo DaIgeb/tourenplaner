@@ -164,10 +164,11 @@ export class PrintTab extends Component {
     const renderEvent = (event, idx) => {
       const dateFrom = event.from.format('L');
       const dateTo = event.to.isValid() && !event.from.isSame(event.to, 'day') ? event.to.format('L') : null;
+      const description = `${event.name} in ${event.location}${event.organizer ? ` (${event.organizer})` : ''}`;
 
       return (
         <div key={idx} className="row">
-          <div className="col-xs-6">{event.name} in {event.location}</div>
+          <div className="col-xs-6">{description}</div>
           <div className="col-xs-6">{dateFrom} {dateTo ? (<span>&mdash; {dateTo}</span>) : ''}</div>
         </div>
       );
@@ -280,16 +281,16 @@ export class PrintTab extends Component {
           <h2> Events</h2>
           {mappedSeason.events.map(renderEvent)}
           <h2> Touren</h2>
-          {datesByMonth.map(month => (
-            <div className={'col-xs-12 ' + styles.noPageBreak}>
+          {datesByMonth.map((month, idx) => (
+            <div key={idx} className={'col-xs-12 ' + styles.noPageBreak}>
               <div className="row">
                 <div className="col-xs-12">
                   <h3>{month.monthName}</h3>
                 </div>
               </div>
               <div className={styles.list}>
-                {month.dates.map(date => (
-                  <div className={styles.listItem + ' row ' + (date.points === 40 ? styles.fullday : '')}>
+                {month.dates.map((date, dateIdx) => (
+                  <div key={dateIdx} className={styles.listItem + ' row ' + (date.points === 40 ? styles.fullday : '')}>
                     <div className="col-xs-3">{date.date}&nbsp;</div>
                     <div className={styles.tourNameCol + ' col-xs-8'}>{renderTourName(date)}&nbsp;</div>
                     <div className="col-xs-1">{date.points}&nbsp;</div>
