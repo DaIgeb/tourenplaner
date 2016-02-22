@@ -2,7 +2,7 @@ import {TourType} from './';
 import {moment} from './utils/moment';
 import {timelineMatches} from './utils/timeline';
 
-export class SeasonMapper {
+class SeasonMapperClass {
   constructor(configurations, tours, restaurants, locations) {
     this.configurations = configurations;
     this.restaurants = restaurants;
@@ -178,3 +178,6 @@ export class SeasonMapper {
     };
   }
 }
+
+export const SeasonMapper = SeasonMapperClass;
+export default SeasonMapperClass;
