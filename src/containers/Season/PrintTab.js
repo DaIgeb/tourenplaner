@@ -290,9 +290,10 @@ export class PrintTab extends Component {
               </div>
               <div className={styles.list}>
                 {month.dates.map((date, dateIdx) => (
-                  <div key={dateIdx} className={styles.listItem + ' row ' + (date.points === 40 ? styles.fullday : '')}>
+                  <div key={dateIdx} className={styles.listItem + ' row ' + (date.points >= 40 ? styles.fullday : '')}>
                     <div className="col-xs-3">{date.date}&nbsp;</div>
-                    <div className={styles.tourNameCol + ' col-xs-8'}>{renderTourName(date)}&nbsp;</div>
+                    <div className={styles.tourNameCol + ' col-xs-7'}>{renderTourName(date)}&nbsp;</div>
+                    <div className="col-xs-1">&nbsp;</div>
                     <div className="col-xs-1">{date.points}&nbsp;</div>
                   </div>
                 ))}
