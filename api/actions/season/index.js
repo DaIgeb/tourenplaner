@@ -35,7 +35,7 @@ export function add(req) {
   return new Promise((resolve, reject) => {
     const season = req.body;
     if (season.year) {
-      const sortedSeasons = dataHandler.getData().filter(sea => sea.year === season.year).sort((seasonOne, seasonTwo) =>  seasonOne.version < seasonTwo.version);
+      const sortedSeasons = dataHandler.getData().filter(sea => sea.year === season.year).sort((seasonOne, seasonTwo) => seasonOne.version < seasonTwo.version);
       if (sortedSeasons.length) {
         season.version = sortedSeasons[0].version + 1;
       }
@@ -64,7 +64,7 @@ export function addDates(req) {
     const updatedSeason = {
       ...chosenSeason,
       dates: dates
-      };
+    };
     const result = dataHandler.update(updatedSeason);
     if (result.errors) {
       reject(result.errors)
@@ -92,7 +92,7 @@ const writeEvents = (mappedSeason, zipFile) => {
   }];
 
   return new Promise((resolve, reject) => {
-    json2csv({ data: mappedSeason.events, fields: fields }, function(err, csv) {
+    json2csv({data: mappedSeason.events, fields: fields}, function (err, csv) {
       if (err) {
         reject(err);
       } else {
@@ -117,7 +117,7 @@ const writeTours = (mappedSeason, zipFile) => {
   }];
 
   return new Promise((resolve, reject) => {
-    json2csv({ data: mappedSeason.tours, fields: fields }, function(err, csv) {
+    json2csv({data: mappedSeason.tours, fields: fields}, function (err, csv) {
       if (err) {
         reject(err);
       } else {
@@ -146,7 +146,7 @@ const writeRoutes = (mappedSeason, zipFile) => {
   }];
 
   return new Promise((resolve, reject) => {
-    json2csv({ data: mappedSeason.routes, fields: fields }, function(err, csv) {
+    json2csv({data: mappedSeason.routes, fields: fields}, function (err, csv) {
       if (err) {
         reject(err);
       } else {
@@ -166,7 +166,7 @@ const writeStartRoutes = (mappedSeason, zipFile) => {
   }];
 
   return new Promise((resolve, reject) => {
-    json2csv({ data: mappedSeason.starts, fields: fields }, function(err, csv) {
+    json2csv({data: mappedSeason.starts, fields: fields}, function (err, csv) {
       if (err) {
         reject(err);
       } else {
@@ -192,34 +192,42 @@ export function csv(req, params) {
         reject('No season available');
         return;
       }
-      const seasonMapper = new SeasonMapper(configurationHandler.getData(), tourHandler.getData(), restaurantHandler.getData(), locationHandler.getData());
-      const mappedSeason = seasonMapper.map(season);
-      var Zip = require('node-zip');
-      var zip = new Zip();
       try {
-        Promise.all([
-          writeEvents(mappedSeason, zip),
-          writeTours(mappedSeason, zip),
-          writeRoutes(mappedSeason, zip),
-          writeStartRoutes(mappedSeason, zip)
-        ]).then(data => {
-          var options = {base64: false, compression:'DEFLATE'};
-          import fs from 'fs';
-          fs.writeFile(path, zip.generate(options), 'binary', function (error) {
-            if (error) {
-              reject(error);
-            } else {
-              resolve(res => {
-                res.download(path, `season.zip`, (err) => {
-                  // If we don't need the file anymore we could manually call the cleanupCallback
-                  // But that is not necessary if we didn't pass the keep option because the library
-                  // will clean after itself.
-                  cleanupCallback();
-                });
+        const seasonMapper = new SeasonMapper(configurationHandler.getData(), tourHandler.getData(), restaurantHandler.getData(), locationHandler.getData());
+        const mappedSeason = seasonMapper.map(season);
+        var Zip = require('node-zip');
+        var zip = new Zip();
+        try {
+          Promise.all([
+            writeEvents(mappedSeason, zip),
+            writeTours(mappedSeason, zip),
+            writeRoutes(mappedSeason, zip),
+            writeStartRoutes(mappedSeason, zip)
+          ]).then(data => {
+            try {
+              const options = {base64: false, compression: 'DEFLATE'};
+              import fs from 'fs';
+              fs.writeFile(path, zip.generate(options), 'binary', function (error) {
+                if (error) {
+                  reject(error);
+                } else {
+                  resolve(res => {
+                    res.download(path, `season.zip`, (err) => {
+                      // If we don't need the file anymore we could manually call the cleanupCallback
+                      // But that is not necessary if we didn't pass the keep option because the library
+                      // will clean after itself.
+                      cleanupCallback();
+                    });
+                  });
+                }
               });
+            } catch (err) {
+              reject(err);
             }
-          });
-        }).catch(err => reject(err));
+          }).catch(err => reject(err));
+        } catch (err) {
+          reject(err);
+        }
       } catch (err) {
         reject(err);
       }
