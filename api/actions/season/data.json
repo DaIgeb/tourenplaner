@@ -298,7 +298,7 @@
                 ]
               },
               {
-                "tour": 45,
+                "tour": 15,
                 "totalScore": 61,
                 "scores": [
                   {
@@ -8423,7 +8423,24 @@
       },
       {
         "date": "2016-06-10T22:00:00.000Z",
+        "description": "2 Tagestour",
         "tours": [
+          {
+            "tour": 0,
+            "candidates": [
+              {
+                "tour": null,
+                "scores": [
+                  {
+                    "name": "Special date override",
+                    "score": 0,
+                    "note": "2 Tagestour"
+                  }
+                ]
+              }
+            ],
+            "points": 80
+          },
           {
             "type": {
               "id": 3,
@@ -11379,7 +11396,24 @@
       },
       {
         "date": "2016-07-08T22:00:00.000Z",
+        "description": "Ferientour bis 16.07.2016",
         "tours": [
+          {
+            "tour": 0,
+            "candidates": [
+              {
+                "tour": null,
+                "scores": [
+                  {
+                    "name": "Special date override",
+                    "score": 0,
+                    "note": "Ferientour"
+                  }
+                ]
+              }
+            ],
+            "points": 150
+          },
           {
             "type": {
               "id": 3,
