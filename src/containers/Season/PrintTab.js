@@ -246,9 +246,9 @@ export class PrintTab extends Component {
     };
     const renderDescription = (tour, idx) => {
       return [(
-        <div className={styles.row} key={idx} id={`tour-${tour.id}`}>
+        <div className={styles.row} key={idx} >
           <div className={styles.cell2}>
-            <b>{tour.name}</b><br/>
+            <h3 id={`tour-${tour.id}`}>{tour.name}</h3>
             ca {tour.distance} km<br />
             ca {tour.elevation} hm
           </div>
@@ -263,9 +263,9 @@ export class PrintTab extends Component {
     };
     const renderStartRoute = (tour, idx) => {
       return [(
-        <div className={styles.row} key={idx} id={`start-route-${tour.id}`}>
+        <div className={styles.row} key={idx}>
           <div className={styles.cell2}>
-            <b>{tour.name}</b>
+            <h3 id={`start-route-${tour.id}`}>{tour.name}</h3>
           </div>
           <div className={styles.cell7}>
             {tour.locations.map(renderLocation)}
@@ -304,6 +304,7 @@ export class PrintTab extends Component {
         </div>
         <div className={styles.table}>
           <h1>RVW Tourenbeschrieb {season.year} <img src={logo} className={styles.logo}/></h1>
+          <h2>Touren</h2>
           {mappedSeason.routes.map(renderDescription)}
         </div>
         <div className={styles.table}>
