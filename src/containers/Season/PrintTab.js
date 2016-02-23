@@ -229,7 +229,8 @@ export class PrintTab extends Component {
             <div className="col-xs-8">13:40 Uhr</div>
 
             <div className="col-xs-3 col-xs-offset-1">Sonntagstouren:</div>
-            <div className="col-xs-8">08:40 Uhr</div>
+            <div className="col-xs-2">08:40 Uhr</div>
+            <div className="col-xs-6">(ab {eveningEnd} 09.10 Uhr)</div>
 
             <div className="col-xs-3 col-xs-offset-1">Tagestouren:</div>
             <div className="col-xs-8">08:15 Uhr</div>
