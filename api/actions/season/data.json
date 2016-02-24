@@ -3488,7 +3488,7 @@
                 ]
               },
               {
-                "tour": 27,
+                "tour": 60,
                 "totalScore": 61,
                 "scores": [
                   {
@@ -6640,7 +6640,7 @@
             "tour": 0,
             "candidates": [
               {
-                "tour": 60,
+                "tour": 27,
                 "totalScore": 60,
                 "scores": [
                   {
@@ -9711,7 +9711,7 @@
                 ]
               },
               {
-                "tour": 38,
+                "tour": 60,
                 "totalScore": 58,
                 "scores": [
                   {
@@ -17389,7 +17389,7 @@
                 ]
               },
               {
-                "tour": 38,
+                "tour": 9,
                 "totalScore": 55,
                 "scores": [
                   {
@@ -18767,7 +18767,7 @@
                 ]
               },
               {
-                "tour": 36,
+                "tour": 38,
                 "totalScore": 55,
                 "scores": [
                   {
