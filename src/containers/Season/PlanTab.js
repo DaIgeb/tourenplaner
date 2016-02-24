@@ -122,12 +122,13 @@ export class PlanTab extends Component {
     const styles = require('./Season.scss');
     const tourObj = !isNaN(tour.tour) && tour.tour >= 0 ? this.findTour(tour.candidates[tour.tour].tour) : null;
     const restaurantCheck = this.checkRestaurant(date, tour, tourObj);
+    const type = tour.type ? tour.type.label : 'Keine Tour';
     const tooltip = this.renderTooltip(tour);
     if (idx === 0) {
       return [
         (<td key="warn">{restaurantCheck}</td>),
         (<td key="type" className={tooltip.candidates ? styles.scoretip : ''}>
-          {tour.type.label}
+          {type}
           {tooltip.tooltip}
         </td>),
         (<td key="name">
@@ -139,7 +140,7 @@ export class PlanTab extends Component {
     return [
       (<td key="warn">{restaurantCheck}</td>),
       (<td key="type" className={tooltip.candidates ? styles.scoretip : ''}>
-        {tour.type.label}
+        {type}
         {tooltip.tooltip}
       </td>),
       (<td key="name">
