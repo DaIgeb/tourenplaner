@@ -5229,5 +5229,12 @@
     "latitude": 47.435372,
     "longitude": 8.847538,
     "id": 609
+  },
+  {
+    "name": "Fisibach",
+    "city": "Fisibach",
+    "latitude": 47.564029,
+    "longitude": 8.406702,
+    "id": 610
   }
 ]

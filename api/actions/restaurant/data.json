@@ -1183,6 +1183,7 @@
     ]
   },
   {
+    "id": 14,
     "location": 161,
     "timelines": [
       {
@@ -1190,10 +1191,87 @@
         "until": "2100-12-30T23:00:00.000Z",
         "notes": "",
         "phone": "052 319 32 32",
-        "businessHours": []
+        "businessHours": [
+          {
+            "weekday": "Sunday",
+            "from": {
+              "hour": 10,
+              "minute": 0
+            },
+            "until": {
+              "hour": 24,
+              "minute": 0
+            }
+          },
+          {
+            "weekday": "Monday",
+            "from": {
+              "hour": 10,
+              "minute": 0
+            },
+            "until": {
+              "hour": 24,
+              "minute": 0
+            }
+          },
+          {
+            "weekday": "Tuesday",
+            "from": {
+              "hour": 10,
+              "minute": 0
+            },
+            "until": {
+              "hour": 24,
+              "minute": 0
+            }
+          },
+          {
+            "weekday": "Wednesday",
+            "from": {
+              "hour": 10,
+              "minute": 0
+            },
+            "until": {
+              "hour": 24,
+              "minute": 0
+            }
+          },
+          {
+            "weekday": "Thursday",
+            "from": {
+              "hour": 10,
+              "minute": 0
+            },
+            "until": {
+              "hour": 24,
+              "minute": 0
+            }
+          },
+          {
+            "weekday": "Friday",
+            "from": {
+              "hour": 10,
+              "minute": 0
+            },
+            "until": {
+              "hour": 24,
+              "minute": 0
+            }
+          },
+          {
+            "weekday": "Saturday",
+            "from": {
+              "hour": 10,
+              "minute": 0
+            },
+            "until": {
+              "hour": 24,
+              "minute": 0
+            }
+          }
+        ]
       }
-    ],
-    "id": 14
+    ]
   },
   {
     "id": 15,
@@ -1361,7 +1439,7 @@
       {
         "from": "2015-12-31T23:00:00.000Z",
         "until": "2100-12-30T23:00:00.000Z",
-        "notes": "Mo/Di Ruhetag",
+        "notes": "Mo/Di Ruhetag, zur Zeit geschlossen",
         "phone": "044 858 22 19",
         "businessHours": []
       }
@@ -3272,16 +3350,84 @@
     "id": 40
   },
   {
+    "id": 41,
     "location": 268,
     "timelines": [
       {
         "from": "2015-12-31T23:00:00.000Z",
         "until": "2100-12-30T23:00:00.000Z",
+        "notes": "",
         "phone": "044 954 01 35 ",
-        "businessHours": []
+        "businessHours": [
+          {
+            "weekday": "Sunday",
+            "from": {
+              "hour": 7,
+              "minute": 30
+            },
+            "until": {
+              "hour": 20,
+              "minute": 0
+            }
+          },
+          {
+            "weekday": "Monday",
+            "from": {
+              "hour": 7,
+              "minute": 30
+            },
+            "until": {
+              "hour": 20,
+              "minute": 0
+            }
+          },
+          {
+            "weekday": "Tuesday",
+            "from": {
+              "hour": 7,
+              "minute": 30
+            },
+            "until": {
+              "hour": 20,
+              "minute": 0
+            }
+          },
+          {
+            "weekday": "Thursday",
+            "from": {
+              "hour": 7,
+              "minute": 30
+            },
+            "until": {
+              "hour": 20,
+              "minute": 0
+            }
+          },
+          {
+            "weekday": "Friday",
+            "from": {
+              "hour": 7,
+              "minute": 30
+            },
+            "until": {
+              "hour": 20,
+              "minute": 0
+            }
+          },
+          {
+            "weekday": "Saturday",
+            "from": {
+              "hour": 7,
+              "minute": 30
+            },
+            "until": {
+              "hour": 20,
+              "minute": 0
+            }
+          }
+        ]
       }
-    ],
-    "id": 41
+    ]
   },
   {
     "location": 269,
@@ -5452,7 +5598,63 @@
         "from": "2015-12-31T23:00:00.000Z",
         "until": "2100-12-30T23:00:00.000Z",
         "phone": "044 939 16 86",
-        "businessHours": []
+        "businessHours": [
+          {
+            "weekday": "Sunday",
+            "from": {
+              "hour": 10,
+              "minute": 0
+            },
+            "until": {
+              "hour": 24,
+              "minute": 0
+            }
+          },
+          {
+            "weekday": "Wednesday",
+            "from": {
+              "hour": 10,
+              "minute": 0
+            },
+            "until": {
+              "hour": 24,
+              "minute": 0
+            }
+          },
+          {
+            "weekday": "Thursday",
+            "from": {
+              "hour": 10,
+              "minute": 0
+            },
+            "until": {
+              "hour": 24,
+              "minute": 0
+            }
+          },
+          {
+            "weekday": "Friday",
+            "from": {
+              "hour": 10,
+              "minute": 0
+            },
+            "until": {
+              "hour": 24,
+              "minute": 0
+            }
+          },
+          {
+            "weekday": "Saturday",
+            "from": {
+              "hour": 10,
+              "minute": 0
+            },
+            "until": {
+              "hour": 24,
+              "minute": 0
+            }
+          }
+        ]
       }
     ]
   },
