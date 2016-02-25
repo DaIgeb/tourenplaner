@@ -1,5 +1,57 @@
 @import "~compass-sass-mixins/lib/compass";
 
+.table {
+  display: table;
+  width: 100%;
+}
+.tablePageBreakRow {
+  page-break-inside: auto;
+  height: 5px;
+  page-break-after: auto;
+  page-break-before: auto;
+}
+
+.tableRow {
+  > div {
+    padding: 2px;
+    border-left: 1px solid;
+    border-bottom: 1px solid;
+    border-top: 1px solid;
+    page-break-inside: avoid;
+
+    &:last-of-type {
+      border-right: 1px solid;
+    }
+  }
+
+  a[href^=http\:\/\/www\.google\.com\/maps]:after {
+    content: ''
+  }
+
+  page-break-inside: avoid;
+
+  h3 {
+    font-size: 14px;
+    font-weight: bold;
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+}
+
+.colSmall {
+  display: table-cell;
+  width: 125px;
+}
+.colStartRoute {
+  display: table-cell;
+  width: 125px;
+}
+
+.col {
+  display: table-cell;
+}
+
+
 .logo {
   float: right;
   width: 75px;
@@ -29,6 +81,11 @@
       }
     }
   }
+}
+
+.meetingPoint {
+  margin-top: 10px;
+  margin-bottom: 5px;
 }
 
 .noPageBreak {
@@ -88,75 +145,9 @@
   }
 }
 
-.table{
+.section{
   //@include display-flex;
   //@include flex-direction(column);
   page-break-before: always;
 }
 
-.row {
-  //@include flex(2 1);
-
-  @include display-flex;
-  @include flex-direction(row);
-  > div {
-    padding: 2px;
-    border-left: 1px solid;
-    &:last-of-type {
-      border-right: 1px solid;
-    }
-  }
-  a[href^=http\:\/\/www\.google\.com\/maps]:after {
-    content: ''
-  }
-  &:not(:empty) {
-    border-bottom: 1px solid;
-    border-top: 1px solid;
-    page-break-inside: avoid;
-    page-break-after: avoid;
-    page-break-before: avoid;
-  }
-
-  &:empty {
-    page-break-inside: auto;
-    height: 5px;
-    page-break-after: auto;
-    page-break-before: auto;
-  }
-
-  h3 {
-    font-size: 14px;
-    font-weight: bold;
-    margin-top: 0;
-    margin-bottom: 0;
-  }
-}
-
-.cell1 {
-  @include flex(1 1);
-  display: block;
-  page-break-inside: avoid;
-  page-break-after: avoid;
-  page-break-before: avoid;
-}
-.cell2 {
-  @include flex(2 1);
-  display: block;
-  page-break-inside: avoid;
-  page-break-after: avoid;
-  page-break-before: avoid;
-}
-.cell3 {
-  @include flex(3 1);
-  display: block;
-  page-break-inside: avoid;
-  page-break-after: avoid;
-  page-break-before: avoid;
-}
-.cell7 {
-  @include flex(7 1);
-  display: block;
-  page-break-inside: avoid;
-  page-break-after: avoid;
-  page-break-before: avoid;
-}

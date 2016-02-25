@@ -178,7 +178,7 @@ export class PrintTab extends Component {
       return (
         <div className={'col-xs-12 ' + styles.noPageBreak}>
           <div className="row">
-            <div className="col-xs-12"><strong>Treffpunkt <a
+            <div className={'col-xs-12 ' + styles.meetingPoint}><strong>Treffpunkt <a
               href="https://goo.gl/maps/wJMuPAPSpTn">Museumsplatz</a></strong></div>
           </div>
           <div className="row">
@@ -247,32 +247,32 @@ export class PrintTab extends Component {
     };
     const renderDescription = (tour, idx) => {
       return [(
-        <div className={styles.row} key={idx} >
-          <div className={styles.cell2}>
+        <div className={styles.tableRow} key={idx} >
+          <div className={styles.colSmall}>
             <h3 id={`tour-${tour.id}`}>{tour.name}</h3>
             ca {tour.distance} km<br />
             ca {tour.elevation} hm
           </div>
-          <div className={styles.cell2}>
+          <div className={styles.colStartRoute}>
             <a href={`#start-route-${tour.startroute.id}`}>{tour.startroute.name}</a>
           </div>
-          <div className={styles.cell7}>
+          <div className={styles.col}>
             {tour.locations.map(renderLocation)}
           </div>
         </div>),
-        <div className={styles.row} key={`${idx}/pagebreak`}></div>];
+        <div className={styles.tablePageBreakRow} key={idx + 'emptyRow'}></div>];
     };
     const renderStartRoute = (tour, idx) => {
       return [(
-        <div className={styles.row} key={idx}>
-          <div className={styles.cell2}>
+        <div className={styles.tableRow} key={idx} style={{display: 'table-row'}}>
+          <div className={styles.colStartRoute}>
             <h3 id={`start-route-${tour.id}`}>{tour.name}</h3>
           </div>
-          <div className={styles.cell7}>
+          <div className={styles.col}>
             {tour.locations.map(renderLocation)}
           </div>
         </div>),
-        <div className={styles.row} key={`${idx}/pagebreak`}></div>];
+        <div className={styles.tablePageBreakRow} key={idx + 'emptyRow'}></div>];
     };
 
     return (
@@ -303,14 +303,18 @@ export class PrintTab extends Component {
           ))}
           {renderInfo()}
         </div>
-        <div className={styles.table}>
+        <div className={styles.section}>
           <h1>RVW Tourenbeschrieb {season.year} <img src={logo} className={styles.logo}/></h1>
           <h2>Touren</h2>
-          {mappedSeason.routes.map(renderDescription)}
+          <div className={styles.table}>
+            {mappedSeason.routes.map(renderDescription)}
+          </div>
         </div>
-        <div className={styles.table}>
+        <div>
           <h2>Start-Routen</h2>
-          {mappedSeason.starts.map(renderStartRoute)}
+          <div className={styles.table}>
+            {mappedSeason.starts.map(renderStartRoute)}
+          </div>
         </div>
       </div>);
   }
