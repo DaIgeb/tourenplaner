@@ -169,7 +169,7 @@ export class PrintTab extends Component {
       return (
         <div key={idx} className="row">
           <div className="col-xs-6">{description}</div>
-          <div className="col-xs-6">{dateFrom} {dateTo ? (<span>&mdash; {dateTo}</span>) : ''}</div>
+          <div className="col-xs-6">{dateFrom} {dateTo ? (<span>&ndash; {dateTo}</span>) : ''}</div>
         </div>
       );
     };
