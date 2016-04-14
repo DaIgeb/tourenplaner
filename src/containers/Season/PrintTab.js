@@ -276,44 +276,47 @@ export class PrintTab extends Component {
     };
 
     return (
-      <div className={styles.print + ' container' }>
-        <div className="row">
-          <h1>RVW Tourenplan {season.year} <img src={logo} className={styles.logo}/></h1>
-          <h2> Events</h2>
-          {mappedSeason.events.map(renderEvent)}
-          <h2> Touren</h2>
-          {datesByMonth.map((month, idx) => (
-            <div key={idx} className={'col-xs-12 ' + styles.noPageBreak}>
-              <div className="row">
-                <div className="col-xs-12">
-                  <h3>{month.monthName}</h3>
+      <div>
+        <div>To Create a pdf run <code>wkhtmltopdf.exe --print-media-type -n &lt;this url&gt;/print Tourenplan.pdf</code></div>
+        <div className={styles.print + ' container' }>
+          <div className="row">
+            <h1>RVW Tourenplan {season.year} <img src={logo} className={styles.logo}/></h1>
+            <h2> Events</h2>
+            {mappedSeason.events.map(renderEvent)}
+            <h2> Touren</h2>
+            {datesByMonth.map((month, idx) => (
+              <div key={idx} className={'col-xs-12 ' + styles.noPageBreak}>
+                <div className="row">
+                  <div className="col-xs-12">
+                    <h3>{month.monthName}</h3>
+                  </div>
+                </div>
+                <div className={styles.list}>
+                  {month.dates.map((date, dateIdx) => (
+                    <div key={dateIdx} className={styles.listItem + ' row ' + (date.points >= 40 ? styles.fullday : '')}>
+                      <div className="col-xs-3">{date.date}&nbsp;</div>
+                      <div className={styles.tourNameCol + ' col-xs-7'}>{renderTourName(date)}&nbsp;</div>
+                      <div className="col-xs-1">&nbsp;</div>
+                      <div className="col-xs-1">{date.points}&nbsp;</div>
+                    </div>
+                  ))}
                 </div>
               </div>
-              <div className={styles.list}>
-                {month.dates.map((date, dateIdx) => (
-                  <div key={dateIdx} className={styles.listItem + ' row ' + (date.points >= 40 ? styles.fullday : '')}>
-                    <div className="col-xs-3">{date.date}&nbsp;</div>
-                    <div className={styles.tourNameCol + ' col-xs-7'}>{renderTourName(date)}&nbsp;</div>
-                    <div className="col-xs-1">&nbsp;</div>
-                    <div className="col-xs-1">{date.points}&nbsp;</div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          ))}
-          {renderInfo()}
-        </div>
-        <div className={styles.section}>
-          <h1>RVW Tourenbeschrieb {season.year} <img src={logo} className={styles.logo}/></h1>
-          <h2>Touren</h2>
-          <div className={styles.table}>
-            {mappedSeason.routes.map(renderDescription)}
+            ))}
+            {renderInfo()}
           </div>
-        </div>
-        <div>
-          <h2>Start-Routen</h2>
-          <div className={styles.table}>
-            {mappedSeason.starts.map(renderStartRoute)}
+          <div className={styles.section}>
+            <h1>RVW Tourenbeschrieb {season.year} <img src={logo} className={styles.logo}/></h1>
+            <h2>Touren</h2>
+            <div className={styles.table}>
+              {mappedSeason.routes.map(renderDescription)}
+            </div>
+          </div>
+          <div>
+            <h2>Start-Routen</h2>
+            <div className={styles.table}>
+              {mappedSeason.starts.map(renderStartRoute)}
+            </div>
           </div>
         </div>
       </div>);
