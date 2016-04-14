@@ -2981,6 +2981,7 @@
     ]
   },
   {
+    "id": 66,
     "name": "Wolfensberg",
     "types": [
       {
@@ -2992,7 +2993,7 @@
       {
         "from": "2015-12-31T23:00:00.000Z",
         "until": "2100-12-30T23:00:00.000Z",
-        "startroute": 4,
+        "startroute": 6,
         "difficulty": {
           "id": 3,
           "label": "Schwierig"
@@ -3017,8 +3018,7 @@
           14
         ]
       }
-    ],
-    "id": 66
+    ]
   },
   {
     "id": 67,
