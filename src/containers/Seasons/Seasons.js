@@ -122,7 +122,7 @@ export default class Seasons extends Component {
           <td className={styles.buttonCol}>
             <LinkContainer to={'/seasons/' + season.id}>
               <a className="btn btn-default">
-                <i className="fa fa-trash"/> Details
+                Details
               </a>
             </LinkContainer>
             <button className="btn btn-primary" onClick={handleEdit(season)}>
