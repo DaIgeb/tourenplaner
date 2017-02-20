@@ -359,5 +359,369 @@
       }
     ],
     "id": 1
+  },
+  {
+    "year": "2017",
+    "seasonStart": "2017-03-03T23:00:00.000Z",
+    "seasonEnd": "2017-10-26T22:00:00.000Z",
+    "eveningStart": "2017-04-03T22:00:00.000Z",
+    "eveningEnd": "2017-09-13T22:00:00.000Z",
+    "events": [
+      {
+        "from": "2017-04-28T22:00:00.000Z",
+        "to": "2017-05-13T22:00:00.000Z",
+        "name": "Schnupperwochen",
+        "location": "Winterthur"
+      },
+      {
+        "from": "2017-05-26T22:00:00.000Z",
+        "to": "2017-05-26T22:00:00.000Z",
+        "name": "Säntis-Classic",
+        "location": "Weinfelden",
+        "organizer": "Antoine"
+      },
+      {
+        "from": "2017-06-23T22:00:00.000Z",
+        "to": "2017-06-24T22:00:00.000Z",
+        "name": "2 Tagestour",
+        "location": "Malbun (LI)",
+        "organizer": "Hansjörg"
+      },
+      {
+        "from": "2017-08-25T22:00:00.000Z",
+        "to": "2017-09-01T22:00:00.000Z",
+        "name": "Ferientour",
+        "location": "La Chaux-de-Fonds",
+        "organizer": "Nick"
+      }
+    ],
+    "specialDates": [
+      {
+        "date": "2017-03-02T23:00:00.000Z",
+        "name": "GV",
+        "points": 20,
+        "action": {
+          "id": 1,
+          "label": "Tour entfernen"
+        },
+        "tours": []
+      },
+      {
+        "date": "2017-03-03T23:00:00.000Z",
+        "name": "Erste Tour",
+        "action": {
+          "id": 3,
+          "label": "Tour ersetzen"
+        },
+        "tours": [
+          {
+            "id": 44,
+            "type": {
+              "id": 3,
+              "label": "Nachmittagstour"
+            }
+          }
+        ]
+      },
+      {
+        "date": "2017-04-15T23:00:00.000Z",
+        "name": "Ostern",
+        "action": {
+          "id": 1,
+          "label": "Tour entfernen"
+        },
+        "tours": []
+      },
+      {
+        "date": "2017-04-16T22:00:00.000Z",
+        "name": "Ostermontag",
+        "action": {
+          "id": 3,
+          "label": "Tour ersetzen"
+        },
+        "tours": [
+          {
+            "id": 16,
+            "type": {
+              "id": 2,
+              "label": "Morgentour"
+            }
+          }
+        ]
+      },
+      {
+        "date": "2017-04-30T22:00:00.000Z",
+        "name": "1. Mai",
+        "action": {
+          "id": 3,
+          "label": "Tour ersetzen"
+        },
+        "tours": [
+          {
+            "id": 32,
+            "type": {
+              "id": 2,
+              "label": "Morgentour"
+            }
+          }
+        ]
+      },
+      {
+        "date": "2017-05-24T22:00:00.000Z",
+        "name": "Auffahrt",
+        "action": {
+          "id": 3,
+          "label": "Tour ersetzen"
+        },
+        "tours": [
+          {
+            "id": 31,
+            "type": {
+              "id": 2,
+              "label": "Morgentour"
+            }
+          }
+        ]
+      },
+      {
+        "date": "2017-06-3T22:00:00.000Z",
+        "name": "Pfingstsonntag",
+        "action": {
+          "id": 1,
+          "label": "Tour entfernen"
+        },
+        "tours": []
+      },
+      {
+        "date": "2017-06-04T22:00:00.000Z",
+        "name": "Pfingstmontag",
+        "action": {
+          "id": 3,
+          "label": "Tour ersetzen"
+        },
+        "tours": [
+          {
+            "id": 16,
+            "type": {
+              "id": 2,
+              "label": "Morgentour"
+            }
+          }
+        ]
+      },
+      {
+        "date": "2017-05-27T22:00:00.000Z",
+        "name": "Winti-Marathon",
+        "points": 40,
+        "action": {
+          "id": 3,
+          "label": "Tour ersetzen"
+        },
+        "tours": []
+      },
+      {
+        "date": "2017-07-31T22:00:00.000Z",
+        "name": "Nationalfeiertag",
+        "action": {
+          "id": 3,
+          "label": "Tour ersetzen"
+        },
+        "tours": [
+          {
+            "id": 32,
+            "type": {
+              "id": 2,
+              "label": "Morgentour"
+            }
+          }
+        ]
+      },
+      {
+        "date": "2017-06-17T22:00:00.000Z",
+        "name": "Überraschungstour",
+        "action": {
+          "id": 3,
+          "label": "Tour ersetzen"
+        },
+        "points": 20,
+        "tours": []
+      },
+      {
+        "date": "2017-08-11T22:00:00.000Z",
+        "name": "Überraschungstour",
+        "action": {
+          "id": 3,
+          "label": "Tour ersetzen"
+        },
+        "points": 20,
+        "tours": []
+      },
+      {
+        "date": "2017-09-16T22:00:00.000Z",
+        "name": "Bettag",
+        "points": 40,
+        "action": {
+          "id": 3,
+          "label": "Tour ersetzen"
+        },
+        "tours": []
+      },
+      {
+        "date": "2017-09-22T22:00:00.000Z",
+        "name": "Winti-Sola",
+        "points": 40,
+        "action": {
+          "id": 2,
+          "label": "Tour hinzufügen"
+        },
+        "tours": []
+      },
+      {
+        "date": "2017-10-26T22:00:00.000Z",
+        "name": "Abschluss",
+        "action": {
+          "id": 1,
+          "label": "Tour entfernen"
+        },
+        "tours": []
+      },
+      {
+        "date": "2017-04-14T22:00:00.000Z",
+        "name": "Ricken",
+        "action": {
+          "id": 2,
+          "label": "Tour hinzufügen"
+        },
+        "tours": [
+          {
+            "id": 46,
+            "type": {
+              "id": 5,
+              "label": "Tagestour"
+            }
+          }
+        ]
+      },
+      {
+        "date": "2017-04-28T22:00:00.000Z",
+        "name": "Schwarzwald",
+        "action": {
+          "id": 2,
+          "label": "Tour hinzufügen"
+        },
+        "tours": [
+          {
+            "id": 51,
+            "type": {
+              "id": 5,
+              "label": "Tagestour"
+            }
+          }
+        ]
+      },
+      {
+        "date": "2017-05-12T22:00:00.000Z",
+        "name": "Schwägalp",
+        "action": {
+          "id": 2,
+          "label": "Tour hinzufügen"
+        },
+        "tours": [
+          {
+            "id": 49,
+            "type": {
+              "id": 5,
+              "label": "Tagestour"
+            }
+          }
+        ]
+      },
+      {
+        "date": "2017-06-30T22:00:00.000Z",
+        "name": "Klingenzell",
+        "action": {
+          "id": 2,
+          "label": "Tour hinzufügen"
+        },
+        "tours": [
+          {
+            "id": 28,
+            "type": {
+              "id": 5,
+              "label": "Tagestour"
+            }
+          }
+        ]
+      },
+      {
+        "date": "2017-07-27T22:00:00.000Z",
+        "name": "Appenzell",
+        "action": {
+          "id": 2,
+          "label": "Tour hinzufügen"
+        },
+        "tours": [
+          {
+            "id": 10,
+            "type": {
+              "id": 5,
+              "label": "Tagestour"
+            }
+          }
+        ]
+      },
+      {
+        "date": "2017-06-09T22:00:00.000Z",
+        "name": "Zugerland",
+        "action": {
+          "id": 2,
+          "label": "Tour hinzufügen"
+        },
+        "tours": [
+          {
+            "id": 65,
+            "type": {
+              "id": 5,
+              "label": "Tagestour"
+            }
+          }
+        ]
+      },
+      {
+        "date": "2017-07-14T22:00:00.000Z",
+        "name": "Sattelegg",
+        "action": {
+          "id": 2,
+          "label": "Tour hinzufügen"
+        },
+        "tours": [
+          {
+            "id": 48,
+            "type": {
+              "id": 5,
+              "label": "Tagestour"
+            }
+          }
+        ]
+      },
+      {
+        "date": "2017-08-11T22:00:00.000Z",
+        "name": "Pragelpass",
+        "action": {
+          "id": 2,
+          "label": "Tour hinzufügen"
+        },
+        "tours": [
+          {
+            "id": 43,
+            "type": {
+              "id": 5,
+              "label": "Tagestour"
+            }
+          }
+        ]
+      }
+    ],
+    "id": 2
   }
 ]
