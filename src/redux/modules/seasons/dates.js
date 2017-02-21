@@ -1,6 +1,6 @@
-import {TourType} from 'models';
-import {moment} from '../../../../shared/utils/moment';
-import {SpecialDateAction} from '../configurations';
+import { TourType } from 'models';
+import { moment } from '../../../../shared/utils/moment';
+import { SpecialDateAction } from '../configurations';
 
 function handleSpecialDate(specialDate) {
   switch (specialDate.action.id) {
@@ -85,15 +85,27 @@ export function createDates(configuration) {
   const eveningStart = moment(configuration.eveningStart, moment.ISO_8601).subtract(1, 'd');
   const eveningEnd = moment(configuration.eveningEnd, moment.ISO_8601).add(1, 'd');
   const dates = [];
-  const findSpecialDate = (dateToCheck) => configuration.specialDates.find(sd => sd.date === dateToCheck);
+  const findSpecialDate = (dateToCheck) => {
+    const specialDates = configuration.specialDates.filter(sd => sd.date === dateToCheck);
+    switch (specialDates.length) {
+      case 0:
+        return undefined;
+      case 1:
+        return specialDates[0];
+      default: {
+        console.warn('Multiple special-dates defined', dateToCheck, specialDates);
+        return specialDates[0];
+      }
+    }
+  };
 
   while (date.isBefore(end, 'day') || date.isSame(end, 'day')) {
-    const specialDate = findSpecialDate(date.toISOString());
     const newDateEntry = {
       date: date.toISOString(),
       tours: []
     };
 
+    const specialDate = findSpecialDate(date.toISOString());
     if (specialDate) {
       newDateEntry.description = specialDate.name;
       newDateEntry.tours.push.apply(newDateEntry.tours, handleSpecialDate(specialDate));
@@ -103,7 +115,7 @@ export function createDates(configuration) {
       newDateEntry.tours.push.apply(newDateEntry.tours, createTourForDate(date, eveningStart, eveningEnd));
     }
 
-    if (newDateEntry.tours.length) {
+    if (newDateEntry.tours.length || specialDate) {
       dates.push(newDateEntry);
     }
 
@@ -123,9 +135,13 @@ export function createDates(configuration) {
   }).forEach(specialDate => {
     const newDateEntry = {
       description: specialDate.name,
-      date: date.toISOString(),
+      date: specialDate.date,
       tours: handleSpecialDate(specialDate)
     };
+    const existingEntries = dates.find((entry) => entry.date === newDateEntry.date);
+    if (existingEntries.length > 0) {
+      console.warn('Duplicate entries for date', newDateEntry.date, existingEntries);
+    }
     dates.push(newDateEntry);
   });
 

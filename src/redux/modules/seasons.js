@@ -6,7 +6,7 @@ import { moment } from '../../../shared/utils/moment';
 import { timelineMatches } from '../../../shared/utils/timeline';
 import { createScore as createDifficultyScore } from './seasons/difficultyScoreBuilder';
 import { createScore as createLocationScore } from './seasons/locationScoreBuilder';
-import { createScore as createDistanceScore } from './seasons/distanceScoreBuilder';
+import { createScore as createDistanceScore, createDifficultyScore as createDateBasedDifficultyScore } from './seasons/distanceScoreBuilder';
 import { createDates } from './seasons/dates';
 
 const LOAD = 'tourenplaner/seasons/LOAD';
@@ -300,6 +300,7 @@ function addNextTour(seasonId) {
           scores.push(createDistanceScore(configuration, date.date, tour.type, timeline.distance, timeline.elevation));
           scores.push(createDifficultyScore(tours, timeline, previousTour));
           scores.push(createLocationScore(tours, timeline, momentDate, previousTour));
+          scores.push(createDateBasedDifficultyScore(configuration, date.date, timeline.difficulty));
 
           return {
             tour: item.id,
