@@ -586,7 +586,7 @@
         "tours": []
       },
       {
-        "date": "2017-04-14T22:00:00.000Z",
+        "date": "2017-04-28T22:00:00.000Z",
         "name": "Ricken",
         "action": {
           "id": 2,
@@ -603,7 +603,7 @@
         ]
       },
       {
-        "date": "2017-04-28T22:00:00.000Z",
+        "date": "2017-05-12T22:00:00.000Z",
         "name": "Schwarzwald",
         "action": {
           "id": 2,
@@ -612,23 +612,6 @@
         "tours": [
           {
             "id": 51,
-            "type": {
-              "id": 5,
-              "label": "Tagestour"
-            }
-          }
-        ]
-      },
-      {
-        "date": "2017-05-12T22:00:00.000Z",
-        "name": "Schwägalp",
-        "action": {
-          "id": 2,
-          "label": "Tour hinzufügen"
-        },
-        "tours": [
-          {
-            "id": 49,
             "type": {
               "id": 5,
               "label": "Tagestour"
