@@ -277,7 +277,7 @@ export class PrintTab extends Component {
 
     return (
       <div>
-        <div>To Create a pdf run <code>wkhtmltopdf.exe --print-media-type -n &lt;this url&gt;/print Tourenplan.pdf</code></div>
+        <div className="hidden-print">To Create a pdf run <code>wkhtmltopdf.exe --print-media-type -n &lt;this url&gt;/print Tourenplan.pdf</code></div>
         <div className={styles.print + ' container' }>
           <div className="row">
             <h1>RVW Tourenplan {season.year} <img src={logo} className={styles.logo}/></h1>
