@@ -32,17 +32,32 @@ export class PlanTab extends Component {
     const tourTl = tourObj.timelines.find(tl => timelineMatches(tl, momentDate));
     const tourRestaurants = tourTl.restaurants.map(rest => restaurants.find(item => item.id === rest));
     const candidateRestaurants = tourRestaurants.map(rest => {
+      let timeline = rest.timelines.find(tl => timelineMatches(tl, momentDate));
+      if (!timeline) {
+        console.warn('No timeline found for restaurant:', rest, momentDate);
+        timeline = {
+          businessHours: [
+          ]
+        };
+      }
       return {
         ...rest,
-        timeline: rest.timelines.find(tl => timelineMatches(tl, momentDate))
+        timeline: timeline
       };
     });
     const weekday = momentDate.locale('en-CH').format('dddd');
     moment.locale(defaultLocale);
     const relevantBusinesHour = candidateRestaurants.map(rest => {
+      let businessHours = rest.timeline.businessHours.filter(hours => hours.weekday === weekday);
+      if (!businessHours) {
+        console.warn('No businessHours found for restaurant:', rest, weekday);
+        businessHours = {
+          businessHours: []
+        };
+      }
       return {
         ...rest,
-        businessHours: rest.timeline.businessHours.filter(hours => hours.weekday === weekday)
+        businessHours: businessHours
       };
     });
     if (relevantBusinesHour.filter(hour => !hour.businessHours.length).length) {

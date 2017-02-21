@@ -128,7 +128,7 @@ export default class Tours extends Component {
             <td className={styles.difficultyCol}>{tourViewModel.difficulty}</td>
             <td className={styles.distanceCol}>{tourViewModel.distance}</td>
             <td className={styles.elevationCol}>{tourViewModel.elevation}</td>
-            <td className={styles.gradientCol}>{`${tourViewModel.gradient.toFixed(2)} %`}</td>
+            <td className={styles.gradientCol}>{`${(tourViewModel.gradient || 0).toFixed(2)} %`}</td>
             {renderButtonCell(tourViewModel.id)}
           </tr>);
       }

@@ -6,7 +6,7 @@
     "timelines": [
       {
         "from": "2015-12-31T23:00:00.000Z",
-        "until": "2016-12-30T23:00:00.000Z",
+        "until": "2100-12-30T23:00:00.000Z",
         "notes": "",
         "phone": "052 317 10 09",
         "businessHours": [
@@ -1358,7 +1358,7 @@
     "timelines": [
       {
         "from": "2015-12-31T23:00:00.000Z",
-        "until": "2016-12-30T23:00:00.000Z",
+        "until": "2100-12-30T23:00:00.000Z",
         "phone": "071 977 16 17",
         "businessHours": [
           {
@@ -2565,7 +2565,7 @@
             "weekday": "Saturday",
             "from": {
               "hour": 12,
-              "minute": null
+              "minute": 0
             },
             "until": {
               "hour": 23,
@@ -2853,7 +2853,7 @@
     "timelines": [
       {
         "from": "2015-12-31T23:00:00.000Z",
-        "until": "2016-12-30T23:00:00.000Z",
+        "until": "2100-12-30T23:00:00.000Z",
         "notes": "",
         "phone": "055 293 31 11",
         "businessHours": [
@@ -3274,7 +3274,7 @@
     "timelines": [
       {
         "from": "2015-12-31T23:00:00.000Z",
-        "until": "2016-12-30T23:00:00.000Z",
+        "until": "2100-12-30T23:00:00.000Z",
         "notes": "",
         "phone": "052 552 20 21",
         "businessHours": [

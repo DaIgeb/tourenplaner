@@ -1,13 +1,13 @@
-import {SeasonState} from 'models';
-import {isLoaded as isConfigurationLoaded, load as loadConfigurations} from './configurations';
-import {isLoaded as isTourLoaded, load as loadTours} from './tours';
+import { SeasonState } from 'models';
+import { isLoaded as isConfigurationLoaded, load as loadConfigurations } from './configurations';
+import { isLoaded as isTourLoaded, load as loadTours } from './tours';
 // import {TourType} from 'models';
-import {moment} from '../../../shared/utils/moment';
-import {timelineMatches} from '../../../shared/utils/timeline';
-import {createScore as createDifficultyScore} from './seasons/difficultyScoreBuilder';
-import {createScore as createLocationScore} from './seasons/locationScoreBuilder';
-import {createScore as createDistanceScore} from './seasons/distanceScoreBuilder';
-import {createDates} from './seasons/dates';
+import { moment } from '../../../shared/utils/moment';
+import { timelineMatches } from '../../../shared/utils/timeline';
+import { createScore as createDifficultyScore } from './seasons/difficultyScoreBuilder';
+import { createScore as createLocationScore } from './seasons/locationScoreBuilder';
+import { createScore as createDistanceScore } from './seasons/distanceScoreBuilder';
+import { createDates } from './seasons/dates';
 
 const LOAD = 'tourenplaner/seasons/LOAD';
 const LOAD_SUCCESS = 'tourenplaner/seasons/LOAD_SUCCESS';
@@ -222,19 +222,19 @@ function addSeason(season) {
 }
 
 export function editStart(id) {
-  return {type: EDIT_START, id};
+  return { type: EDIT_START, id };
 }
 
 export function editStop(id) {
-  return {type: EDIT_STOP, id};
+  return { type: EDIT_STOP, id };
 }
 
 export function addStart() {
-  return {type: ADD_START};
+  return { type: ADD_START };
 }
 
 export function addStop() {
-  return {type: ADD_STOP};
+  return { type: ADD_STOP };
 }
 
 function addNextTour(seasonId) {
@@ -258,7 +258,7 @@ function addNextTour(seasonId) {
         // You don’t have to return Promises, but it’s a handy convention
         // so the caller can always call .then() on async dispatch result.
 
-        return Promise.reject({error: 'dependent data is missing'});
+        return Promise.reject({ error: 'dependent data is missing' });
       }
       const currentSeason = seasons.find(item => item.id === seasonId);
       if (!currentSeason) {
@@ -271,6 +271,14 @@ function addNextTour(seasonId) {
 
         const scoresByTour = tours.map(item => {
           const timeline = item.timelines.find(tl => timelineMatches(tl, momentDate));
+          if (!timeline) {
+            console.warn('No timeline found:', momentDate, item);
+            return {
+              tour: item.id,
+              totalScore: 0,
+              scores: []
+            };
+          }
 
           const scores = [
             {
