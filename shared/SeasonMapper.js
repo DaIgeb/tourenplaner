@@ -1,6 +1,6 @@
-import {TourType} from './';
-import {moment} from './utils/moment';
-import {timelineMatches} from './utils/timeline';
+import { TourType } from './';
+import { moment } from './utils/moment';
+import { timelineMatches } from './utils/timeline';
 
 class SeasonMapperClass {
   constructor(configurations, tours, restaurants, locations) {
@@ -44,23 +44,33 @@ class SeasonMapperClass {
   mapDate = (dateObj, usedTours, startRoutes) => {
     const date = moment(dateObj.date, moment.ISO_8601, true);
 
+    if (!dateObj.tours.length) {
+      return [
+        this.mapTour(dateObj, date, undefined, usedTours, startRoutes)
+      ];
+    }
+
     return dateObj.tours.map(tour => this.mapTour(dateObj, date, tour, usedTours, startRoutes));
   };
 
   mapTour = (dateObj, date, tour, usedTours, startRoutes) => {
-    const candidate = tour.candidates[tour.tour];
-    let mappedTour = usedTours.find(ut => ut.id === candidate.tour);
-    if (!mappedTour) {
-      mappedTour = this.createRouteViewModel(candidate, date);
-      if (mappedTour) {
-        if (mappedTour.startroute) {
-          const startRoute = startRoutes.find(item => item.id === mappedTour.startroute.id);
-          if (!startRoute) {
-            startRoutes.push(mappedTour.startroute);
-          }
-        }
+    let mappedTour;
+    if (tour) {
+      const candidate = tour.candidates[tour.tour];
 
-        usedTours.push(mappedTour);
+      mappedTour = usedTours.find(ut => ut.id === candidate.tour);
+      if (!mappedTour) {
+        mappedTour = this.createRouteViewModel(candidate, date);
+        if (mappedTour) {
+          if (mappedTour.startroute) {
+            const startRoute = startRoutes.find(item => item.id === mappedTour.startroute.id);
+            if (!startRoute) {
+              startRoutes.push(mappedTour.startroute);
+            }
+          }
+
+          usedTours.push(mappedTour);
+        }
       }
     }
 
@@ -69,9 +79,17 @@ class SeasonMapperClass {
       date: date,
       tour: mappedTour ? this.getTourName(mappedTour, date, tour.type) : null,
       description: dateObj.description,
-      points: tour.points ? tour.points : this.getPointsByType(tour.type)
+      points: this.getPoints(dateObj, tour)
     };
   };
+
+  getPoints(dateObj, tour) {
+    if (tour) {
+      return tour.points ? tour.points : this.getPointsByType(tour.type);
+    }
+
+    return dateObj.points ? dateObj.points : 0;
+  }
 
   createRouteViewModel = (candidate, date) => {
     const {tours} = this;

@@ -24,25 +24,44 @@ function handleSpecialDate(specialDate) {
       }];
     case SpecialDateAction.add.id:
     case SpecialDateAction.replace.id:
-      return specialDate.tours.map(item => {
-        return {
-          type: item.type,
-          tour: 0,
-          candidates: [
-            {
-              tour: item.id,
-              scores: [
-                {
-                  name: 'Special date override',
-                  score: 0,
-                  note: specialDate.name
-                }
-              ]
-            }
-          ],
-          points: specialDate.points
-        };
-      });
+      if (specialDate.tours.length) {
+        return specialDate.tours.map(item => {
+          return {
+            type: item.type,
+            tour: 0,
+            candidates: [
+              {
+                tour: item.id,
+                scores: [
+                  {
+                    name: 'Special date override',
+                    score: 0,
+                    note: specialDate.name
+                  }
+                ]
+              }
+            ],
+            points: specialDate.points
+          };
+        });
+      }
+      return [{
+        type: TourType.none,
+        tour: 0,
+        candidates: [
+          {
+            tour: null,
+            scores: [
+              {
+                name: 'Special date override',
+                score: 0,
+                note: specialDate.name
+              }
+            ]
+          }
+        ],
+        points: specialDate.points
+      }];
     default:
       console.error('Invalid special-date action');
       return [];
@@ -117,6 +136,10 @@ export function createDates(configuration) {
 
     if (newDateEntry.tours.length || specialDate) {
       dates.push(newDateEntry);
+    }
+
+    if (date.month() === 8 && date.date() === 23) {
+      console.log(specialDate, handleSpecialDate(specialDate), newDateEntry);
     }
 
     date.add(1, 'd');
