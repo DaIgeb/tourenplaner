@@ -1,8 +1,8 @@
-import React, {Component, PropTypes} from 'react';
-import {renderPagedContent} from 'utils/pagination';
-import {moment, defaultTimeZone, defaultLocale} from '../../../shared/utils/moment';
-import {timelineMatches} from '../../../shared/utils/timeline';
-import {TourType} from 'models';
+import React, { Component, PropTypes } from 'react';
+import { renderPagedContent } from 'utils/pagination';
+import { moment, defaultTimeZone, defaultLocale } from '../../../shared/utils/moment';
+import { timelineMatches } from '../../../shared/utils/timeline';
+import { TourType } from 'models';
 
 export class PlanTab extends Component {
   static propTypes = {
@@ -116,17 +116,17 @@ export class PlanTab extends Component {
         <span>
           <table>
             <thead>
-            <tr>
-              <th>Wertung</th>
-              {candidates.map((candidate, canIdx) => <th key={canIdx}>{candidate}</th>)}
-            </tr>
+              <tr>
+                <th>Wertung</th>
+                {candidates.map((candidate, canIdx) => <th key={canIdx}>{candidate}</th>)}
+              </tr>
             </thead>
             <tbody>
-            {scoreNames.map((score, scoreIdx) => (
-              <tr key={scoreIdx}>
-                <td>{score}</td>
-                {tour.candidates.map((candidate, canIdx) => <td key={canIdx}>{candidate.scores.find(canScore => canScore.name === score).score}</td>)}
-              </tr>))}
+              {scoreNames.map((score, scoreIdx) => (
+                <tr key={scoreIdx}>
+                  <td>{score}</td>
+                  {tour.candidates.map((candidate, canIdx) => <td key={canIdx}>{candidate.scores.find(canScore => canScore.name === score).score}</td>)}
+                </tr>))}
             </tbody>
           </table>
         </span>)
@@ -135,10 +135,23 @@ export class PlanTab extends Component {
 
   renderTour = (date, tour, idx) => {
     const styles = require('./Season.scss');
-    const tourObj = !isNaN(tour.tour) && tour.tour >= 0 ? this.findTour(tour.candidates[tour.tour].tour) : null;
-    const restaurantCheck = this.checkRestaurant(date, tour, tourObj);
-    const type = tour.type ? tour.type.label : 'Keine Tour';
-    const tooltip = this.renderTooltip(tour);
+    let tourObj;
+    let restaurantCheck;
+    let type;
+    let tooltip;
+    if (tour) {
+      tourObj = !isNaN(tour.tour) && tour.tour >= 0 ? this.findTour(tour.candidates[tour.tour].tour) : null;
+      restaurantCheck = this.checkRestaurant(date, tour, tourObj);
+      type = tour.type ? tour.type.label : 'Keine Tour';
+      tooltip = this.renderTooltip(tour);
+    } else {
+      tooltip = {
+        candidates: undefined
+      };
+      tourObj = {
+        name: date.description
+      };
+    }
     if (idx === 0) {
       return [
         (<td key="warn">{restaurantCheck}</td>),
@@ -173,7 +186,7 @@ export class PlanTab extends Component {
     const result = [(
       <tr key={idx + '/0'}>
         <td rowSpan={rowSpan}>{dateAndDescription}</td>
-        <td rowSpan={rowSpan}><input type="checkbox" {...date.locked} onClick={evt => evt.stopPropagation()}/></td>
+        <td rowSpan={rowSpan}><input type="checkbox" {...date.locked} onClick={evt => evt.stopPropagation()} /></td>
         {this.renderTour(date, date.tours[0], 0)}
       </tr>)
     ];
@@ -201,20 +214,20 @@ export class PlanTab extends Component {
     return (
       <div className="row">
         <div className="col-md-12">
-          {renderPagedContent(currentPage, size, Math.ceil((season.dates ? season.dates.length : 0 ) / size), (number) => selectPage(number), () => {
+          {renderPagedContent(currentPage, size, Math.ceil((season.dates ? season.dates.length : 0) / size), (number) => selectPage(number), () => {
             return (
               <table className="table table-striped table-hover table-condensed">
                 <thead>
-                <tr>
-                  <td className="col-md-2">Datum</td>
-                  <td className="col-md-1"/>
-                  <td className="col-md-3"/>
-                  <td className="col-md-2">Tourart</td>
-                  <td className="col-md-4">Tour</td>
-                </tr>
+                  <tr>
+                    <td className="col-md-2">Datum</td>
+                    <td className="col-md-1" />
+                    <td className="col-md-3" />
+                    <td className="col-md-2">Tourart</td>
+                    <td className="col-md-4">Tour</td>
+                  </tr>
                 </thead>
                 <tbody>
-                {datesToRender.map((date, idx) => this.renderDates(date, idx + lowerBound))}
+                  {datesToRender.map((date, idx) => this.renderDates(date, idx + lowerBound))}
                 </tbody>
               </table>
             );
