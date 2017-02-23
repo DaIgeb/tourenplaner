@@ -138,10 +138,6 @@ export function createDates(configuration) {
       dates.push(newDateEntry);
     }
 
-    if (date.month() === 8 && date.date() === 23) {
-      console.log(specialDate, handleSpecialDate(specialDate), newDateEntry);
-    }
-
     date.add(1, 'd');
   }
 

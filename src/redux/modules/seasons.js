@@ -1,9 +1,11 @@
 import { SeasonState } from 'models';
 import { isLoaded as isConfigurationLoaded, load as loadConfigurations } from './configurations';
 import { isLoaded as isTourLoaded, load as loadTours } from './tours';
+import { isLoaded as isRestaurantLoaded, load as loadRestaurants } from './restaurants';
 // import {TourType} from 'models';
 import { moment } from '../../../shared/utils/moment';
 import { timelineMatches } from '../../../shared/utils/timeline';
+import { createScore as createRestaurantScore } from './seasons/restaurantScoreBuilder';
 import { createScore as createDifficultyScore } from './seasons/difficultyScoreBuilder';
 import { createScore as createLocationScore } from './seasons/locationScoreBuilder';
 import { createScore as createDistanceScore, createDifficultyScore as createDateBasedDifficultyScore } from './seasons/distanceScoreBuilder';
@@ -250,10 +252,14 @@ function addNextTour(seasonId) {
     if (!isTourLoaded(globalState)) {
       loadPromises.push(dispatch(loadTours()));
     }
-    return Promise.all(loadPromises).then(() => {
-      const {seasons: {data: seasons}, configurations: {data: configurations}, tours: {data: tours}} = getState();
+    if (!isRestaurantLoaded(globalState)) {
+      loadPromises.push(dispatch(loadRestaurants()));
+    }
 
-      if (!seasons || !tours || !configurations) {
+    return Promise.all(loadPromises).then(() => {
+      const {seasons: {data: seasons}, configurations: {data: configurations}, tours: {data: tours}, restaurants: { data: restaurants}} = getState();
+
+      if (!seasons || !tours || !configurations || !restaurants) {
 
         // You don’t have to return Promises, but it’s a handy convention
         // so the caller can always call .then() on async dispatch result.
@@ -266,8 +272,8 @@ function addNextTour(seasonId) {
       }
       const currentConfiguration = configurations.find(item => item.id === currentSeason.configuration);
 
-      const createScores = (configuration, date, tour, previousTour, usedTours) => {
-        const momentDate = moment(date.date);
+      const createScores = (configuration, tour, tourInstance, previousTour, usedTours) => {
+        const momentDate = moment(tour.date);
 
         const scoresByTour = tours.map(item => {
           const timeline = item.timelines.find(tl => timelineMatches(tl, momentDate));
@@ -280,27 +286,34 @@ function addNextTour(seasonId) {
             };
           }
 
+          const getUsagePoints = (usages) => {
+            switch (usages) {
+              case 0:
+                return 10;
+              case 1:
+                return 7;
+              default:
+                return 0;
+            }
+          };
+
           const scores = [
             {
               name: 'Tour-Type matching',
-              score: item.types.find(type => tour.type.id === type.id) ? 10 : 0,
-              note: `Checking for type ${tour.type.label}`
+              score: item.types.find(type => tourInstance.type.id === type.id) ? 10 : 0,
+              note: `Checking for type ${tourInstance.type.label}`
             },
             {
               name: 'Tour-Usage check',
-              score: 10 - usedTours.filter(seasonTour => seasonTour === item.id).length * 3,
+              score: getUsagePoints(usedTours.filter(seasonTour => seasonTour === item.id).length),
               note: `Counting usages for tour`
-            },
-            {
-              name: 'Restaurant check',
-              score: 10,
-              note: `Restaurant must be open`
             }
           ];
-          scores.push(createDistanceScore(configuration, date.date, tour.type, timeline.distance, timeline.elevation));
+          scores.push(createDistanceScore(configuration, tour.date, tourInstance.type, timeline.distance, timeline.elevation));
           scores.push(createDifficultyScore(tours, timeline, previousTour));
           scores.push(createLocationScore(tours, timeline, momentDate, previousTour));
-          scores.push(createDateBasedDifficultyScore(configuration, date.date, timeline.difficulty));
+          scores.push(createDateBasedDifficultyScore(configuration, tour.date, timeline.difficulty));
+          scores.push(createRestaurantScore(restaurants, tour, tourInstance, timeline));
 
           return {
             tour: item.id,
