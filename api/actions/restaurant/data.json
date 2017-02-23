@@ -2322,8 +2322,125 @@
     "timelines": [
       {
         "from": "2015-12-31T23:00:00.000Z",
-        "until": "2100-12-30T23:00:00.000Z",
+        "until": "2016-12-30T23:00:00.000Z",
         "phone": "052 384 11 36",
+        "businessHours": [
+          {
+            "weekday": "Monday",
+            "from": {
+              "hour": 8,
+              "minute": 0
+            },
+            "until": {
+              "hour": 14,
+              "minute": 0
+            }
+          },
+          {
+            "weekday": "Monday",
+            "from": {
+              "hour": 17,
+              "minute": 0
+            },
+            "until": {
+              "hour": 23,
+              "minute": 0
+            }
+          },
+          {
+            "weekday": "Wednesday",
+            "from": {
+              "hour": 8,
+              "minute": 0
+            },
+            "until": {
+              "hour": 14,
+              "minute": 0
+            }
+          },
+          {
+            "weekday": "Wednesday",
+            "from": {
+              "hour": 17,
+              "minute": 0
+            },
+            "until": {
+              "hour": 23,
+              "minute": 0
+            }
+          },
+          {
+            "weekday": "Thursday",
+            "from": {
+              "hour": 8,
+              "minute": 0
+            },
+            "until": {
+              "hour": 14,
+              "minute": 0
+            }
+          },
+          {
+            "weekday": "Thursday",
+            "from": {
+              "hour": 17,
+              "minute": 0
+            },
+            "until": {
+              "hour": 23,
+              "minute": 0
+            }
+          },
+          {
+            "weekday": "Friday",
+            "from": {
+              "hour": 8,
+              "minute": 0
+            },
+            "until": {
+              "hour": 14,
+              "minute": 0
+            }
+          },
+          {
+            "weekday": "Friday",
+            "from": {
+              "hour": 17,
+              "minute": 0
+            },
+            "until": {
+              "hour": 23,
+              "minute": 0
+            }
+          },
+          {
+            "weekday": "Saturday",
+            "from": {
+              "hour": 17,
+              "minute": 0
+            },
+            "until": {
+              "hour": 23,
+              "minute": 0
+            }
+          },
+          {
+            "weekday": "Sunday",
+            "from": {
+              "hour": 11,
+              "minute": 0
+            },
+            "until": {
+              "hour": 22,
+              "minute": 0
+            }
+          }
+        ]
+      },
+      {
+        "from": "2016-12-31T23:00:00.000Z",
+        "until": "2100-12-30T23:00:00.000Z",
+        "phone": "052 384 13 47",
         "businessHours": [
           {
             "weekday": "Monday",
