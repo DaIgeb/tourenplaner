@@ -291,7 +291,11 @@ function addNextTour(seasonId) {
               case 0:
                 return 10;
               case 1:
-                return 7;
+                return 8;
+              case 2:
+                return 4;
+              case 3:
+                return 1;
               default:
                 return 0;
             }
