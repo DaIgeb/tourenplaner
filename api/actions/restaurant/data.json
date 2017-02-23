@@ -1072,6 +1072,17 @@
               "minute": 30
             },
             "until": {
+              "hour": 24,
+              "minute": 0
+            }
+          },
+          {
+            "weekday": "Saturday",
+            "from": {
+              "hour": 0,
+              "minute": 0
+            },
+            "until": {
               "hour": 1,
               "minute": 0
             }
@@ -1081,6 +1092,17 @@
             "from": {
               "hour": 8,
               "minute": 30
+            },
+            "until": {
+              "hour": 24,
+              "minute": 0
+            }
+          },
+          {
+            "weekday": "Sunday",
+            "from": {
+              "hour": 0,
+              "minute": 0
             },
             "until": {
               "hour": 1,
@@ -2572,8 +2594,8 @@
               "minute": 0
             },
             "until": {
-              "hour": 0,
-              "minute": 30
+              "hour": 24,
+              "minute": 0
             }
           },
           {
@@ -2583,8 +2605,8 @@
               "minute": 0
             },
             "until": {
-              "hour": 0,
-              "minute": 30
+              "hour": 24,
+              "minute": 0
             }
           },
           {
@@ -2594,8 +2616,8 @@
               "minute": 0
             },
             "until": {
-              "hour": 0,
-              "minute": 30
+              "hour": 24,
+              "minute": 0
             }
           },
           {
@@ -2605,8 +2627,8 @@
               "minute": 0
             },
             "until": {
-              "hour": 0,
-              "minute": 30
+              "hour": 24,
+              "minute": 0
             }
           },
           {
@@ -2616,8 +2638,8 @@
               "minute": 0
             },
             "until": {
-              "hour": 0,
-              "minute": 30
+              "hour": 24,
+              "minute": 0
             }
           }
         ]
