@@ -5236,5 +5236,16 @@
     "latitude": 47.564029,
     "longitude": 8.406702,
     "id": 610
+  },
+  {
+    "name": "Radhof",
+    "identifier": "",
+    "streetAddress": "",
+    "addressCountry": "",
+    "postalCode": "",
+    "city": "Marthalen",
+    "latitude": 47.631596,
+    "longitude": 8.6271863,
+    "id": 611
   }
 ]
