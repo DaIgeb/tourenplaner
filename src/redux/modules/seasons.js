@@ -289,15 +289,15 @@ function addNextTour(seasonId) {
           const getUsagePoints = (usages) => {
             switch (usages) {
               case 0:
-                return 10;
+                return 15;
               case 1:
-                return 8;
+                return 10;
               case 2:
-                return 4;
-              case 3:
                 return 1;
-              default:
+              case 3:
                 return 0;
+              default:
+                return -5;
             }
           };
 
