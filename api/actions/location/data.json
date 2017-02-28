@@ -5258,5 +5258,16 @@
     "latitude": 47.6887359,
     "longitude": 8.7537989,
     "id": 612
+  },
+  {
+    "name": "Restaurant Buck",
+    "identifier": "",
+    "streetAddress": "Buckstrasse 1",
+    "addressCountry": "",
+    "postalCode": "8462",
+    "city": "Rheinau",
+    "latitude": 47.6451817,
+    "longitude": 8.6059158,
+    "id": 613
   }
 ]

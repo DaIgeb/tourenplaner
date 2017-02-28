@@ -5981,5 +5981,97 @@
         ]
       }
     ]
+  },
+  {
+    "id": 75,
+    "location": 613,
+    "nameForTour": "",
+    "timelines": [
+      {
+        "from": "2016-12-31T23:00:00.000Z",
+        "until": "2100-12-30T23:00:00.000Z",
+        "notes": "buck-rheinau.ch",
+        "phone": "052 319 12 68",
+        "businessHours": [
+          {
+            "weekday": "Saturday",
+            "from": {
+              "hour": 9,
+              "minute": 30
+            },
+            "until": {
+              "hour": 22,
+              "minute": 0
+            }
+          },
+          {
+            "weekday": "Sunday",
+            "from": {
+              "hour": 9,
+              "minute": 30
+            },
+            "until": {
+              "hour": 22,
+              "minute": 0
+            }
+          },
+          {
+            "weekday": "Monday",
+            "from": {
+              "hour": 8,
+              "minute": 45
+            },
+            "until": {
+              "hour": 22,
+              "minute": 0
+            }
+          },
+          {
+            "weekday": "Tuesday",
+            "from": {
+              "hour": 8,
+              "minute": 45
+            },
+            "until": {
+              "hour": 22,
+              "minute": 0
+            }
+          },
+          {
+            "weekday": "Wednesday",
+            "from": {
+              "hour": 8,
+              "minute": 45
+            },
+            "until": {
+              "hour": 22,
+              "minute": 0
+            }
+          },
+          {
+            "weekday": "Thursday",
+            "from": {
+              "hour": 8,
+              "minute": 45
+            },
+            "until": {
+              "hour": 22,
+              "minute": 0
+            }
+          },
+          {
+            "weekday": "Friday",
+            "from": {
+              "hour": 8,
+              "minute": 45
+            },
+            "until": {
+              "hour": 22,
+              "minute": 0
+            }
+          }
+        ]
+      }
+    ]
   }
 ]
