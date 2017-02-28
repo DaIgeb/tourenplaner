@@ -5955,5 +5955,31 @@
         ]
       }
     ]
+  },
+  {
+    "id": 74,
+    "location": 612,
+    "nameForTour": "",
+    "timelines": [
+      {
+        "from": "2016-12-31T23:00:00.000Z",
+        "until": "2100-12-30T23:00:00.000Z",
+        "notes": "Zeiten abklären",
+        "phone": "052 657 14 75",
+        "businessHours": [
+          {
+            "weekday": "Saturday",
+            "from": {
+              "hour": 12,
+              "minute": 0
+            },
+            "until": {
+              "hour": 18,
+              "minute": 0
+            }
+          }
+        ]
+      }
+    ]
   }
 ]

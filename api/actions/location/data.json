@@ -5247,5 +5247,16 @@
     "latitude": 47.631596,
     "longitude": 8.6271863,
     "id": 611
+  },
+  {
+    "name": "Café Konditorei Möve",
+    "identifier": "",
+    "streetAddress": "Steinerstrasse 1",
+    "addressCountry": "",
+    "postalCode": "8253",
+    "city": "Diessenhofen",
+    "latitude": 47.6887359,
+    "longitude": 8.7537989,
+    "id": 612
   }
 ]
