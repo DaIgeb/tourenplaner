@@ -537,6 +537,16 @@
         ]
       },
       {
+        "date": "2017-06-19T22:00:00.000Z",
+        "name": "Ferdy Kübler Memorial in Örlikon",
+        "action": {
+          "id": 3,
+          "label": "Tour ersetzen"
+        },
+        "points": 15,
+        "tours": []
+      },
+      {
         "date": "2017-06-17T22:00:00.000Z",
         "name": "Überraschungstour",
         "action": {
