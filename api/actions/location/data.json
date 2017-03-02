@@ -5300,5 +5300,16 @@
     "latitude": 47.472139,
     "longitude": 8.513586,
     "id": 616
+  },
+  {
+    "id": 617,
+    "name": "NIedersteinmaur",
+    "identifier": "",
+    "streetAddress": "",
+    "addressCountry": "",
+    "postalCode": "",
+    "city": "Steinmaur",
+    "latitude": 47.492501,
+    "longitude": 8.4441073
   }
 ]
