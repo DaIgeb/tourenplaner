@@ -5269,5 +5269,36 @@
     "latitude": 47.6451817,
     "longitude": 8.6059158,
     "id": 613
+  },
+  {
+    "id": 614,
+    "name": "Restaurant Mühle",
+    "streetAddress": "Kartause",
+    "addressCountry": "",
+    "postalCode": "8532",
+    "city": "Warth",
+    "latitude": 47.5838485,
+    "longitude": 8.8683334
+  },
+  {
+    "name": "Bäckerei-Conditorei Fleischli",
+    "streetAddress": "Bahnhofstrasse 1",
+    "addressCountry": "",
+    "postalCode": "8172",
+    "city": "Niederglatt",
+    "latitude": 47.4871267,
+    "longitude": 8.5028364,
+    "id": 615
+  },
+  {
+    "name": "Oberglatt",
+    "identifier": "",
+    "streetAddress": "",
+    "addressCountry": "",
+    "postalCode": "8154",
+    "city": "Oberglatt",
+    "latitude": 47.472139,
+    "longitude": 8.513586,
+    "id": 616
   }
 ]
