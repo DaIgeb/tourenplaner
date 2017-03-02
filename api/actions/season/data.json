@@ -29817,219 +29817,26 @@
         "tours": [
           {
             "type": {
-              "id": 3,
-              "label": "Nachmittagstour"
+              "id": 1,
+              "label": "Keine"
             },
-            "tour": 1,
+            "tour": 0,
             "candidates": [
               {
-                "tour": 61,
-                "totalScore": 71,
+                "tour": null,
                 "scores": [
                   {
-                    "name": "Tour-Type matching",
-                    "score": 10,
-                    "note": "Checking for type Nachmittagstour"
-                  },
-                  {
-                    "name": "Tour-Usage check",
-                    "score": 10,
-                    "note": "Counting usages for tour"
-                  },
-                  {
-                    "name": "Restaurant check",
-                    "score": 10,
-                    "note": "Restaurant must be open"
-                  },
-                  {
-                    "name": "Distance check",
-                    "score": 10,
-                    "note": "Distance expected 90 got 93"
-                  },
-                  {
-                    "name": "Difficulty check",
-                    "score": 10,
-                    "note": "Elevation is 1.625 %, previous tour had 1.076923076923077 %"
-                  },
-                  {
-                    "name": "Locations check",
-                    "score": 11,
-                    "note": "Locations expected 0 matches got -1"
-                  },
-                  {
-                    "name": "Difficulty by date check",
-                    "score": 10,
-                    "note": "All difficulties allowed after 2017-04-25T00:00:00+02:00"
-                  }
-                ]
-              },
-              {
-                "tour": 58,
-                "totalScore": 71,
-                "scores": [
-                  {
-                    "name": "Tour-Type matching",
-                    "score": 10,
-                    "note": "Checking for type Nachmittagstour"
-                  },
-                  {
-                    "name": "Tour-Usage check",
-                    "score": 10,
-                    "note": "Counting usages for tour"
-                  },
-                  {
-                    "name": "Restaurant check",
-                    "score": 10,
-                    "note": "Restaurant must be open"
-                  },
-                  {
-                    "name": "Distance check",
-                    "score": 10,
-                    "note": "Distance expected 90 got 91.4"
-                  },
-                  {
-                    "name": "Difficulty check",
-                    "score": 10,
-                    "note": "Elevation is 1.425 %, previous tour had 1.076923076923077 %"
-                  },
-                  {
-                    "name": "Locations check",
-                    "score": 11,
-                    "note": "Locations expected 0 matches got -1"
-                  },
-                  {
-                    "name": "Difficulty by date check",
-                    "score": 10,
-                    "note": "All difficulties allowed after 2017-04-25T00:00:00+02:00"
-                  }
-                ]
-              },
-              {
-                "tour": 18,
-                "totalScore": 71,
-                "scores": [
-                  {
-                    "name": "Tour-Type matching",
-                    "score": 10,
-                    "note": "Checking for type Nachmittagstour"
-                  },
-                  {
-                    "name": "Tour-Usage check",
-                    "score": 10,
-                    "note": "Counting usages for tour"
-                  },
-                  {
-                    "name": "Restaurant check",
-                    "score": 10,
-                    "note": "Restaurant must be open"
-                  },
-                  {
-                    "name": "Distance check",
-                    "score": 10,
-                    "note": "Distance expected 90 got 87"
-                  },
-                  {
-                    "name": "Difficulty check",
-                    "score": 10,
-                    "note": "Elevation is 1.6 %, previous tour had 1.076923076923077 %"
-                  },
-                  {
-                    "name": "Locations check",
-                    "score": 11,
-                    "note": "Locations expected 0 matches got -1"
-                  },
-                  {
-                    "name": "Difficulty by date check",
-                    "score": 10,
-                    "note": "All difficulties allowed after 2017-04-25T00:00:00+02:00"
-                  }
-                ]
-              },
-              {
-                "tour": 39,
-                "totalScore": 70,
-                "scores": [
-                  {
-                    "name": "Tour-Type matching",
-                    "score": 10,
-                    "note": "Checking for type Nachmittagstour"
-                  },
-                  {
-                    "name": "Tour-Usage check",
-                    "score": 10,
-                    "note": "Counting usages for tour"
-                  },
-                  {
-                    "name": "Restaurant check",
-                    "score": 10,
-                    "note": "Restaurant must be open"
-                  },
-                  {
-                    "name": "Distance check",
-                    "score": 9,
-                    "note": "Distance expected 90 got 80"
-                  },
-                  {
-                    "name": "Difficulty check",
-                    "score": 10,
-                    "note": "Elevation is 1.4285714285714286 %, previous tour had 1.076923076923077 %"
-                  },
-                  {
-                    "name": "Locations check",
-                    "score": 11,
-                    "note": "Locations expected 0 matches got -1"
-                  },
-                  {
-                    "name": "Difficulty by date check",
-                    "score": 10,
-                    "note": "All difficulties allowed after 2017-04-25T00:00:00+02:00"
-                  }
-                ]
-              },
-              {
-                "tour": 69,
-                "totalScore": 70,
-                "scores": [
-                  {
-                    "name": "Tour-Type matching",
-                    "score": 10,
-                    "note": "Checking for type Nachmittagstour"
-                  },
-                  {
-                    "name": "Tour-Usage check",
-                    "score": 10,
-                    "note": "Counting usages for tour"
-                  },
-                  {
-                    "name": "Restaurant check",
-                    "score": 10,
-                    "note": "Restaurant must be open"
-                  },
-                  {
-                    "name": "Distance check",
-                    "score": 9,
-                    "note": "Distance expected 90 got 80"
-                  },
-                  {
-                    "name": "Difficulty check",
-                    "score": 10,
-                    "note": "Elevation is 1.4285714285714286 %, previous tour had 1.076923076923077 %"
-                  },
-                  {
-                    "name": "Locations check",
-                    "score": 11,
-                    "note": "Locations expected 0 matches got -1"
-                  },
-                  {
-                    "name": "Difficulty by date check",
-                    "score": 10,
-                    "note": "All difficulties allowed after 2017-04-25T00:00:00+02:00"
+                    "name": "Special date override",
+                    "score": 0,
+                    "note": "Säntis-Classic"
                   }
                 ]
               }
-            ]
+            ],
+            "points": 20
           }
-        ]
+        ],
+        "description": "Säntis-Classic"      
       },
       {
         "date": "2017-05-27T22:00:00.000Z",
@@ -53925,219 +53732,26 @@
         "tours": [
           {
             "type": {
-              "id": 3,
-              "label": "Nachmittagstour"
+              "id": 1,
+              "label": "Keine"
             },
             "tour": 0,
             "candidates": [
               {
-                "tour": 18,
-                "totalScore": 76,
+                "tour": null,
                 "scores": [
                   {
-                    "name": "Tour-Type matching",
-                    "score": 10,
-                    "note": "Checking for type Nachmittagstour"
-                  },
-                  {
-                    "name": "Tour-Usage check",
-                    "score": 15,
-                    "note": "Counting usages for tour"
-                  },
-                  {
-                    "name": "Distance check",
-                    "score": 10,
-                    "note": "Distance expected 90 got 87"
-                  },
-                  {
-                    "name": "Difficulty check",
-                    "score": 10,
-                    "note": "Elevation is 1.6 %, previous tour had 1.076923076923077 %"
-                  },
-                  {
-                    "name": "Locations check",
-                    "score": 11,
-                    "note": "Locations expected 0 matches got -1"
-                  },
-                  {
-                    "name": "Difficulty by date check",
-                    "score": 10,
-                    "note": "All difficulties allowed after 2017-04-25T00:00:00+02:00"
-                  },
-                  {
-                    "name": "Restaurant check",
-                    "score": 10,
-                    "note": "Restaurand open"
-                  }
-                ]
-              },
-              {
-                "tour": 61,
-                "totalScore": 76,
-                "scores": [
-                  {
-                    "name": "Tour-Type matching",
-                    "score": 10,
-                    "note": "Checking for type Nachmittagstour"
-                  },
-                  {
-                    "name": "Tour-Usage check",
-                    "score": 15,
-                    "note": "Counting usages for tour"
-                  },
-                  {
-                    "name": "Distance check",
-                    "score": 10,
-                    "note": "Distance expected 90 got 93"
-                  },
-                  {
-                    "name": "Difficulty check",
-                    "score": 10,
-                    "note": "Elevation is 1.625 %, previous tour had 1.076923076923077 %"
-                  },
-                  {
-                    "name": "Locations check",
-                    "score": 11,
-                    "note": "Locations expected 0 matches got -1"
-                  },
-                  {
-                    "name": "Difficulty by date check",
-                    "score": 10,
-                    "note": "All difficulties allowed after 2017-04-25T00:00:00+02:00"
-                  },
-                  {
-                    "name": "Restaurant check",
-                    "score": 10,
-                    "note": "Restaurand open"
-                  }
-                ]
-              },
-              {
-                "tour": 69,
-                "totalScore": 75,
-                "scores": [
-                  {
-                    "name": "Tour-Type matching",
-                    "score": 10,
-                    "note": "Checking for type Nachmittagstour"
-                  },
-                  {
-                    "name": "Tour-Usage check",
-                    "score": 15,
-                    "note": "Counting usages for tour"
-                  },
-                  {
-                    "name": "Distance check",
-                    "score": 9,
-                    "note": "Distance expected 90 got 80"
-                  },
-                  {
-                    "name": "Difficulty check",
-                    "score": 10,
-                    "note": "Elevation is 1.4285714285714286 %, previous tour had 1.076923076923077 %"
-                  },
-                  {
-                    "name": "Locations check",
-                    "score": 11,
-                    "note": "Locations expected 0 matches got -1"
-                  },
-                  {
-                    "name": "Difficulty by date check",
-                    "score": 10,
-                    "note": "All difficulties allowed after 2017-04-25T00:00:00+02:00"
-                  },
-                  {
-                    "name": "Restaurant check",
-                    "score": 10,
-                    "note": "Restaurand open"
-                  }
-                ]
-              },
-              {
-                "tour": 72,
-                "totalScore": 74,
-                "scores": [
-                  {
-                    "name": "Tour-Type matching",
-                    "score": 10,
-                    "note": "Checking for type Nachmittagstour"
-                  },
-                  {
-                    "name": "Tour-Usage check",
-                    "score": 15,
-                    "note": "Counting usages for tour"
-                  },
-                  {
-                    "name": "Distance check",
-                    "score": 8,
-                    "note": "Distance expected 90 got 74.7"
-                  },
-                  {
-                    "name": "Difficulty check",
-                    "score": 10,
-                    "note": "Elevation is 1.4923076923076923 %, previous tour had 1.076923076923077 %"
-                  },
-                  {
-                    "name": "Locations check",
-                    "score": 11,
-                    "note": "Locations expected 0 matches got -1"
-                  },
-                  {
-                    "name": "Difficulty by date check",
-                    "score": 10,
-                    "note": "All difficulties allowed after 2017-04-25T00:00:00+02:00"
-                  },
-                  {
-                    "name": "Restaurant check",
-                    "score": 10,
-                    "note": "Restaurand open"
-                  }
-                ]
-              },
-              {
-                "tour": 22,
-                "totalScore": 73,
-                "scores": [
-                  {
-                    "name": "Tour-Type matching",
-                    "score": 10,
-                    "note": "Checking for type Nachmittagstour"
-                  },
-                  {
-                    "name": "Tour-Usage check",
-                    "score": 15,
-                    "note": "Counting usages for tour"
-                  },
-                  {
-                    "name": "Distance check",
-                    "score": 9,
-                    "note": "Distance expected 90 got 78.5"
-                  },
-                  {
-                    "name": "Difficulty check",
-                    "score": 8,
-                    "note": "Elevation is 1.2142857142857142 %, previous tour had 1.076923076923077 %"
-                  },
-                  {
-                    "name": "Locations check",
-                    "score": 11,
-                    "note": "Locations expected 0 matches got -1"
-                  },
-                  {
-                    "name": "Difficulty by date check",
-                    "score": 10,
-                    "note": "All difficulties allowed after 2017-04-25T00:00:00+02:00"
-                  },
-                  {
-                    "name": "Restaurant check",
-                    "score": 10,
-                    "note": "Restaurand open"
+                    "name": "Special date override",
+                    "score": 0,
+                    "note": "Säntis-Classic"
                   }
                 ]
               }
-            ]
+            ],
+            "points": 20
           }
-        ]
+        ],
+        "description": "Säntis-Classic"      
       },
       {
         "date": "2017-05-27T22:00:00.000Z",

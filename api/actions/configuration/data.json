@@ -381,6 +381,13 @@
         "organizer": "Antoine"
       },
       {
+        "from": "2017-06-19T22:00:00.000Z",
+        "to": "2017-06-19T22:00:00.000Z",
+        "name": "Ferdy Kübler Memorial",
+        "location": "Örlikon",
+        "organizer": "Swiss Cycling"
+      },
+      {
         "from": "2017-06-23T22:00:00.000Z",
         "to": "2017-06-24T22:00:00.000Z",
         "name": "2 Tagestour",
@@ -392,7 +399,7 @@
         "to": "2017-09-01T22:00:00.000Z",
         "name": "Ferientour",
         "location": "La Chaux-de-Fonds",
-        "organizer": "Nick"
+        "organizer": "Nick/Daniel"
       }
     ],
     "specialDates": [
