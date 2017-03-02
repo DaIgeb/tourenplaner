@@ -25074,6 +25074,31 @@
         ]
       },
       {
+        "date": "2017-04-15T22:00:00.000Z",
+        "tours": [
+          {
+            "type": {
+              "id": 1,
+              "label": "Keine"
+            },
+            "tour": 0,
+            "candidates": [
+              {
+                "tour": null,
+                "scores": [
+                  {
+                    "name": "Special date override",
+                    "score": 0,
+                    "note": "Ostern"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "description": "Ostern"
+      },
+      {
         "date": "2017-04-16T22:00:00.000Z",
         "tours": [
           {
@@ -49161,219 +49186,25 @@
         "tours": [
           {
             "type": {
-              "id": 2,
-              "label": "Morgentour"
+              "id": 1,
+              "label": "Keine"
             },
             "tour": 0,
             "candidates": [
               {
-                "tour": 13,
-                "totalScore": 75,
+                "tour": null,
                 "scores": [
                   {
-                    "name": "Tour-Type matching",
-                    "score": 10,
-                    "note": "Checking for type Morgentour"
-                  },
-                  {
-                    "name": "Tour-Usage check",
-                    "score": 15,
-                    "note": "Counting usages for tour"
-                  },
-                  {
-                    "name": "Distance check",
-                    "score": 9,
-                    "note": "Distance expected 75 got 82.5"
-                  },
-                  {
-                    "name": "Difficulty check",
-                    "score": 10,
-                    "note": "Elevation is 1 %, previous tour had 1.425 %"
-                  },
-                  {
-                    "name": "Locations check",
-                    "score": 11,
-                    "note": "Locations expected 0 matches got -1"
-                  },
-                  {
-                    "name": "Difficulty by date check",
-                    "score": 10,
-                    "note": "Difficulty expected Einfach or Mittel  got Einfach"
-                  },
-                  {
-                    "name": "Restaurant check",
-                    "score": 10,
-                    "note": "Restaurand open"
-                  }
-                ]
-              },
-              {
-                "tour": 12,
-                "totalScore": 73,
-                "scores": [
-                  {
-                    "name": "Tour-Type matching",
-                    "score": 10,
-                    "note": "Checking for type Morgentour"
-                  },
-                  {
-                    "name": "Tour-Usage check",
-                    "score": 15,
-                    "note": "Counting usages for tour"
-                  },
-                  {
-                    "name": "Distance check",
-                    "score": 7,
-                    "note": "Distance expected 75 got 93.5"
-                  },
-                  {
-                    "name": "Difficulty check",
-                    "score": 10,
-                    "note": "Elevation is 1 %, previous tour had 1.425 %"
-                  },
-                  {
-                    "name": "Locations check",
-                    "score": 11,
-                    "note": "Locations expected 0 matches got -1"
-                  },
-                  {
-                    "name": "Difficulty by date check",
-                    "score": 10,
-                    "note": "Difficulty expected Einfach or Mittel  got Einfach"
-                  },
-                  {
-                    "name": "Restaurant check",
-                    "score": 10,
-                    "note": "Restaurand open"
-                  }
-                ]
-              },
-              {
-                "tour": 56,
-                "totalScore": 72,
-                "scores": [
-                  {
-                    "name": "Tour-Type matching",
-                    "score": 10,
-                    "note": "Checking for type Morgentour"
-                  },
-                  {
-                    "name": "Tour-Usage check",
-                    "score": 15,
-                    "note": "Counting usages for tour"
-                  },
-                  {
-                    "name": "Distance check",
-                    "score": 6,
-                    "note": "Distance expected 75 got 98.3"
-                  },
-                  {
-                    "name": "Difficulty check",
-                    "score": 10,
-                    "note": "Elevation is 0.9222222222222222 %, previous tour had 1.425 %"
-                  },
-                  {
-                    "name": "Locations check",
-                    "score": 11,
-                    "note": "Locations expected 0 matches got -1"
-                  },
-                  {
-                    "name": "Difficulty by date check",
-                    "score": 10,
-                    "note": "Difficulty expected Einfach or Mittel  got Einfach"
-                  },
-                  {
-                    "name": "Restaurant check",
-                    "score": 10,
-                    "note": "Restaurand open"
-                  }
-                ]
-              },
-              {
-                "tour": 59,
-                "totalScore": 71,
-                "scores": [
-                  {
-                    "name": "Tour-Type matching",
-                    "score": 10,
-                    "note": "Checking for type Morgentour"
-                  },
-                  {
-                    "name": "Tour-Usage check",
-                    "score": 10,
-                    "note": "Counting usages for tour"
-                  },
-                  {
-                    "name": "Distance check",
-                    "score": 10,
-                    "note": "Distance expected 75 got 77.2"
-                  },
-                  {
-                    "name": "Difficulty check",
-                    "score": 10,
-                    "note": "Elevation is 1.0285714285714287 %, previous tour had 1.425 %"
-                  },
-                  {
-                    "name": "Locations check",
-                    "score": 11,
-                    "note": "Locations expected 0 matches got -1"
-                  },
-                  {
-                    "name": "Difficulty by date check",
-                    "score": 10,
-                    "note": "Difficulty expected Einfach or Mittel  got Einfach"
-                  },
-                  {
-                    "name": "Restaurant check",
-                    "score": 10,
-                    "note": "Restaurand open"
-                  }
-                ]
-              },
-              {
-                "tour": 57,
-                "totalScore": 71,
-                "scores": [
-                  {
-                    "name": "Tour-Type matching",
-                    "score": 10,
-                    "note": "Checking for type Morgentour"
-                  },
-                  {
-                    "name": "Tour-Usage check",
-                    "score": 10,
-                    "note": "Counting usages for tour"
-                  },
-                  {
-                    "name": "Distance check",
-                    "score": 10,
-                    "note": "Distance expected 75 got 77"
-                  },
-                  {
-                    "name": "Difficulty check",
-                    "score": 10,
-                    "note": "Elevation is 1 %, previous tour had 1.425 %"
-                  },
-                  {
-                    "name": "Locations check",
-                    "score": 11,
-                    "note": "Locations expected 0 matches got -1"
-                  },
-                  {
-                    "name": "Difficulty by date check",
-                    "score": 10,
-                    "note": "Difficulty expected Einfach or Mittel  got Einfach"
-                  },
-                  {
-                    "name": "Restaurant check",
-                    "score": 10,
-                    "note": "Restaurand open"
+                    "name": "Special date override",
+                    "score": 0,
+                    "note": "Ostern"
                   }
                 ]
               }
             ]
           }
-        ]
+        ],
+        "description": "Ostern"
       },
       {
         "date": "2017-04-16T22:00:00.000Z",
