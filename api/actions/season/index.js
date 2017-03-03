@@ -102,6 +102,133 @@ const writeEvents = (mappedSeason, zipFile) => {
     });
   });
 };
+
+const writeCalendar = (mappedSeason, zipFile) => {
+  const getStartTime = (row) => {
+    if (row.points && row.startDate && row.startDate === row.endDate) {
+          switch (row.points) {
+            case 40:           
+              return '08:00 AM';
+            case 15:
+              return '06:00 PM';
+            case 20:
+              if (row.startDate.isoWeekday()=== 6) {
+                return '1:30 PM';
+              }
+
+              return '08:30 AM';
+            default:
+              return '';
+          }
+        }
+
+        return '';
+  };
+  const getEndTime = (row) => {
+    if (row.points && row.endDate && row.startDate === row.endDate) {
+      switch (row.points) {
+        case 40:           
+          return '5:00 PM'; 
+        case 15:
+          return '08:30 PM';   
+        case 20:
+          if (row.endDate.isoWeekday()=== 6) {
+            return '5:00 PM';
+          }
+
+          return '12:00 AM';
+        default: 
+          return '';
+      }
+    }
+
+    return '';
+  };
+  const fields = [
+    {
+    label: 'Start Date',
+    value: row => {
+      if (row.startDate) {
+        return row.startDate.format('MM/DD/YYYY');
+      }
+
+      console.log(row.startDate, row);
+      return '';
+
+    },
+    defaultValue: ''
+    }, 
+    {
+      label: 'Start Time',
+      value: row => getStartTime(row),
+      defaultValue: ''
+    }, 
+    {
+      label: 'End Date',
+      value: row => row.endDate.format('MM/DD/YYYY'),
+      defaultValue: ''
+    },
+    {
+      label: 'End Time',
+      value: row => getEndTime(row),
+      defaultValue: ''
+    },  
+    {
+      label: 'Subject',
+      value: row => row.tour ? row.tour : row.description
+    },
+    {
+      label: 'Description',
+      value: row => {
+        if (row.tour) {
+          const tour = mappedSeason.routes.find(route => route.name === row.tour);
+          if (tour) {
+            return tour.locations.map(loc => loc.name).join(' - ');
+          }
+        }
+
+        return '';
+      }
+    },
+    {
+      label: 'Location',
+      value: row => {
+        if (row.tour) {
+          const tour = mappedSeason.routes.find(route => route.name === row.tour);
+          if (tour) {
+            return tour.locations.filter(loc => loc.restaurant).map(loc => loc.name).join(' - ');
+          }
+        }
+
+        return row.location || '';
+      }
+    },
+    {
+      label: 'All Day Event',
+      value: row => row.startDate !== row.endDate
+    }
+  ];
+
+  const tours = mappedSeason.tours.map(t => ({...t, endDate: t.date, startDate: t.date}));
+  tours.push(...mappedSeason.events.map(e => ({
+    startDate: e.from,
+    endDate: e.to,
+    description: e.name,
+    location: e.location
+  })));
+  
+  return new Promise((resolve, reject) => {
+    json2csv({data: tours, fields: fields}, function (err, csv) {
+      if (err) {
+        reject(err);
+      } else {
+        zipFile.file('calendar.csv', csv);
+        resolve(true);
+      }
+    });
+  });
+}
+
 const writeTours = (mappedSeason, zipFile) => {
   const fields = [{
     label: 'Datum',
@@ -202,7 +329,8 @@ export function csv(req, params) {
             writeEvents(mappedSeason, zip),
             writeTours(mappedSeason, zip),
             writeRoutes(mappedSeason, zip),
-            writeStartRoutes(mappedSeason, zip)
+            writeStartRoutes(mappedSeason, zip),
+            writeCalendar(mappedSeason, zip)
           ]).then(data => {
             try {
               const options = {base64: false, compression: 'DEFLATE'};
