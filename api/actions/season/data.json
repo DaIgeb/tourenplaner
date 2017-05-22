@@ -32104,8 +32104,8 @@
         "tours": [
           {
             "type": {
-              "id": 3,
-              "label": "Nachmittagstour"
+              "id": 2,
+              "label": "Morgentour"
             },
             "tour": 0,
             "candidates": [
