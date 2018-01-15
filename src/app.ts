@@ -81,4 +81,4 @@ let userIdCounter = users.length
 // app.listen(3000)
 
 // Export your express server so you can import it in the lambda function.
-module.exports = app
+export = app

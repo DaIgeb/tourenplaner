@@ -1,6 +1,8 @@
 'use strict'
-const awsServerlessExpress = require('aws-serverless-express')
-const app = require('./app')
+import * as awsServerlessExpress from 'aws-serverless-express';
+import * as lambda from 'aws-lambda';
+
+import * as app from './app';
 
 // NOTE: If you get ERR_CONTENT_DECODING_FAILED in your browser, this is likely
 // due to a compressed response (e.g. gzip) which has not been handled correctly
@@ -27,4 +29,4 @@ const binaryMimeTypes = [
 ]
 const server = awsServerlessExpress.createServer(app, null, binaryMimeTypes)
 
-exports.handler = (event, context) => awsServerlessExpress.proxy(server, event, context)
+export const handler = (event: any, context: lambda.Context) => awsServerlessExpress.proxy(server, event, context)
