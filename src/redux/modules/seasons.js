@@ -215,6 +215,7 @@ export function del(seasonId) {
 }
 
 function addSeason(season) {
+  console.log('Adding season');
   return {
     types: [NEW, NEW_SUCCESS, NEW_FAIL],
     promise: (client) => client.put('/season/add', {
@@ -241,6 +242,7 @@ export function addStop() {
 
 function addNextTour(seasonId) {
   return (dispatch, getState) => {
+    console.log('Add Next Tour');
     const globalState = getState();
     const loadPromises = [];
     if (!isLoaded(globalState)) {

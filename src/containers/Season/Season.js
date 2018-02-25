@@ -65,7 +65,7 @@ function getActions() {
     error: state.seasons.error,
     adding: state.seasons.adding,
     loading: state.seasons.loading,
-    editing: state.seasons.editinga
+    editing: state.seasons.editing
   }),
   getActions())
 export default class Season extends Component {

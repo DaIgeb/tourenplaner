@@ -5311,5 +5311,236 @@
     "city": "Steinmaur",
     "latitude": 47.492501,
     "longitude": 8.4441073
+  },
+  {
+    "name": "Zirkus Stey / Zollhaus",
+    "streetAddress": "Zollhaus-Flugplatzstrasse 21",
+    "postalCode": "8554",
+    "city": "Bonau TG",
+    "latitude": 47.577434,
+    "longitude": 8.9828136,
+    "id": 618
+  },
+  {
+    "name": "Gehrau",
+    "identifier": "",
+    "streetAddress": "Gehrauerstrasse",
+    "addressCountry": "",
+    "postalCode": "8554",
+    "city": "Wigoltingen",
+    "latitude": 47.583197,
+    "longitude": 9.029814,
+    "id": 619
+  },
+  {
+    "id": 620,
+    "name": "Gillhof",
+    "postalCode": "8554",
+    "city": "Wigoltingen",
+    "latitude": 47.586773,
+    "longitude": 9.0492501
+  },
+  {
+    "id": 621,
+    "name": "Märstetten",
+    "identifier": "Station",
+    "streetAddress": "",
+    "postalCode": "8560",
+    "city": "Märstetten",
+    "latitude": 47.582913,
+    "longitude": 9.062784
+  },
+  {
+    "id": 622,
+    "name": "Weinfelden (Restaurant folgt)",
+    "identifier": "",
+    "postalCode": "8570",
+    "city": "Weinfelden",
+    "latitude": 47.568586,
+    "longitude": 9.1083764
+  },
+  {
+    "name": "Stelzenhof",
+    "identifier": "",
+    "streetAddress": "",
+    "addressCountry": "",
+    "postalCode": "8570",
+    "city": "Weinfelden",
+    "latitude": 47.582047,
+    "longitude": 9.120295,
+    "id": 623
+  },
+  {
+    "name": "Ottenberg",
+    "postalCode": "8566",
+    "city": "Kemmtal",
+    "latitude": 47.584597,
+    "longitude": 9.130756,
+    "id": 624
+  },
+  {
+    "id": 625,
+    "name": "Berg (TG)",
+    "identifier": "",
+    "postalCode": "8572",
+    "city": "Berg TG",
+    "latitude": 47.581958,
+    "longitude": 9.168026
+  },
+  {
+    "name": "Birwinken",
+    "identifier": "",
+    "streetAddress": "",
+    "addressCountry": "",
+    "postalCode": "8585",
+    "city": "Birwinken",
+    "latitude": 47.5826315,
+    "longitude": 9.1979275,
+    "id": 626
+  },
+  {
+    "name": "Altnau",
+    "identifier": "",
+    "streetAddress": "",
+    "addressCountry": "",
+    "postalCode": "8595",
+    "city": "Altnau ",
+    "latitude": 47.621171,
+    "longitude": 9.2648467,
+    "id": 627
+  },
+  {
+    "name": "Kesswil",
+    "identifier": "",
+    "postalCode": "8593",
+    "city": "Kesswil",
+    "latitude": 47.5957647,
+    "longitude": 9.317841,
+    "id": 628
+  },
+  {
+    "name": "Dozwil",
+    "addressCountry": "",
+    "postalCode": "8582",
+    "city": "Dozwil",
+    "latitude": 47.5757573,
+    "longitude": 9.3175547,
+    "id": 629
+  },
+  {
+    "name": "Hatswil",
+    "identifier": "",
+    "streetAddress": "",
+    "addressCountry": "",
+    "postalCode": "8580",
+    "city": "Hefenhofen",
+    "latitude": 47.5558388,
+    "longitude": 9.3228732,
+    "id": 630
+  },
+  {
+    "name": "Hungerbühl",
+    "identifier": "",
+    "streetAddress": "",
+    "addressCountry": "",
+    "postalCode": "8599",
+    "city": "Salmsach",
+    "latitude": 47.5518069,
+    "longitude": 9.3548943,
+    "id": 631
+  },
+  {
+    "name": "Schloss Hagenwil",
+    "postalCode": "8580",
+    "city": "Amriswil",
+    "latitude": 47.5286803,
+    "longitude": 9.3033535,
+    "id": 632
+  },
+  {
+    "name": "Lütschwil",
+    "identifier": "",
+    "streetAddress": "",
+    "addressCountry": "",
+    "postalCode": "9220",
+    "city": "Bischofszell",
+    "latitude": 47.5018082,
+    "longitude": 9.2704409,
+    "id": 633
+  },
+  {
+    "id": 634,
+    "name": "Bischofszell (Restaurant folgt)",
+    "identifier": "",
+    "streetAddress": "",
+    "postalCode": "9220",
+    "city": "Bischofszell",
+    "latitude": 47.4930118,
+    "longitude": 9.2391186
+  },
+  {
+    "name": "Niederhelfenschwil",
+    "postalCode": "9527",
+    "city": "Niederhelfenschwil",
+    "latitude": 47.4804455,
+    "longitude": 9.1870844,
+    "id": 635
+  },
+  {
+    "name": "Heiligkreuz",
+    "postalCode": "9515",
+    "city": "Wuppenau",
+    "latitude": 47.4994738,
+    "longitude": 9.1548858,
+    "id": 636
+  },
+  {
+    "name": "Hagenwil",
+    "postalCode": "8577",
+    "city": "Schönholzerswilen",
+    "latitude": 47.5070858,
+    "longitude": 9.1180314,
+    "id": 637
+  },
+  {
+    "id": 638,
+    "name": "Braunau",
+    "postalCode": "9502",
+    "city": "Braunau",
+    "latitude": 47.5036047,
+    "longitude": 9.0722001
+  },
+  {
+    "id": 639,
+    "name": "Wängi",
+    "identifier": "Altersheim",
+    "streetAddress": "Neuhausstrasse 13",
+    "addressCountry": "",
+    "postalCode": "9545",
+    "city": "Wängi",
+    "latitude": 47.5036514,
+    "longitude": 8.9595991
+  },
+  {
+    "name": "Egghof",
+    "identifier": "",
+    "streetAddress": "",
+    "addressCountry": "",
+    "postalCode": "8523",
+    "city": "Hagenbuch",
+    "latitude": 47.5095095,
+    "longitude": 8.8920713,
+    "id": 640
+  },
+  {
+    "name": "Elgg",
+    "identifier": "Station",
+    "streetAddress": "St. Gallerstrasse",
+    "addressCountry": "",
+    "postalCode": "8353",
+    "city": "Elgg",
+    "latitude": 47.4982554,
+    "longitude": 8.8604788,
+    "id": 641
   }
 ]

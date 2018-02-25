@@ -6254,5 +6254,33 @@
         ]
       }
     ]
+  },
+  {
+    "location": 622,
+    "nameForTour": "Weinfelden",
+    "timelines": [
+      {
+        "from": "2017-12-31T23:00:00.000Z",
+        "until": "2018-12-30T23:00:00.000Z",
+        "notes": "folgt",
+        "phone": "",
+        "businessHours": []
+      }
+    ],
+    "id": 78
+  },
+  {
+    "location": 634,
+    "nameForTour": "Bischofszell",
+    "timelines": [
+      {
+        "from": "2017-12-31T23:00:00.000Z",
+        "until": "2018-12-30T23:00:00.000Z",
+        "notes": "folgt",
+        "phone": "",
+        "businessHours": []
+      }
+    ],
+    "id": 79
   }
 ]

@@ -42,7 +42,7 @@ app.use((req, res) => {
         if (reason && reason.redirect) {
           res.redirect(reason.redirect);
         } else {
-          console.error('API ERROR:', pretty.render(reason));
+          console.error('API ERROR:', pretty.render(reason), reason);
           res.status(reason.status || 500).json(reason);
         }
       });

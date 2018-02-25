@@ -706,5 +706,326 @@
       }
     ],
     "id": 2
+  },
+  {
+    "year": "2018",
+    "seasonStart": "2018-03-02T23:00:00.000Z",
+    "seasonEnd": "2018-10-25T22:00:00.000Z",
+    "eveningStart": "2018-04-09T22:00:00.000Z",
+    "eveningEnd": "2018-09-12T22:00:00.000Z",
+    "events": [
+      {
+        "from": "2018-07-06T22:00:00.000Z",
+        "to": "2018-07-09T22:00:00.000Z",
+        "name": "Ferientour",
+        "location": "Füssen",
+        "organizer": "Nick/Daniel"
+      },
+      {
+        "from": "2018-06-22T22:00:00.000Z",
+        "to": "2018-06-23T22:00:00.000Z",
+        "name": "2 Tagestour",
+        "location": "Küttigen bei Aarau",
+        "organizer": "Oli"
+      }
+    ],
+    "specialDates": [
+      {
+        "date": "2018-03-01T23:00:00.000Z",
+        "name": "GV",
+        "action": {
+          "id": 1,
+          "label": "Tour entfernen"
+        },
+        "points": "0",
+        "tours": []
+      },
+      {
+        "date": "2018-03-02T23:00:00.000Z",
+        "name": "Erste Tour",
+        "action": {
+          "id": 3,
+          "label": "Tour ersetzen"
+        },
+        "points": "20",
+        "tours": [
+          {
+            "id": 44,
+            "type": {
+              "id": 3,
+              "label": "Nachmittagstour"
+            }
+          }
+        ]
+      },
+      {
+        "date": "2018-03-31T22:00:00.000Z",
+        "name": "Ostern",
+        "action": {
+          "id": 1,
+          "label": "Tour entfernen"
+        },
+        "points": "0",
+        "tours": []
+      },
+      {
+        "date": "2018-04-01T22:00:00.000Z",
+        "name": "Ostermontag",
+        "action": {
+          "id": 3,
+          "label": "Tour ersetzen"
+        },
+        "points": "20",
+        "tours": [
+          {
+            "id": 32,
+            "type": {
+              "id": 2,
+              "label": "Morgentour"
+            }
+          }
+        ]
+      },
+      {
+        "date": "2018-04-30T22:00:00.000Z",
+        "name": "Tag der Arbeit",
+        "action": {
+          "id": 3,
+          "label": "Tour ersetzen"
+        },
+        "points": "20",
+        "tours": [
+          {
+            "id": 16,
+            "type": {
+              "id": 2,
+              "label": "Morgentour"
+            }
+          }
+        ]
+      },
+      {
+        "date": "2018-05-09T22:00:00.000Z",
+        "name": "Auffahrt",
+        "action": {
+          "id": 3,
+          "label": "Tour ersetzen"
+        },
+        "points": "20",
+        "tours": [
+          {
+            "id": 31,
+            "type": {
+              "id": 2,
+              "label": "Morgentour"
+            }
+          }
+        ]
+      },
+      {
+        "date": "2018-05-19T22:00:00.000Z",
+        "name": "Pfingsten",
+        "action": {
+          "id": 1,
+          "label": "Tour entfernen"
+        },
+        "points": "0",
+        "tours": []
+      },
+      {
+        "date": "2018-05-20T22:00:00.000Z",
+        "name": "Pfingstmontag",
+        "action": {
+          "id": 3,
+          "label": "Tour ersetzen"
+        },
+        "points": "20",
+        "tours": [
+          {
+            "id": 32,
+            "type": {
+              "id": 2,
+              "label": "Morgentour"
+            }
+          }
+        ]
+      },
+      {
+        "date": "2018-05-26T22:00:00.000Z",
+        "name": "Winti-Marathon",
+        "points": 40,
+        "action": {
+          "id": 3,
+          "label": "Tour ersetzen"
+        },
+        "tours": []
+      },
+      {
+        "date": "2018-07-31T22:00:00.000Z",
+        "name": "Nationalfeiertag",
+        "action": {
+          "id": 3,
+          "label": "Tour ersetzen"
+        },
+        "points": "20",
+        "tours": [
+          {
+            "id": 16,
+            "type": {
+              "id": 2,
+              "label": "Morgentour"
+            }
+          }
+        ]
+      },
+      {
+        "date": "2018-09-29T22:00:00.000Z",
+        "name": "Winti-Sola",
+        "points": 40,
+        "action": {
+          "id": 2,
+          "label": "Tour hinzufügen"
+        },
+        "tours": []
+      },
+      {
+        "date": "2018-10-25T22:00:00.000Z",
+        "name": "Abschluss",
+        "action": {
+          "id": 1,
+          "label": "Tour entfernen"
+        },
+        "points": "0",
+        "tours": []
+      },
+      {
+        "date": "2018-04-27T22:00:00.000Z",
+        "name": "Bischhofszell",
+        "points": "40",
+        "action": {
+          "id": 2,
+          "label": "Tour hinzufügen"
+        },
+        "tours": [
+          {
+            "type": {
+              "id": 75,
+              "label": "Tagestour"
+            }
+          }
+        ]
+      },
+      {
+        "date": "2018-05-11T22:00:00.000Z",
+        "name": "Schwarzwald",
+        "action": {
+          "id": 2,
+          "label": "Tour hinzufügen"
+        },
+        "points": "40",
+        "tours": [
+          {
+            "id": 51,
+            "type": {
+              "id": 5,
+              "label": "Tagestour"
+            }
+          }
+        ]
+      },
+      {
+        "date": "2018-05-25T22:00:00.000Z",
+        "name": "Schwägalp",
+        "points": "40",
+        "action": {
+          "id": 2,
+          "label": "Tour hinzufügen"
+        },
+        "tours": [
+          {
+            "id": 49,
+            "type": {
+              "id": 5,
+              "label": "Tagestour"
+            }
+          }
+        ]
+      },
+      {
+        "date": "2018-06-08T22:00:00.000Z",
+        "name": "Tour de Suisse",
+        "action": {
+          "id": 3,
+          "label": "Tour ersetzen"
+        },
+        "points": "20",
+        "tours": []
+      },
+      {
+        "date": "2018-06-15T22:00:00.000Z",
+        "name": "Brätelspass",
+        "action": {
+          "id": 3,
+          "label": "Tour ersetzen"
+        },
+        "points": "20",
+        "tours": []
+      },
+      {
+        "date": "2018-07-20T22:00:00.000Z",
+        "name": "Zugerland",
+        "action": {
+          "id": 2,
+          "label": "Tour hinzufügen"
+        },
+        "points": "40",
+        "tours": [
+          {
+            "id": 65,
+            "type": {
+              "id": 5,
+              "label": "Tagestour"
+            }
+          }
+        ]
+      },
+      {
+        "date": "2018-08-03T22:00:00.000Z",
+        "name": "Pragelpass",
+        "action": {
+          "id": 2,
+          "label": "Tour hinzufügen"
+        },
+        "points": "40",
+        "tours": [
+          {
+            "id": 43,
+            "type": {
+              "id": 5,
+              "label": "Tagestour"
+            }
+          }
+        ]
+      },
+      {
+        "date": "2018-08-17T22:00:00.000Z",
+        "name": "Tösstal Classique",
+        "points": "40",
+        "action": {
+          "id": 2,
+          "label": "Tour hinzufügen"
+        },
+        "tours": [
+          {
+            "id": 74,
+            "type": {
+              "id": 5,
+              "label": "Tagestour"
+            }
+          }
+        ]
+      }
+    ],
+    "id": 3
   }
 ]
