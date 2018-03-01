@@ -5553,5 +5553,14 @@
     "latitude": 47.3496989,
     "longitude": 8.9354081,
     "id": 642
+  },
+  {
+    "id": 643,
+    "name": "Ottenhub",
+    "addressCountry": "CH",
+    "postalCode": "8492",
+    "city": "Wila",
+    "latitude": 47.4040022,
+    "longitude": 8.8694183
   }
 ]
