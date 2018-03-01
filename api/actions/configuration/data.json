@@ -879,7 +879,7 @@
         ]
       },
       {
-        "date": "2018-09-29T22:00:00.000Z",
+        "date": "2018-09-28T22:00:00.000Z",
         "name": "Winti-Sola",
         "points": 40,
         "action": {
@@ -908,8 +908,9 @@
         },
         "tours": [
           {
+            "id": 75,
             "type": {
-              "id": 75,
+              "id": 5,
               "label": "Tagestour"
             }
           }

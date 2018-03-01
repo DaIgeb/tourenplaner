@@ -5542,5 +5542,16 @@
     "latitude": 47.4982554,
     "longitude": 8.8604788,
     "id": 641
+  },
+  {
+    "name": "Konditorei Voland",
+    "identifier": "",
+    "streetAddress": "Tösstalstrasse 83",
+    "addressCountry": "CH",
+    "postalCode": "8496",
+    "city": "Fischenthal",
+    "latitude": 47.3496989,
+    "longitude": 8.9354081,
+    "id": 642
   }
 ]

@@ -6282,5 +6282,97 @@
       }
     ],
     "id": 79
+  },
+  {
+    "location": 642,
+    "nameForTour": "Steg",
+    "timelines": [
+      {
+        "from": "2017-12-31T23:00:00.000Z",
+        "until": "2099-12-30T23:00:00.000Z",
+        "notes": "",
+        "phone": "+41 55 265 11 20",
+        "businessHours": [
+          {
+            "weekday": "Sunday",
+            "from": {
+              "hour": 7,
+              "minute": 0
+            },
+            "until": {
+              "hour": 17,
+              "minute": 0
+            }
+          },
+          {
+            "weekday": "Monday",
+            "from": {
+              "hour": 6,
+              "minute": 0
+            },
+            "until": {
+              "hour": 18,
+              "minute": 30
+            }
+          },
+          {
+            "weekday": "Tuesday",
+            "from": {
+              "hour": 6,
+              "minute": 0
+            },
+            "until": {
+              "hour": 18,
+              "minute": 30
+            }
+          },
+          {
+            "weekday": "Wednesday",
+            "from": {
+              "hour": 6,
+              "minute": 0
+            },
+            "until": {
+              "hour": 18,
+              "minute": 30
+            }
+          },
+          {
+            "weekday": "Thursday",
+            "from": {
+              "hour": 6,
+              "minute": 0
+            },
+            "until": {
+              "hour": 18,
+              "minute": 30
+            }
+          },
+          {
+            "weekday": "Friday",
+            "from": {
+              "hour": 6,
+              "minute": 0
+            },
+            "until": {
+              "hour": 18,
+              "minute": 30
+            }
+          },
+          {
+            "weekday": "Saturday",
+            "from": {
+              "hour": 7,
+              "minute": 0
+            },
+            "until": {
+              "hour": 17,
+              "minute": 0
+            }
+          }
+        ]
+      }
+    ],
+    "id": 80
   }
 ]
