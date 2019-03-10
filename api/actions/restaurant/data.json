@@ -6374,5 +6374,604 @@
       }
     ],
     "id": 80
+  },
+  {
+    "id": 81,
+    "location": 644,
+    "nameForTour": "Dägerlen",
+    "timelines": [
+      {
+        "from": "2018-12-31T23:00:00.000Z",
+        "until": "2099-12-30T23:00:00.000Z",
+        "phone": "+41 52 316 11 82",
+        "businessHours": []
+      }
+    ]
+  },
+  {
+    "id": 82,
+    "location": 645,
+    "nameForTour": "Tengen",
+    "timelines": [
+      {
+        "from": "2018-12-31T23:00:00.000Z",
+        "until": "2099-12-30T23:00:00.000Z",
+        "notes": "",
+        "phone": "+49 773 6223",
+        "businessHours": []
+      }
+    ]
+  },
+  {
+    "id": 83,
+    "location": 646,
+    "nameForTour": "Sennhof",
+    "timelines": [
+      {
+        "from": "2018-12-31T23:00:00.000Z",
+        "until": "2099-12-30T23:00:00.000Z",
+        "phone": "+41 52 741 22 71",
+        "businessHours": [
+          {
+            "weekday": "Monday",
+            "from": {
+              "hour": 8,
+              "minute": 0
+            },
+            "until": {
+              "hour": 21,
+              "minute": 0
+            }
+          },
+          {
+            "weekday": "Tuesday",
+            "from": {
+              "hour": 8,
+              "minute": 0
+            },
+            "until": {
+              "hour": 21,
+              "minute": 0
+            }
+          },
+          {
+            "weekday": "Wednesday",
+            "from": {
+              "hour": 8,
+              "minute": 0
+            },
+            "until": {
+              "hour": 21,
+              "minute": 0
+            }
+          },
+          {
+            "weekday": "Thursday",
+            "from": {
+              "hour": 8,
+              "minute": 0
+            },
+            "until": {
+              "hour": 21,
+              "minute": 0
+            }
+          },
+          {
+            "weekday": "Friday",
+            "from": {
+              "hour": 8,
+              "minute": 0
+            },
+            "until": {
+              "hour": 22,
+              "minute": 0
+            }
+          },
+          {
+            "weekday": "Saturday",
+            "from": {
+              "hour": 8,
+              "minute": 0
+            },
+            "until": {
+              "hour": 21,
+              "minute": 0
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 84,
+    "location": 647,
+    "nameForTour": "",
+    "timelines": [
+      {
+        "from": "2018-12-31T23:00:00.000Z",
+        "until": "2099-12-30T23:00:00.000Z",
+        "phone": "052 202 95 64",
+        "businessHours": [
+          {
+            "weekday": "Sunday",
+            "from": {
+              "hour": 11,
+              "minute": 0
+            },
+            "until": {
+              "hour": 14,
+              "minute": 30
+            }
+          },
+          {
+            "weekday": "Sunday",
+            "from": {
+              "hour": 17,
+              "minute": 0
+            },
+            "until": {
+              "hour": 22,
+              "minute": 0
+            }
+          },
+          {
+            "weekday": "Tuesday",
+            "from": {
+              "hour": 8,
+              "minute": 30
+            },
+            "until": {
+              "hour": 14,
+              "minute": 30
+            }
+          },
+          {
+            "weekday": "Tuesday",
+            "from": {
+              "hour": 17,
+              "minute": 0
+            },
+            "until": {
+              "hour": 22,
+              "minute": 0
+            }
+          },
+          {
+            "weekday": "Wednesday",
+            "from": {
+              "hour": 8,
+              "minute": 30
+            },
+            "until": {
+              "hour": 14,
+              "minute": 30
+            }
+          },
+          {
+            "weekday": "Wednesday",
+            "from": {
+              "hour": 17,
+              "minute": 0
+            },
+            "until": {
+              "hour": 22,
+              "minute": 0
+            }
+          },
+          {
+            "weekday": "Thursday",
+            "from": {
+              "hour": 8,
+              "minute": 30
+            },
+            "until": {
+              "hour": 14,
+              "minute": 30
+            }
+          },
+          {
+            "weekday": "Thursday",
+            "from": {
+              "hour": 17,
+              "minute": 0
+            },
+            "until": {
+              "hour": 22,
+              "minute": 0
+            }
+          },
+          {
+            "weekday": "Friday",
+            "from": {
+              "hour": 8,
+              "minute": 30
+            },
+            "until": {
+              "hour": 14,
+              "minute": 30
+            }
+          },
+          {
+            "weekday": "Friday",
+            "from": {
+              "hour": 17,
+              "minute": 0
+            },
+            "until": {
+              "hour": 22,
+              "minute": 0
+            }
+          },
+          {
+            "weekday": "Saturday",
+            "from": {
+              "hour": 11,
+              "minute": 0
+            },
+            "until": {
+              "hour": 14,
+              "minute": 30
+            }
+          },
+          {
+            "weekday": "Saturday",
+            "from": {
+              "hour": 17,
+              "minute": 0
+            },
+            "until": {
+              "hour": 22,
+              "minute": 0
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 85,
+    "location": 649,
+    "nameForTour": "Fischenthal",
+    "timelines": [
+      {
+        "from": "2018-12-31T23:00:00.000Z",
+        "until": "2099-12-30T23:00:00.000Z",
+        "phone": "055 245 11 58",
+        "businessHours": [
+          {
+            "weekday": "Sunday",
+            "from": {
+              "hour": 8,
+              "minute": 0
+            },
+            "until": {
+              "hour": 24,
+              "minute": 0
+            }
+          },
+          {
+            "weekday": "Tuesday",
+            "from": {
+              "hour": 8,
+              "minute": 0
+            },
+            "until": {
+              "hour": 24,
+              "minute": 0
+            }
+          },
+          {
+            "weekday": "Wednesday",
+            "from": {
+              "hour": 8,
+              "minute": 0
+            },
+            "until": {
+              "hour": 24,
+              "minute": 0
+            }
+          },
+          {
+            "weekday": "Thursday",
+            "from": {
+              "hour": 8,
+              "minute": 0
+            },
+            "until": {
+              "hour": 24,
+              "minute": 0
+            }
+          },
+          {
+            "weekday": "Friday",
+            "from": {
+              "hour": 8,
+              "minute": 0
+            },
+            "until": {
+              "hour": 24,
+              "minute": 0
+            }
+          },
+          {
+            "weekday": "Saturday",
+            "from": {
+              "hour": 8,
+              "minute": 0
+            },
+            "until": {
+              "hour": 24,
+              "minute": 0
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 86,
+    "location": 648,
+    "nameForTour": "Eglisau",
+    "timelines": [
+      {
+        "from": "2018-12-31T23:00:00.000Z",
+        "until": "2099-12-30T23:00:00.000Z",
+        "phone": "044 867 18 77",
+        "businessHours": [
+          {
+            "weekday": "Sunday",
+            "from": {
+              "hour": 9,
+              "minute": 0
+            },
+            "until": {
+              "hour": 18,
+              "minute": 0
+            }
+          },
+          {
+            "weekday": "Monday",
+            "from": {
+              "hour": 8,
+              "minute": 0
+            },
+            "until": {
+              "hour": 18,
+              "minute": 30
+            }
+          },
+          {
+            "weekday": "Tuesday",
+            "from": {
+              "hour": 8,
+              "minute": 0
+            },
+            "until": {
+              "hour": 18,
+              "minute": 30
+            }
+          },
+          {
+            "weekday": "Wednesday",
+            "from": {
+              "hour": 8,
+              "minute": 0
+            },
+            "until": {
+              "hour": 18,
+              "minute": 30
+            }
+          },
+          {
+            "weekday": "Thursday",
+            "from": {
+              "hour": 8,
+              "minute": 0
+            },
+            "until": {
+              "hour": 18,
+              "minute": 30
+            }
+          },
+          {
+            "weekday": "Friday",
+            "from": {
+              "hour": 8,
+              "minute": 0
+            },
+            "until": {
+              "hour": 18,
+              "minute": 30
+            }
+          },
+          {
+            "weekday": "Saturday",
+            "from": {
+              "hour": 9,
+              "minute": 0
+            },
+            "until": {
+              "hour": 18,
+              "minute": 0
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "location": 650,
+    "nameForTour": "Aichen",
+    "timelines": [
+      {
+        "from": "2018-12-31T23:00:00.000Z",
+        "until": "2099-12-30T23:00:00.000Z",
+        "phone": "+49 -7747 - 222",
+        "businessHours": [
+          {
+            "weekday": "Saturday",
+            "from": {
+              "hour": 8,
+              "minute": 0
+            },
+            "until": {
+              "hour": 18,
+              "minute": 0
+            }
+          }
+        ]
+      }
+    ],
+    "id": 87
+  },
+  {
+    "location": 651,
+    "nameForTour": "Rothaus",
+    "timelines": [
+      {
+        "from": "2018-12-31T23:00:00.000Z",
+        "until": "2099-12-30T23:00:00.000Z",
+        "phone": "+49 7748 5229600",
+        "businessHours": [
+          {
+            "weekday": "Saturday",
+            "from": {
+              "hour": 11,
+              "minute": 0
+            },
+            "until": {
+              "hour": 22,
+              "minute": 0
+            }
+          }
+        ]
+      }
+    ],
+    "id": 88
+  },
+  {
+    "location": 659,
+    "nameForTour": "Wildhaus",
+    "timelines": [
+      {
+        "from": "2018-12-31T23:00:00.000Z",
+        "until": "2099-12-30T23:00:00.000Z",
+        "phone": "+41 71 999 21 72",
+        "businessHours": [
+          {
+            "weekday": "Saturday",
+            "from": {
+              "hour": 10,
+              "minute": 0
+            },
+            "until": {
+              "hour": 16,
+              "minute": 0
+            }
+          }
+        ]
+      }
+    ],
+    "id": 89
+  },
+  {
+    "location": 663,
+    "nameForTour": "Wislikofen",
+    "timelines": [
+      {
+        "from": "2018-12-31T23:00:00.000Z",
+        "until": "2099-12-30T23:00:00.000Z",
+        "phone": "+41 56 201 4040",
+        "businessHours": [
+          {
+            "weekday": "Saturday",
+            "from": {
+              "hour": 8,
+              "minute": 0
+            },
+            "until": {
+              "hour": 17,
+              "minute": 0
+            }
+          }
+        ]
+      }
+    ],
+    "id": 90
+  },
+  {
+    "location": 670,
+    "nameForTour": "Mönthal",
+    "timelines": [
+      {
+        "from": "2018-12-31T23:00:00.000Z",
+        "until": "2099-12-30T23:00:00.000Z",
+        "phone": "+41 56 284 1393",
+        "businessHours": [
+          {
+            "weekday": "Saturday",
+            "from": {
+              "hour": 10,
+              "minute": 0
+            },
+            "until": {
+              "hour": 14,
+              "minute": 30
+            }
+          }
+        ]
+      }
+    ],
+    "id": 91
+  },
+  {
+    "location": 623,
+    "nameForTour": "Stelzenhof",
+    "timelines": [
+      {
+        "from": "2018-12-31T23:00:00.000Z",
+        "until": "2099-12-30T23:00:00.000Z",
+        "phone": "071 622 40 10",
+        "businessHours": [
+          {
+            "weekday": "Saturday",
+            "from": {
+              "hour": 11,
+              "minute": 0
+            },
+            "until": {
+              "hour": 23,
+              "minute": 0
+            }
+          }
+        ]
+      }
+    ],
+    "id": 92
+  },
+  {
+    "id": 93,
+    "location": 634,
+    "nameForTour": "Bischofszell",
+    "timelines": [
+      {
+        "from": "2018-12-31T23:00:00.000Z",
+        "until": "2099-12-30T23:00:00.000Z",
+        "phone": "+41 71 424 6003",
+        "businessHours": [
+          {
+            "weekday": "Saturday",
+            "from": {
+              "hour": 8,
+              "minute": 30
+            },
+            "until": {
+              "hour": 23,
+              "minute": 0
+            }
+          }
+        ]
+      }
+    ]
   }
 ]

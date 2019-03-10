@@ -164,7 +164,7 @@ export class PrintTab extends Component {
     const renderEvent = (event, idx) => {
       const dateFrom = event.from.format('L');
       const dateTo = event.to.isValid() && !event.from.isSame(event.to, 'day') ? event.to.format('L') : null;
-      const description = `${event.name} in ${event.location}${event.organizer ? ` (${event.organizer})` : ''}`;
+      const description = `${event.name} ${event.location}${event.organizer ? ` (${event.organizer})` : ''}`;
 
       return (
         <div key={idx} className="row">
@@ -186,18 +186,18 @@ export class PrintTab extends Component {
             <div className="col-xs-6 col-xs-offset-1">gemütliches Tempo / Einsteigergruppe</div>
 
             <div className="col-xs-3 col-xs-offset-1">Abendtouren:</div>
-            <div className="col-xs-2">17:50 Uhr</div>
+            <div className="col-xs-2">17:45 Uhr</div>
             <div className="col-xs-6">Durchschnitt 22 -26 km/h</div>
 
             <div className="col-xs-3 col-xs-offset-1">Samstagstouren:</div>
-            <div className="col-xs-8">13:20 Uhr</div>
+            <div className="col-xs-8">13:15 Uhr</div>
 
             <div className="col-xs-3 col-xs-offset-1">Sonntagstouren:</div>
-            <div className="col-xs-2">08:20 Uhr</div>
-            <div className="col-xs-6">(bis {eveningStart} und ab {eveningEnd} 08.50 Uhr)</div>
+            <div className="col-xs-2">08:15 Uhr</div>
+            <div className="col-xs-6">(bis {eveningStart} und ab {eveningEnd} 08.45 Uhr)</div>
 
             <div className="col-xs-3 col-xs-offset-1">Tagestouren:</div>
-            <div className="col-xs-8">07:45 Uhr</div>
+            <div className="col-xs-8">07:30 Uhr</div>
           </div>
           <div className="row">
             <div className="col-xs-5"><strong>Fitness - Gruppe</strong></div>
@@ -218,22 +218,10 @@ export class PrintTab extends Component {
             <div className="col-xs-8">08:00 Uhr</div>
           </div>
           <div className="row">
-            <div className="col-xs-6"><strong>Speed - Gruppe ab {eveningStart}</strong></div>
+            <div className="col-xs-6"><strong>Speed - Gruppe</strong></div>
             <div className="col-xs-6">zügiges Tempo / gut trainierte Fahrer</div>
 
-            <div className="col-xs-3 col-xs-offset-1">Abendtouren:</div>
-            <div className="col-xs-2">18:10 Uhr</div>
-            <div className="col-xs-6">Durchschnitt 26 -30 km/h</div>
-
-            <div className="col-xs-3 col-xs-offset-1">Samstagstouren:</div>
-            <div className="col-xs-8">13:40 Uhr</div>
-
-            <div className="col-xs-3 col-xs-offset-1">Sonntagstouren:</div>
-            <div className="col-xs-2">08:40 Uhr</div>
-            <div className="col-xs-6">(ab {eveningEnd} 09.10 Uhr)</div>
-
-            <div className="col-xs-3 col-xs-offset-1">Tagestouren:</div>
-            <div className="col-xs-8">08:15 Uhr</div>
+            <div className="col-xs-11 col-xs-offset-1">Bei genügend Teilnehmer in der Fitness-Gruppe wird situativ eine schnellere Speed-Gruppe ad-hoc gebildet.</div>
           </div>
         </div>);
     };

@@ -1028,5 +1028,523 @@
       }
     ],
     "id": 3
+  },
+  {
+    "year": "2019",
+    "seasonStart": "2019-03-08T23:00:00.000Z",
+    "seasonEnd": "2019-10-24T22:00:00.000Z",
+    "eveningStart": "2019-04-08T22:00:00.000Z",
+    "eveningEnd": "2019-09-11T22:00:00.000Z",
+    "events": [
+      {
+        "from": "2019-07-05T22:00:00.000Z",
+        "to": "2019-07-12T22:00:00.000Z",
+        "name": "Ferientour",
+        "location": "im Elsass - Kaysersberg ",
+        "organizer": "Flavio/Nick"
+      },
+      {
+        "from": "2019-08-16T22:00:00.000Z",
+        "to": "2019-08-17T22:00:00.000Z",
+        "name": "2 Tagestour",
+        "location": "in Tuttlingen ",
+        "organizer": "Hansjörg Furrer"
+      }
+    ],
+    "specialDates": [
+      {
+        "date": "2019-03-07T23:00:00.000Z",
+        "name": "GV",
+        "action": {
+          "id": 1,
+          "label": "Tour entfernen"
+        },
+        "points": "0",
+        "tours": []
+      },
+      {
+        "date": "2019-03-08T23:00:00.000Z",
+        "name": "Erste Tour",
+        "action": {
+          "id": 3,
+          "label": "Tour ersetzen"
+        },
+        "points": "20",
+        "tours": [
+          {
+            "id": 44,
+            "type": {
+              "id": 3,
+              "label": "Nachmittagstour"
+            }
+          }
+        ]
+      },
+      {
+        "date": "2019-04-20T22:00:00.000Z",
+        "name": "Ostern",
+        "action": {
+          "id": 1,
+          "label": "Tour entfernen"
+        },
+        "points": "0",
+        "tours": []
+      },
+      {
+        "date": "2019-04-21T22:00:00.000Z",
+        "name": "Ostermontag",
+        "action": {
+          "id": 3,
+          "label": "Tour ersetzen"
+        },
+        "points": "20",
+        "tours": [
+          {
+            "id": 32,
+            "type": {
+              "id": 2,
+              "label": "Morgentour"
+            }
+          }
+        ]
+      },
+      {
+        "date": "2019-04-30T22:00:00.000Z",
+        "name": "Tag der Arbeit",
+        "action": {
+          "id": 3,
+          "label": "Tour ersetzen"
+        },
+        "points": "20",
+        "tours": [
+          {
+            "id": 16,
+            "type": {
+              "id": 2,
+              "label": "Morgentour"
+            }
+          }
+        ]
+      },
+      {
+        "date": "2019-05-29T22:00:00.000Z",
+        "name": "Auffahrt (Brätelspass)",
+        "action": {
+          "id": 3,
+          "label": "Tour ersetzen"
+        },
+        "points": "20",
+        "tours": [
+          {
+            "id": 78,
+            "type": {
+              "id": 2,
+              "label": "Morgentour"
+            }
+          }
+        ]
+      },
+      {
+        "date": "2019-06-08T22:00:00.000Z",
+        "name": "Pfingsten",
+        "action": {
+          "id": 1,
+          "label": "Tour entfernen"
+        },
+        "points": "0",
+        "tours": []
+      },
+      {
+        "date": "2019-06-09T22:00:00.000Z",
+        "name": "Pfingstmontag",
+        "action": {
+          "id": 3,
+          "label": "Tour ersetzen"
+        },
+        "points": "20",
+        "tours": [
+          {
+            "id": 32,
+            "type": {
+              "id": 2,
+              "label": "Morgentour"
+            }
+          }
+        ]
+      },
+      {
+        "date": "2019-05-25T22:00:00.000Z",
+        "name": "Winti-Marathon",
+        "points": 40,
+        "action": {
+          "id": 3,
+          "label": "Tour ersetzen"
+        },
+        "tours": []
+      },
+      {
+        "date": "2019-07-31T22:00:00.000Z",
+        "name": "Nationalfeiertag",
+        "action": {
+          "id": 3,
+          "label": "Tour ersetzen"
+        },
+        "points": "20",
+        "tours": [
+          {
+            "id": 16,
+            "type": {
+              "id": 2,
+              "label": "Morgentour"
+            }
+          }
+        ]
+      },
+      {
+        "date": "2019-04-08T22:00:00.000Z",
+        "name": "Russikon",
+        "action": {
+          "id": 3,
+          "label": "Tour ersetzen"
+        },
+        "points": "15",
+        "tours": [
+          {
+            "id": 47,
+            "type": {
+              "id": 4,
+              "label": "Abendtour"
+            }
+          }
+        ]
+      },   
+      {
+        "date": "2019-04-15T22:00:00.000Z",
+        "name": "Seuzach",
+        "action": {
+          "id": 3,
+          "label": "Tour ersetzen"
+        },
+        "points": "15",
+        "tours": [
+          {
+            "id": 52,
+            "type": {
+              "id": 4,
+              "label": "Abendtour"
+            }
+          }
+        ]
+      },   
+      {
+        "date": "2019-04-22T22:00:00.000Z",
+        "name": "Brütten",
+        "action": {
+          "id": 3,
+          "label": "Tour ersetzen"
+        },
+        "points": "15",
+        "tours": [
+          {
+            "id": 14,
+            "type": {
+              "id": 4,
+              "label": "Abendtour"
+            }
+          }
+        ]
+      },   
+      {
+        "date": "2019-04-29T22:00:00.000Z",
+        "name": "Hagenbuch",
+        "action": {
+          "id": 3,
+          "label": "Tour ersetzen"
+        },
+        "points": "15",
+        "tours": [
+          {
+            "id": 24,
+            "type": {
+              "id": 4,
+              "label": "Abendtour"
+            }
+          }
+        ]
+      }, 
+      {
+        "date": "2019-05-06T22:00:00.000Z",
+        "name": "Ottikon",
+        "action": {
+          "id": 3,
+          "label": "Tour ersetzen"
+        },
+        "points": "15",
+        "tours": [
+          {
+            "id": 41,
+            "type": {
+              "id": 4,
+              "label": "Abendtour"
+            }
+          }
+        ]
+      },
+      {
+        "date": "2019-05-13T22:00:00.000Z",
+        "name": "Neschwil",
+        "action": {
+          "id": 3,
+          "label": "Tour ersetzen"
+        },
+        "points": "15",
+        "tours": [
+          {
+            "id": 36,
+            "type": {
+              "id": 4,
+              "label": "Abendtour"
+            }
+          }
+        ]
+      },
+      {
+        "date": "2019-05-20T22:00:00.000Z",
+        "name": "Stammheim via Wilen",
+        "action": {
+          "id": 3,
+          "label": "Tour ersetzen"
+        },
+        "points": "15",
+        "tours": [
+          {
+            "id": 60,
+            "type": {
+              "id": 4,
+              "label": "Abendtour"
+            }
+          }
+        ]
+      },
+      {
+        "date": "2019-05-27T22:00:00.000Z",
+        "name": "Sitzberg via Wila",
+        "action": {
+          "id": 3,
+          "label": "Tour ersetzen"
+        },
+        "points": "15",
+        "tours": [
+          {
+            "id": 64,
+            "type": {
+              "id": 4,
+              "label": "Abendtour"
+            }
+          }
+        ]
+      },
+      {
+        "date": "2019-06-03T22:00:00.000Z",
+        "name": "Neftenbach",
+        "action": {
+          "id": 3,
+          "label": "Tour ersetzen"
+        },
+        "points": "15",
+        "tours": [
+          {
+            "id": 35,
+            "type": {
+              "id": 4,
+              "label": "Abendtour"
+            }
+          }
+        ]
+      },
+      {
+        "date": "2019-06-10T22:00:00.000Z",
+        "name": "Wildberg",
+        "action": {
+          "id": 3,
+          "label": "Tour ersetzen"
+        },
+        "points": "15",
+        "tours": [
+          {
+            "id": 67,
+            "type": {
+              "id": 4,
+              "label": "Abendtour"
+            }
+          }
+        ]
+      },
+      {
+        "date": "2019-09-27T22:00:00.000Z",
+        "name": "Winti-Sola",
+        "points": 40,
+        "action": {
+          "id": 2,
+          "label": "Tour hinzufügen"
+        },
+        "tours": []
+      },
+      {
+        "date": "2019-10-24T22:00:00.000Z",
+        "name": "Abschluss",
+        "action": {
+          "id": 1,
+          "label": "Tour entfernen"
+        },
+        "points": "0",
+        "tours": []
+      },
+      {
+        "date": "2019-05-10T22:00:00.000Z",
+        "name": "Bischhofszell",
+        "points": "40",
+        "action": {
+          "id": 2,
+          "label": "Tour hinzufügen"
+        },
+        "tours": [
+          {
+            "id": 75,
+            "type": {
+              "id": 5,
+              "label": "Tagestour"
+            }
+          }
+        ]
+      },
+      {
+        "date": "2019-05-24T22:00:00.000Z",
+        "name": "Schwarzwald",
+        "action": {
+          "id": 2,
+          "label": "Tour hinzufügen"
+        },
+        "points": "40",
+        "tours": [
+          {
+            "id": 51,
+            "type": {
+              "id": 5,
+              "label": "Tagestour"
+            }
+          }
+        ]
+      },
+      {
+        "date": "2019-06-07T22:00:00.000Z",
+        "name": "Mönthal",
+        "points": "40",
+        "action": {
+          "id": 2,
+          "label": "Tour hinzufügen"
+        },
+        "tours": [
+          {
+            "id": 76,
+            "type": {
+              "id": 5,
+              "label": "Tagestour"
+            }
+          }
+        ]
+      },
+      {
+        "date": "2019-06-21T22:00:00.000Z",
+        "name": "Gamplüt",
+        "points": "40",
+        "action": {
+          "id": 2,
+          "label": "Tour hinzufügen"
+        },
+        "tours": [
+          {
+            "id": 77,
+            "type": {
+              "id": 5,
+              "label": "Tagestour"
+            }
+          }
+        ]
+      },
+      {
+        "date": "2019-07-19T22:00:00.000Z",
+        "name": "Ricken",
+        "action": {
+          "id": 2,
+          "label": "Tour hinzufügen"
+        },
+        "points": "40",
+        "tours": [
+          {
+            "id": 46,
+            "type": {
+              "id": 5,
+              "label": "Tagestour"
+            }
+          }
+        ]
+      },
+      {
+        "date": "2019-08-02T22:00:00.000Z",
+        "name": "Klingenzell",
+        "action": {
+          "id": 2,
+          "label": "Tour hinzufügen"
+        },
+        "points": "40",
+        "tours": [
+          {
+            "id": 28,
+            "type": {
+              "id": 5,
+              "label": "Tagestour"
+            }
+          }
+        ]
+      },
+      {
+        "date": "2019-08-16T22:00:00.000Z",
+        "name": "Appenzell",
+        "points": "40",
+        "action": {
+          "id": 2,
+          "label": "Tour hinzufügen"
+        },
+        "tours": [
+          {
+            "id": 10,
+            "type": {
+              "id": 5,
+              "label": "Tagestour"
+            }
+          }
+        ]
+      },
+      {
+        "date": "2019-08-30T22:00:00.000Z",
+        "name": "Sattelegg",
+        "points": "40",
+        "action": {
+          "id": 2,
+          "label": "Tour hinzufügen"
+        },
+        "tours": [
+          {
+            "id": 48,
+            "type": {
+              "id": 5,
+              "label": "Tagestour"
+            }
+          }
+        ]
+      }
+    ],
+    "id": 4
   }
 ]
